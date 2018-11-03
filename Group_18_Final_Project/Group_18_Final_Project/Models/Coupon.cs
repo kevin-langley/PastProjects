@@ -11,4 +11,5 @@ namespace Group_18_Final_Project.Models
         public enum CouponType { get; set; }
         public List<Order> Orders { get; set; }
     }
+
 }

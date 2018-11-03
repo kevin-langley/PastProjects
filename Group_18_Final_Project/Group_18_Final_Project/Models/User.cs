@@ -17,12 +17,12 @@ namespace Group_18_Final_Project.Models
         public String State { get; set; }
         public Int32 ZipCode { get; set; }
         public Int32 PhoneNumber { get; set; }
-        public Boolean Active { get; set; }
+        public Boolean ActiveUser { get; set; }
         public List<CreditCard> CreditCards { get; set; }
         public List<Order> Orders { get; set; }
         public List<Reorder> Reorders { get; set; }
-        public Review Review { get; set; }
-        public Review Approval { get; set; }
+        public List <Review> Reviews { get; set; }
+        public List <Review> Approval { get; set; }
 
     }
 }
