@@ -11501,23 +11501,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kevin\\.nuget\\packages\\": {},
+    "C:\\Users\\Angelia\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kevin\\source\\repos\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
+      "projectUniqueName": "C:\\Users\\Angelia\\Downloads\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
       "projectName": "Group_18_Final_Project",
-      "projectPath": "C:\\Users\\Kevin\\source\\repos\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
-      "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kevin\\source\\repos\\Group_18_Final_Project\\Group_18_Final_Project\\obj\\",
+      "projectPath": "C:\\Users\\Angelia\\Downloads\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
+      "packagesPath": "C:\\Users\\Angelia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Angelia\\Downloads\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Angelia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
