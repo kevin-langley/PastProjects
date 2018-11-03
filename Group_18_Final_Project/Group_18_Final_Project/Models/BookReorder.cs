@@ -8,9 +8,9 @@ namespace Group_18_Final_Project.Models
     public class BookReorder
     {
         public Int32 BookReorderID { get; set; }
-        public String Quantity { get; set; }
-        public Book Book { get; set; }
-        public Reorder Reorder { get; set; }
+        public String ReorderQuantity { get; set; }
+        public List <Book> Books { get; set; }
+        public List <Reorder> Reorders { get; set; }
 
     }
 }
