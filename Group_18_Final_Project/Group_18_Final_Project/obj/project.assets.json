@@ -11501,28 +11501,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/zoedapoey/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Kevin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/zoedapoey/Documents/Junior Jambalaya/MIS 333K/Github Repos/fa18Team18/Group_18_Final_Project/Group_18_Final_Project/Group_18_Final_Project.csproj",
+      "projectUniqueName": "C:\\Users\\Kevin\\Documents\\GitHub\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
       "projectName": "Group_18_Final_Project",
-      "projectPath": "/Users/zoedapoey/Documents/Junior Jambalaya/MIS 333K/Github Repos/fa18Team18/Group_18_Final_Project/Group_18_Final_Project/Group_18_Final_Project.csproj",
-      "packagesPath": "/Users/zoedapoey/.nuget/packages/",
-      "outputPath": "/Users/zoedapoey/Documents/Junior Jambalaya/MIS 333K/Github Repos/fa18Team18/Group_18_Final_Project/Group_18_Final_Project/obj",
+      "projectPath": "C:\\Users\\Kevin\\Documents\\GitHub\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\Group_18_Final_Project.csproj",
+      "packagesPath": "C:\\Users\\Kevin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kevin\\Documents\\GitHub\\fa18Team18\\Group_18_Final_Project\\Group_18_Final_Project\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/zoedapoey/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11542,17 +11544,17 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.1.1"
+            "version": "[2.1.1, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.1.2"
+            "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
-            "version": "2.1",
+            "version": "[2.1.0, )",
             "autoReferenced": true
           }
         },
