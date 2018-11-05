@@ -7,7 +7,11 @@ namespace Group_18_Final_Project.Models
 {
     public class Reorder
     {
+
+        //Reorder properties
         public Int32 ReorderID { get; set; }
+
+        //Navigation property
         public User User { get; set; }
         public BookReorder BookReorder { get; set; }
     }

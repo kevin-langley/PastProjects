@@ -7,6 +7,7 @@ namespace Group_18_Final_Project.Models
 {
     public class Book
     {
+        //Book properties
         public Int32 BookID { get; set; }
         public String Title { get; set; }
         public String Author { get; set; }
@@ -18,6 +19,8 @@ namespace Group_18_Final_Project.Models
         public Decimal WholesalePrice { get; set; }
         public Boolean ActiveBook { get; set; }
         public DateTime PublicationDate { get; set; }
+
+        //Navigation properties
         public BookOrder BookOrder { get; set; }
         public List<Review> Reviews { get; set; }
         public Genre Genre { get; set; }

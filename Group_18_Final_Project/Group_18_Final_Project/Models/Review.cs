@@ -7,13 +7,16 @@ namespace Group_18_Final_Project.Models
 {
     public class Review
     {
+
+        //Review properties
         public Int32 ReviewID { get; set; }
         public String ReviewText { get; set; }
         public Boolean Approval { get; set; }
         public Int32 Rating { get; set; }
-        public String Author { get; set; }
-        public String Approver { get; set; }
-        public User User { get; set; }
+
+        //Navigation properties
+        public User Author { get; set; }
+        public User Approver { get; set; }
         public Book Book { get; set; }
     }
 }

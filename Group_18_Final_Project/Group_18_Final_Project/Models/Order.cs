@@ -7,8 +7,11 @@ namespace Group_18_Final_Project.Models
 {
     public class Order
     {
+        //Order properties
         public Int32 OrderID { get; set; }
         public DateTime OrderDate { get; set; }
+
+        //Navigation properties
         public CreditCard CreditCard { get; set; }
         public User User { get; set; }
         public BookOrder BookOrder { get; set; }

@@ -7,6 +7,7 @@ namespace Group_18_Final_Project.Models
 {
     public class User
     {
+        //User properties
         public Int32 UserID { get; set; }
         public String Email { get; set; }
         public String Password { get; set; }
@@ -18,11 +19,13 @@ namespace Group_18_Final_Project.Models
         public Int32 ZipCode { get; set; }
         public Int32 PhoneNumber { get; set; }
         public Boolean ActiveUser { get; set; }
+
+        //Navigation properties
         public List<CreditCard> CreditCards { get; set; }
         public List<Order> Orders { get; set; }
         public List<Reorder> Reorders { get; set; }
-        public List <Review> Reviews { get; set; }
-        public List <Review> Approval { get; set; }
+        public List <Review> ReviewsWritten { get; set; }
+        public List <Review> ReviewsApproved { get; set; }
 
     }
 }
