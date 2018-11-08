@@ -1,0 +1,23 @@
+﻿<h2>Detailed Search</h2>
+<form asp-action="SearchResults" asp-controller="Home" method="get">
+
+    @*Search by title*@
+    <div class="form-group">
+        <label>Title:</label>
+        <input title="SearchString" class="form-control" />
+    </div>
+
+    @*Search by author*@
+    <div class="form-group">
+        <label>Author:</label>
+        <input author="SearchString" class="form-control" />
+    </div>
+
+    @*Search by genre*@
+    <div class="form-group">
+        <label>Choose a genre:</label>
+        @Html.DropDownList("SelectedGenre", (SelectList)ViewBag.AllGenres, new { @class = "form-control" })
+    </div>
+
+
+</form>
