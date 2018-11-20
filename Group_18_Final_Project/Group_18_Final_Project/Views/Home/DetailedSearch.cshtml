@@ -1,23 +1,36 @@
-﻿<h2>Detailed Search</h2>
-<form asp-action="SearchResults" asp-controller="Home" method="get">
+﻿
 
+@using Group_18_Final_Project.Controllers
+
+<br />
+<h2>Detailed Search</h2>
+<form asp-action="DisplaySearchResults" asp-controller="Home" method="get">
     @*Search by title*@
     <div class="form-group">
         <label>Title:</label>
-        <input title="SearchString" class="form-control" />
+        <input title="strSearchName" class="form-control" />
     </div>
-
     @*Search by author*@
     <div class="form-group">
         <label>Author:</label>
-        <input author="SearchString" class="form-control" />
+        <input author="strSearchAuthor" class="form-control" />
     </div>
-
     @*Search by genre*@
     <div class="form-group">
         <label>Choose a genre:</label>
         @Html.DropDownList("SelectedGenre", (SelectList)ViewBag.AllGenres, new { @class = "form-control" })
     </div>
+    @*Search by unique number*@
+    <div class="form-group">
+        <label>Unique number:</label>
+        <input title="strUniqueNum" class="form-control" />
+    </div>
 
 
+    <!--Submit form data to be processed by method-->
+    <button type="submit" class="btn btn-danger">Search</button>
+
+    <!--Spacing-->
+    <br />
+    <br />
 </form>
