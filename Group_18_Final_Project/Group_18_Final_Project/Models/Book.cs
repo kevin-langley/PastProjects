@@ -19,6 +19,7 @@ namespace Group_18_Final_Project.Models
         public Decimal WholesalePrice { get; set; }
         public Boolean ActiveBook { get; set; }
         public DateTime PublicationDate { get; set; }
+        public String Description { get; set; }
 
         //Navigation properties
         public BookOrder BookOrder { get; set; }
