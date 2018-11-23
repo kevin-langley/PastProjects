@@ -17,7 +17,7 @@ namespace Group_18_Final_Project.Models
         public String City { get; set; }
         public String State { get; set; }
         public Int32 ZipCode { get; set; }
-        public Int32 PhoneNumber { get; set; }
+        public Int64 PhoneNumber { get; set; }
         public Boolean ActiveUser { get; set; }
 
         //Navigation properties
