@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Group_18_Final_Project.dal
+namespace Group_18_Final_Project.DAL
 {
     public class AppDbContext : DbContext
     {

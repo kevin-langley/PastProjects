@@ -1,6 +1,6 @@
 using Group_18_Final_Project.Models;
 using Group_18_Final_Project.Utilities;
-using Group_18_Final_Project.dal;
+using Group_18_Final_Project.DAL;
 using System.Collections.Generic;
 using System;
 using System.Linq;

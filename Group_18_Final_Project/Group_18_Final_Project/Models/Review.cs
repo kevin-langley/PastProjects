@@ -17,7 +17,8 @@ namespace Group_18_Final_Project.Models
         //Navigation properties
         //Author
         public User Author { get; set; }
-        //public User Approver { get; set; }
+        //Approver
+        public User Approver { get; set; }
         public Book Book { get; set; }
     }
 }

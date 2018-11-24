@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Group_18_Final_Project.Seeding;
-using Group_18_Final_Project.dal;
+using Group_18_Final_Project.DAL;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

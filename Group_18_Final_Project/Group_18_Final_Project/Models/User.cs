@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,10 @@ namespace Group_18_Final_Project.Models
         public List<CreditCard> CreditCards { get; set; }
         public List<Order> Orders { get; set; }
         public List<Reorder> Reorders { get; set; }
+        //Tags help EF identify what the relationships actually map to
+        [InverseProperty("Author")]
         public List <Review> ReviewsWritten { get; set; }
+        [InverseProperty("Approver")]
         public List <Review> ReviewsApproved { get; set; }
 
     }
