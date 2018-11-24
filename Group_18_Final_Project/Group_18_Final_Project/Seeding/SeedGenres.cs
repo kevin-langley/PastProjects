@@ -19,6 +19,7 @@ namespace Group_18_Final_Project.Seeding
             }
             Int32 intGenresAdded = 0;
             try
+
             {
                 //Create a list of genres
                 List<Genre> Genres = new List<Genre>();
