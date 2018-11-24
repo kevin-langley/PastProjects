@@ -25,7 +25,7 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        public IActionResult SeedLanguages()
+        public IActionResult SeedGenres()
         {
             try
             {
@@ -43,11 +43,45 @@ namespace Group_18_Final_Project.Controllers
             return View("Confirm");
         }
 
-        public IActionResult SeedRepositories()
+        public IActionResult SeedBooks()
         {
             try
             {
                 Seeding.SeedGenres.SeedAllGenres(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "The data has already been added", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "There was an error adding data to the database", ex.Message });
+            }
+
+            return View("Confirm");
+        }
+        public IActionResult SeedCustomers()
+        {
+            try
+            {
+                Seeding.SeedCustomers.SeedAllCustomers(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "The data has already been added", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "There was an error adding data to the database", ex.Message });
+            }
+
+            return View("Confirm");
+        }
+        public IActionResult SeedEmployees()
+        {
+            try
+            {
+                Seeding.SeedEmployees.SeedAllEmployees(_db);
             }
             catch (NotSupportedException ex)
             {

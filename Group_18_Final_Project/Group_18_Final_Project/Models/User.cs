@@ -19,6 +19,7 @@ namespace Group_18_Final_Project.Models
         public Int32 ZipCode { get; set; }
         public Int64 PhoneNumber { get; set; }
         public Boolean ActiveUser { get; set; }
+        public String UserType { get; set; }
 
         //Navigation properties
         public List<CreditCard> CreditCards { get; set; }

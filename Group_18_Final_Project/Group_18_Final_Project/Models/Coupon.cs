@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 
 namespace Group_18_Final_Project.Models
 {
+    //enum coupontype
+    public enum CouponType { placeholder1, placeholder2, placeholder3 };
+
     public class Coupon
     {
 
         //Coupon properties
         public Int32 CouponID { get; set; }
-        public enum CouponType { get; set; }
+        public CouponType CouponName { get; set; }
 
         //Navigation properites
         public List<Order> Orders { get; set; }

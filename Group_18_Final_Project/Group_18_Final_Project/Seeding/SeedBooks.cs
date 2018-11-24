@@ -1,5 +1,6 @@
 using Group_18_Final_Project.Models;
 using Group_18_Final_Project.dal;
+using Group_18_Final_Project.Utilities;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -3588,7 +3589,8 @@ namespace Group_18_Final_Project.Seeding
 
 				Book b298 = new Book();
 				b298.PublicationDate = new DateTime(6/3/2017);
-				b298.UniqueID = 789271;
+                b298.UniqueID = 789271;
+                //b298.UniqueID = GenerateNextUniqueNumber.GetNextUniqueNumber(db);
 				b298.Title = "Nighthawk";
 				b298.Author = "Clive Cussler and Graham Brown";
 				b298.Description = "The NUMA crew races the Russians and Chinese in a hunt for a missing American aircraft.";

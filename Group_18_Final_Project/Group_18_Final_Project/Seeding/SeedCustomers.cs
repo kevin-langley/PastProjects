@@ -11,9 +11,9 @@ namespace Group_18_Final_Project.Seeding
 	{
 		public static void SeedAllCustomers(AppDbContext db)
 		{
-			if (db.Users.Count() == 52)
+			if (db.Users.Count() == 51)
 			{
-				throw new NotSupportedException("The database already contains all 52 customers!");
+				throw new NotSupportedException("The database already contains all 51 customers!");
 			}
 
 			Int32 intCustomersAdded = 0;
