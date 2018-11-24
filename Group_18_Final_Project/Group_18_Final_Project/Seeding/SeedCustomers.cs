@@ -33,7 +33,6 @@ namespace Group_18_Final_Project.Seeding
 				c1.ZipCode = 78705;
 				c1.PhoneNumber = 5725458641;
 				c1.Email = "cbaker@example.com";
-                c1.UserType = "Customer";
 				Customers.Add(c1);
 
 				User c2 = new User();
@@ -47,8 +46,7 @@ namespace Group_18_Final_Project.Seeding
 				c2.ZipCode = 78712;
 				c2.PhoneNumber = 9867048435;
 				c2.Email = "banker@longhorn.net";
-                c2.UserType = "Customer";
-                Customers.Add(c2);
+				Customers.Add(c2);
 
 				User c3 = new User();
 				c3.UserID = 9012;
@@ -61,8 +59,7 @@ namespace Group_18_Final_Project.Seeding
 				c3.ZipCode = 78786;
 				c3.PhoneNumber = 6836109514;
 				c3.Email = "franco@example.com";
-                c3.UserType = "Customer";
-                Customers.Add(c3);
+				Customers.Add(c3);
 
 				User c4 = new User();
 				c4.UserID = 9013;
@@ -75,8 +72,7 @@ namespace Group_18_Final_Project.Seeding
 				c4.ZipCode = 78852;
 				c4.PhoneNumber = 7070911071;
 				c4.Email = "wchang@example.com";
-                c4.UserType = "Customer";
-                Customers.Add(c4);
+				Customers.Add(c4);
 
 				User c5 = new User();
 				c5.UserID = 9014;
@@ -89,8 +85,7 @@ namespace Group_18_Final_Project.Seeding
 				c5.ZipCode = 78729;
 				c5.PhoneNumber = 1488907687;
 				c5.Email = "limchou@gogle.com";
-                c5.UserType = "Customer";
-                Customers.Add(c5);
+				Customers.Add(c5);
 
 				User c6 = new User();
 				c6.UserID = 9015;
@@ -103,8 +98,7 @@ namespace Group_18_Final_Project.Seeding
 				c6.ZipCode = 78628;
 				c6.PhoneNumber = 6899701824;
 				c6.Email = "shdixon@aoll.com";
-                c6.UserType = "Customer";
-                Customers.Add(c6);
+				Customers.Add(c6);
 
 				User c7 = new User();
 				c7.UserID = 9016;
@@ -117,8 +111,7 @@ namespace Group_18_Final_Project.Seeding
 				c7.ZipCode = 78705;
 				c7.PhoneNumber = 9986825917;
 				c7.Email = "j.b.evans@aheca.org";
-                c7.UserType = "Customer";
-                Customers.Add(c7);
+				Customers.Add(c7);
 
 				User c8 = new User();
 				c8.UserID = 9017;
@@ -131,8 +124,7 @@ namespace Group_18_Final_Project.Seeding
 				c8.ZipCode = 78704;
 				c8.PhoneNumber = 3464121966;
 				c8.Email = "feeley@penguin.org";
-                c8.UserType = "Customer";
-                Customers.Add(c8);
+				Customers.Add(c8);
 
 				User c9 = new User();
 				c9.UserID = 9018;
@@ -145,8 +137,7 @@ namespace Group_18_Final_Project.Seeding
 				c9.ZipCode = 77840;
 				c9.PhoneNumber = 6581357270;
 				c9.Email = "tfreeley@minnetonka.ci.us";
-                c9.UserType = "Customer";
-                Customers.Add(c9);
+				Customers.Add(c9);
 
 				User c10 = new User();
 				c10.UserID = 9019;
@@ -159,8 +150,7 @@ namespace Group_18_Final_Project.Seeding
 				c10.ZipCode = 78756;
 				c10.PhoneNumber = 3767347949;
 				c10.Email = "mgarcia@gogle.com";
-                c10.UserType = "Customer";
-                Customers.Add(c10);
+				Customers.Add(c10);
 
 				User c11 = new User();
 				c11.UserID = 9020;
@@ -173,8 +163,7 @@ namespace Group_18_Final_Project.Seeding
 				c11.ZipCode = 78746;
 				c11.PhoneNumber = 2198604221;
 				c11.Email = "chaley@thug.com";
-                c11.UserType = "Customer";
-                Customers.Add(c11);
+				Customers.Add(c11);
 
 				User c12 = new User();
 				c12.UserID = 9021;
@@ -187,8 +176,7 @@ namespace Group_18_Final_Project.Seeding
 				c12.ZipCode = 78756;
 				c12.PhoneNumber = 1222185888;
 				c12.Email = "jeffh@sonic.com";
-                c12.UserType = "Customer";
-                Customers.Add(c12);
+				Customers.Add(c12);
 
 				User c13 = new User();
 				c13.UserID = 9022;
@@ -201,8 +189,7 @@ namespace Group_18_Final_Project.Seeding
 				c13.ZipCode = 77575;
 				c13.PhoneNumber = 5123071976;
 				c13.Email = "wjhearniii@umich.org";
-                c13.UserType = "Customer";
-                Customers.Add(c13);
+				Customers.Add(c13);
 
 				User c14 = new User();
 				c14.UserID = 9023;
@@ -215,8 +202,7 @@ namespace Group_18_Final_Project.Seeding
 				c14.ZipCode = 78203;
 				c14.PhoneNumber = 1211949601;
 				c14.Email = "ahick@yaho.com";
-                c14.UserType = "Customer";
-                Customers.Add(c14);
+				Customers.Add(c14);
 
 				User c15 = new User();
 				c15.UserID = 9024;
@@ -229,8 +215,7 @@ namespace Group_18_Final_Project.Seeding
 				c15.ZipCode = 78132;
 				c15.PhoneNumber = 1372121569;
 				c15.Email = "ingram@jack.com";
-                c15.UserType = "Customer";
-                Customers.Add(c15);
+				Customers.Add(c15);
 
 				User c16 = new User();
 				c16.UserID = 9025;
@@ -243,8 +228,7 @@ namespace Group_18_Final_Project.Seeding
 				c16.ZipCode = 10101;
 				c16.PhoneNumber = 8543163836;
 				c16.Email = "toddj@yourmom.com";
-                c16.UserType = "Customer";
-                Customers.Add(c16);
+				Customers.Add(c16);
 
 				User c17 = new User();
 				c17.UserID = 9026;
@@ -257,8 +241,7 @@ namespace Group_18_Final_Project.Seeding
 				c17.ZipCode = 78644;
 				c17.PhoneNumber = 3214163359;
 				c17.Email = "thequeen@aska.net";
-                c17.UserType = "Customer";
-                Customers.Add(c17);
+				Customers.Add(c17);
 
 				User c18 = new User();
 				c18.UserID = 9027;
@@ -271,8 +254,7 @@ namespace Group_18_Final_Project.Seeding
 				c18.ZipCode = 77325;
 				c18.PhoneNumber = 2505265350;
 				c18.Email = "linebacker@gogle.com";
-                c18.UserType = "Customer";
-                Customers.Add(c18);
+				Customers.Add(c18);
 
 				User c19 = new User();
 				c19.UserID = 9028;
@@ -285,8 +267,7 @@ namespace Group_18_Final_Project.Seeding
 				c19.ZipCode = 90210;
 				c19.PhoneNumber = 4070619503;
 				c19.Email = "elowe@netscare.net";
-                c19.UserType = "Customer";
-                Customers.Add(c19);
+				Customers.Add(c19);
 
 				User c20 = new User();
 				c20.UserID = 9029;
@@ -299,8 +280,7 @@ namespace Group_18_Final_Project.Seeding
 				c20.ZipCode = 77868;
 				c20.PhoneNumber = 7358436110;
 				c20.Email = "cluce@gogle.com";
-                c20.UserType = "Customer";
-                Customers.Add(c20);
+				Customers.Add(c20);
 
 				User c21 = new User();
 				c21.UserID = 9030;
@@ -313,8 +293,7 @@ namespace Group_18_Final_Project.Seeding
 				c21.ZipCode = 78712;
 				c21.PhoneNumber = 7240178229;
 				c21.Email = "mackcloud@george.com";
-                c21.UserType = "Customer";
-                Customers.Add(c21);
+				Customers.Add(c21);
 
 				User c22 = new User();
 				c22.UserID = 9031;
@@ -327,8 +306,7 @@ namespace Group_18_Final_Project.Seeding
 				c22.ZipCode = 78712;
 				c22.PhoneNumber = 2495200223;
 				c22.Email = "cmartin@beets.com";
-                c22.UserType = "Customer";
-                Customers.Add(c22);
+				Customers.Add(c22);
 
 				User c23 = new User();
 				c23.UserID = 9032;
@@ -341,8 +319,7 @@ namespace Group_18_Final_Project.Seeding
 				c23.ZipCode = 12345;
 				c23.PhoneNumber = 4086179161;
 				c23.Email = "clarence@yoho.com";
-                c23.UserType = "Customer";
-                Customers.Add(c23);
+				Customers.Add(c23);
 
 				User c24 = new User();
 				c24.UserID = 9033;
@@ -355,8 +332,7 @@ namespace Group_18_Final_Project.Seeding
 				c24.ZipCode = 78717;
 				c24.PhoneNumber = 9371927523;
 				c24.Email = "gregmartinez@drdre.com";
-                c24.UserType = "Customer";
-                Customers.Add(c24);
+				Customers.Add(c24);
 
 				User c25 = new User();
 				c25.UserID = 9034;
@@ -369,8 +345,7 @@ namespace Group_18_Final_Project.Seeding
 				c25.ZipCode = 78727;
 				c25.PhoneNumber = 5954063857;
 				c25.Email = "cmiller@bob.com";
-                c25.UserType = "Customer";
-                Customers.Add(c25);
+				Customers.Add(c25);
 
 				User c26 = new User();
 				c26.UserID = 9035;
@@ -383,8 +358,7 @@ namespace Group_18_Final_Project.Seeding
 				c26.ZipCode = 77720;
 				c26.PhoneNumber = 8929209512;
 				c26.Email = "knelson@aoll.com";
-                c26.UserType = "Customer";
-                Customers.Add(c26);
+				Customers.Add(c26);
 
 				User c27 = new User();
 				c27.UserID = 9036;
@@ -397,8 +371,7 @@ namespace Group_18_Final_Project.Seeding
 				c27.ZipCode = 78667;
 				c27.PhoneNumber = 9226301774;
 				c27.Email = "joewin@xfactor.com";
-                c27.UserType = "Customer";
-                Customers.Add(c27);
+				Customers.Add(c27);
 
 				User c28 = new User();
 				c28.UserID = 9037;
@@ -411,8 +384,7 @@ namespace Group_18_Final_Project.Seeding
 				c28.ZipCode = 78004;
 				c28.PhoneNumber = 2537646912;
 				c28.Email = "orielly@foxnews.cnn";
-                c28.UserType = "Customer";
-                Customers.Add(c28);
+				Customers.Add(c28);
 
 				User c29 = new User();
 				c29.UserID = 9038;
@@ -425,8 +397,7 @@ namespace Group_18_Final_Project.Seeding
 				c29.ZipCode = 78789;
 				c29.PhoneNumber = 2182889379;
 				c29.Email = "ankaisrad@gogle.com";
-                c29.UserType = "Customer";
-                Customers.Add(c29);
+				Customers.Add(c29);
 
 				User c30 = new User();
 				c30.UserID = 9039;
@@ -439,8 +410,7 @@ namespace Group_18_Final_Project.Seeding
 				c30.ZipCode = 32830;
 				c30.PhoneNumber = 9532396075;
 				c30.Email = "megrhodes@freserve.co.uk";
-                c30.UserType = "Customer";
-                Customers.Add(c30);
+				Customers.Add(c30);
 
 				User c31 = new User();
 				c31.UserID = 9040;
@@ -453,8 +423,7 @@ namespace Group_18_Final_Project.Seeding
 				c31.ZipCode = 78597;
 				c31.PhoneNumber = 7303815953;
 				c31.Email = "erynrice@aoll.com";
-                c31.UserType = "Customer";
-                Customers.Add(c31);
+				Customers.Add(c31);
 
 				User c32 = new User();
 				c32.UserID = 9041;
@@ -467,8 +436,7 @@ namespace Group_18_Final_Project.Seeding
 				c32.ZipCode = 78744;
 				c32.PhoneNumber = 3677322422;
 				c32.Email = "jorge@noclue.com";
-                c32.UserType = "Customer";
-                Customers.Add(c32);
+				Customers.Add(c32);
 
 				User c33 = new User();
 				c33.UserID = 9042;
@@ -481,8 +449,7 @@ namespace Group_18_Final_Project.Seeding
 				c33.ZipCode = 78133;
 				c33.PhoneNumber = 3911705385;
 				c33.Email = "mrrogers@lovelyday.com";
-                c33.UserType = "Customer";
-                Customers.Add(c33);
+				Customers.Add(c33);
 
 				User c34 = new User();
 				c34.UserID = 9043;
@@ -495,8 +462,7 @@ namespace Group_18_Final_Project.Seeding
 				c34.ZipCode = 78779;
 				c34.PhoneNumber = 7351610920;
 				c34.Email = "stjean@athome.com";
-                c34.UserType = "Customer";
-                Customers.Add(c34);
+				Customers.Add(c34);
 
 				User c35 = new User();
 				c35.UserID = 9044;
@@ -509,8 +475,7 @@ namespace Group_18_Final_Project.Seeding
 				c35.ZipCode = 78720;
 				c35.PhoneNumber = 5269661692;
 				c35.Email = "saunders@pen.com";
-                c35.UserType = "Customer";
-                Customers.Add(c35);
+				Customers.Add(c35);
 
 				User c36 = new User();
 				c36.UserID = 9045;
@@ -523,8 +488,7 @@ namespace Group_18_Final_Project.Seeding
 				c36.ZipCode = 78705;
 				c36.PhoneNumber = 1875727246;
 				c36.Email = "willsheff@email.com";
-                c36.UserType = "Customer";
-                Customers.Add(c36);
+				Customers.Add(c36);
 
 				User c37 = new User();
 				c37.UserID = 9046;
@@ -537,8 +501,7 @@ namespace Group_18_Final_Project.Seeding
 				c37.ZipCode = 78680;
 				c37.PhoneNumber = 1394323615;
 				c37.Email = "sheffiled@gogle.com";
-                c37.UserType = "Customer";
-                Customers.Add(c37);
+				Customers.Add(c37);
 
 				User c38 = new User();
 				c38.UserID = 9047;
@@ -551,8 +514,7 @@ namespace Group_18_Final_Project.Seeding
 				c38.ZipCode = 78760;
 				c38.PhoneNumber = 6645937874;
 				c38.Email = "johnsmith187@aoll.com";
-                c38.UserType = "Customer";
-                Customers.Add(c38);
+				Customers.Add(c38);
 
 				User c39 = new User();
 				c39.UserID = 9048;
@@ -565,8 +527,7 @@ namespace Group_18_Final_Project.Seeding
 				c39.ZipCode = 77987;
 				c39.PhoneNumber = 6470254680;
 				c39.Email = "dustroud@mail.com";
-                c39.UserType = "Customer";
-                Customers.Add(c39);
+				Customers.Add(c39);
 
 				User c40 = new User();
 				c40.UserID = 9049;
@@ -579,8 +540,7 @@ namespace Group_18_Final_Project.Seeding
 				c40.ZipCode = 78412;
 				c40.PhoneNumber = 7701621022;
 				c40.Email = "estuart@anchor.net";
-                c40.UserType = "Customer";
-                Customers.Add(c40);
+				Customers.Add(c40);
 
 				User c41 = new User();
 				c41.UserID = 9050;
@@ -593,8 +553,7 @@ namespace Group_18_Final_Project.Seeding
 				c41.ZipCode = 78660;
 				c41.PhoneNumber = 2181960061;
 				c41.Email = "peterstump@noclue.com";
-                c41.UserType = "Customer";
-                Customers.Add(c41);
+				Customers.Add(c41);
 
 				User c42 = new User();
 				c42.UserID = 9051;
@@ -607,8 +566,7 @@ namespace Group_18_Final_Project.Seeding
 				c42.ZipCode = 78702;
 				c42.PhoneNumber = 9908469499;
 				c42.Email = "jtanner@mustang.net";
-                c42.UserType = "Customer";
-                Customers.Add(c42);
+				Customers.Add(c42);
 
 				User c43 = new User();
 				c43.UserID = 9052;
@@ -621,8 +579,7 @@ namespace Group_18_Final_Project.Seeding
 				c43.ZipCode = 78713;
 				c43.PhoneNumber = 7011918647;
 				c43.Email = "taylordjay@aoll.com";
-                c43.UserType = "Customer";
-                Customers.Add(c43);
+				Customers.Add(c43);
 
 				User c44 = new User();
 				c44.UserID = 9053;
@@ -635,8 +592,7 @@ namespace Group_18_Final_Project.Seeding
 				c44.ZipCode = 78712;
 				c44.PhoneNumber = 8937910053;
 				c44.Email = "rtaylor@gogle.com";
-                c44.UserType = "Customer";
-                Customers.Add(c44);
+				Customers.Add(c44);
 
 				User c45 = new User();
 				c45.UserID = 9054;
@@ -649,8 +605,7 @@ namespace Group_18_Final_Project.Seeding
 				c45.ZipCode = 78786;
 				c45.PhoneNumber = 6394568913;
 				c45.Email = "teefrank@noclue.com";
-                c45.UserType = "Customer";
-                Customers.Add(c45);
+				Customers.Add(c45);
 
 				User c46 = new User();
 				c46.UserID = 9055;
@@ -663,8 +618,7 @@ namespace Group_18_Final_Project.Seeding
 				c46.ZipCode = 78279;
 				c46.PhoneNumber = 2676838676;
 				c46.Email = "ctucker@alphabet.co.uk";
-                c46.UserType = "Customer";
-                Customers.Add(c46);
+				Customers.Add(c46);
 
 				User c47 = new User();
 				c47.UserID = 9056;
@@ -677,8 +631,7 @@ namespace Group_18_Final_Project.Seeding
 				c47.ZipCode = 77868;
 				c47.PhoneNumber = 3452909754;
 				c47.Email = "avelasco@yoho.com";
-                c47.UserType = "Customer";
-                Customers.Add(c47);
+				Customers.Add(c47);
 
 				User c48 = new User();
 				c48.UserID = 9057;
@@ -691,8 +644,7 @@ namespace Group_18_Final_Project.Seeding
 				c48.ZipCode = 02114;
 				c48.PhoneNumber = 8567089194;
 				c48.Email = "vinovino@grapes.com";
-                c48.UserType = "Customer";
-                Customers.Add(c48);
+				Customers.Add(c48);
 
 				User c49 = new User();
 				c49.UserID = 9058;
@@ -705,8 +657,7 @@ namespace Group_18_Final_Project.Seeding
 				c49.ZipCode = 78654;
 				c49.PhoneNumber = 6260784394;
 				c49.Email = "westj@pioneer.net";
-                c49.UserType = "Customer";
-                Customers.Add(c49);
+				Customers.Add(c49);
 
 				User c50 = new User();
 				c50.UserID = 9059;
@@ -719,8 +670,7 @@ namespace Group_18_Final_Project.Seeding
 				c50.ZipCode = 78730;
 				c50.PhoneNumber = 3733971174;
 				c50.Email = "winner@hootmail.com";
-                c50.UserType = "Customer";
-                Customers.Add(c50);
+				Customers.Add(c50);
 
 				User c51 = new User();
 				c51.UserID = 9060;
@@ -733,8 +683,7 @@ namespace Group_18_Final_Project.Seeding
 				c51.ZipCode = 78712;
 				c51.PhoneNumber = 8433359800;
 				c51.Email = "rwood@voyager.net";
-                c51.UserType = "Customer";
-                Customers.Add(c51);
+				Customers.Add(c51);
 
 				//loop through customers
 				foreach (User cust in Customers)
