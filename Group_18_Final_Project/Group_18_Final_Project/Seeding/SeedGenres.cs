@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Group_18_Final_Project.Models;
 using System.Linq;
-using Group_18_Final_Project.dal;
+using Group_18_Final_Project.DAL;
 
 namespace Group_18_Final_Project.Seeding
 {

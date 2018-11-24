@@ -1,5 +1,5 @@
 using Group_18_Final_Project.Models;
-using Group_18_Final_Project.dal;
+using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Utilities;
 using System.Collections.Generic;
 using System;
