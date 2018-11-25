@@ -1,0 +1,36 @@
+﻿@model Group_18_Final_Project.Models.Review
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReviewText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReviewText)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Approval)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Approval)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ReviewID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
