@@ -1,0 +1,30 @@
+﻿@model Group_18_Final_Project.Models.CreditCard
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CreditCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreditType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditCardNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreditCardNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CreditCardID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
