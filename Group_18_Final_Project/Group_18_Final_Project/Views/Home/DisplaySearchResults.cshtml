@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Group_18_Final_Project.Models.Book>
+@{
+    ViewData["Title"] = "View";
+}
+<br />
+<h2>Book Search Results</h2>
+<!--Display repository count-->
+<p>Displaying @ViewBag.SelectedBooks of @ViewBag.TotalBooks</p>
+<!--Repo list table-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniqueID)
+            </th>
+            <th>In stock?</th>
+            <th>
+                @Html.DisplayNameFor(model => model.AverageRating)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UniqueID)
+                </td>
+                @if (item.CopiesOnHand > 0)
+                {
+                    <td>Yes</td>
+                }
+                @if(item.CopiesOnHand == 0)
+                {
+                    <td>No</td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.AverageRating)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.BookID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

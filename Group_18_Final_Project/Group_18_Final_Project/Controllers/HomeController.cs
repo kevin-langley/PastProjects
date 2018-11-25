@@ -90,11 +90,11 @@ namespace Group_18_Final_Project.Controllers
             SelectedBooks = query.Include(r => r.Genre).ToList();
 
             //ViewBag for Displaying x of y text
-            ViewBag.SelectedRepositories = SelectedBooks.Count();
-            ViewBag.TotalRepositories = _db.Books.Count();
+            ViewBag.SelectedBooks = SelectedBooks.Count();
+            ViewBag.TotalBooks = _db.Books.Count();
 
             //Redirect to Index View with Selected Repo list to display
-            return View("Index", SelectedBooks);
+            return View(SelectedBooks);
         }
 
         //The following method creates new language option for user that does not want to choose a specific language
