@@ -3,34 +3,43 @@
 @using Group_18_Final_Project.Controllers
 
 <br />
-<h2>Detailed Search</h2>
+<h2>Search for Books</h2>
 <form asp-action="DisplaySearchResults" asp-controller="Home" method="get">
     @*Search by title*@
     <div class="form-group">
         <label>Title:</label>
-        <input title="strSearchName" class="form-control" />
+        <input name="strSearchName" class="form-control" />
     </div>
     @*Search by author*@
     <div class="form-group">
         <label>Author:</label>
-        <input author="strSearchAuthor" class="form-control" />
+        <input name="strSearchAuthor" class="form-control" />
     </div>
     @*Search by genre*@
     <div class="form-group">
         <label>Choose a genre:</label>
         @Html.DropDownList("SelectedGenre", (SelectList)ViewBag.AllGenres, new { @class = "form-control" })
     </div>
-    @*Search by unique number*@
+    @*Sort Search Results*@
     <div class="form-group">
-        <label>Unique number:</label>
-        <input title="strUniqueNum" class="form-control" />
+        <label>Sort by:</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.Title, true)Title</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.Author)Author</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.MostPopular)Most Popular</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.NewestFirst)Newest First</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.OldestFirst)Oldest First</label>
+        <label class="radio">@Html.RadioButton("SelectedSort", SortOrder.HighestRated)Highest Rated</label>
+    </div>
+    @*Filter for only in-stock items*@
+    <div class="form-group">
+        <label>Show only in-stock books?</label>
+        <input type="checkbox" class="checkbox" name="SelectedStock" value="true" />
+        <input type="hidden" class="checkbox" name="SelectedStock" value="false" />
     </div>
 
-
     <!--Submit form data to be processed by method-->
-    <button type="submit" class="btn btn-danger">Search</button>
-
-    <!--Spacing-->
-    <br />
-    <br />
+        <button type="submit" class="btn btn-danger">Search</button>
+        <!--Spacing-->
+        <br />
+        <br />
 </form>

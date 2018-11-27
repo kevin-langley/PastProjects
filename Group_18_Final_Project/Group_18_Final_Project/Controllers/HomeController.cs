@@ -18,6 +18,17 @@ namespace Group_18_Final_Project.Controllers
     //Enum to process ratings
     //TODO: Enum for ratings (or maybe no enum)
 
+    //Enum to process sort order
+    public enum SortOrder
+    {
+        Title = 1,
+        Author = 2,
+        MostPopular = 3,
+        NewestFirst = 4,
+        OldestFirst = 5,
+        HighestRated = 6
+    };
+
     public class HomeController : Controller
     {
         // Home page index
@@ -58,7 +69,7 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, int SelectedGenre )
+        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, int SelectedGenre, SortOrder SelectedSort, Boolean SelectedStock )
         {
             //Creating new list object of the repo list
             List<Book> SelectedBooks = new List<Book>();
@@ -67,23 +78,63 @@ namespace Group_18_Final_Project.Controllers
             var query = from r in _db.Books
                         select r;
 
-            //The following lines of code process the searched repo or user name
+            //The following lines of code process the searched book name
             if (strSearchName != null && strSearchName != "")
             {
                 query = query.Where(r => r.Title.Contains(strSearchName) || r.Author.Contains(strSearchName));
             }
 
-            //The following lines of code process the searched description terms
+            //The following lines of code process the searched author
             if (strSearchAuthor != null && strSearchAuthor != "")
             {
                 query = query.Where(r => r.Description.Contains(strSearchAuthor));
             }
 
-            //The following lines of code process the language selected from the drop down menu
+            //The following lines of code process the genre selected from the drop down menu
             if(SelectedGenre != 0)
             {
                 query = query.Where(r => r.Genre.GenreID == SelectedGenre);
 
+            }
+
+            //The following lines of code process the sort by
+            switch (SelectedSort)
+            {
+                case SortOrder.Title:
+                    query = query.OrderBy(o => o.Title);
+
+                    break;
+
+                case SortOrder.Author:
+                    query = query.OrderBy(o => o.Author);
+
+                    break;
+
+                case SortOrder.MostPopular:
+                    query = query.OrderByDescending(o => o.TimesPurchased);
+
+                    break;
+
+                case SortOrder.NewestFirst:
+                    query = query.OrderByDescending(o => o.PublicationDate); //Check to see if order by newest date goes from newest to oldest
+
+                    break;
+
+                case SortOrder.OldestFirst:
+                    query = query.OrderBy(o => o.PublicationDate);
+
+                    break;
+
+                case SortOrder.HighestRated:
+                    query = query.OrderBy(o => o.AverageRating);
+
+                    break;
+
+            }
+
+            if (SelectedStock == true)
+            {
+                query = query.Where(o => o.CopiesOnHand > 0);
             }
 
             //Storing filtered repos to repo list and including language navigational data
@@ -113,5 +164,6 @@ namespace Group_18_Final_Project.Controllers
             //return the select list
             return AllGenres;
         }
+
     }
 }
