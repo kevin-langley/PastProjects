@@ -149,5 +149,103 @@ namespace Group_18_Final_Project.Controllers
         {
             return _context.Orders.Any(e => e.OrderID == id);
         }
+
+        ////TODO: Edit the subsequent action methods for project
+        ////GET
+        ////Method to add products to existing order
+        ////Passes in order id
+        //public IActionResult AddToOrder([Bind("OrderID,OrderDate")] Order order)
+        //{
+        //    //Finds if user already has an order pending
+        //    //Assigning user to user id
+        //    //get user info
+        //    String id = User.Identity.Name;
+        //    User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
+
+        //    //TODO: No squigglies plz
+        //    if (user.Orders.IsPending == true)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            _context.Add(order);
+        //            await _context.SaveChangesAsync();
+        //            return RedirectToAction(nameof(Index));
+        //        }
+        //    }
+
+        //    //Assigns order type to newly created order detail
+        //    BookOrder bookOrder = new BookOrder() { Orders = order };
+
+        //    ViewBag.AllProducts = GetAllProducts(); //Populating viewbag for drop down list
+
+        //    return View("AddToOrder", bookOrder);
+
+        //}
+
+        ////POST
+        ////Method to process Add To Order results
+        ////Has form answers as paramater
+        //[HttpPost]
+        //public IActionResult AddToOrder(OrderDetail or, int intSelectedProduct)
+        //{
+        //    //Finding product matching product in drop down list
+        //    Product product = _context.Products.Find(intSelectedProduct);
+
+        //    //Stores product in order detail
+        //    or.Product = product;
+
+        //    //Finds order in db matching editted order
+        //    Order order = _context.Orders.Find(or.Order.OrderID);
+
+        //    //Stores order in order detail order
+        //    or.Order = order;
+
+        //    or.ProductPrice = or.Product.Price;
+
+        //    or.ExtendedPrice = or.ProductPrice * or.Quantity;
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.OrderDetails.Add(or);
+        //        _context.SaveChanges();
+        //        return RedirectToAction("Details", new { id = or.Order.OrderID });
+
+        //    }
+        //    //Repopulate Viewbag for modelstate not balid
+        //    ViewBag.AllProducts = GetAllProducts();
+        //    return View(or);
+
+        //}
+
+        ////GET method to get order id for order
+        //public IActionResult RemoveFromOrder(int? id)
+        //{
+
+        //    //Storing order into new order instance including relational data
+        //    Order order = _context.Orders.Include(r => r.OrderDetails).ThenInclude(r => r.Product).FirstOrDefault(r => r.OrderID == id);
+
+        //    if (order == null || order.OrderDetails.Count == 0)//registration is not found
+        //    {
+        //        return RedirectToAction("Details", new { id = id });
+        //    }
+
+        //    return View(order.OrderDetails); //Passes list of orderdetails for matching order id
+
+
+        //}
+
+        ////
+
+        ////Method to create product list for drop down list
+        //public SelectList GetAllProducts()
+        //{
+        //    List<Product> products = _context.Products.ToList();
+
+        //    SelectList AllProducts = new SelectList(products, "ProductID", "ProductName");
+
+        //    return AllProducts;
+
+
+        //}
     }
 }

@@ -10,6 +10,7 @@ namespace Group_18_Final_Project.Models
         //Order properties
         public Int32 OrderID { get; set; }
         public DateTime OrderDate { get; set; }
+        public bool IsPending { get; set; }
 
         //Navigation properties
         public CreditCard CreditCard { get; set; }
