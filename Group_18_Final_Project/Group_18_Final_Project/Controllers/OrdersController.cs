@@ -174,7 +174,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             //Assigns order type to newly created order detail
-            BookOrder bookOrder = new BookOrder() { Orders = order };
+            BookOrder bookOrder = new BookOrder() { Order = order };
 
             ViewBag.AllProducts = GetAllProducts(); //Populating viewbag for drop down list
 
@@ -195,25 +195,25 @@ namespace Group_18_Final_Project.Controllers
             bo.Book = book;
 
             //Finds order in db matching editted order
-            Order order = _context.Orders.Find(or.Order.OrderID);
+            Order order = _context.Orders.Find(bo.Order.OrderID);
 
             //Stores order in order detail order
-            or.Order = order;
+            bo.Order = order;
 
-            or.ProductPrice = or.Product.Price;
+            bo.Price = bo.Book.BookPrice;
 
-            or.ExtendedPrice = or.ProductPrice * or.Quantity;
+            //bo.Price= bo.ProductPrice * bo.Quantity; //TODO: figure it out
 
             if (ModelState.IsValid)
             {
-                _context.OrderDetails.Add(or);
+                _context.BookOrders.Add(bo);
                 _context.SaveChanges();
-                return RedirectToAction("Details", new { id = or.Order.OrderID });
+                return RedirectToAction("Details", new { id = bo.Order.OrderID });
 
             }
             //Repopulate Viewbag for modelstate not balid
             ViewBag.AllProducts = GetAllProducts();
-            return View(or);
+            return View(bo);
 
         }
 
@@ -222,30 +222,20 @@ namespace Group_18_Final_Project.Controllers
         {
 
             //Storing order into new order instance including relational data
-            Order order = _context.Orders.Include(r => r.OrderDetails).ThenInclude(r => r.Product).FirstOrDefault(r => r.OrderID == id);
+            Order order = _context.Orders.Include(r => r.BookOrders).ThenInclude(r => r.Book).FirstOrDefault(r => r.OrderID == id);
 
-            if (order == null || order.OrderDetails.Count == 0)//registration is not found
+            if (order == null || order.BookOrders.Count == 0)//registration is not found
             {
                 return RedirectToAction("Details", new { id = id });
             }
 
-            return View(order.OrderDetails); //Passes list of orderdetails for matching order id
+            return View(order.BookOrders); //Passes list of orderdetails for matching order id
 
 
         }
 
         //
 
-        //Method to create product list for drop down list
-        public SelectList GetAllProducts()
-        {
-            List<Product> products = _context.Products.ToList();
 
-            SelectList AllProducts = new SelectList(products, "ProductID", "ProductName");
-
-            return AllProducts;
-
-
-        }
     }
 }
