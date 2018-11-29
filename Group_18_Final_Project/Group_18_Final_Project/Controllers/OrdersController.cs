@@ -163,12 +163,12 @@ namespace Group_18_Final_Project.Controllers
             User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
             //TODO: No squigglies plz
-            if (user.Orders.IsPending == true)
+            if (user.Orders.All(o => o.IsPending == true))
             {
                 if (ModelState.IsValid)
                 {
                     _context.Add(order);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -186,13 +186,13 @@ namespace Group_18_Final_Project.Controllers
         //Method to process Add To Order results
         //Has form answers as paramater
         [HttpPost]
-        public IActionResult AddToOrder(OrderDetail or, int intSelectedProduct)
+        public IActionResult AddToOrder(BookOrder bo, int intSelectedProduct)
         {
             //Finding product matching product in drop down list
-            Product product = _context.Products.Find(intSelectedProduct);
+            Book book = _context.Books.Find(intSelectedProduct);
 
             //Stores product in order detail
-            or.Product = product;
+            bo.Book = book;
 
             //Finds order in db matching editted order
             Order order = _context.Orders.Find(or.Order.OrderID);

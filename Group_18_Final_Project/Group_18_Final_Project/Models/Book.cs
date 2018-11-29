@@ -22,7 +22,7 @@ namespace Group_18_Final_Project.Models
         public String Description { get; set; }
 
         //Navigation properties
-        public BookOrder BookOrder { get; set; }
+        public List<BookOrder> BookOrders { get; set; }
         public List<Review> Reviews { get; set; }
         public Genre Genre { get; set; }
     }
