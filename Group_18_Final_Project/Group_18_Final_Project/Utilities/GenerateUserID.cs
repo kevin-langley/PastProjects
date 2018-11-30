@@ -15,7 +15,7 @@ namespace Group_18_Final_Project.Utilities
 
             if (db.Users.Count() == 0) //there are no products in the database yet
             {
-                intMaxUserID = 9000; //course numbers start at 3001
+                intMaxUserID = 9009; //UserID starts at 9001
             }
             else
             {

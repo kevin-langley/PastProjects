@@ -24,7 +24,6 @@ namespace Group_18_Final_Project.Seeding
 			try
 			{
 				User e1 = new User();
-				e1.UserID = GenerateUserID.GetNextUserID(db);
 				e1.Password = "401661146";
 				e1.LastName = "Baker";
 				e1.FirstName = "Christopher";
@@ -38,7 +37,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e1);
 
 				User e2 = new User();
-				e2.UserID = GenerateUserID.GetNextUserID(db);
 				e2.Password = "1112221212";
 				e2.LastName = "Barnes";
 				e2.FirstName = "Susan";
@@ -52,7 +50,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e2);
 
 				User e3 = new User();
-				e3.UserID = GenerateUserID.GetNextUserID(db);
 				e3.Password = "4445554343";
 				e3.LastName = "Garcia";
 				e3.FirstName = "Hector";
@@ -66,7 +63,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e3);
 
 				User e4 = new User();
-				e4.UserID = GenerateUserID.GetNextUserID(db);
 				e4.Password = "797348821";
 				e4.LastName = "Ingram";
 				e4.FirstName = "Brad";
@@ -80,7 +76,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e4);
 
 				User e5 = new User();
-				e5.UserID = GenerateUserID.GetNextUserID(db);
 				e5.Password = "8889993434";
 				e5.LastName = "Jackson";
 				e5.FirstName = "Jack";
@@ -94,7 +89,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e5);
 
 				User e6 = new User();
-				e6.UserID = GenerateUserID.GetNextUserID(db);
 				e6.Password = "341553365";
 				e6.LastName = "Jacobs";
 				e6.FirstName = "Todd";
@@ -108,7 +102,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e6);
 
 				User e7 = new User();
-				e7.UserID = GenerateUserID.GetNextUserID(db);
 				e7.Password = "9099099999";
 				e7.LastName = "Jones";
 				e7.FirstName = "Lester";
@@ -122,7 +115,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e7);
 
 				User e8 = new User();
-				e8.UserID = GenerateUserID.GetNextUserID(db);
 				e8.Password = "5554443333";
 				e8.LastName = "Larson";
 				e8.FirstName = "Bill";
@@ -136,7 +128,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e8);
 
 				User e9 = new User();
-				e9.UserID = GenerateUserID.GetNextUserID(db);
 				e9.Password = "770097399";
 				e9.LastName = "Lawrence";
 				e9.FirstName = "Victoria";
@@ -150,7 +141,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e9);
 
 				User e10 = new User();
-				e10.UserID = GenerateUserID.GetNextUserID(db);
 				e10.Password = "2223332222";
 				e10.LastName = "Lopez";
 				e10.FirstName = "Marshall";
@@ -164,7 +154,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e10);
 
 				User e11 = new User();
-				e11.UserID = GenerateUserID.GetNextUserID(db);
 				e11.Password = "775908138";
 				e11.LastName = "MacLeod";
 				e11.FirstName = "Jennifer";
@@ -178,7 +167,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e11);
 
 				User e12 = new User();
-				e12.UserID = GenerateUserID.GetNextUserID(db);
 				e12.Password = "101529845";
 				e12.LastName = "Markham";
 				e12.FirstName = "Elizabeth";
@@ -192,7 +180,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e12);
 
 				User e13 = new User();
-				e13.UserID = GenerateUserID.GetNextUserID(db);
 				e13.Password = "463566718";
 				e13.LastName = "Martinez";
 				e13.FirstName = "Gregory";
@@ -206,7 +193,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e13);
 
 				User e14 = new User();
-				e14.UserID = GenerateUserID.GetNextUserID(db);
 				e14.Password = "1112223232";
 				e14.LastName = "Mason";
 				e14.FirstName = "Jack";
@@ -220,7 +206,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e14);
 
 				User e15 = new User();
-				e15.UserID = GenerateUserID.GetNextUserID(db);
 				e15.Password = "353308615";
 				e15.LastName = "Miller";
 				e15.FirstName = "Charles";
@@ -234,7 +219,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e15);
 
 				User e16 = new User();
-				e16.UserID = GenerateUserID.GetNextUserID(db);
 				e16.Password = "7776665555";
 				e16.LastName = "Nguyen";
 				e16.FirstName = "Mary";
@@ -248,7 +232,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e16);
 
 				User e17 = new User();
-				e17.UserID = GenerateUserID.GetNextUserID(db);
 				e17.Password = "1911919111";
 				e17.LastName = "Rankin";
 				e17.FirstName = "Suzie";
@@ -262,7 +245,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e17);
 
 				User e18 = new User();
-				e18.UserID = GenerateUserID.GetNextUserID(db);
 				e18.Password = "353904746";
 				e18.LastName = "Rhodes";
 				e18.FirstName = "Megan";
@@ -276,7 +258,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e18);
 
 				User e19 = new User();
-				e19.UserID = GenerateUserID.GetNextUserID(db);
 				e19.Password = "454776657";
 				e19.LastName = "Rice";
 				e19.FirstName = "Eryn";
@@ -290,7 +271,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e19);
 
 				User e20 = new User();
-				e20.UserID = GenerateUserID.GetNextUserID(db);
 				e20.Password = "700002943";
 				e20.LastName = "Rogers";
 				e20.FirstName = "Allen";
@@ -304,7 +284,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e20);
 
 				User e21 = new User();
-				e21.UserID = GenerateUserID.GetNextUserID(db);
 				e21.Password = "500987810";
 				e21.LastName = "Saunders";
 				e21.FirstName = "Sarah";
@@ -318,7 +297,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e21);
 
 				User e22 = new User();
-				e22.UserID = GenerateUserID.GetNextUserID(db);
 				e22.Password = "500830084";
 				e22.LastName = "Sewell";
 				e22.FirstName = "William";
@@ -332,7 +310,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e22);
 
 				User e23 = new User();
-				e23.UserID = GenerateUserID.GetNextUserID(db);
 				e23.Password = "223449167";
 				e23.LastName = "Sheffield";
 				e23.FirstName = "Martin";
@@ -346,7 +323,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e23);
 
 				User e24 = new User();
-				e24.UserID = GenerateUserID.GetNextUserID(db);
 				e24.Password = "7776661111";
 				e24.LastName = "Silva";
 				e24.FirstName = "Cindy";
@@ -360,7 +336,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e24);
 
 				User e25 = new User();
-				e25.UserID = GenerateUserID.GetNextUserID(db);
 				e25.Password = "363998335";
 				e25.LastName = "Stuart";
 				e25.FirstName = "Eric";
@@ -374,7 +349,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e25);
 
 				User e26 = new User();
-				e26.UserID = GenerateUserID.GetNextUserID(db);
 				e26.Password = "904440929";
 				e26.LastName = "Tanner";
 				e26.FirstName = "Jeremy";
@@ -388,7 +362,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e26);
 
 				User e27 = new User();
-				e27.UserID = GenerateUserID.GetNextUserID(db);
 				e27.Password = "934778452";
 				e27.LastName = "Taylor";
 				e27.FirstName = "Allison";
@@ -402,7 +375,6 @@ namespace Group_18_Final_Project.Seeding
 				Employees.Add(e27);
 
 				User e28 = new User();
-				e28.UserID = GenerateUserID.GetNextUserID(db);
 				e28.Password = "393412631";
 				e28.LastName = "Taylor";
 				e28.FirstName = "Rachel";
@@ -432,7 +404,6 @@ namespace Group_18_Final_Project.Seeding
 					}
 					else
 					{
-						dbEmp.UserID = emp.UserID;
 						dbEmp.Email = emp.Email;
 						dbEmp.Password = emp.Password;
 						dbEmp.FirstName = emp.FirstName;

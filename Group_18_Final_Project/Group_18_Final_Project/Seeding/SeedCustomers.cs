@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Group_18_Final_Project.Utilities;
 
 namespace Group_18_Final_Project.Seeding
 {
@@ -23,8 +24,7 @@ namespace Group_18_Final_Project.Seeding
 			try
 			{
 				User c1 = new User();
-				c1.UserID = 9010;
-				c1.Password = "bookworm";
+                c1.Password = "bookworm";
 				c1.LastName = "Baker";
 				c1.FirstName = "Christopher";
 				c1.Address = "1898 Schurz Alley";
@@ -36,9 +36,9 @@ namespace Group_18_Final_Project.Seeding
 				c1.Email = "Customer";
 				Customers.Add(c1);
 
-				User c2 = new User();
-				c2.UserID = 9011;
-				c2.Password = "potato";
+
+                User c2 = new User();
+                c2.Password = "potato";
 				c2.LastName = "Banks";
 				c2.FirstName = "Michelle";
 				c2.Address = "97 Elmside Pass";
@@ -51,8 +51,8 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c2);
 
 				User c3 = new User();
-				c3.UserID = 9012;
-				c3.Password = "painting";
+
+                c3.Password = "painting";
 				c3.LastName = "Broccolo";
 				c3.FirstName = "Franco";
 				c3.Address = "88 Crowley Circle";
@@ -65,8 +65,8 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c3);
 
 				User c4 = new User();
-				c4.UserID = 9013;
-				c4.Password = "texas1";
+
+                c4.Password = "texas1";
 				c4.LastName = "Chang";
 				c4.FirstName = "Wendy";
 				c4.Address = "56560 Sage Junction";
@@ -79,8 +79,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c4);
 
 				User c5 = new User();
-				c5.UserID = 9014;
-				c5.Password = "Anchorage";
+                c5.Password = "Anchorage";
 				c5.LastName = "Chou";
 				c5.FirstName = "Lim";
 				c5.Address = "60 Lunder Point";
@@ -93,9 +92,8 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c5);
 
 				User c6 = new User();
-				c6.UserID = 9015;
 				c6.Password = "aggies";
-				c6.LastName = "Dixon";
+                c6.LastName = "Dixon";
 				c6.FirstName = "Shan";
 				c6.Address = "9448 Pleasure Avenue";
 				c6.City = "Georgetown";
@@ -107,9 +105,8 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c6);
 
 				User c7 = new User();
-				c7.UserID = 9016;
 				c7.Password = "hampton1";
-				c7.LastName = "Evans";
+                c7.LastName = "Evans";
 				c7.FirstName = "Jim Bob";
 				c7.Address = "51 Emmet Parkway";
 				c7.City = "Austin";
@@ -121,8 +118,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c7);
 
 				User c8 = new User();
-				c8.UserID = 9017;
-				c8.Password = "longhorns";
+                c8.Password = "longhorns";
 				c8.LastName = "Feeley";
 				c8.FirstName = "Lou Ann";
 				c8.Address = "65 Darwin Crossing";
@@ -135,8 +131,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c8);
 
 				User c9 = new User();
-				c9.UserID = 9018;
-				c9.Password = "mustangs";
+                c9.Password = "mustangs";
 				c9.LastName = "Freeley";
 				c9.FirstName = "Tesa";
 				c9.Address = "7352 Loftsgordon Court";
@@ -149,8 +144,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c9);
 
 				User c10 = new User();
-				c10.UserID = 9019;
-				c10.Password = "onetime";
+                c10.Password = "onetime";
 				c10.LastName = "Garcia";
 				c10.FirstName = "Margaret";
 				c10.Address = "7 International Road";
@@ -163,8 +157,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c10);
 
 				User c11 = new User();
-				c11.UserID = 9020;
-				c11.Password = "pepperoni";
+                c11.Password = "pepperoni";
 				c11.LastName = "Haley";
 				c11.FirstName = "Charles";
 				c11.Address = "8 Warrior Trail";
@@ -177,8 +170,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c11);
 
 				User c12 = new User();
-				c12.UserID = 9021;
-				c12.Password = "raiders";
+                c12.Password = "raiders";
 				c12.LastName = "Hampton";
 				c12.FirstName = "Jeffrey";
 				c12.Address = "9107 Lighthouse Bay Road";
@@ -191,8 +183,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c12);
 
 				User c13 = new User();
-				c13.UserID = 9022;
-				c13.Password = "jhearn22";
+                c13.Password = "jhearn22";
 				c13.LastName = "Hearn";
 				c13.FirstName = "John";
 				c13.Address = "59784 Pierstorff Center";
@@ -205,8 +196,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c13);
 
 				User c14 = new User();
-				c14.UserID = 9023;
-				c14.Password = "hickhickup";
+                c14.Password = "hickhickup";
 				c14.LastName = "Hicks";
 				c14.FirstName = "Anthony";
 				c14.Address = "932 Monica Way";
@@ -219,8 +209,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c14);
 
 				User c15 = new User();
-				c15.UserID = 9024;
-				c15.Password = "ingram2015";
+                c15.Password = "ingram2015";
 				c15.LastName = "Ingram";
 				c15.FirstName = "Brad";
 				c15.Address = "4 Lukken Court";
@@ -233,8 +222,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c15);
 
 				User c16 = new User();
-				c16.UserID = 9025;
-				c16.Password = "toddy25";
+                c16.Password = "toddy25";
 				c16.LastName = "Jacobs";
 				c16.FirstName = "Todd";
 				c16.Address = "7 Susan Junction";
@@ -247,8 +235,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c16);
 
 				User c17 = new User();
-				c17.UserID = 9026;
-				c17.Password = "something";
+                c17.Password = "something";
 				c17.LastName = "Lawrence";
 				c17.FirstName = "Victoria";
 				c17.Address = "669 Oak Junction";
@@ -261,8 +248,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c17);
 
 				User c18 = new User();
-				c18.UserID = 9027;
-				c18.Password = "Password1";
+                c18.Password = "Password1";
 				c18.LastName = "Lineback";
 				c18.FirstName = "Erik";
 				c18.Address = "099 Luster Point";
@@ -275,8 +261,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c18);
 
 				User c19 = new User();
-				c19.UserID = 9028;
-				c19.Password = "aclfest2017";
+                c19.Password = "aclfest2017";
 				c19.LastName = "Lowe";
 				c19.FirstName = "Ernest";
 				c19.Address = "35473 Hansons Hill";
@@ -289,8 +274,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c19);
 
 				User c20 = new User();
-				c20.UserID = 9029;
-				c20.Password = "nothinggood";
+                c20.Password = "nothinggood";
 				c20.LastName = "Luce";
 				c20.FirstName = "Chuck";
 				c20.Address = "4 Emmet Junction";
@@ -303,8 +287,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c20);
 
 				User c21 = new User();
-				c21.UserID = 9030;
-				c21.Password = "whatever";
+                c21.Password = "whatever";
 				c21.LastName = "MacLeod";
 				c21.FirstName = "Jennifer";
 				c21.Address = "3 Orin Road";
@@ -317,8 +300,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c21);
 
 				User c22 = new User();
-				c22.UserID = 9031;
-				c22.Password = "snowsnow";
+                c22.Password = "snowsnow";
 				c22.LastName = "Markham";
 				c22.FirstName = "Elizabeth";
 				c22.Address = "8171 Commercial Crossing";
@@ -331,8 +313,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c22);
 
 				User c23 = new User();
-				c23.UserID = 9032;
-				c23.Password = "whocares";
+                c23.Password = "whocares";
 				c23.LastName = "Martin";
 				c23.FirstName = "Clarence";
 				c23.Address = "96 Anthes Place";
@@ -345,8 +326,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c23);
 
 				User c24 = new User();
-				c24.UserID = 9033;
-				c24.Password = "xcellent";
+                c24.Password = "xcellent";
 				c24.LastName = "Martinez";
 				c24.FirstName = "Gregory";
 				c24.Address = "10 Northridge Plaza";
@@ -359,8 +339,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c24);
 
 				User c25 = new User();
-				c25.UserID = 9034;
-				c25.Password = "mydogspot";
+                c25.Password = "mydogspot";
 				c25.LastName = "Miller";
 				c25.FirstName = "Charles";
 				c25.Address = "87683 Schmedeman Circle";
@@ -373,8 +352,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c25);
 
 				User c26 = new User();
-				c26.UserID = 9035;
-				c26.Password = "spotmydog";
+                c26.Password = "spotmydog";
 				c26.LastName = "Nelson";
 				c26.FirstName = "Kelly";
 				c26.Address = "3244 Ludington Court";
@@ -387,8 +365,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c26);
 
 				User c27 = new User();
-				c27.UserID = 9036;
-				c27.Password = "joejoejoe";
+                c27.Password = "joejoejoe";
 				c27.LastName = "Nguyen";
 				c27.FirstName = "Joe";
 				c27.Address = "4780 Talisman Court";
@@ -401,8 +378,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c27);
 
 				User c28 = new User();
-				c28.UserID = 9037;
-				c28.Password = "billyboy";
+                c28.Password = "billyboy";
 				c28.LastName = "O'Reilly";
 				c28.FirstName = "Bill";
 				c28.Address = "4154 Delladonna Plaza";
@@ -415,8 +391,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c28);
 
 				User c29 = new User();
-				c29.UserID = 9038;
-				c29.Password = "radgirl";
+                c29.Password = "radgirl";
 				c29.LastName = "Radkovich";
 				c29.FirstName = "Anka";
 				c29.Address = "72361 Bayside Drive";
@@ -429,8 +404,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c29);
 
 				User c30 = new User();
-				c30.UserID = 9039;
-				c30.Password = "meganr34";
+                c30.Password = "meganr34";
 				c30.LastName = "Rhodes";
 				c30.FirstName = "Megan";
 				c30.Address = "76875 Hoffman Point";
@@ -443,8 +417,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c30);
 
 				User c31 = new User();
-				c31.UserID = 9040;
-				c31.Password = "ricearoni";
+                c31.Password = "ricearoni";
 				c31.LastName = "Rice";
 				c31.FirstName = "Eryn";
 				c31.Address = "048 Elmside Park";
@@ -457,8 +430,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c31);
 
 				User c32 = new User();
-				c32.UserID = 9041;
-				c32.Password = "alaskaboy";
+                c32.Password = "alaskaboy";
 				c32.LastName = "Rodriguez";
 				c32.FirstName = "Jorge";
 				c32.Address = "01 Browning Pass";
@@ -471,8 +443,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c32);
 
 				User c33 = new User();
-				c33.UserID = 9042;
-				c33.Password = "bunnyhop";
+                c33.Password = "bunnyhop";
 				c33.LastName = "Rogers";
 				c33.FirstName = "Allen";
 				c33.Address = "844 Anderson Alley";
@@ -485,8 +456,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c33);
 
 				User c34 = new User();
-				c34.UserID = 9043;
-				c34.Password = "dustydusty";
+                c34.Password = "dustydusty";
 				c34.LastName = "Saint-Jean";
 				c34.FirstName = "Olivier";
 				c34.Address = "1891 Docker Point";
@@ -499,7 +469,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c34);
 
 				User c35 = new User();
-				c35.UserID = 9044;
+                c35.UserID = 9044;
 				c35.Password = "jrod2017";
 				c35.LastName = "Saunders";
 				c35.FirstName = "Sarah";
@@ -513,8 +483,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c35);
 
 				User c36 = new User();
-				c36.UserID = 9045;
-				c36.Password = "martin1234";
+                c36.Password = "martin1234";
 				c36.LastName = "Sewell";
 				c36.FirstName = "William";
 				c36.Address = "1672 Oak Valley Circle";
@@ -527,8 +496,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c36);
 
 				User c37 = new User();
-				c37.UserID = 9046;
-				c37.Password = "penguin12";
+                c37.Password = "penguin12";
 				c37.LastName = "Sheffield";
 				c37.FirstName = "Martin";
 				c37.Address = "816 Kennedy Place";
@@ -541,7 +509,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c37);
 
 				User c38 = new User();
-				c38.UserID = 9047;
+                c38.UserID = 9047;
 				c38.Password = "rogerthat";
 				c38.LastName = "Smith";
 				c38.FirstName = "John";
@@ -555,8 +523,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c38);
 
 				User c39 = new User();
-				c39.UserID = 9048;
-				c39.Password = "smitty444";
+                c39.Password = "smitty444";
 				c39.LastName = "Stroud";
 				c39.FirstName = "Dustin";
 				c39.Address = "505 Dexter Plaza";
@@ -569,8 +536,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c39);
 
 				User c40 = new User();
-				c40.UserID = 9049;
-				c40.Password = "stewball";
+                c40.Password = "stewball";
 				c40.LastName = "Stuart";
 				c40.FirstName = "Eric";
 				c40.Address = "585 Claremont Drive";
@@ -583,8 +549,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c40);
 
 				User c41 = new User();
-				c41.UserID = 9050;
-				c41.Password = "slowwind";
+                c41.Password = "slowwind";
 				c41.LastName = "Stump";
 				c41.FirstName = "Peter";
 				c41.Address = "89035 Welch Circle";
@@ -597,8 +562,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c41);
 
 				User c42 = new User();
-				c42.UserID = 9051;
-				c42.Password = "tanner5454";
+                c42.Password = "tanner5454";
 				c42.LastName = "Tanner";
 				c42.FirstName = "Jeremy";
 				c42.Address = "4 Stang Trail";
@@ -611,8 +575,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c42);
 
 				User c43 = new User();
-				c43.UserID = 9052;
-				c43.Password = "allyrally";
+                c43.Password = "allyrally";
 				c43.LastName = "Taylor";
 				c43.FirstName = "Allison";
 				c43.Address = "726 Twin Pines Avenue";
@@ -625,8 +588,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c43);
 
 				User c44 = new User();
-				c44.UserID = 9053;
-				c44.Password = "taylorbaylor";
+                c44.Password = "taylorbaylor";
 				c44.LastName = "Taylor";
 				c44.FirstName = "Rachel";
 				c44.Address = "06605 Sugar Drive";
@@ -639,8 +601,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c44);
 
 				User c45 = new User();
-				c45.UserID = 9054;
-				c45.Password = "teeoff22";
+                c45.Password = "teeoff22";
 				c45.LastName = "Tee";
 				c45.FirstName = "Frank";
 				c45.Address = "3567 Dawn Plaza";
@@ -653,8 +614,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c45);
 
 				User c46 = new User();
-				c46.UserID = 9055;
-				c46.Password = "tucksack1";
+                c46.Password = "tucksack1";
 				c46.LastName = "Tucker";
 				c46.FirstName = "Clent";
 				c46.Address = "704 Northland Alley";
@@ -667,8 +627,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c46);
 
 				User c47 = new User();
-				c47.UserID = 9056;
-				c47.Password = "meow88";
+                c47.Password = "meow88";
 				c47.LastName = "Velasco";
 				c47.FirstName = "Allen";
 				c47.Address = "72 Harbort Point";
@@ -681,8 +640,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c47);
 
 				User c48 = new User();
-				c48.UserID = 9057;
-				c48.Password = "vinovino";
+                c48.Password = "vinovino";
 				c48.LastName = "Vino";
 				c48.FirstName = "Janet";
 				c48.Address = "1 Oak Valley Place";
@@ -695,8 +653,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c48);
 
 				User c49 = new User();
-				c49.UserID = 9058;
-				c49.Password = "gowest";
+                c49.Password = "gowest";
 				c49.LastName = "West";
 				c49.FirstName = "Jake";
 				c49.Address = "48743 Banding Parkway";
@@ -709,8 +666,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c49);
 
 				User c50 = new User();
-				c50.UserID = 9059;
-				c50.Password = "louielouie";
+                c50.Password = "louielouie";
 				c50.LastName = "Winthorpe";
 				c50.FirstName = "Louis";
 				c50.Address = "96850 Summit Crossing";
@@ -723,8 +679,7 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c50);
 
 				User c51 = new User();
-				c51.UserID = 9060;
-				c51.Password = "woodyman1";
+                c51.Password = "woodyman1";
 				c51.LastName = "Wood";
 				c51.FirstName = "Reagan";
 				c51.Address = "18354 Bluejay Street";
@@ -745,7 +700,7 @@ namespace Group_18_Final_Project.Seeding
 					//see if customer exists in database
 					User dbCust = db.Users.FirstOrDefault(b => b.Email == cust.Email);
 
-					if (dbCust == null) //customerdoes not exist in database
+					if (dbCust == null) //customer does not exist in database
 					{
 						db.Users.Add(cust);
 						db.SaveChanges();
@@ -753,7 +708,7 @@ namespace Group_18_Final_Project.Seeding
 					}
 					else
 					{
-						dbCust.UserID = cust.UserID;
+						//dbCust.UserID = cust.UserID;
 						dbCust.Email = cust.Email;
 						dbCust.Password = cust.Password;
 						dbCust.FirstName = cust.FirstName;
@@ -768,12 +723,13 @@ namespace Group_18_Final_Project.Seeding
 						db.SaveChanges();
 					}
 				}
-			}
-			catch
-			{
-				String msg = "Customers added:" + intCustomersAdded + "; Error on ";
-				throw new InvalidOperationException(msg);
-			}
-		}
+            }
+            catch (Exception e)
+            {
+                String msg = "Books added:" + intCustomersAdded + "; Error on " + custName;
+                InvalidOperationException e2 = new InvalidOperationException(msg, e);
+                throw e2;
+            }
+        }
 	}
 }
