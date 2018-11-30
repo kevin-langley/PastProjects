@@ -154,68 +154,88 @@ namespace Group_18_Final_Project.Controllers
         ////GET
         ////Method to add products to existing order
         ////Passes in order id
-        public IActionResult AddToOrder([Bind("OrderID,OrderDate")] Order order)
-        {
-            //Finds if user already has an order pending
-            //Assigning user to user id
-            //get user info
-            String id = User.Identity.Name;
-            User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
+        //public IActionResult AddToOrder(Order order)
+        //{
+        //    //Finds if user already has an order pending
+        //    //Assigning user to user id
+        //    //get user info
+        //    String id = User.Identity.Name;
+        //    User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            //TODO: No squigglies plz
-            if (user.Orders.All(o => o.IsPending == true))
-            {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(order);
-                    _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            }
+        //    //Checks if user has existing order
+        //    //if True then adds book to order
+        //    if (user.Orders.All(o => o.IsPending == true))
+        //    {
 
-            //Assigns order type to newly created order detail
-            BookOrder bookOrder = new BookOrder() { Order = order };
+        //        if (ModelState.IsValid)
+        //        {
+        //            _context.Add(order);
+        //            _context.SaveChangesAsync();
+        //            return RedirectToAction(nameof(Index));
+        //        }
+        //    } //if false then creates new order
 
-            ViewBag.AllProducts = GetAllProducts(); //Populating viewbag for drop down list
+        //    //Assigns order type to newly created order detail
+        //    BookOrder bookOrder = new BookOrder() { Order = order };
 
-            return View("AddToOrder", bookOrder);
 
-        }
 
-        //POST
-        //Method to process Add To Order results
-        //Has form answers as paramater
-        [HttpPost]
-        public IActionResult AddToOrder(BookOrder bo, int intSelectedProduct)
-        {
-            //Finding product matching product in drop down list
-            Book book = _context.Books.Find(intSelectedProduct);
+        //    return View("AddToOrder", bookOrder);
 
-            //Stores product in order detail
-            bo.Book = book;
+        //}
 
-            //Finds order in db matching editted order
-            Order order = _context.Orders.Find(bo.Order.OrderID);
+        ////POST
+        ////Method to process Add To Order results
+        ////Has form answers as paramater
+        //[HttpPost]
+        //public IActionResult AddToOrder(BookOrder bo, int? id)
+        //{
+        //    //Finding book matching book id passed from book details page
+        //    Book book = _context.Books.Find(id);
 
-            //Stores order in order detail order
-            bo.Order = order;
+        //    //Stores product in order detail
+        //    bo.Book = book;
 
-            bo.Price = bo.Book.BookPrice;
+        //    //Finds if user already has an order pending
+        //    //Assigning user to user id
+        //    //get user info
+        //    String id = User.Identity.Name;
+        //    User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            //bo.Price= bo.ProductPrice * bo.Quantity; //TODO: figure it out
+        //    //TODO: Finish this
+        //    if (user.Orders.All(o => o.IsPending == true))
+        //    {
 
-            if (ModelState.IsValid)
-            {
-                _context.BookOrders.Add(bo);
-                _context.SaveChanges();
-                return RedirectToAction("Details", new { id = bo.Order.OrderID });
+        //        if (ModelState.IsValid)
+        //        {
+        //            _context.Add(order);
+        //            _context.SaveChangesAsync();
+        //            return RedirectToAction(nameof(Index));
+        //        }
+        //    }
 
-            }
-            //Repopulate Viewbag for modelstate not balid
-            ViewBag.AllProducts = GetAllProducts();
-            return View(bo);
 
-        }
+        //    //Finds order in db matching editted order
+        //    Order order = _context.Orders.Find(bo.Order.OrderID);
+
+        //    //Stores order in order detail order
+        //    bo.Order = order;
+
+        //    bo.Price = bo.Book.BookPrice;
+
+        //    //bo.Price= bo.ProductPrice * bo.Quantity; //TODO: figure it out
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.BookOrders.Add(bo);
+        //        _context.SaveChanges();
+        //        return RedirectToAction("Details", new { id = bo.Order.OrderID });
+
+        //    }
+
+        //    return View(bo);
+
+        //}
 
         //GET method to get order id for order
         public IActionResult RemoveFromOrder(int? id)

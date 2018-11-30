@@ -29,22 +29,10 @@
             @Html.DisplayFor(model => model.UniqueID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TimesPurchased)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TimesPurchased)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.AverageRating)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.AverageRating)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CopiesOnHand)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CopiesOnHand)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.BookPrice)
@@ -53,32 +41,21 @@
             @Html.DisplayFor(model => model.BookPrice)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.WholesalePrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.WholesalePrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ActiveBook)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ActiveBook)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.PublicationDate)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PublicationDate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Genre.GenreName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Genre.GenreName)
         </dd>
     </dl>
 </div>
 <div>
+    <a asp-action="AddToOrder" asp-route-id="@Model.BookID" class="btn btn-success">Add to Cart</a> <!--To do: Add permission views for seeing button-->
     <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
