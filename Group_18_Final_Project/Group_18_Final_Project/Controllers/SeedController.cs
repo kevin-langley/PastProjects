@@ -47,7 +47,7 @@ namespace Group_18_Final_Project.Controllers
         {
             try
             {
-                Seeding.SeedGenres.SeedAllGenres(_db);
+                Seeding.SeedBooks.SeedAllBooks(_db);
             }
             catch (NotSupportedException ex)
             {
