@@ -20,9 +20,10 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Reviews
+        //Create new list to find only approved reviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reviews.ToListAsync());
+            return View(await _context.Reviews.Where(r => r.Approval == true).ToListAsync());
         }
 
         // GET: Reviews/Details/5

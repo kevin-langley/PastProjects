@@ -62,6 +62,12 @@ namespace Group_18_Final_Project.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            // send confirmation email 
+            String emailSubject = "Thank you" + user.FirstName + "for registering with Bevo's Bookstore!";
+            String emailBody = "Welcome to the Bevo's Bookstore family! /n Don't hesitate to reach out to us with any issues.";
+            Utilities.EmailMessaging.SendEmail(user.Email, emailSubject, emailBody);
+
+
             return View(user);
         }
 

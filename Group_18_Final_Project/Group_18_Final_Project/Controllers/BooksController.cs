@@ -39,6 +39,10 @@ namespace Group_18_Final_Project.Controllers
             {
                 return NotFound();
             }
+            //calculate average rating
+            int totalRating = book.Reviews.Where(item => item.Approval == true ).Sum(item => item.Rating);
+            int numberReviews = book.Reviews.Where(item => item.Approval == true).Count();
+            book.AverageRating = (totalRating / numberReviews);
 
             return View(book);
         }

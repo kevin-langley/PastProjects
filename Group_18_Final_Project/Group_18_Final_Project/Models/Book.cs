@@ -13,7 +13,7 @@ namespace Group_18_Final_Project.Models
         public String Author { get; set; }
         public Int32 UniqueID { get; set; }
         public Int32 TimesPurchased { get; set; }
-        public Int32 AverageRating { get; set; }
+        public Decimal AverageRating { get; set; }
         public Int32 CopiesOnHand { get; set; }
         public Decimal BookPrice { get; set; }
         public Decimal WholesalePrice { get; set; }
