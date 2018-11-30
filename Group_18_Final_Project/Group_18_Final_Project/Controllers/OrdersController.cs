@@ -150,40 +150,6 @@ namespace Group_18_Final_Project.Controllers
             return _context.Orders.Any(e => e.OrderID == id);
         }
 
-        //TODO: Edit the subsequent action methods for project
-        //GET
-        //Method to add products to existing order
-        //Passes in order id
-        public IActionResult AddToOrder(Order order)
-        {
-            //Finds if user already has an order pending
-            //Assigning user to user id
-            //get user info
-            String id = User.Identity.Name;
-            User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
-
-            //Checks if user has existing order
-            //if True then adds book to order
-            if (user.Orders.All(o => o.IsPending == true))
-            {
-
-                if (ModelState.IsValid)
-                {
-                    _context.Add(order);
-                    _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            } //if false then creates new order
-
-            //Assigns order type to newly created order detail
-            BookOrder bookOrder = new BookOrder() { Order = order };
-
-
-
-            return View("AddToOrder", bookOrder);
-
-        }
-
         //POST
         //Method to process Add To Order results
         //Has form answers as paramater
@@ -199,34 +165,34 @@ namespace Group_18_Final_Project.Controllers
             //Creates new order detail
             BookOrder bookOrder = new BookOrder();
 
-            //Finds if user already has an order pending
-            //Assigning user to user id
-            //get user info
-            String id = User.Identity.Name;
-            User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
+            ////Finds if user already has an order pending
+            ////Assigning user to user id
+            ////get user info
+            //String id = User.Identity.Name;
+            //User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            //TODO: Finish this
-            //if user has a pending order
-            //Adds new order detail to current order
-            if (user.Orders.All(o => o.IsPending == true))
-            {
-                //Finds order in db matching user
-                Order order = _context.Orders.Find(bo.Order.OrderID);
+            ////TODO: Finish this
+            ////if user has a pending order
+            ////Adds new order detail to current order
+            //if (user.Orders.All(o => o.IsPending == true))
+            //{
+            //    //Finds order in db matching user
+            //    Order order = _context.Orders.Find(bo.Order.OrderID);
 
-                //Stores order in order detail order
-                bo.Order = order;
+            //    //Stores order in order detail order
+            //    bo.Order = order;
 
-                if (ModelState.IsValid)
-                {
-                    _context.Add(bo);
-                    _context.SaveChangesAsync();
+            //    if (ModelState.IsValid)
+            //    {
+            //        _context.Add(bo);
+            //        _context.SaveChangesAsync();
 
-                    ViewBag.AddedOrder = "Your order has been added!";
-                    ViewBag.CartMessage = "View your cart below";
+            //        ViewBag.AddedOrder = "Your order has been added!";
+            //        ViewBag.CartMessage = "View your cart below";
 
-                    return RedirectToAction("Details", new { id = bo.Order.OrderID });
-                }
-            }
+            //        return RedirectToAction("Details", new { id = bo.Order.OrderID });
+            //    }
+            //}
 
             //if user does not have a pending order
             Order neworder = new Order();
