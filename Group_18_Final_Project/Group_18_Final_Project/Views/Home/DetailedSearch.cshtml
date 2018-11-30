@@ -1,6 +1,4 @@
-﻿
-
-@using Group_18_Final_Project.Controllers
+﻿@using Group_18_Final_Project.Controllers
 
 <br />
 <h2>Search for Books</h2>
@@ -14,6 +12,11 @@
     <div class="form-group">
         <label>Author:</label>
         <input name="strSearchAuthor" class="form-control" />
+    </div>
+    @*Search by unique number*@
+    <div class="form-group">
+        <label>Unique ID:</label>
+        <input name="intSearchUniqueID" class="form-control" />
     </div>
     @*Search by genre*@
     <div class="form-group">
@@ -38,8 +41,8 @@
     </div>
 
     <!--Submit form data to be processed by method-->
-        <button type="submit" class="btn btn-danger">Search</button>
-        <!--Spacing-->
-        <br />
-        <br />
+    <button type="submit" class="btn btn-danger">Search</button>
+    <!--Spacing-->
+    <br />
+    <br />
 </form>

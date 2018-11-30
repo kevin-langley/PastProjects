@@ -69,7 +69,7 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, int SelectedGenre, SortOrder SelectedSort, Boolean SelectedStock )
+        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, Int32 intSearchUniqueID, int SelectedGenre, SortOrder SelectedSort, Boolean SelectedStock )
         {
             //Creating new list object of the repo list
             List<Book> SelectedBooks = new List<Book>();
@@ -87,11 +87,17 @@ namespace Group_18_Final_Project.Controllers
             //The following lines of code process the searched author
             if (strSearchAuthor != null && strSearchAuthor != "")
             {
-                query = query.Where(r => r.Description.Contains(strSearchAuthor));
+                query = query.Where(r => r.Author.Contains(strSearchAuthor));
+            }
+
+            //The following lines of code process the searched unique number
+            if (intSearchUniqueID != 0)
+            {
+                query = query.Where(r => r.UniqueID == intSearchUniqueID);
             }
 
             //The following lines of code process the genre selected from the drop down menu
-            if(SelectedGenre != 0)
+            if (SelectedGenre != 0)
             {
                 query = query.Where(r => r.Genre.GenreID == SelectedGenre);
 
