@@ -4,7 +4,7 @@
 using System.Net.Mail;
 using System.Net;
 
-namespace Group_18_Final_Project.U'
+namespace Group_18_Final_Project.Utilities
 {
     public static class EmailMessaging
     {
