@@ -25,25 +25,17 @@ namespace Group_18_Final_Project
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-
-                app.UseDeveloperExceptionPage();
-                app.UseStatusCodePages();
-                app.UseStaticFiles();
-                app.UseMvc(routes => {
-                    routes.MapRoute(
-                        name: "default",
-                        template: "{controller}/{action}/{id?}",
-                        defaults: new { controller = "Home", action = "Index" });
-                });
-
-            }
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
+            app.UseDeveloperExceptionPage();
+            app.UseStatusCodePages();
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseMvc(routes => {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" });
             });
+
         }
     }
 }
