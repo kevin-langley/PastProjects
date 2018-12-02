@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Group_18_Final_Project.Models
 {
     //enum creditcard 
-    public enum CreditCardType { placeholderone,placeholdertwo,placeholderthree};
+    public enum CreditCardType { Visa , AmericanExpress , Discover, MasterCard};
 
     public class CreditCard
     {
         //CreditCard properties
         public Int32 CreditCardID { get; set; }
         public CreditCardType CreditType { get; set; }
-        public Int32 CreditCardNumber { get; set; }
+
+        [Required(ErrorMessage = "Card Number is required.")]
+        [StringLength(16)]
+        public String CreditCardNumber { get; set; }
 
         //Navigation properties
         public User User { get; set; }
