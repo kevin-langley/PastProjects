@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace Group_18_Final_Project.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         //User properties
         public Int32 UserID { get; set; }
-        public String Email { get; set; }
         public String Password { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
@@ -18,7 +18,6 @@ namespace Group_18_Final_Project.Models
         public String City { get; set; }
         public String State { get; set; }
         public Int32 ZipCode { get; set; }
-        public Int64 PhoneNumber { get; set; }
         public Boolean ActiveUser { get; set; }
         public String UserType { get; set; }
 

@@ -31,7 +31,7 @@ namespace Group_18_Final_Project.Seeding
 				c1.City = "Austin";
 				c1.State = "TX";
 				c1.ZipCode = 78705;
-				c1.PhoneNumber = 5725458641;
+				c1.PhoneNumber = 5725458641.ToString();
 				c1.Email = "cbaker@example.com";
 				c1.Email = "Customer";
 				Customers.Add(c1);
@@ -45,7 +45,7 @@ namespace Group_18_Final_Project.Seeding
 				c2.City = "Austin";
 				c2.State = "TX";
 				c2.ZipCode = 78712;
-				c2.PhoneNumber = 9867048435;
+				c2.PhoneNumber = 9867048435.ToString();
 				c2.Email = "banker@longhorn.net";
 				c2.Email = "Customer";
 				Customers.Add(c2);
@@ -59,7 +59,7 @@ namespace Group_18_Final_Project.Seeding
 				c3.City = "Austin";
 				c3.State = "TX";
 				c3.ZipCode = 78786;
-				c3.PhoneNumber = 6836109514;
+				c3.PhoneNumber = 6836109514.ToString();
 				c3.Email = "franco@example.com";
 				c3.Email = "Customer";
 				Customers.Add(c3);
@@ -73,7 +73,7 @@ namespace Group_18_Final_Project.Seeding
 				c4.City = "Eagle Pass";
 				c4.State = "TX";
 				c4.ZipCode = 78852;
-				c4.PhoneNumber = 7070911071;
+				c4.PhoneNumber = 7070911071.ToString();
 				c4.Email = "wchang@example.com";
 				c4.Email = "Customer";
 				Customers.Add(c4);
@@ -86,7 +86,7 @@ namespace Group_18_Final_Project.Seeding
 				c5.City = "Austin";
 				c5.State = "TX";
 				c5.ZipCode = 78729;
-				c5.PhoneNumber = 1488907687;
+				c5.PhoneNumber = 1488907687.ToString();
 				c5.Email = "limchou@gogle.com";
 				c5.Email = "Customer";
 				Customers.Add(c5);
@@ -99,7 +99,7 @@ namespace Group_18_Final_Project.Seeding
 				c6.City = "Georgetown";
 				c6.State = "TX";
 				c6.ZipCode = 78628;
-				c6.PhoneNumber = 6899701824;
+				c6.PhoneNumber = 6899701824.ToString();
 				c6.Email = "shdixon@aoll.com";
 				c6.Email = "Customer";
 				Customers.Add(c6);
@@ -112,7 +112,7 @@ namespace Group_18_Final_Project.Seeding
 				c7.City = "Austin";
 				c7.State = "TX";
 				c7.ZipCode = 78705;
-				c7.PhoneNumber = 9986825917;
+				c7.PhoneNumber = 9986825917.ToString();
 				c7.Email = "j.b.evans@aheca.org";
 				c7.Email = "Customer";
 				Customers.Add(c7);
@@ -125,7 +125,7 @@ namespace Group_18_Final_Project.Seeding
 				c8.City = "Austin";
 				c8.State = "TX";
 				c8.ZipCode = 78704;
-				c8.PhoneNumber = 3464121966;
+				c8.PhoneNumber = 3464121966.ToString();
 				c8.Email = "feeley@penguin.org";
 				c8.Email = "Customer";
 				Customers.Add(c8);
@@ -138,7 +138,7 @@ namespace Group_18_Final_Project.Seeding
 				c9.City = "College Station";
 				c9.State = "TX";
 				c9.ZipCode = 77840;
-				c9.PhoneNumber = 6581357270;
+				c9.PhoneNumber = 6581357270.ToString();
 				c9.Email = "tfreeley@minnetonka.ci.us";
 				c9.Email = "Customer";
 				Customers.Add(c9);
@@ -151,7 +151,7 @@ namespace Group_18_Final_Project.Seeding
 				c10.City = "Austin";
 				c10.State = "TX";
 				c10.ZipCode = 78756;
-				c10.PhoneNumber = 3767347949;
+				c10.PhoneNumber = 3767347949.ToString();
 				c10.Email = "mgarcia@gogle.com";
 				c10.Email = "Customer";
 				Customers.Add(c10);
@@ -164,7 +164,7 @@ namespace Group_18_Final_Project.Seeding
 				c11.City = "Austin";
 				c11.State = "TX";
 				c11.ZipCode = 78746;
-				c11.PhoneNumber = 2198604221;
+				c11.PhoneNumber = 2198604221.ToString();
 				c11.Email = "chaley@thug.com";
 				c11.Email = "Customer";
 				Customers.Add(c11);
@@ -177,7 +177,7 @@ namespace Group_18_Final_Project.Seeding
 				c12.City = "Austin";
 				c12.State = "TX";
 				c12.ZipCode = 78756;
-				c12.PhoneNumber = 1222185888;
+				c12.PhoneNumber = 1222185888.ToString();
 				c12.Email = "jeffh@sonic.com";
 				c12.Email = "Customer";
 				Customers.Add(c12);
@@ -190,7 +190,7 @@ namespace Group_18_Final_Project.Seeding
 				c13.City = "Liberty";
 				c13.State = "TX";
 				c13.ZipCode = 77575;
-				c13.PhoneNumber = 5123071976;
+				c13.PhoneNumber = 5123071976.ToString();
 				c13.Email = "wjhearniii@umich.org";
 				c13.Email = "Customer";
 				Customers.Add(c13);
@@ -203,7 +203,7 @@ namespace Group_18_Final_Project.Seeding
 				c14.City = "San Antonio";
 				c14.State = "TX";
 				c14.ZipCode = 78203;
-				c14.PhoneNumber = 1211949601;
+				c14.PhoneNumber = 1211949601.ToString();
 				c14.Email = "ahick@yaho.com";
 				c14.Email = "Customer";
 				Customers.Add(c14);
@@ -216,7 +216,7 @@ namespace Group_18_Final_Project.Seeding
 				c15.City = "New Braunfels";
 				c15.State = "TX";
 				c15.ZipCode = 78132;
-				c15.PhoneNumber = 1372121569;
+				c15.PhoneNumber = 1372121569.ToString();
 				c15.Email = "ingram@jack.com";
 				c15.Email = "Customer";
 				Customers.Add(c15);
@@ -229,7 +229,7 @@ namespace Group_18_Final_Project.Seeding
 				c16.City = "New York";
 				c16.State = "NY";
 				c16.ZipCode = 10101;
-				c16.PhoneNumber = 8543163836;
+				c16.PhoneNumber = 8543163836.ToString();
 				c16.Email = "toddj@yourmom.com";
 				c16.Email = "Customer";
 				Customers.Add(c16);
@@ -242,7 +242,7 @@ namespace Group_18_Final_Project.Seeding
 				c17.City = "Lockhart";
 				c17.State = "TX";
 				c17.ZipCode = 78644;
-				c17.PhoneNumber = 3214163359;
+				c17.PhoneNumber = 3214163359.ToString();
 				c17.Email = "thequeen@aska.net";
 				c17.Email = "Customer";
 				Customers.Add(c17);
@@ -255,7 +255,7 @@ namespace Group_18_Final_Project.Seeding
 				c18.City = "Kingwood";
 				c18.State = "TX";
 				c18.ZipCode = 77325;
-				c18.PhoneNumber = 2505265350;
+				c18.PhoneNumber = 2505265350.ToString();
 				c18.Email = "linebacker@gogle.com";
 				c18.Email = "Customer";
 				Customers.Add(c18);
@@ -268,7 +268,7 @@ namespace Group_18_Final_Project.Seeding
 				c19.City = "Beverly Hills";
 				c19.State = "CA";
 				c19.ZipCode = 90210;
-				c19.PhoneNumber = 4070619503;
+				c19.PhoneNumber = 4070619503.ToString();
 				c19.Email = "elowe@netscare.net";
 				c19.Email = "Customer";
 				Customers.Add(c19);
@@ -281,7 +281,7 @@ namespace Group_18_Final_Project.Seeding
 				c20.City = "Navasota";
 				c20.State = "TX";
 				c20.ZipCode = 77868;
-				c20.PhoneNumber = 7358436110;
+				c20.PhoneNumber = 7358436110.ToString();
 				c20.Email = "cluce@gogle.com";
 				c20.Email = "Customer";
 				Customers.Add(c20);
@@ -294,7 +294,7 @@ namespace Group_18_Final_Project.Seeding
 				c21.City = "Austin";
 				c21.State = "TX";
 				c21.ZipCode = 78712;
-				c21.PhoneNumber = 7240178229;
+				c21.PhoneNumber = 7240178229.ToString();
 				c21.Email = "mackcloud@george.com";
 				c21.Email = "Customer";
 				Customers.Add(c21);
@@ -307,7 +307,7 @@ namespace Group_18_Final_Project.Seeding
 				c22.City = "Austin";
 				c22.State = "TX";
 				c22.ZipCode = 78712;
-				c22.PhoneNumber = 2495200223;
+				c22.PhoneNumber = 2495200223.ToString();
 				c22.Email = "cmartin@beets.com";
 				c22.Email = "Customer";
 				Customers.Add(c22);
@@ -320,7 +320,7 @@ namespace Group_18_Final_Project.Seeding
 				c23.City = "Schenectady";
 				c23.State = "NY";
 				c23.ZipCode = 12345;
-				c23.PhoneNumber = 4086179161;
+				c23.PhoneNumber = 4086179161.ToString();
 				c23.Email = "clarence@yoho.com";
 				c23.Email = "Customer";
 				Customers.Add(c23);
@@ -333,7 +333,7 @@ namespace Group_18_Final_Project.Seeding
 				c24.City = "Austin";
 				c24.State = "TX";
 				c24.ZipCode = 78717;
-				c24.PhoneNumber = 9371927523;
+				c24.PhoneNumber = 9371927523.ToString();
 				c24.Email = "gregmartinez@drdre.com";
 				c24.Email = "Customer";
 				Customers.Add(c24);
@@ -346,7 +346,7 @@ namespace Group_18_Final_Project.Seeding
 				c25.City = "Austin";
 				c25.State = "TX";
 				c25.ZipCode = 78727;
-				c25.PhoneNumber = 5954063857;
+				c25.PhoneNumber = 5954063857.ToString();
 				c25.Email = "cmiller@bob.com";
 				c25.Email = "Customer";
 				Customers.Add(c25);
@@ -359,7 +359,7 @@ namespace Group_18_Final_Project.Seeding
 				c26.City = "Beaumont";
 				c26.State = "TX";
 				c26.ZipCode = 77720;
-				c26.PhoneNumber = 8929209512;
+				c26.PhoneNumber = 8929209512.ToString();
 				c26.Email = "knelson@aoll.com";
 				c26.Email = "Customer";
 				Customers.Add(c26);
@@ -372,7 +372,7 @@ namespace Group_18_Final_Project.Seeding
 				c27.City = "San Marcos";
 				c27.State = "TX";
 				c27.ZipCode = 78667;
-				c27.PhoneNumber = 9226301774;
+				c27.PhoneNumber = 9226301774.ToString();
 				c27.Email = "joewin@xfactor.com";
 				c27.Email = "Customer";
 				Customers.Add(c27);
@@ -385,7 +385,7 @@ namespace Group_18_Final_Project.Seeding
 				c28.City = "Bergheim";
 				c28.State = "TX";
 				c28.ZipCode = 78004;
-				c28.PhoneNumber = 2537646912;
+				c28.PhoneNumber = 2537646912.ToString();
 				c28.Email = "orielly@foxnews.cnn";
 				c28.Email = "Customer";
 				Customers.Add(c28);
@@ -398,7 +398,7 @@ namespace Group_18_Final_Project.Seeding
 				c29.City = "Austin";
 				c29.State = "TX";
 				c29.ZipCode = 78789;
-				c29.PhoneNumber = 2182889379;
+				c29.PhoneNumber = 2182889379.ToString();
 				c29.Email = "ankaisrad@gogle.com";
 				c29.Email = "Customer";
 				Customers.Add(c29);
@@ -411,7 +411,7 @@ namespace Group_18_Final_Project.Seeding
 				c30.City = "Orlando";
 				c30.State = "FL";
 				c30.ZipCode = 32830;
-				c30.PhoneNumber = 9532396075;
+				c30.PhoneNumber = 9532396075.ToString();
 				c30.Email = "megrhodes@freserve.co.uk";
 				c30.Email = "Customer";
 				Customers.Add(c30);
@@ -424,7 +424,7 @@ namespace Group_18_Final_Project.Seeding
 				c31.City = "South Padre Island";
 				c31.State = "TX";
 				c31.ZipCode = 78597;
-				c31.PhoneNumber = 7303815953;
+				c31.PhoneNumber = 7303815953.ToString();
 				c31.Email = "erynrice@aoll.com";
 				c31.Email = "Customer";
 				Customers.Add(c31);
@@ -437,7 +437,7 @@ namespace Group_18_Final_Project.Seeding
 				c32.City = "Austin";
 				c32.State = "TX";
 				c32.ZipCode = 78744;
-				c32.PhoneNumber = 3677322422;
+				c32.PhoneNumber = 3677322422.ToString();
 				c32.Email = "jorge@noclue.com";
 				c32.Email = "Customer";
 				Customers.Add(c32);
@@ -450,7 +450,7 @@ namespace Group_18_Final_Project.Seeding
 				c33.City = "Canyon Lake";
 				c33.State = "TX";
 				c33.ZipCode = 78133;
-				c33.PhoneNumber = 3911705385;
+				c33.PhoneNumber = 3911705385.ToString();
 				c33.Email = "mrrogers@lovelyday.com";
 				c33.Email = "Customer";
 				Customers.Add(c33);
@@ -463,7 +463,7 @@ namespace Group_18_Final_Project.Seeding
 				c34.City = "Austin";
 				c34.State = "TX";
 				c34.ZipCode = 78779;
-				c34.PhoneNumber = 7351610920;
+				c34.PhoneNumber = 7351610920.ToString();
 				c34.Email = "stjean@athome.com";
 				c34.Email = "Customer";
 				Customers.Add(c34);
@@ -477,7 +477,7 @@ namespace Group_18_Final_Project.Seeding
 				c35.City = "Austin";
 				c35.State = "TX";
 				c35.ZipCode = 78720;
-				c35.PhoneNumber = 5269661692;
+				c35.PhoneNumber = 5269661692.ToString();
 				c35.Email = "saunders@pen.com";
 				c35.Email = "Customer";
 				Customers.Add(c35);
@@ -490,7 +490,7 @@ namespace Group_18_Final_Project.Seeding
 				c36.City = "Austin";
 				c36.State = "TX";
 				c36.ZipCode = 78705;
-				c36.PhoneNumber = 1875727246;
+				c36.PhoneNumber = 1875727246.ToString();
 				c36.Email = "willsheff@email.com";
 				c36.Email = "Customer";
 				Customers.Add(c36);
@@ -503,7 +503,7 @@ namespace Group_18_Final_Project.Seeding
 				c37.City = "Round Rock";
 				c37.State = "TX";
 				c37.ZipCode = 78680;
-				c37.PhoneNumber = 1394323615;
+				c37.PhoneNumber = 1394323615.ToString();
 				c37.Email = "sheffiled@gogle.com";
 				c37.Email = "Customer";
 				Customers.Add(c37);
@@ -517,7 +517,7 @@ namespace Group_18_Final_Project.Seeding
 				c38.City = "Austin";
 				c38.State = "TX";
 				c38.ZipCode = 78760;
-				c38.PhoneNumber = 6645937874;
+				c38.PhoneNumber = 6645937874.ToString();
 				c38.Email = "johnsmith187@aoll.com";
 				c38.Email = "Customer";
 				Customers.Add(c38);
@@ -530,7 +530,7 @@ namespace Group_18_Final_Project.Seeding
 				c39.City = "Sweet Home";
 				c39.State = "TX";
 				c39.ZipCode = 77987;
-				c39.PhoneNumber = 6470254680;
+				c39.PhoneNumber = 6470254680.ToString();
 				c39.Email = "dustroud@mail.com";
 				c39.Email = "Customer";
 				Customers.Add(c39);
@@ -543,7 +543,7 @@ namespace Group_18_Final_Project.Seeding
 				c40.City = "Corpus Christi";
 				c40.State = "TX";
 				c40.ZipCode = 78412;
-				c40.PhoneNumber = 7701621022;
+				c40.PhoneNumber = "7701621022";
 				c40.Email = "estuart@anchor.net";
 				c40.Email = "Customer";
 				Customers.Add(c40);
@@ -556,7 +556,7 @@ namespace Group_18_Final_Project.Seeding
 				c41.City = "Pflugerville";
 				c41.State = "TX";
 				c41.ZipCode = 78660;
-				c41.PhoneNumber = 2181960061;
+				c41.PhoneNumber = "2181960061";
 				c41.Email = "peterstump@noclue.com";
 				c41.Email = "Customer";
 				Customers.Add(c41);
@@ -569,7 +569,7 @@ namespace Group_18_Final_Project.Seeding
 				c42.City = "Austin";
 				c42.State = "TX";
 				c42.ZipCode = 78702;
-				c42.PhoneNumber = 9908469499;
+				c42.PhoneNumber = "9908469499";
 				c42.Email = "jtanner@mustang.net";
 				c42.Email = "Customer";
 				Customers.Add(c42);
@@ -582,7 +582,7 @@ namespace Group_18_Final_Project.Seeding
 				c43.City = "Austin";
 				c43.State = "TX";
 				c43.ZipCode = 78713;
-				c43.PhoneNumber = 7011918647;
+				c43.PhoneNumber = "7011918647";
 				c43.Email = "taylordjay@aoll.com";
 				c43.Email = "Customer";
 				Customers.Add(c43);
@@ -595,7 +595,7 @@ namespace Group_18_Final_Project.Seeding
 				c44.City = "Austin";
 				c44.State = "TX";
 				c44.ZipCode = 78712;
-				c44.PhoneNumber = 8937910053;
+				c44.PhoneNumber = "8937910053";
 				c44.Email = "rtaylor@gogle.com";
 				c44.Email = "Customer";
 				Customers.Add(c44);
@@ -608,7 +608,7 @@ namespace Group_18_Final_Project.Seeding
 				c45.City = "Austin";
 				c45.State = "TX";
 				c45.ZipCode = 78786;
-				c45.PhoneNumber = 6394568913;
+				c45.PhoneNumber = "6394568913";
 				c45.Email = "teefrank@noclue.com";
 				c45.Email = "Customer";
 				Customers.Add(c45);
@@ -621,7 +621,7 @@ namespace Group_18_Final_Project.Seeding
 				c46.City = "San Antonio";
 				c46.State = "TX";
 				c46.ZipCode = 78279;
-				c46.PhoneNumber = 2676838676;
+                c46.PhoneNumber = "2676838676";
 				c46.Email = "ctucker@alphabet.co.uk";
 				c46.Email = "Customer";
 				Customers.Add(c46);
@@ -634,7 +634,7 @@ namespace Group_18_Final_Project.Seeding
 				c47.City = "Navasota";
 				c47.State = "TX";
 				c47.ZipCode = 77868;
-				c47.PhoneNumber = 3452909754;
+				c47.PhoneNumber = "3452909754";
 				c47.Email = "avelasco@yoho.com";
 				c47.Email = "Customer";
 				Customers.Add(c47);
@@ -647,7 +647,7 @@ namespace Group_18_Final_Project.Seeding
 				c48.City = "Boston";
 				c48.State = "MA";
 				c48.ZipCode = 02114;
-				c48.PhoneNumber = 8567089194;
+				c48.PhoneNumber = "8567089194";
 				c48.Email = "vinovino@grapes.com";
 				c48.Email = "Customer";
 				Customers.Add(c48);
@@ -660,7 +660,7 @@ namespace Group_18_Final_Project.Seeding
 				c49.City = "Marble Falls";
 				c49.State = "TX";
 				c49.ZipCode = 78654;
-				c49.PhoneNumber = 6260784394;
+                c49.PhoneNumber = "6260784394";
 				c49.Email = "westj@pioneer.net";
 				c49.Email = "Customer";
 				Customers.Add(c49);
@@ -673,7 +673,7 @@ namespace Group_18_Final_Project.Seeding
 				c50.City = "Austin";
 				c50.State = "TX";
 				c50.ZipCode = 78730;
-				c50.PhoneNumber = 3733971174;
+				c50.PhoneNumber = "3733971174";
 				c50.Email = "winner@hootmail.com";
 				c50.Email = "Customer";
 				Customers.Add(c50);
@@ -686,7 +686,7 @@ namespace Group_18_Final_Project.Seeding
 				c51.City = "Austin";
 				c51.State = "TX";
 				c51.ZipCode = 78712;
-				c51.PhoneNumber = 8433359800;
+				c51.PhoneNumber = "8433359800";
 				c51.Email = "rwood@voyager.net";
 				c51.Email = "Customer";
 				Customers.Add(c51);
@@ -719,6 +719,7 @@ namespace Group_18_Final_Project.Seeding
 						dbCust.ZipCode = cust.ZipCode;
 						dbCust.PhoneNumber = cust.PhoneNumber;
 						dbCust.UserType = cust.UserType;
+                        dbCust.ActiveUser = true;
 						db.Update(dbCust);
 						db.SaveChanges();
 					}

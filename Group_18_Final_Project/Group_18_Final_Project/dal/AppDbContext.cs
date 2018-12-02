@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Group_18_Final_Project.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -24,6 +25,5 @@ namespace Group_18_Final_Project.DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<Reorder> Reorders { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<User> Users { get; set; }
     }
 }
