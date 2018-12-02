@@ -26,6 +26,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Orders/Details/5
+        //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,10 +34,45 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders
+            //queries db to find user's order
+            //includes relational data for book order
+            var order = await _context.Orders.Include(bo => bo.BookOrders)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
+
+            //NOTE: Thinking that the code to add and remove items
+            //from the cart according to stock/active books should go here
+            //Subject to change
+            foreach (BookOrder bookOrder in order.BookOrders)
+            {
+                //NOTE: need to check if this logic makes sense
+                //If a book is both out of stock and inactive
+                //would removing it and then requesting to remove it again
+                //make an error? Adding extra code so the remove action
+                //doesn't happen twice
+
+                //Bool var check to remove order detail
+                bool boolRemoveBook = false;
+
+                if (bookOrder.Book.CopiesOnHand == 0)
+                {
+                    ViewBag.OutOfStockBook = "Sorry!" + bookOrder.Book.Title + "is out of stock and has been removed from your cart.";
+                    boolRemoveBook = true;
+                }
+                if (bookOrder.Book.ActiveBook == false)
+                {
+                    ViewBag.DiscontinuedBook = "Sorry!" + bookOrder.Book.Title + "has been discontinued and has been removed from your cart.";                    
+                    boolRemoveBook = true;
+                }
+
+                if (boolRemoveBook == true)
+                {
+                    _context.BookOrders.Remove(bookOrder);
+                }
+            }
+
             if (order == null)
             {
+                //TODO: Change code here to show empty cart and message
                 return NotFound();
             }
 
@@ -212,19 +248,7 @@ namespace Group_18_Final_Project.Controllers
                 ViewBag.AddedOrder = "Your order has been added!";
                 ViewBag.CartMessage = "View your cart below";
 
-                return RedirectToAction("Details", new { id = bo.Order.OrderID });
-            }
-
-
-
-            //bo.Price= bo.ProductPrice * bo.Quantity; //TODO: figure it out
-
-            if (ModelState.IsValid)
-            {
-                _context.BookOrders.Add(bo);
-                _context.SaveChanges();
-                return RedirectToAction("Details", new { id = bo.Order.OrderID });
-
+                return RedirectToAction("Details" , new { id = bo.Order.OrderID });
             }
 
             return View(bo);
@@ -238,7 +262,7 @@ namespace Group_18_Final_Project.Controllers
             //Storing order into new order instance including relational data
             Order order = _context.Orders.Include(r => r.BookOrders).ThenInclude(r => r.Book).FirstOrDefault(r => r.OrderID == id);
 
-            if (order == null || order.BookOrders.Count == 0)//registration is not found
+            if (order == null || order.BookOrders.Count == 0)//order is not found
             {
                 return RedirectToAction("Details", new { id = id });
             }
