@@ -76,6 +76,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             var bookOrder = await _context.BookOrders.FindAsync(id);
+            ViewBag.BookTitle = bookOrder.Book.Title;
             if (bookOrder == null)
             {
                 return NotFound();
@@ -88,7 +89,7 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookOrderID,Price,OrderQuantity")] BookOrder bookOrder)
+        public async Task<IActionResult> Edit(int id, int OrderQuantity, BookOrder bookOrder)
         {
             if (id != bookOrder.BookOrderID)
             {
@@ -99,8 +100,23 @@ namespace Group_18_Final_Project.Controllers
             {
                 try
                 {
-                    _context.Update(bookOrder);
+                    //Find the related order detail in the database
+                    BookOrder dbbookOrder = _context.BookOrders
+                                                        .Include(bo => bo.Book)
+                                                        .Include(bo => bo.Order)
+                                                        .FirstOrDefault(bo => bo.BookOrderID ==
+                                                                        bookOrder.BookOrderID);
+
+                    //Updating field
+                    dbbookOrder.OrderQuantity = OrderQuantity;
+                    dbbookOrder.Price = dbbookOrder.Book.BookPrice; //Most-updated book price
+                    dbbookOrder.ExtendedPrice = dbbookOrder.Price * dbbookOrder.OrderQuantity;
+
+                    //Making update in db
+                    _context.BookOrders.Update(dbbookOrder);
                     await _context.SaveChangesAsync();
+
+                    return RedirectToAction("Details", "Orders", new { id = dbbookOrder.Order.OrderID });
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -113,7 +129,6 @@ namespace Group_18_Final_Project.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(bookOrder);
         }

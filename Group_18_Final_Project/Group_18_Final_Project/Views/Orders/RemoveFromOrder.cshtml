@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Group_18_Final_Project.Models.BookOrder>
+@{
+    ViewBag.Title = "RemoveFromOrder";
+}
+<h2>Edit Order</h2>
+<table class="table">
+    <tr>
+        <th>
+            Book Title
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "OrderDetails", new { id = item.BookOrderID }, null) |
+                @Html.ActionLink("Delete", "Delete", "OrderDetails", new { id = item.BookOrderID }, null)
+            </td>
+        </tr>
+    }
+</table>

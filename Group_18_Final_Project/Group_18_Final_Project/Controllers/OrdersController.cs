@@ -72,7 +72,6 @@ namespace Group_18_Final_Project.Controllers
 
             if (order == null)
             {
-                //TODO: Change code here to show empty cart and message
                 return NotFound();
             }
 
@@ -239,6 +238,8 @@ namespace Group_18_Final_Project.Controllers
             //Stores most recently updated book price into order detail price
             //TODO: Check if we need to do this lol
             bo.Price = bo.Book.BookPrice;
+
+            bo.ExtendedPrice = bo.Price;
 
             if (ModelState.IsValid)
             {

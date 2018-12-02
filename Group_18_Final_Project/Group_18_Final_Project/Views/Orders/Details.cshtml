@@ -4,6 +4,8 @@
     ViewData["Title"] = "Details";
 }
 
+<!--The following view page is the shopping cart-->
+
 <h2>@ViewBag.AddedOrder</h2>
 <h2>Shopping Cart</h2>
 <h3>@ViewBag.CartMessage</h3>
@@ -45,6 +47,26 @@
     </table>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.OrderID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <table class="table table-sm table-bordered" style="width:30%">
+        <tr>
+            <th colspan="2" style="text-align:center">Cart Summary</th>
+        </tr>
+        <tr>
+            <td>Cart Subtotal</td>
+            <td>@Html.DisplayFor(bo => bo.OrderSubtotal)</td>
+        </tr>
+        <tr>
+            <td>Shipping</td>
+            <td>@Html.DisplayFor(bo => bo.TotalShippingPrice)</td>
+        </tr>
+        <tr>
+            <td>Order Total</td>
+            <td>@Html.DisplayFor(bo => bo.OrderTotal)</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a asp-action="CheckOut" asp-route-id="@Model.OrderID" class="btn btn-success">Check Out</a>
+    <a asp-action="RemoveFromOrder" asp-route-id="@Model.OrderID">Edit Your Cart</a> |
+    <a asp-action="Index">Back to List</a> |
 </div>
