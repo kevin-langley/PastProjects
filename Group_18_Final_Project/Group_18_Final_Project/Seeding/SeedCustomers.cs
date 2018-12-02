@@ -469,7 +469,6 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c34);
 
 				User c35 = new User();
-                c35.UserID = 9044;
 				c35.Password = "jrod2017";
 				c35.LastName = "Saunders";
 				c35.FirstName = "Sarah";
@@ -509,7 +508,6 @@ namespace Group_18_Final_Project.Seeding
 				Customers.Add(c37);
 
 				User c38 = new User();
-                c38.UserID = 9047;
 				c38.Password = "rogerthat";
 				c38.LastName = "Smith";
 				c38.FirstName = "John";

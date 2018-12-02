@@ -10,7 +10,6 @@ namespace Group_18_Final_Project.Models
     public class User : IdentityUser
     {
         //User properties
-        public Int32 UserID { get; set; }
         public String Password { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }

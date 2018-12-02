@@ -26,7 +26,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -34,7 +34,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -92,9 +92,9 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserID,Email,Password,FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,ActiveUser,UserType")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("UserID,Email,Password,FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,ActiveUser,UserType")] User user)
         {
-            if (id != user.UserID)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace Group_18_Final_Project.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserID))
+                    if (!UserExists(user.Id))
                     {
                         return NotFound();
                     }
@@ -123,7 +123,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -131,7 +131,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
             {
                 return NotFound();
@@ -151,9 +151,9 @@ namespace Group_18_Final_Project.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string id)
         {
-            return _context.Users.Any(e => e.UserID == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

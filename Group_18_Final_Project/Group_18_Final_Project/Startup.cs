@@ -19,7 +19,7 @@ namespace Group_18_Final_Project
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "Server=tcp:fa18group18finalproject.database.windows.net,1433;Initial Catalog=fa18Group18FinalProject;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = "Server=tcp:fa18group18project.database.windows.net,1433;Initial Catalog=fa18group18project;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
             //add Identity to project

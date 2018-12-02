@@ -20,7 +20,6 @@ namespace Group_18_Final_Project.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public Decimal ShippingFirstPrice { get; set; }
 
-
         public Decimal ShippingAdditionalPrice { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C}")]
