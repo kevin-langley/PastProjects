@@ -1,4 +1,5 @@
 ﻿@model Group_18_Final_Project.Models.Book
+@using Group_18_Final_Project.Models
 
 @{
     ViewData["Title"] = "Details";
@@ -56,6 +57,10 @@
 </div>
 <div>
     <form asp-action="AddToOrder" asp-controller="Orders">
+        <div class="form-group">
+            <label class="form-control">Quantity:</label>
+            <input name="intOrderQuantity" class="form-control" />
+        </div>
         <input type="hidden" asp-for="@Model.BookID" />
         <button type="submit" class="btn btn-danger">Add To Cart</button>
     </form>

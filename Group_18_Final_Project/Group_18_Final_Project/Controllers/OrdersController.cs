@@ -58,48 +58,65 @@ namespace Group_18_Final_Project.Controllers
         //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
         {
-            //queries db to find user's order
-            //includes relational data for book order
-            var order = await _context.Orders.Include(bo => bo.BookOrders)
-                .FirstOrDefaultAsync(m => m.OrderID == id);
-
-            //NOTE: Thinking that the code to add and remove items
-            //from the cart according to stock/active books should go here
-            //Subject to change
-            foreach (BookOrder bookOrder in order.BookOrders)
+            if (ModelState.IsValid) //Happy path!
             {
-                //NOTE: need to check if this logic makes sense
-                //If a book is both out of stock and inactive
-                //would removing it and then requesting to remove it again
-                //make an error? Adding extra code so the remove action
-                //doesn't happen twice
-
-                //Bool var check to remove order detail
-                bool boolRemoveBook = false;
-
-                if (bookOrder.Book.CopiesOnHand == 0)
+                try
                 {
-                    ViewBag.OutOfStockBook = "Sorry!" + bookOrder.Book.Title + "is out of stock and has been removed from your cart.";
-                    boolRemoveBook = true;
-                }
-                if (bookOrder.Book.ActiveBook == false)
-                {
-                    ViewBag.DiscontinuedBook = "Sorry!" + bookOrder.Book.Title + "has been discontinued and has been removed from your cart.";                    
-                    boolRemoveBook = true;
-                }
+                    //queries db to find user's order
+                    //includes relational data for book order
+                    var order = await _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book)
+                        .FirstOrDefaultAsync(m => m.OrderID == id);
 
-                if (boolRemoveBook == true)
-                {
-                    _context.BookOrders.Remove(bookOrder);
+                    List<BookOrder> BooksToRemove = new List<BookOrder>();
+
+                    //NOTE: Thinking that the code to remove items
+                    //from the cart according to stock/active books should go here
+                    //Subject to change
+                    foreach (BookOrder bookOrder in order.BookOrders)
+                    {
+                        //NOTE: need to check if this logic makes sense
+                        //If a book is both out of stock and inactive
+                        //would removing it and then requesting to remove it again
+                        //make an error? Adding extra code so the remove action
+                        //doesn't happen twice
+
+                        //Bool var check to remove order detail
+                        bool boolRemoveBook = false;
+
+                        if (bookOrder.Book.CopiesOnHand == 0)
+                        {
+                            ViewBag.OutOfStockBook = "Sorry! " + bookOrder.Book.Title + "is out of stock and has been removed from your cart.";
+                            boolRemoveBook = true;
+                        }
+                        if (bookOrder.Book.ActiveBook == false)
+                        {
+                            ViewBag.DiscontinuedBook = "Sorry! " + bookOrder.Book.Title + "has been discontinued and has been removed from your cart.";
+                            boolRemoveBook = true;
+                        }
+
+                        if (boolRemoveBook == true)
+                        {
+                            _context.BookOrders.Remove(bookOrder);
+                        }
+                    }
+
+                    //Remove books found in list above
+                    foreach (BookOrder bo in BooksToRemove)
+                    {
+                        _context.BookOrders.Remove(bo);
+                        _context.SaveChanges();
+                    }
+                    return View(order);
+
                 }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                //Sad Path :( model state is not valid
             }
 
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
+            return View("Index", "Home");
         }
 
         // GET: Orders/Create
@@ -213,7 +230,7 @@ namespace Group_18_Final_Project.Controllers
         //Method to process Add To Order results
         //Has form answers as paramater
         [HttpPost]
-        public async Task<IActionResult> AddToOrder(BookOrder bo, int? bookId)
+        public async Task<IActionResult> AddToOrder(BookOrder bo, int? bookId, int intOrderQuantity)
         {
             if (bookId == null)
             {
@@ -225,7 +242,7 @@ namespace Group_18_Final_Project.Controllers
 
             //Stores book in book order detail
             bo.Book = book;
-            bo.OrderQuantity = 1;
+            bo.OrderQuantity = intOrderQuantity;
 
             //Finds if user already has an order pending
             //Assigning user to user id
@@ -248,7 +265,7 @@ namespace Group_18_Final_Project.Controllers
                     {
                         if (bookOrder.Book == bo.Book)
                         {
-                            bo.OrderQuantity = bookOrder.OrderQuantity + 1;
+                            bo.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
                         }
                     }
 
@@ -270,8 +287,12 @@ namespace Group_18_Final_Project.Controllers
                 //if user does not have a pending order
                 Order neworder = new Order();
 
+                neworder.User = user;
+
                 //Stores newly created order into order detail
                 bo.Order = neworder;
+
+                bo.Order.IsPending = true;
 
                 //Stores most recently updated book price into order detail price
                 //TODO: Check if we need to do this lol
@@ -281,7 +302,8 @@ namespace Group_18_Final_Project.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    _context.Add(bo);
+                    _context.Add(neworder);
+                    _context.BookOrders.Add(bo);
                     await _context.SaveChangesAsync();
 
                     ViewBag.AddedOrder = "Your order has been added!";
@@ -295,8 +317,15 @@ namespace Group_18_Final_Project.Controllers
             //if user does not have a pending order
             Order firstorder = new Order();
 
-            //Stores newly created order into order detail
+            //Assigns user to order
+            firstorder.User = user;
+
+            //Stores order to order detail order navigational property
             bo.Order = firstorder;
+
+            //Sets order to is pending so cart can persist
+            bo.Order.IsPending = true;
+
 
             //Stores most recently updated book price into order detail price
             //TODO: Check if we need to do this lol
@@ -304,18 +333,13 @@ namespace Group_18_Final_Project.Controllers
 
             bo.ExtendedPrice = bo.Price;
 
-            if (ModelState.IsValid)
-            {
-                _context.Add(bo);
-                await _context.SaveChangesAsync();
+            _context.Add(bo);
+            await _context.SaveChangesAsync();
 
-                ViewBag.AddedOrder = "Your order has been added!";
-                ViewBag.CartMessage = "View your cart below";
+            ViewBag.AddedOrder = "Your order has been added!";
+            ViewBag.CartMessage = "View your cart below";
 
-                return RedirectToAction("Details" , new { id = bo.Order.OrderID });
-            }
-
-            return RedirectToAction("Details", "Books", new { id = bookId });
+            return RedirectToAction("Details", new { id = bo.Order.OrderID });
 
         }
 
@@ -344,7 +368,8 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _context.Orders.Include(or => or.User).ThenInclude(or => or.CreditCards).FirstOrDefaultAsync(m => m.OrderID == id);
+
             if (order == null)
             {
                 return NotFound();
