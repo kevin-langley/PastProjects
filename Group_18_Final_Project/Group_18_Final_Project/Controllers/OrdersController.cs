@@ -25,14 +25,37 @@ namespace Group_18_Final_Project.Controllers
             return View(await _context.Orders.ToListAsync());
         }
 
+        //GET: Orders/Details
+        //For the navbar
+        public IActionResult CartDetails()
+        {
+            string id = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(u => u.UserName == id);
+            if (user.Orders == null)
+            {
+                ViewBag.EmptyMessage = "Looks like your cart is empty! Search for books to add.";
+                return View("EmptyCart");
+            }
+            else
+            {
+                if (user.Orders.All(o => o.IsPending == true))
+                {
+                    //Finds order in db matching user
+                    Order order = _context.Orders.Find(user.Orders);
+
+                    return RedirectToAction("Details", new { id = order.OrderID });
+                }
+
+            }
+            ViewBag.EmptyMessage = "Looks like your cart is empty! Search for books to add.";
+            return View("EmptyCart");
+
+        }
+
         // GET: Orders/Details/5
         //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
             //queries db to find user's order
             //includes relational data for book order
