@@ -33,8 +33,8 @@ namespace Group_18_Final_Project.Seeding
 				c1.ZipCode = 78705;
 				c1.PhoneNumber = 5725458641.ToString();
 				c1.Email = "cbaker@example.com";
-				c1.Email = "Customer";
-				Customers.Add(c1);
+                c1.UserName = c1.Email;
+                Customers.Add(c1);
 
 
                 User c2 = new User();
@@ -47,8 +47,8 @@ namespace Group_18_Final_Project.Seeding
 				c2.ZipCode = 78712;
 				c2.PhoneNumber = 9867048435.ToString();
 				c2.Email = "banker@longhorn.net";
-				c2.Email = "Customer";
-				Customers.Add(c2);
+                c2.UserName = c2.Email;
+                Customers.Add(c2);
 
 				User c3 = new User();
 
@@ -61,8 +61,8 @@ namespace Group_18_Final_Project.Seeding
 				c3.ZipCode = 78786;
 				c3.PhoneNumber = 6836109514.ToString();
 				c3.Email = "franco@example.com";
-				c3.Email = "Customer";
-				Customers.Add(c3);
+                c3.UserName = c3.Email;
+                Customers.Add(c3);
 
 				User c4 = new User();
 
@@ -75,8 +75,8 @@ namespace Group_18_Final_Project.Seeding
 				c4.ZipCode = 78852;
 				c4.PhoneNumber = 7070911071.ToString();
 				c4.Email = "wchang@example.com";
-				c4.Email = "Customer";
-				Customers.Add(c4);
+                c4.UserName = c4.Email;
+                Customers.Add(c4);
 
 				User c5 = new User();
                 c5.Password = "Anchorage";
@@ -88,8 +88,8 @@ namespace Group_18_Final_Project.Seeding
 				c5.ZipCode = 78729;
 				c5.PhoneNumber = 1488907687.ToString();
 				c5.Email = "limchou@gogle.com";
-				c5.Email = "Customer";
-				Customers.Add(c5);
+                c5.UserName = c5.Email;
+                Customers.Add(c5);
 
 				User c6 = new User();
 				c6.Password = "aggies";
@@ -101,8 +101,8 @@ namespace Group_18_Final_Project.Seeding
 				c6.ZipCode = 78628;
 				c6.PhoneNumber = 6899701824.ToString();
 				c6.Email = "shdixon@aoll.com";
-				c6.Email = "Customer";
-				Customers.Add(c6);
+                c6.UserName = c6.Email;
+                Customers.Add(c6);
 
 				User c7 = new User();
 				c7.Password = "hampton1";
@@ -114,8 +114,8 @@ namespace Group_18_Final_Project.Seeding
 				c7.ZipCode = 78705;
 				c7.PhoneNumber = 9986825917.ToString();
 				c7.Email = "j.b.evans@aheca.org";
-				c7.Email = "Customer";
-				Customers.Add(c7);
+                c7.UserName = c7.Email;
+                Customers.Add(c7);
 
 				User c8 = new User();
                 c8.Password = "longhorns";
@@ -127,8 +127,8 @@ namespace Group_18_Final_Project.Seeding
 				c8.ZipCode = 78704;
 				c8.PhoneNumber = 3464121966.ToString();
 				c8.Email = "feeley@penguin.org";
-				c8.Email = "Customer";
-				Customers.Add(c8);
+                c8.UserName = c8.Email;
+                Customers.Add(c8);
 
 				User c9 = new User();
                 c9.Password = "mustangs";
@@ -140,8 +140,8 @@ namespace Group_18_Final_Project.Seeding
 				c9.ZipCode = 77840;
 				c9.PhoneNumber = 6581357270.ToString();
 				c9.Email = "tfreeley@minnetonka.ci.us";
-				c9.Email = "Customer";
-				Customers.Add(c9);
+                c9.UserName = c9.Email;
+                Customers.Add(c9);
 
 				User c10 = new User();
                 c10.Password = "onetime";
@@ -153,8 +153,8 @@ namespace Group_18_Final_Project.Seeding
 				c10.ZipCode = 78756;
 				c10.PhoneNumber = 3767347949.ToString();
 				c10.Email = "mgarcia@gogle.com";
-				c10.Email = "Customer";
-				Customers.Add(c10);
+                c10.UserName = c10.Email;
+                Customers.Add(c10);
 
 				User c11 = new User();
                 c11.Password = "pepperoni";
@@ -166,8 +166,8 @@ namespace Group_18_Final_Project.Seeding
 				c11.ZipCode = 78746;
 				c11.PhoneNumber = 2198604221.ToString();
 				c11.Email = "chaley@thug.com";
-				c11.Email = "Customer";
-				Customers.Add(c11);
+                c11.UserName = c11.Email;
+                Customers.Add(c11);
 
 				User c12 = new User();
                 c12.Password = "raiders";
@@ -179,8 +179,8 @@ namespace Group_18_Final_Project.Seeding
 				c12.ZipCode = 78756;
 				c12.PhoneNumber = 1222185888.ToString();
 				c12.Email = "jeffh@sonic.com";
-				c12.Email = "Customer";
-				Customers.Add(c12);
+                c12.UserName = c12.Email;
+                Customers.Add(c12);
 
 				User c13 = new User();
                 c13.Password = "jhearn22";
@@ -192,8 +192,8 @@ namespace Group_18_Final_Project.Seeding
 				c13.ZipCode = 77575;
 				c13.PhoneNumber = 5123071976.ToString();
 				c13.Email = "wjhearniii@umich.org";
-				c13.Email = "Customer";
-				Customers.Add(c13);
+                c13.UserName = c13.Email;
+                Customers.Add(c13);
 
 				User c14 = new User();
                 c14.Password = "hickhickup";
@@ -205,8 +205,8 @@ namespace Group_18_Final_Project.Seeding
 				c14.ZipCode = 78203;
 				c14.PhoneNumber = 1211949601.ToString();
 				c14.Email = "ahick@yaho.com";
-				c14.Email = "Customer";
-				Customers.Add(c14);
+                c14.UserName = c14.Email;
+                Customers.Add(c14);
 
 				User c15 = new User();
                 c15.Password = "ingram2015";
@@ -218,8 +218,8 @@ namespace Group_18_Final_Project.Seeding
 				c15.ZipCode = 78132;
 				c15.PhoneNumber = 1372121569.ToString();
 				c15.Email = "ingram@jack.com";
-				c15.Email = "Customer";
-				Customers.Add(c15);
+                c15.UserName = c15.Email;
+                Customers.Add(c15);
 
 				User c16 = new User();
                 c16.Password = "toddy25";
@@ -231,8 +231,8 @@ namespace Group_18_Final_Project.Seeding
 				c16.ZipCode = 10101;
 				c16.PhoneNumber = 8543163836.ToString();
 				c16.Email = "toddj@yourmom.com";
-				c16.Email = "Customer";
-				Customers.Add(c16);
+                c16.UserName = c16.Email;
+                Customers.Add(c16);
 
 				User c17 = new User();
                 c17.Password = "something";
@@ -244,8 +244,8 @@ namespace Group_18_Final_Project.Seeding
 				c17.ZipCode = 78644;
 				c17.PhoneNumber = 3214163359.ToString();
 				c17.Email = "thequeen@aska.net";
-				c17.Email = "Customer";
-				Customers.Add(c17);
+                c17.UserName = c17.Email;
+                Customers.Add(c17);
 
 				User c18 = new User();
                 c18.Password = "Password1";
@@ -257,8 +257,8 @@ namespace Group_18_Final_Project.Seeding
 				c18.ZipCode = 77325;
 				c18.PhoneNumber = 2505265350.ToString();
 				c18.Email = "linebacker@gogle.com";
-				c18.Email = "Customer";
-				Customers.Add(c18);
+                c18.UserName = c18.Email;
+                Customers.Add(c18);
 
 				User c19 = new User();
                 c19.Password = "aclfest2017";
@@ -270,8 +270,8 @@ namespace Group_18_Final_Project.Seeding
 				c19.ZipCode = 90210;
 				c19.PhoneNumber = 4070619503.ToString();
 				c19.Email = "elowe@netscare.net";
-				c19.Email = "Customer";
-				Customers.Add(c19);
+                c19.UserName = c19.Email;
+                Customers.Add(c19);
 
 				User c20 = new User();
                 c20.Password = "nothinggood";
@@ -283,8 +283,8 @@ namespace Group_18_Final_Project.Seeding
 				c20.ZipCode = 77868;
 				c20.PhoneNumber = 7358436110.ToString();
 				c20.Email = "cluce@gogle.com";
-				c20.Email = "Customer";
-				Customers.Add(c20);
+                c20.UserName = c20.Email;
+                Customers.Add(c20);
 
 				User c21 = new User();
                 c21.Password = "whatever";
@@ -296,8 +296,8 @@ namespace Group_18_Final_Project.Seeding
 				c21.ZipCode = 78712;
 				c21.PhoneNumber = 7240178229.ToString();
 				c21.Email = "mackcloud@george.com";
-				c21.Email = "Customer";
-				Customers.Add(c21);
+                c21.UserName = c21.Email;
+                Customers.Add(c21);
 
 				User c22 = new User();
                 c22.Password = "snowsnow";
@@ -309,8 +309,8 @@ namespace Group_18_Final_Project.Seeding
 				c22.ZipCode = 78712;
 				c22.PhoneNumber = 2495200223.ToString();
 				c22.Email = "cmartin@beets.com";
-				c22.Email = "Customer";
-				Customers.Add(c22);
+                c22.UserName = c22.Email;
+                Customers.Add(c22);
 
 				User c23 = new User();
                 c23.Password = "whocares";
@@ -322,8 +322,8 @@ namespace Group_18_Final_Project.Seeding
 				c23.ZipCode = 12345;
 				c23.PhoneNumber = 4086179161.ToString();
 				c23.Email = "clarence@yoho.com";
-				c23.Email = "Customer";
-				Customers.Add(c23);
+                c23.UserName = c23.Email;
+                Customers.Add(c23);
 
 				User c24 = new User();
                 c24.Password = "xcellent";
@@ -335,8 +335,8 @@ namespace Group_18_Final_Project.Seeding
 				c24.ZipCode = 78717;
 				c24.PhoneNumber = 9371927523.ToString();
 				c24.Email = "gregmartinez@drdre.com";
-				c24.Email = "Customer";
-				Customers.Add(c24);
+                c24.UserName = c24.Email;
+                Customers.Add(c24);
 
 				User c25 = new User();
                 c25.Password = "mydogspot";
@@ -348,8 +348,8 @@ namespace Group_18_Final_Project.Seeding
 				c25.ZipCode = 78727;
 				c25.PhoneNumber = 5954063857.ToString();
 				c25.Email = "cmiller@bob.com";
-				c25.Email = "Customer";
-				Customers.Add(c25);
+                c25.UserName = c25.Email;
+                Customers.Add(c25);
 
 				User c26 = new User();
                 c26.Password = "spotmydog";
@@ -361,8 +361,8 @@ namespace Group_18_Final_Project.Seeding
 				c26.ZipCode = 77720;
 				c26.PhoneNumber = 8929209512.ToString();
 				c26.Email = "knelson@aoll.com";
-				c26.Email = "Customer";
-				Customers.Add(c26);
+                c26.UserName = c26.Email;
+                Customers.Add(c26);
 
 				User c27 = new User();
                 c27.Password = "joejoejoe";
@@ -374,8 +374,8 @@ namespace Group_18_Final_Project.Seeding
 				c27.ZipCode = 78667;
 				c27.PhoneNumber = 9226301774.ToString();
 				c27.Email = "joewin@xfactor.com";
-				c27.Email = "Customer";
-				Customers.Add(c27);
+                c27.UserName = c27.Email;
+                Customers.Add(c27);
 
 				User c28 = new User();
                 c28.Password = "billyboy";
@@ -387,8 +387,8 @@ namespace Group_18_Final_Project.Seeding
 				c28.ZipCode = 78004;
 				c28.PhoneNumber = 2537646912.ToString();
 				c28.Email = "orielly@foxnews.cnn";
-				c28.Email = "Customer";
-				Customers.Add(c28);
+                c28.UserName = c28.Email;
+                Customers.Add(c28);
 
 				User c29 = new User();
                 c29.Password = "radgirl";
@@ -400,8 +400,8 @@ namespace Group_18_Final_Project.Seeding
 				c29.ZipCode = 78789;
 				c29.PhoneNumber = 2182889379.ToString();
 				c29.Email = "ankaisrad@gogle.com";
-				c29.Email = "Customer";
-				Customers.Add(c29);
+                c29.UserName = c29.Email;
+                Customers.Add(c29);
 
 				User c30 = new User();
                 c30.Password = "meganr34";
@@ -413,8 +413,8 @@ namespace Group_18_Final_Project.Seeding
 				c30.ZipCode = 32830;
 				c30.PhoneNumber = 9532396075.ToString();
 				c30.Email = "megrhodes@freserve.co.uk";
-				c30.Email = "Customer";
-				Customers.Add(c30);
+                c30.UserName = c30.Email;
+                Customers.Add(c30);
 
 				User c31 = new User();
                 c31.Password = "ricearoni";
@@ -426,8 +426,8 @@ namespace Group_18_Final_Project.Seeding
 				c31.ZipCode = 78597;
 				c31.PhoneNumber = 7303815953.ToString();
 				c31.Email = "erynrice@aoll.com";
-				c31.Email = "Customer";
-				Customers.Add(c31);
+                c31.UserName = c31.Email;
+                Customers.Add(c31);
 
 				User c32 = new User();
                 c32.Password = "alaskaboy";
@@ -439,8 +439,9 @@ namespace Group_18_Final_Project.Seeding
 				c32.ZipCode = 78744;
 				c32.PhoneNumber = 3677322422.ToString();
 				c32.Email = "jorge@noclue.com";
-				c32.Email = "Customer";
-				Customers.Add(c32);
+                c32.UserName = c32.Email;
+                Customers.Add(c32);
+
 
 				User c33 = new User();
                 c33.Password = "bunnyhop";
@@ -452,8 +453,8 @@ namespace Group_18_Final_Project.Seeding
 				c33.ZipCode = 78133;
 				c33.PhoneNumber = 3911705385.ToString();
 				c33.Email = "mrrogers@lovelyday.com";
-				c33.Email = "Customer";
-				Customers.Add(c33);
+                c33.UserName = c33.Email;
+                Customers.Add(c33);
 
 				User c34 = new User();
                 c34.Password = "dustydusty";
@@ -465,8 +466,8 @@ namespace Group_18_Final_Project.Seeding
 				c34.ZipCode = 78779;
 				c34.PhoneNumber = 7351610920.ToString();
 				c34.Email = "stjean@athome.com";
-				c34.Email = "Customer";
-				Customers.Add(c34);
+                c34.UserName = c34.Email;
+                Customers.Add(c34);
 
 				User c35 = new User();
 				c35.Password = "jrod2017";
@@ -478,8 +479,8 @@ namespace Group_18_Final_Project.Seeding
 				c35.ZipCode = 78720;
 				c35.PhoneNumber = 5269661692.ToString();
 				c35.Email = "saunders@pen.com";
-				c35.Email = "Customer";
-				Customers.Add(c35);
+                c35.UserName = c35.Email;
+                Customers.Add(c35);
 
 				User c36 = new User();
                 c36.Password = "martin1234";
@@ -491,8 +492,8 @@ namespace Group_18_Final_Project.Seeding
 				c36.ZipCode = 78705;
 				c36.PhoneNumber = 1875727246.ToString();
 				c36.Email = "willsheff@email.com";
-				c36.Email = "Customer";
-				Customers.Add(c36);
+                c36.UserName = c36.Email;
+                Customers.Add(c36);
 
 				User c37 = new User();
                 c37.Password = "penguin12";
@@ -504,8 +505,8 @@ namespace Group_18_Final_Project.Seeding
 				c37.ZipCode = 78680;
 				c37.PhoneNumber = 1394323615.ToString();
 				c37.Email = "sheffiled@gogle.com";
-				c37.Email = "Customer";
-				Customers.Add(c37);
+                c37.UserName = c37.Email;
+                Customers.Add(c37);
 
 				User c38 = new User();
 				c38.Password = "rogerthat";
@@ -517,8 +518,8 @@ namespace Group_18_Final_Project.Seeding
 				c38.ZipCode = 78760;
 				c38.PhoneNumber = 6645937874.ToString();
 				c38.Email = "johnsmith187@aoll.com";
-				c38.Email = "Customer";
-				Customers.Add(c38);
+                c38.UserName = c38.Email;
+                Customers.Add(c38);
 
 				User c39 = new User();
                 c39.Password = "smitty444";
@@ -530,8 +531,8 @@ namespace Group_18_Final_Project.Seeding
 				c39.ZipCode = 77987;
 				c39.PhoneNumber = 6470254680.ToString();
 				c39.Email = "dustroud@mail.com";
-				c39.Email = "Customer";
-				Customers.Add(c39);
+                c39.UserName = c39.Email;
+                Customers.Add(c39);
 
 				User c40 = new User();
                 c40.Password = "stewball";
@@ -543,8 +544,8 @@ namespace Group_18_Final_Project.Seeding
 				c40.ZipCode = 78412;
 				c40.PhoneNumber = "7701621022";
 				c40.Email = "estuart@anchor.net";
-				c40.Email = "Customer";
-				Customers.Add(c40);
+                c40.UserName = c40.Email;
+                Customers.Add(c40);
 
 				User c41 = new User();
                 c41.Password = "slowwind";
@@ -556,8 +557,8 @@ namespace Group_18_Final_Project.Seeding
 				c41.ZipCode = 78660;
 				c41.PhoneNumber = "2181960061";
 				c41.Email = "peterstump@noclue.com";
-				c41.Email = "Customer";
-				Customers.Add(c41);
+                c41.UserName = c41.Email;
+                Customers.Add(c41);
 
 				User c42 = new User();
                 c42.Password = "tanner5454";
@@ -569,8 +570,8 @@ namespace Group_18_Final_Project.Seeding
 				c42.ZipCode = 78702;
 				c42.PhoneNumber = "9908469499";
 				c42.Email = "jtanner@mustang.net";
-				c42.Email = "Customer";
-				Customers.Add(c42);
+                c42.UserName = c42.Email;
+                Customers.Add(c42);
 
 				User c43 = new User();
                 c43.Password = "allyrally";
@@ -582,8 +583,8 @@ namespace Group_18_Final_Project.Seeding
 				c43.ZipCode = 78713;
 				c43.PhoneNumber = "7011918647";
 				c43.Email = "taylordjay@aoll.com";
-				c43.Email = "Customer";
-				Customers.Add(c43);
+                c43.UserName = c43.Email;
+                Customers.Add(c43);
 
 				User c44 = new User();
                 c44.Password = "taylorbaylor";
@@ -595,8 +596,8 @@ namespace Group_18_Final_Project.Seeding
 				c44.ZipCode = 78712;
 				c44.PhoneNumber = "8937910053";
 				c44.Email = "rtaylor@gogle.com";
-				c44.Email = "Customer";
-				Customers.Add(c44);
+                c44.UserName = c44.Email;
+                Customers.Add(c44);
 
 				User c45 = new User();
                 c45.Password = "teeoff22";
@@ -608,8 +609,8 @@ namespace Group_18_Final_Project.Seeding
 				c45.ZipCode = 78786;
 				c45.PhoneNumber = "6394568913";
 				c45.Email = "teefrank@noclue.com";
-				c45.Email = "Customer";
-				Customers.Add(c45);
+                c45.UserName = c45.Email;
+                Customers.Add(c45);
 
 				User c46 = new User();
                 c46.Password = "tucksack1";
@@ -621,7 +622,7 @@ namespace Group_18_Final_Project.Seeding
 				c46.ZipCode = 78279;
                 c46.PhoneNumber = "2676838676";
 				c46.Email = "ctucker@alphabet.co.uk";
-				c46.Email = "Customer";
+                c46.UserName = c46.Email;
 				Customers.Add(c46);
 
 				User c47 = new User();
@@ -634,8 +635,8 @@ namespace Group_18_Final_Project.Seeding
 				c47.ZipCode = 77868;
 				c47.PhoneNumber = "3452909754";
 				c47.Email = "avelasco@yoho.com";
-				c47.Email = "Customer";
-				Customers.Add(c47);
+                c47.UserName = c47.Email;
+                Customers.Add(c47);
 
 				User c48 = new User();
                 c48.Password = "vinovino";
@@ -647,8 +648,8 @@ namespace Group_18_Final_Project.Seeding
 				c48.ZipCode = 02114;
 				c48.PhoneNumber = "8567089194";
 				c48.Email = "vinovino@grapes.com";
-				c48.Email = "Customer";
-				Customers.Add(c48);
+                c48.UserName = c48.Email;
+                Customers.Add(c48);
 
 				User c49 = new User();
                 c49.Password = "gowest";
@@ -660,8 +661,8 @@ namespace Group_18_Final_Project.Seeding
 				c49.ZipCode = 78654;
                 c49.PhoneNumber = "6260784394";
 				c49.Email = "westj@pioneer.net";
-				c49.Email = "Customer";
-				Customers.Add(c49);
+                c49.UserName = c49.Email;
+                Customers.Add(c49);
 
 				User c50 = new User();
                 c50.Password = "louielouie";
@@ -673,8 +674,9 @@ namespace Group_18_Final_Project.Seeding
 				c50.ZipCode = 78730;
 				c50.PhoneNumber = "3733971174";
 				c50.Email = "winner@hootmail.com";
-				c50.Email = "Customer";
-				Customers.Add(c50);
+                c50.UserName = c50.Email;
+
+                Customers.Add(c50);
 
 				User c51 = new User();
                 c51.Password = "woodyman1";
@@ -686,7 +688,7 @@ namespace Group_18_Final_Project.Seeding
 				c51.ZipCode = 78712;
 				c51.PhoneNumber = "8433359800";
 				c51.Email = "rwood@voyager.net";
-				c51.Email = "Customer";
+                c51.UserName = c51.Email;
 				Customers.Add(c51);
 
 				//loop through customers
@@ -694,6 +696,8 @@ namespace Group_18_Final_Project.Seeding
 				{
 					//set name of customer to help debug
 					custName = cust.Email;
+                    
+                    cust.UserName = cust.Email;
 
 					//see if customer exists in database
 					User dbCust = db.Users.FirstOrDefault(b => b.Email == cust.Email);
@@ -718,6 +722,7 @@ namespace Group_18_Final_Project.Seeding
 						dbCust.PhoneNumber = cust.PhoneNumber;
 						dbCust.UserType = cust.UserType;
                         dbCust.ActiveUser = true;
+                        dbCust.UserName = cust.Email;
 						db.Update(dbCust);
 						db.SaveChanges();
 					}

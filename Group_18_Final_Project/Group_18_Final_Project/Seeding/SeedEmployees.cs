@@ -34,6 +34,7 @@ namespace Group_18_Final_Project.Seeding
 				e1.ZipCode = 78613;
 				e1.PhoneNumber = "3395325649";
 				e1.Email = "c.baker@bevosbooks.com";
+                e1.UserName = e1.Email;
 				Employees.Add(e1);
 
 				User e2 = new User();
@@ -47,7 +48,8 @@ namespace Group_18_Final_Project.Seeding
 				e2.ZipCode = 78640;
 				e2.PhoneNumber = "9636389416";
 				e2.Email = "s.barnes@bevosbooks.com";
-				Employees.Add(e2);
+                e2.UserName = e2.Email;
+                Employees.Add(e2);
 
 				User e3 = new User();
 				e3.Password = "4445554343";
@@ -60,7 +62,8 @@ namespace Group_18_Final_Project.Seeding
 				e3.ZipCode = 78712;
 				e3.PhoneNumber = "4547135738";
 				e3.Email = "h.garcia@bevosbooks.com";
-				Employees.Add(e3);
+                e3.UserName = e3.Email;
+                Employees.Add(e3);
 
 				User e4 = new User();
 				e4.Password = "797348821";
@@ -73,7 +76,8 @@ namespace Group_18_Final_Project.Seeding
 				e4.ZipCode = 78705;
 				e4.PhoneNumber = "5817343315";
 				e4.Email = "b.ingram@bevosbooks.com";
-				Employees.Add(e4);
+                e4.UserName = e4.Email;
+                Employees.Add(e4);
 
 				User e5 = new User();
 				e5.Password = "8889993434";
@@ -86,7 +90,8 @@ namespace Group_18_Final_Project.Seeding
 				e5.ZipCode = 78760;
 				e5.PhoneNumber = "8241915317";
 				e5.Email = "j.jackson@bevosbooks.com";
-				Employees.Add(e5);
+                e5.UserName = e5.Email;
+                Employees.Add(e5);
 
 				User e6 = new User();
 				e6.Password = "341553365";
@@ -99,7 +104,8 @@ namespace Group_18_Final_Project.Seeding
 				e6.ZipCode = 78628;
 				e6.PhoneNumber = "2477822475";
 				e6.Email = "t.jacobs@bevosbooks.com";
-				Employees.Add(e6);
+                e6.UserName = e6.Email;
+                Employees.Add(e6);
 
 				User e7 = new User();
 				e7.Password = "9099099999";
@@ -112,7 +118,8 @@ namespace Group_18_Final_Project.Seeding
 				e7.ZipCode = 78747;
 				e7.PhoneNumber = "4764966462";
 				e7.Email = "l.jones@bevosbooks.com";
-				Employees.Add(e7);
+                e7.UserName = e7.Email;
+                Employees.Add(e7);
 
 				User e8 = new User();
 				e8.Password = "5554443333";
@@ -125,7 +132,8 @@ namespace Group_18_Final_Project.Seeding
 				e8.ZipCode = 78665;
 				e8.PhoneNumber = "3355258855";
 				e8.Email = "b.larson@bevosbooks.com";
-				Employees.Add(e8);
+                e8.UserName = e8.Email;
+                Employees.Add(e8);
 
 				User e9 = new User();
 				e9.Password = "770097399";
@@ -138,7 +146,8 @@ namespace Group_18_Final_Project.Seeding
 				e9.ZipCode = 78712;
 				e9.PhoneNumber = "7511273054";
 				e9.Email = "v.lawrence@bevosbooks.com";
-				Employees.Add(e9);
+                e9.UserName = e9.Email;
+                Employees.Add(e9);
 
 				User e10 = new User();
 				e10.Password = "2223332222";
@@ -151,7 +160,8 @@ namespace Group_18_Final_Project.Seeding
 				e10.ZipCode = 78729;
 				e10.PhoneNumber = "7477907070";
 				e10.Email = "m.lopez@bevosbooks.com";
-				Employees.Add(e10);
+                e10.UserName = e10.Email;
+                Employees.Add(e10);
 
 				User e11 = new User();
 				e11.Password = "775908138";
@@ -164,7 +174,8 @@ namespace Group_18_Final_Project.Seeding
 				e11.ZipCode = 78705;
 				e11.PhoneNumber = "2621216845";
 				e11.Email = "j.macleod@bevosbooks.com";
-				Employees.Add(e11);
+                e11.UserName = e11.Email;
+                Employees.Add(e11);
 
 				User e12 = new User();
 				e12.Password = "101529845";
@@ -177,7 +188,8 @@ namespace Group_18_Final_Project.Seeding
 				e12.ZipCode = 78785;
 				e12.PhoneNumber = "5028075807";
 				e12.Email = "e.markham@bevosbooks.com";
-				Employees.Add(e12);
+                e12.UserName = e12.Email;
+                Employees.Add(e12);
 
 				User e13 = new User();
 				e13.Password = "463566718";
@@ -190,7 +202,8 @@ namespace Group_18_Final_Project.Seeding
 				e13.ZipCode = 78712;
 				e13.PhoneNumber = "1994708542";
 				e13.Email = "g.martinez@bevosbooks.com";
-				Employees.Add(e13);
+                e13.UserName = e13.Email;
+                Employees.Add(e13);
 
 				User e14 = new User();
 				e14.Password = "1112223232";
@@ -203,7 +216,8 @@ namespace Group_18_Final_Project.Seeding
 				e14.ZipCode = 78701;
 				e14.PhoneNumber = "1748136441";
 				e14.Email = "j.mason@bevosbooks.com";
-				Employees.Add(e14);
+                e14.UserName = e14.Email;
+                Employees.Add(e14);
 
 				User e15 = new User();
 				e15.Password = "353308615";
@@ -216,7 +230,8 @@ namespace Group_18_Final_Project.Seeding
 				e15.ZipCode = 78709;
 				e15.PhoneNumber = "8999319585";
 				e15.Email = "c.miller@bevosbooks.com";
-				Employees.Add(e15);
+                e15.UserName = e15.Email;
+                Employees.Add(e15);
 
 				User e16 = new User();
 				e16.Password = "7776665555";
@@ -229,7 +244,8 @@ namespace Group_18_Final_Project.Seeding
 				e16.ZipCode = 78734;
 				e16.PhoneNumber = "8716746381";
 				e16.Email = "m.nguyen@bevosbooks.com";
-				Employees.Add(e16);
+                e16.UserName = e16.Email;
+                Employees.Add(e16);
 
 				User e17 = new User();
 				e17.Password = "1911919111";
@@ -242,7 +258,8 @@ namespace Group_18_Final_Project.Seeding
 				e17.ZipCode = 78712;
 				e17.PhoneNumber = "5239029525";
 				e17.Email = "s.rankin@bevosbooks.com";
-				Employees.Add(e17);
+                e17.UserName = e17.Email;
+                Employees.Add(e17);
 
 				User e18 = new User();
 				e18.Password = "353904746";
@@ -255,7 +272,8 @@ namespace Group_18_Final_Project.Seeding
 				e18.ZipCode = 78729;
 				e18.PhoneNumber = "1232139514";
 				e18.Email = "m.rhodes@bevosbooks.com";
-				Employees.Add(e18);
+                e18.UserName = e18.Email;
+                Employees.Add(e18);
 
 				User e19 = new User();
 				e19.Password = "454776657";
@@ -268,7 +286,8 @@ namespace Group_18_Final_Project.Seeding
 				e19.ZipCode = 78746;
 				e19.PhoneNumber = "2706602803";
 				e19.Email = "e.rice@bevosbooks.com";
-				Employees.Add(e19);
+                e19.UserName = e19.Email;
+                Employees.Add(e19);
 
 				User e20 = new User();
 				e20.Password = "700002943";
@@ -281,7 +300,8 @@ namespace Group_18_Final_Project.Seeding
 				e20.ZipCode = 78705;
 				e20.PhoneNumber = "4139645586";
 				e20.Email = "a.rogers@bevosbooks.com";
-				Employees.Add(e20);
+                e2.UserName = e20.Email;
+                Employees.Add(e20);
 
 				User e21 = new User();
 				e21.Password = "500987810";
@@ -294,7 +314,8 @@ namespace Group_18_Final_Project.Seeding
 				e21.ZipCode = 78733;
 				e21.PhoneNumber = "9036349587";
 				e21.Email = "s.saunders@bevosbooks.com";
-				Employees.Add(e21);
+                e21.UserName = e21.Email;
+                Employees.Add(e21);
 
 				User e22 = new User();
 				e22.Password = "500830084";
@@ -307,7 +328,8 @@ namespace Group_18_Final_Project.Seeding
 				e22.ZipCode = 78755;
 				e22.PhoneNumber = "7224308314";
 				e22.Email = "w.sewell@bevosbooks.com";
-				Employees.Add(e22);
+                e22.UserName = e22.Email;
+                Employees.Add(e22);
 
 				User e23 = new User();
 				e23.Password = "223449167";
@@ -320,7 +342,8 @@ namespace Group_18_Final_Project.Seeding
 				e23.ZipCode = 78666;
 				e23.PhoneNumber = "9349192978";
 				e23.Email = "m.sheffield@bevosbooks.com";
-				Employees.Add(e23);
+                e23.UserName = e23.Email;
+                Employees.Add(e23);
 
 				User e24 = new User();
 				e24.Password = "7776661111";
@@ -333,7 +356,8 @@ namespace Group_18_Final_Project.Seeding
 				e24.ZipCode = 78758;
 				e24.PhoneNumber = "4874328170";
 				e24.Email = "c.silva@bevosbooks.com";
-				Employees.Add(e24);
+                e24.UserName = e24.Email;
+                Employees.Add(e24);
 
 				User e25 = new User();
 				e25.Password = "363998335";
@@ -346,7 +370,8 @@ namespace Group_18_Final_Project.Seeding
 				e25.ZipCode = 78758;
 				e25.PhoneNumber = "1967846827";
 				e25.Email = "e.stuart@bevosbooks.com";
-				Employees.Add(e25);
+                e25.UserName = e25.Email;
+                Employees.Add(e25);
 
 				User e26 = new User();
 				e26.Password = "904440929";
@@ -359,7 +384,8 @@ namespace Group_18_Final_Project.Seeding
 				e26.ZipCode = 78712;
 				e26.PhoneNumber = "5923026779";
 				e26.Email = "j.tanner@bevosbooks.com";
-				Employees.Add(e26);
+                e26.UserName = e26.Email;
+                Employees.Add(e26);
 
 				User e27 = new User();
 				e27.Password = "934778452";
@@ -372,7 +398,8 @@ namespace Group_18_Final_Project.Seeding
 				e27.ZipCode = 78727;
 				e27.PhoneNumber = "7246195827";
 				e27.Email = "a.taylor@bevosbooks.com";
-				Employees.Add(e27);
+                e27.UserName = e27.Email;
+                Employees.Add(e27);
 
 				User e28 = new User();
 				e28.Password = "393412631";
@@ -385,7 +412,8 @@ namespace Group_18_Final_Project.Seeding
 				e28.ZipCode = 78746;
 				e28.PhoneNumber = "9071236087";
 				e28.Email = "r.taylor@bevosbooks.com";
-				Employees.Add(e28);
+                e28.UserName = e28.Email;
+                Employees.Add(e28);
 
 				//loop through Employees
 				foreach (User emp in Employees)
