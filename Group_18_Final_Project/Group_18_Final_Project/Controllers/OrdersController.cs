@@ -58,7 +58,6 @@ namespace Group_18_Final_Project.Controllers
         //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
         {
-
             //queries db to find user's order
             //includes relational data for book order
             var order = await _context.Orders.Include(bo => bo.BookOrders)
@@ -214,8 +213,13 @@ namespace Group_18_Final_Project.Controllers
         //Method to process Add To Order results
         //Has form answers as paramater
         [HttpPost]
-        public IActionResult AddToOrder(BookOrder bo, int? bookId)
+        public async Task<IActionResult> AddToOrder(BookOrder bo, int? bookId)
         {
+            if (bookId == null)
+            {
+                return NotFound();
+            }
+
             //Finding book matching book id passed from book details page
             Book book = _context.Books.Find(bookId);
 
@@ -229,42 +233,70 @@ namespace Group_18_Final_Project.Controllers
             String id = User.Identity.Name;
             User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            //TODO: Finish this
-            //if user has a pending order
-            //Adds new order detail to current order
-            if (user.Orders.All(o => o.IsPending == true))
-            {
-                //Finds order in db matching user
-                Order order = _context.Orders.Find(bo.Order.OrderID);
 
-                foreach(BookOrder bookOrder in order.BookOrders)
+            if (user.Orders != null)
+            {
+                //TODO: Finish this
+                //if user has a pending order
+                //Adds new order detail to current order
+                if (user.Orders.All(o => o.IsPending == true))
                 {
-                    if (bookOrder.Book == bo.Book)
+                    //Finds order in db matching user
+                    Order order = _context.Orders.Find(bo.Order.OrderID);
+
+                    foreach (BookOrder bookOrder in order.BookOrders)
                     {
-                        bo.OrderQuantity = bookOrder.OrderQuantity + 1;
+                        if (bookOrder.Book == bo.Book)
+                        {
+                            bo.OrderQuantity = bookOrder.OrderQuantity + 1;
+                        }
+                    }
+
+                    //Stores matched order in order detail order property
+                    bo.Order = order;
+
+                    if (ModelState.IsValid)
+                    {
+                        _context.Add(bo);
+                        await _context.SaveChangesAsync();
+
+                        ViewBag.AddedOrder = "Your order has been added!";
+                        ViewBag.CartMessage = "View your cart below";
+
+                        return RedirectToAction("Details", new { id = bo.Order.OrderID });
                     }
                 }
 
-                //Stores matched order in order detail order property
-                bo.Order = order;
+                //if user does not have a pending order
+                Order neworder = new Order();
+
+                //Stores newly created order into order detail
+                bo.Order = neworder;
+
+                //Stores most recently updated book price into order detail price
+                //TODO: Check if we need to do this lol
+                bo.Price = bo.Book.BookPrice;
+
+                bo.ExtendedPrice = bo.Price;
 
                 if (ModelState.IsValid)
                 {
                     _context.Add(bo);
-                    _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
 
                     ViewBag.AddedOrder = "Your order has been added!";
                     ViewBag.CartMessage = "View your cart below";
 
                     return RedirectToAction("Details", new { id = bo.Order.OrderID });
                 }
-            }
 
+                return RedirectToAction("Details", "Books", new { id = bookId });
+            }
             //if user does not have a pending order
-            Order neworder = new Order();
+            Order firstorder = new Order();
 
             //Stores newly created order into order detail
-            bo.Order = neworder;
+            bo.Order = firstorder;
 
             //Stores most recently updated book price into order detail price
             //TODO: Check if we need to do this lol
@@ -275,7 +307,7 @@ namespace Group_18_Final_Project.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(bo);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
                 ViewBag.AddedOrder = "Your order has been added!";
                 ViewBag.CartMessage = "View your cart below";
@@ -283,7 +315,7 @@ namespace Group_18_Final_Project.Controllers
                 return RedirectToAction("Details" , new { id = bo.Order.OrderID });
             }
 
-            return View(bo);
+            return RedirectToAction("Details", "Books", new { id = bookId });
 
         }
 

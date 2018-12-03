@@ -55,7 +55,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="AddToOrder" asp-route-id="@Model.BookID" class="btn btn-success">Add to Cart</a> <!--To do: Add permission views for seeing button-->
+    <form asp-action="AddToOrder" asp-controller="Orders">
+        <input type="hidden" asp-for="@Model.BookID" />
+        <button type="submit" class="btn btn-danger">Add To Cart</button>
+    </form>
     <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
