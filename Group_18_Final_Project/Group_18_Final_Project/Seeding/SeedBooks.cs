@@ -3630,7 +3630,7 @@ namespace Group_18_Final_Project.Seeding
 					//see if repo exists in database
 					Book dbBook = db.Books.FirstOrDefault(r => r.Title == book.Title);
 
-					if (dbBook == null) //repository does not exist in database
+					if (dbBook == null) //book does not exist in database
 					{
 						db.Books.Add(book);
 						db.SaveChanges();
@@ -3647,6 +3647,7 @@ namespace Group_18_Final_Project.Seeding
 						dbBook.CopiesOnHand = book.CopiesOnHand;
 						dbBook.Author = book.Author;
 						dbBook.BookPrice = book.BookPrice;
+                        dbBook.ActiveBook = true;
 						db.Update(dbBook);
 						db.SaveChanges();
 					}

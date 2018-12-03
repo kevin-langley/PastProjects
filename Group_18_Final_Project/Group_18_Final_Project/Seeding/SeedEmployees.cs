@@ -300,7 +300,7 @@ namespace Group_18_Final_Project.Seeding
 				e20.ZipCode = 78705;
 				e20.PhoneNumber = "4139645586";
 				e20.Email = "a.rogers@bevosbooks.com";
-                e2.UserName = e20.Email;
+                e20.UserName = e20.Email;
                 Employees.Add(e20);
 
 				User e21 = new User();

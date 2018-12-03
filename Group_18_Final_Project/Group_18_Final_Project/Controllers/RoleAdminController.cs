@@ -117,7 +117,24 @@ namespace Group_18_Final_Project.Controllers
 
                         user.SecurityStamp = finalString;
                     }
+                    if (user.UserName == null)
+                    {
+                        user.UserName = user.Email;
+                    }
+                    //user.UserName = user.Email;
                     result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    //if(!result.Succeeded && user.UserName == null)
+                    //{
+                    //    try
+                    //    {
+                    //        user.UserName = user.Email;
+                    //        result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    //    }
+                    //    catch
+                    //    {
+                    //        return View("Error", result.Errors);
+                    //    }
+                    //}
                     if (!result.Succeeded)
                     {
                         return View("Error", result.Errors);
