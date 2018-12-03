@@ -74,17 +74,7 @@ namespace Group_18_Final_Project.Controllers
             //Creating new list object of the repo list
             List<Book> SelectedBooks = new List<Book>();
 
-            String strUniqueID;
-
-            try
-            {
-                strUniqueID = intSearchUniqueID.ToString();
-            }
-            catch
-            {
-                ViewBag.AllGenres = GetAllGenres();
-                return RedirectToAction("DetailedSearch");
-            }
+    
 
             //Selecting all repo items into a query to processed
             var query = from r in _db.Books
@@ -102,8 +92,28 @@ namespace Group_18_Final_Project.Controllers
                 query = query.Where(r => r.Author.Contains(strSearchAuthor));
             }
 
+            String strUniqueID;
+
+            try
+            {
+                if (intSearchUniqueID == 0)
+                {
+                    strUniqueID = null;
+                }
+                else
+                {
+                    strUniqueID = intSearchUniqueID.ToString();
+                }
+            }
+            catch
+            {
+                ViewBag.AllGenres = GetAllGenres();
+                return RedirectToAction("DetailedSearch");
+            }
+
+
             //The following lines of code process the searched unique number
-            if (strUniqueID != null || strUniqueID != "")
+            if (strUniqueID != null && strUniqueID != "")
             {
                 query = query.Where(r => r.UniqueID.ToString().Contains(strUniqueID));
             }
@@ -112,7 +122,6 @@ namespace Group_18_Final_Project.Controllers
             if (SelectedGenre != 0)
             {
                 query = query.Where(r => r.Genre.GenreID == SelectedGenre);
-
             }
 
             //The following lines of code process the sort by
