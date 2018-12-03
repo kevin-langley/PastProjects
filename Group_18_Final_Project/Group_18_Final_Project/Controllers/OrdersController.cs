@@ -303,6 +303,8 @@ namespace Group_18_Final_Project.Controllers
             {
                 try
                 {
+                    order = _context.Orders.Find(id);
+
                     _context.Update(order);
                     await _context.SaveChangesAsync();
                 }

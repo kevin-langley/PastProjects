@@ -40,6 +40,7 @@
             <input type="hidden" asp-for="OrderID" />
             <div class="form-group">
                 <label asp-for="CreditCard" class="control-label"></label>
+                <label>Please select "0000000000000000000" to add new credit card</label>
                 @Html.DropDownList("SelectedCreditCard", (SelectList)ViewBag.AllCards, new { @class = "form-control" })
             </div>
             <label>Add new credit card info:</label>
