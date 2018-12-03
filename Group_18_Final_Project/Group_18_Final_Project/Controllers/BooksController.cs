@@ -33,7 +33,7 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Books
+            var book = await _context.Books.Include(b => b.Genre)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (book == null)
             {
