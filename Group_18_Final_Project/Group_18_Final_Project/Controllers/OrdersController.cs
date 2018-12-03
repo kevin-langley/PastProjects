@@ -10,6 +10,8 @@ using Group_18_Final_Project.Models;
 
 namespace Group_18_Final_Project.Controllers
 {
+    public enum CheckOutChoice { CurrentCard, NewCard };
+
     public class OrdersController : Controller
     {
         private readonly AppDbContext _context;
@@ -217,11 +219,9 @@ namespace Group_18_Final_Project.Controllers
             //Finding book matching book id passed from book details page
             Book book = _context.Books.Find(bookId);
 
-            //Stores product in order detail
+            //Stores book in book order detail
             bo.Book = book;
-
-            //Creates new order detail
-            BookOrder bookOrder = new BookOrder();
+            bo.OrderQuantity = 1;
 
             //Finds if user already has an order pending
             //Assigning user to user id
@@ -237,7 +237,15 @@ namespace Group_18_Final_Project.Controllers
                 //Finds order in db matching user
                 Order order = _context.Orders.Find(bo.Order.OrderID);
 
-                //Stores order in order detail order
+                foreach(BookOrder bookOrder in order.BookOrders)
+                {
+                    if (bookOrder.Book == bo.Book)
+                    {
+                        bo.OrderQuantity = bookOrder.OrderQuantity + 1;
+                    }
+                }
+
+                //Stores matched order in order detail order property
                 bo.Order = order;
 
                 if (ModelState.IsValid)
@@ -315,7 +323,7 @@ namespace Group_18_Final_Project.Controllers
         //POST: Check out method processed
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CheckOut(int id, int SelectedCreditCard, string CreditCard, Order order)
+        public async Task<IActionResult> CheckOut(int id, CheckOutChoice SelectedPaymentMethod, int intSelectedCard, CreditCardType SelectedType, string strCardNumber, string strCouponCode, Order order)
         {
             if (id != order.OrderID)
             {
@@ -326,6 +334,41 @@ namespace Group_18_Final_Project.Controllers
             {
                 try
                 {
+                    order = _context.Orders.Find(id);
+
+                    if (SelectedPaymentMethod == CheckOutChoice.CurrentCard)
+                    {
+                        //Assigns selected credit card to order credit card
+                        order.CreditCard.CreditCardID = intSelectedCard;
+
+                    }
+                    if (SelectedPaymentMethod == CheckOutChoice.NewCard)
+                    {
+                        string userid = User.Identity.Name;
+                        User user = _context.Users.Find(userid);
+
+                        if (user.CreditCards.Count() == 3)
+                        {
+                            ViewBag.CardMax = "You can only store three credit cards in your account! Choose a current card for payment or change cards in account settings.";
+                            return RedirectToAction("CheckOut", new { id = order.OrderID });
+                        }
+
+                        CreditCard creditCard = new CreditCard();
+
+                        creditCard.CreditType = SelectedType;
+
+                        creditCard.CreditCardNumber = strCardNumber;
+
+                        creditCard.User = user;
+
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(creditCard);
+                            order.CreditCard = creditCard;
+
+                        }
+                    }
+
                     order = _context.Orders.Find(id);
 
                     _context.Update(order);
@@ -342,23 +385,28 @@ namespace Group_18_Final_Project.Controllers
                         throw;
                     }
                 }
+
+                ////TODO: Figure out how the heck coupons work
+                //List<Coupon> coupons = new List<Coupon>();
+
+                //try
+                //{
+                //    Coupon checkcoupon = _context.Coupons.FirstOrDefault(c => c.CouponCode == strCouponCode);
+
+                //    if (ModelState.IsValid)
+                //    {
+
+                //    }
+                //}
+                //catch
+                //{
+                //    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
+                //    return RedirectToAction("CheckOut", new { id = order.OrderID });
+                //}
                 return RedirectToAction(nameof(Index));
             }
             return View(order);
         }
-
-        public SelectList GetAllCards()
-        {
-            string id = User.Identity.Name;
-            List<CreditCard> creditCards = _context.CreditCards.Where(cc => cc.User.Id == id).ToList();
-
-            CreditCard SelectNone = new CreditCard() { CreditCardID = 0, CreditCardNumber = "0000000000000000"};
-
-            SelectList AllCards = new SelectList(creditCards.OrderBy(cc => cc.CreditCardID), "CreditCardID", "CreditType" + " - " + "CreditCardNumber");
-
-            return AllCards;
-        }
-
 
     }
 }
