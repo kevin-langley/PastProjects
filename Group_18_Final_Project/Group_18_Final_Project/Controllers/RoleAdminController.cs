@@ -14,8 +14,8 @@ using Group_18_Final_Project.Models;
 //TODO: Change this namespace to match your project
 namespace Group_18_Final_Project.Controllers
 {
-    //TODO: Uncomment this line once you have roles working correctly
-    //[Authorize(Roles = "Manager")]
+    //: Uncomment this line once you have roles working correctly
+    [Authorize(Roles = "Manager")]
     public class RoleAdminController : Controller
     {
         private AppDbContext _db;
