@@ -25,8 +25,8 @@ namespace Group_18_Final_Project.Models
 
         [Display(Name = "Average Rating")]
         [DisplayFormat(DataFormatString = "{0:0.00}")] //Displays average rating to 2 decimals
-        public Decimal AverageRating { get; set; }
-
+        public String AverageRating { get; set; }
+        
         [Display(Name = "Copies On Hand")]
         public Int32 CopiesOnHand { get; set; }
 
