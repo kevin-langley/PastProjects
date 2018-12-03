@@ -20,7 +20,7 @@ namespace Group_18_Final_Project.Seeding
             UserManager<User> _userManager = serviceProvider.GetRequiredService<UserManager<User>>();
             RoleManager<IdentityRole> _roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            //TODO: Add the needed roles
+            //: Add the needed roles
             //if role doesn't exist, add it
             if (await _roleManager.RoleExistsAsync("Manager") == false)
             {
