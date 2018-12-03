@@ -200,34 +200,34 @@ namespace Group_18_Final_Project.Controllers
             //Creates new order detail
             BookOrder bookOrder = new BookOrder();
 
-            ////Finds if user already has an order pending
-            ////Assigning user to user id
-            ////get user info
-            //String id = User.Identity.Name;
-            //User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
+            //Finds if user already has an order pending
+            //Assigning user to user id
+            //get user info
+            String id = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            ////TODO: Finish this
-            ////if user has a pending order
-            ////Adds new order detail to current order
-            //if (user.Orders.All(o => o.IsPending == true))
-            //{
-            //    //Finds order in db matching user
-            //    Order order = _context.Orders.Find(bo.Order.OrderID);
+            //TODO: Finish this
+            //if user has a pending order
+            //Adds new order detail to current order
+            if (user.Orders.All(o => o.IsPending == true))
+            {
+                //Finds order in db matching user
+                Order order = _context.Orders.Find(bo.Order.OrderID);
 
-            //    //Stores order in order detail order
-            //    bo.Order = order;
+                //Stores order in order detail order
+                bo.Order = order;
 
-            //    if (ModelState.IsValid)
-            //    {
-            //        _context.Add(bo);
-            //        _context.SaveChangesAsync();
+                if (ModelState.IsValid)
+                {
+                    _context.Add(bo);
+                    _context.SaveChangesAsync();
 
-            //        ViewBag.AddedOrder = "Your order has been added!";
-            //        ViewBag.CartMessage = "View your cart below";
+                    ViewBag.AddedOrder = "Your order has been added!";
+                    ViewBag.CartMessage = "View your cart below";
 
-            //        return RedirectToAction("Details", new { id = bo.Order.OrderID });
-            //    }
-            //}
+                    return RedirectToAction("Details", new { id = bo.Order.OrderID });
+                }
+            }
 
             //if user does not have a pending order
             Order neworder = new Order();
@@ -292,7 +292,7 @@ namespace Group_18_Final_Project.Controllers
         //POST: Check out method processed
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CheckOut(int id, [Bind("OrderID,OrderDate")] Order order)
+        public async Task<IActionResult> CheckOut(int id, int SelectedCreditCard, string CreditCard, Order order)
         {
             if (id != order.OrderID)
             {
@@ -320,6 +320,18 @@ namespace Group_18_Final_Project.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(order);
+        }
+
+        public SelectList GetAllCards()
+        {
+            string id = User.Identity.Name;
+            List<CreditCard> creditCards = _context.CreditCards.Where(cc => cc.User.Id == id).ToList();
+
+            CreditCard SelectNone = new CreditCard() { CreditCardID = 0, CreditCardNumber = "0000000000000000"};
+
+            SelectList AllCards = new SelectList(creditCards.OrderBy(cc => cc.CreditCardID), "CreditCardID", "CreditType" + " - " + "CreditCardNumber");
+
+            return AllCards;
         }
 
 
