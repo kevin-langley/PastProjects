@@ -34,7 +34,7 @@ namespace Group_18_Final_Project.Controllers
         public IActionResult CartDetails()
         {
             string id = User.Identity.Name;
-            User user = _context.Users.FirstOrDefault(u => u.UserName == id);
+            User user = _context.Users.Include(us => us.Orders).FirstOrDefault(u => u.UserName == id);
 
             if (user.Orders == null)
             {
@@ -43,10 +43,10 @@ namespace Group_18_Final_Project.Controllers
             }
             else
             {
-                if (user.Orders.All(o => o.IsPending == true))
+                if (user.Orders.Exists(o => o.IsPending == true))
                 {
                     //Finds order in db matching user
-                    Order order = _context.Orders.Find(user.Orders);
+                    Order order = _context.Orders.Include(us => us.User).Include(o => o.BookOrders).ThenInclude(o => o.Book).FirstOrDefault(u => u.User.UserName == user.UserName && u.IsPending == true);
 
                     return RedirectToAction("Details", new { id = order.OrderID });
                 }
