@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 //TODO: Update these using statements to match your project
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using System;
 
 //TODO: Change this namespace to match your project
 namespace Group_18_Final_Project.Controllers
@@ -101,7 +102,39 @@ namespace Group_18_Final_Project.Controllers
                 foreach (string userId in model.IdsToAdd ?? new string[] { })
                 {
                     User user = await _userManager.FindByIdAsync(userId);
+                    if (user.SecurityStamp == null)
+                    {
+                        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                        var stringChars = new char[8];
+                        var random = new Random();
+
+                        for (int i = 0; i < stringChars.Length; i++)
+                        {
+                            stringChars[i] = chars[random.Next(chars.Length)];
+                        }
+
+                        var finalString = new String(stringChars);
+
+                        user.SecurityStamp = finalString;
+                    }
+                    if (user.UserName == null)
+                    {
+                        user.UserName = user.Email;
+                    }
+                    //user.UserName = user.Email;
                     result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    //if(!result.Succeeded && user.UserName == null)
+                    //{
+                    //    try
+                    //    {
+                    //        user.UserName = user.Email;
+                    //        result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    //    }
+                    //    catch
+                    //    {
+                    //        return View("Error", result.Errors);
+                    //    }
+                    //}
                     if (!result.Succeeded)
                     {
                         return View("Error", result.Errors);

@@ -10,6 +10,8 @@ using Group_18_Final_Project.Models;
 
 namespace Group_18_Final_Project.Controllers
 {
+    public enum CheckOutChoice { CurrentCard, NewCard };
+
     public class OrdersController : Controller
     {
         private readonly AppDbContext _context;
@@ -56,49 +58,65 @@ namespace Group_18_Final_Project.Controllers
         //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
         {
-
-            //queries db to find user's order
-            //includes relational data for book order
-            var order = await _context.Orders.Include(bo => bo.BookOrders)
-                .FirstOrDefaultAsync(m => m.OrderID == id);
-
-            //NOTE: Thinking that the code to add and remove items
-            //from the cart according to stock/active books should go here
-            //Subject to change
-            foreach (BookOrder bookOrder in order.BookOrders)
+            if (ModelState.IsValid) //Happy path!
             {
-                //NOTE: need to check if this logic makes sense
-                //If a book is both out of stock and inactive
-                //would removing it and then requesting to remove it again
-                //make an error? Adding extra code so the remove action
-                //doesn't happen twice
-
-                //Bool var check to remove order detail
-                bool boolRemoveBook = false;
-
-                if (bookOrder.Book.CopiesOnHand == 0)
+                try
                 {
-                    ViewBag.OutOfStockBook = "Sorry!" + bookOrder.Book.Title + "is out of stock and has been removed from your cart.";
-                    boolRemoveBook = true;
-                }
-                if (bookOrder.Book.ActiveBook == false)
-                {
-                    ViewBag.DiscontinuedBook = "Sorry!" + bookOrder.Book.Title + "has been discontinued and has been removed from your cart.";                    
-                    boolRemoveBook = true;
-                }
+                    //queries db to find user's order
+                    //includes relational data for book order
+                    var order = await _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book)
+                        .FirstOrDefaultAsync(m => m.OrderID == id);
 
-                if (boolRemoveBook == true)
-                {
-                    _context.BookOrders.Remove(bookOrder);
+                    List<BookOrder> BooksToRemove = new List<BookOrder>();
+
+                    //NOTE: Thinking that the code to remove items
+                    //from the cart according to stock/active books should go here
+                    //Subject to change
+                    foreach (BookOrder bookOrder in order.BookOrders)
+                    {
+                        //NOTE: need to check if this logic makes sense
+                        //If a book is both out of stock and inactive
+                        //would removing it and then requesting to remove it again
+                        //make an error? Adding extra code so the remove action
+                        //doesn't happen twice
+
+                        //Bool var check to remove order detail
+                        bool boolRemoveBook = false;
+
+                        if (bookOrder.Book.CopiesOnHand == 0)
+                        {
+                            ViewBag.OutOfStockBook = "Sorry! " + bookOrder.Book.Title + "is out of stock and has been removed from your cart.";
+                            boolRemoveBook = true;
+                        }
+                        if (bookOrder.Book.ActiveBook == false)
+                        {
+                            ViewBag.DiscontinuedBook = "Sorry! " + bookOrder.Book.Title + "has been discontinued and has been removed from your cart.";
+                            boolRemoveBook = true;
+                        }
+
+                        if (boolRemoveBook == true)
+                        {
+                            _context.BookOrders.Remove(bookOrder);
+                        }
+                    }
+
+                    //Remove books found in list above
+                    foreach (BookOrder bo in BooksToRemove)
+                    {
+                        _context.BookOrders.Remove(bo);
+                        _context.SaveChanges();
+                    }
+                    return View(order);
+
                 }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                //Sad Path :( model state is not valid
             }
 
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
+            return View("Index", "Home");
         }
 
         // GET: Orders/Create
@@ -212,16 +230,19 @@ namespace Group_18_Final_Project.Controllers
         //Method to process Add To Order results
         //Has form answers as paramater
         [HttpPost]
-        public IActionResult AddToOrder(BookOrder bo, int? bookId)
+        public async Task<IActionResult> AddToOrder(BookOrder bo, int? bookId, int intOrderQuantity)
         {
+            if (bookId == null)
+            {
+                return NotFound();
+            }
+
             //Finding book matching book id passed from book details page
             Book book = _context.Books.Find(bookId);
 
-            //Stores product in order detail
+            //Stores book in book order detail
             bo.Book = book;
-
-            //Creates new order detail
-            BookOrder bookOrder = new BookOrder();
+            bo.OrderQuantity = intOrderQuantity;
 
             //Finds if user already has an order pending
             //Assigning user to user id
@@ -229,34 +250,82 @@ namespace Group_18_Final_Project.Controllers
             String id = User.Identity.Name;
             User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
 
-            //TODO: Finish this
-            //if user has a pending order
-            //Adds new order detail to current order
-            if (user.Orders.All(o => o.IsPending == true))
-            {
-                //Finds order in db matching user
-                Order order = _context.Orders.Find(bo.Order.OrderID);
 
-                //Stores order in order detail order
-                bo.Order = order;
+            if (user.Orders != null)
+            {
+                //TODO: Finish this
+                //if user has a pending order
+                //Adds new order detail to current order
+                if (user.Orders.All(o => o.IsPending == true))
+                {
+                    //Finds order in db matching user
+                    Order order = _context.Orders.Find(bo.Order.OrderID);
+
+                    foreach (BookOrder bookOrder in order.BookOrders)
+                    {
+                        if (bookOrder.Book == bo.Book)
+                        {
+                            bo.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
+                        }
+                    }
+
+                    //Stores matched order in order detail order property
+                    bo.Order = order;
+
+                    if (ModelState.IsValid)
+                    {
+                        _context.Add(bo);
+                        await _context.SaveChangesAsync();
+
+                        ViewBag.AddedOrder = "Your order has been added!";
+                        ViewBag.CartMessage = "View your cart below";
+
+                        return RedirectToAction("Details", new { id = bo.Order.OrderID });
+                    }
+                }
+
+                //if user does not have a pending order
+                Order neworder = new Order();
+
+                neworder.User = user;
+
+                //Stores newly created order into order detail
+                bo.Order = neworder;
+
+                bo.Order.IsPending = true;
+
+                //Stores most recently updated book price into order detail price
+                //TODO: Check if we need to do this lol
+                bo.Price = bo.Book.BookPrice;
+
+                bo.ExtendedPrice = bo.Price;
 
                 if (ModelState.IsValid)
                 {
-                    _context.Add(bo);
-                    _context.SaveChangesAsync();
+                    _context.Add(neworder);
+                    _context.BookOrders.Add(bo);
+                    await _context.SaveChangesAsync();
 
                     ViewBag.AddedOrder = "Your order has been added!";
                     ViewBag.CartMessage = "View your cart below";
 
                     return RedirectToAction("Details", new { id = bo.Order.OrderID });
                 }
+
+                return RedirectToAction("Details", "Books", new { id = bookId });
             }
-
             //if user does not have a pending order
-            Order neworder = new Order();
+            Order firstorder = new Order();
 
-            //Stores newly created order into order detail
-            bo.Order = neworder;
+            //Assigns user to order
+            firstorder.User = user;
+
+            //Stores order to order detail order navigational property
+            bo.Order = firstorder;
+
+            //Sets order to is pending so cart can persist
+            bo.Order.IsPending = true;
+
 
             //Stores most recently updated book price into order detail price
             //TODO: Check if we need to do this lol
@@ -264,18 +333,13 @@ namespace Group_18_Final_Project.Controllers
 
             bo.ExtendedPrice = bo.Price;
 
-            if (ModelState.IsValid)
-            {
-                _context.Add(bo);
-                _context.SaveChangesAsync();
+            _context.Add(bo);
+            await _context.SaveChangesAsync();
 
-                ViewBag.AddedOrder = "Your order has been added!";
-                ViewBag.CartMessage = "View your cart below";
+            ViewBag.AddedOrder = "Your order has been added!";
+            ViewBag.CartMessage = "View your cart below";
 
-                return RedirectToAction("Details" , new { id = bo.Order.OrderID });
-            }
-
-            return View(bo);
+            return RedirectToAction("Details", new { id = bo.Order.OrderID });
 
         }
 
@@ -304,7 +368,8 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders.FindAsync(id);
+            var order = await _context.Orders.Include(or => or.User).ThenInclude(or => or.CreditCards).FirstOrDefaultAsync(m => m.OrderID == id);
+
             if (order == null)
             {
                 return NotFound();
@@ -315,7 +380,7 @@ namespace Group_18_Final_Project.Controllers
         //POST: Check out method processed
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CheckOut(int id, int SelectedCreditCard, string CreditCard, Order order)
+        public async Task<IActionResult> CheckOut(int id, CheckOutChoice SelectedPaymentMethod, int intSelectedCard, CreditCardType SelectedType, string strCardNumber, string strCouponCode, Order order)
         {
             if (id != order.OrderID)
             {
@@ -326,6 +391,41 @@ namespace Group_18_Final_Project.Controllers
             {
                 try
                 {
+                    order = _context.Orders.Find(id);
+
+                    if (SelectedPaymentMethod == CheckOutChoice.CurrentCard)
+                    {
+                        //Assigns selected credit card to order credit card
+                        order.CreditCard.CreditCardID = intSelectedCard;
+
+                    }
+                    if (SelectedPaymentMethod == CheckOutChoice.NewCard)
+                    {
+                        string userid = User.Identity.Name;
+                        User user = _context.Users.Find(userid);
+
+                        if (user.CreditCards.Count() == 3)
+                        {
+                            ViewBag.CardMax = "You can only store three credit cards in your account! Choose a current card for payment or change cards in account settings.";
+                            return RedirectToAction("CheckOut", new { id = order.OrderID });
+                        }
+
+                        CreditCard creditCard = new CreditCard();
+
+                        creditCard.CreditType = SelectedType;
+
+                        creditCard.CreditCardNumber = strCardNumber;
+
+                        creditCard.User = user;
+
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(creditCard);
+                            order.CreditCard = creditCard;
+
+                        }
+                    }
+
                     order = _context.Orders.Find(id);
 
                     _context.Update(order);
@@ -342,23 +442,28 @@ namespace Group_18_Final_Project.Controllers
                         throw;
                     }
                 }
+
+                ////TODO: Figure out how the heck coupons work
+                //List<Coupon> coupons = new List<Coupon>();
+
+                //try
+                //{
+                //    Coupon checkcoupon = _context.Coupons.FirstOrDefault(c => c.CouponCode == strCouponCode);
+
+                //    if (ModelState.IsValid)
+                //    {
+
+                //    }
+                //}
+                //catch
+                //{
+                //    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
+                //    return RedirectToAction("CheckOut", new { id = order.OrderID });
+                //}
                 return RedirectToAction(nameof(Index));
             }
             return View(order);
         }
-
-        public SelectList GetAllCards()
-        {
-            string id = User.Identity.Name;
-            List<CreditCard> creditCards = _context.CreditCards.Where(cc => cc.User.Id == id).ToList();
-
-            CreditCard SelectNone = new CreditCard() { CreditCardID = 0, CreditCardNumber = "0000000000000000"};
-
-            SelectList AllCards = new SelectList(creditCards.OrderBy(cc => cc.CreditCardID), "CreditCardID", "CreditType" + " - " + "CreditCardNumber");
-
-            return AllCards;
-        }
-
 
     }
 }

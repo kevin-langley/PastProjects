@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +12,27 @@ namespace Group_18_Final_Project.Models
     {
         //User properties
         public String Password { get; set; }
+
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
         public String FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
         public String LastName { get; set; }
+
+        [Required(ErrorMessage = "Address is required.")]
         public String Address { get; set; }
+
+        [Required(ErrorMessage = "City is required.")]
         public String City { get; set; }
+
+        [Required(ErrorMessage = "State is required.")]
         public String State { get; set; }
+
+        [StringLength(5, ErrorMessage ="Zip max is 5 characters.")]
         public Int32 ZipCode { get; set; }
+
         public Boolean ActiveUser { get; set; }
         public String UserType { get; set; }
 
