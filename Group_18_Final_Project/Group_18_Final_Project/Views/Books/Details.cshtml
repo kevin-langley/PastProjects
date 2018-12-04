@@ -1,5 +1,4 @@
 ﻿@model Group_18_Final_Project.Models.Book
-@model Group_18_Final_Project.Models.BookOrder
 
 @{
     ViewData["Title"] = "Details";
@@ -53,10 +52,6 @@
         <dd>
             @Html.DisplayFor(model => model.Genre.GenreName)
         </dd>
-        @*@if (BookOrder.OrderQuantity > 0)
-        {
-            Console.WriteLine("This item is already in your cart");
-        }*@
     </dl>
 </div>
 <div>
