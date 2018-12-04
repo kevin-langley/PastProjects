@@ -99,7 +99,7 @@ namespace Group_18_Final_Project.Controllers
 
                         if (boolRemoveBook == true)
                         {
-                            _context.BookOrders.Remove(bookOrder);
+                            BooksToRemove.Add(bookOrder);
                         }
                     }
 
@@ -251,32 +251,46 @@ namespace Group_18_Final_Project.Controllers
             //Assigning user to user id
             //get user info
             String id = User.Identity.Name;
-            User user = _context.Users.Include(o => o.Orders).ToList().FirstOrDefault(u => u.UserName == id); //NOTE: Relational data needs s
+            User user = _context.Users.Include(o => o.Orders).ToList().FirstOrDefault(u => u.UserName == id); //NOTE: Relational data
 
-
+            //If user has an order already
             if (user.Orders.Count != 0)
             {
                 if (user.Orders.Exists(o => o.IsPending == true))
                 {
+                    //TODO
 
                     //Finds current pending order and stores it in order
-                    Order order = _context.Orders.Include(o => o.BookOrders).FirstOrDefault(u => u.IsPending == true);
+                    Order order = _context.Orders.Include(o => o.BookOrders).ThenInclude(o => o.Book).FirstOrDefault(u => u.IsPending == true);
 
-                    //try statements to try updating book
+                    BookOrder bookOrderToUpdate = new BookOrder();
+
+
+                    //This is the path for updating a book already in the cart
                     try
                     {
-
-                        List<BookOrder> BookOrderToUpdate = new List<BookOrder>();
-
                         //Iterating through list of book orders to add book order quantity instead of
                         //just adding a new book instance
                         foreach (BookOrder bookOrder in order.BookOrders)
                         {
                             if (bookOrder.Book == bo.Book)
                             {
-                                bo.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
 
-                                bo.Price = bo.Book.BookPrice;
+                                bookOrder.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
+                                bookOrder.Price = bookOrder.Book.BookPrice;
+                                bookOrder.ExtendedPrice = bookOrder.Price * bookOrder.OrderQuantity;
+
+
+                                bookOrderToUpdate = bookOrder;
+                                bookOrderToUpdate.Order = order;
+
+                                _context.Update(bookOrderToUpdate);
+                                await _context.SaveChangesAsync();
+
+                                ViewBag.AddedOrder = "Your order has been added!";
+                                ViewBag.CartMessage = "View your cart below";
+
+                                return RedirectToAction("Details", new { id = bookOrderToUpdate.Order.OrderID });
 
                             }
                         }
@@ -287,23 +301,25 @@ namespace Group_18_Final_Project.Controllers
                         throw;
                     }
 
+                    //This is the path for adding a new book to the cart
                     //Stores matched order in order detail order property
                     bo.Order = order;
+                    bo.Price = bo.Book.BookPrice;
+                    bo.OrderQuantity = intOrderQuantity;
+                    bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
 
-                    if (ModelState.IsValid)
-                    {
-                        _context.Add(bo);
-                        await _context.SaveChangesAsync();
+                    _context.Add(bo);
+                    await _context.SaveChangesAsync();
 
-                        ViewBag.AddedOrder = "Your order has been added!";
-                        ViewBag.CartMessage = "View your cart below";
+                    ViewBag.AddedOrder = "Your order has been added!";
+                    ViewBag.CartMessage = "View your cart below";
 
-                        return RedirectToAction("Details", new { id = bo.Order.OrderID });
-                    }
+                    return RedirectToAction("Details", new { id = bo.Order.OrderID });
 
                 }
 
-                //if user does not have a pending order
+
+                //This is the path if user does not have a pending order
                 Order neworder = new Order();
 
                 neworder.User = user;
@@ -317,7 +333,9 @@ namespace Group_18_Final_Project.Controllers
                 //TODO: Check if we need to do this lol
                 bo.Price = bo.Book.BookPrice;
 
-                bo.ExtendedPrice = bo.Price;
+                //Stores order quantity
+                bo.OrderQuantity = intOrderQuantity;
+                bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
 
                 if (ModelState.IsValid)
                 {
@@ -333,7 +351,9 @@ namespace Group_18_Final_Project.Controllers
 
                 return RedirectToAction("Details", "Books", new { id = bookId });
             }
-            //if user does not have a pending order
+
+
+            //This is the path if this is the user's first order
             Order firstorder = new Order();
 
             //Assigns user to order
@@ -345,12 +365,12 @@ namespace Group_18_Final_Project.Controllers
             //Sets order to is pending so cart can persist
             bo.Order.IsPending = true;
 
+            //Sets order quantity
+            bo.OrderQuantity = intOrderQuantity;
 
             //Stores most recently updated book price into order detail price
-            //TODO: Check if we need to do this lol
             bo.Price = bo.Book.BookPrice;
-
-            bo.ExtendedPrice = bo.Price;
+            bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
 
             _context.Add(bo);
             await _context.SaveChangesAsync();
