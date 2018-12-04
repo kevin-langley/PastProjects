@@ -240,6 +240,11 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
+            if (intOrderQuantity < 1)
+            {
+                return RedirectToAction("Details", "Books", new { id = bookId });
+            }
+
             //Finding book matching book id passed from book details page
             Book book = _context.Books.Find(bookId);
 
@@ -260,8 +265,9 @@ namespace Group_18_Final_Project.Controllers
                 {
                     //TODO
 
-                    //Finds current pending order and stores it in order
-                    Order order = _context.Orders.Include(o => o.BookOrders).ThenInclude(o => o.Book).FirstOrDefault(u => u.IsPending == true);
+                    //Finds current pending order for this user and stores it in order
+                    Order order = _context.Orders.Include(us => us.User).Include(o => o.BookOrders).ThenInclude(o => o.Book).FirstOrDefault(u => u.User.UserName == user.UserName && u.IsPending == true);
+                    
 
                     BookOrder bookOrderToUpdate = new BookOrder();
 
