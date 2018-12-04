@@ -24,7 +24,9 @@ namespace Group_18_Final_Project.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Orders.ToListAsync());
+            
         }
 
         //GET: Orders/Details
@@ -33,6 +35,7 @@ namespace Group_18_Final_Project.Controllers
         {
             string id = User.Identity.Name;
             User user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
             if (user.Orders == null)
             {
                 ViewBag.EmptyMessage = "Looks like your cart is empty! Search for books to add.";
@@ -248,25 +251,40 @@ namespace Group_18_Final_Project.Controllers
             //Assigning user to user id
             //get user info
             String id = User.Identity.Name;
-            User user = _context.Users.FirstOrDefault(u => u.UserName == id); //TODO: Identity
+            User user = _context.Users.Include(o => o.Orders).ToList().FirstOrDefault(u => u.UserName == id); //NOTE: Relational data needs s
 
 
-            if (user.Orders != null)
+            if (user.Orders.Count != 0)
             {
-                //TODO: Finish this
-                //if user has a pending order
-                //Adds new order detail to current order
-                if (user.Orders.All(o => o.IsPending == true))
+                if (user.Orders.Exists(o => o.IsPending == true))
                 {
-                    //Finds order in db matching user
-                    Order order = _context.Orders.Find(bo.Order.OrderID);
 
-                    foreach (BookOrder bookOrder in order.BookOrders)
+                    //Finds current pending order and stores it in order
+                    Order order = _context.Orders.Include(o => o.BookOrders).FirstOrDefault(u => u.IsPending == true);
+
+                    //try statements to try updating book
+                    try
                     {
-                        if (bookOrder.Book == bo.Book)
+
+                        List<BookOrder> BookOrderToUpdate = new List<BookOrder>();
+
+                        //Iterating through list of book orders to add book order quantity instead of
+                        //just adding a new book instance
+                        foreach (BookOrder bookOrder in order.BookOrders)
                         {
-                            bo.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
+                            if (bookOrder.Book == bo.Book)
+                            {
+                                bo.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
+
+                                bo.Price = bo.Book.BookPrice;
+
+                            }
                         }
+
+                    }
+                    catch
+                    {
+                        throw;
                     }
 
                     //Stores matched order in order detail order property
@@ -282,6 +300,7 @@ namespace Group_18_Final_Project.Controllers
 
                         return RedirectToAction("Details", new { id = bo.Order.OrderID });
                     }
+
                 }
 
                 //if user does not have a pending order
@@ -465,5 +484,25 @@ namespace Group_18_Final_Project.Controllers
             return View(order);
         }
 
+        //GET
+        public ActionResult SetCurrentShipping()
+        {
+
+            if(User.IsInRole("Manager"))
+            {
+                return View();
+            }
+
+            return NotFound();
+        }
+
+        //TODO: Finish this
+        //POST
+        public decimal GetCurrentShipping(decimal decFirstShipping, decimal decNextShipping)
+        {
+            decimal ShippingValue = decFirstShipping;
+
+            return decFirstShipping;
+        }
     }
 }
