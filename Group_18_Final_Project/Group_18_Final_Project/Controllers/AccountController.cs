@@ -120,8 +120,8 @@ namespace Group_18_Final_Project.Controllers
                 
                     await _userManager.AddToRoleAsync(user, "Customer");
                     //another example
-                    await _userManager.AddToRoleAsync(user, "Manager");
-                    await _userManager.AddToRoleAsync(user, "Employee");
+                    //await _userManager.AddToRoleAsync(user, "Manager");
+                    //await _userManager.AddToRoleAsync(user, "Employee");
 
                     Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
                     return RedirectToAction("Index", "Home");
