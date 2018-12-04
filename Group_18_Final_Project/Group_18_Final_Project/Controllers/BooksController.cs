@@ -33,7 +33,7 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var book = await _context.Books.Include(b => b.Genre)
+            var book = await _context.Books.Include(b => b.Genre).Include(bo => bo.BookOrders)
                 .FirstOrDefaultAsync(m => m.BookID == id);
             if (book == null)
             {
@@ -51,6 +51,10 @@ namespace Group_18_Final_Project.Controllers
             {
                 book.AverageRating = "This book does not have any reviews yet!";
             }
+
+            //Display whether book is already in customer's cart or not
+            int intOrderQuantity = book.BookOrders.Count();
+            ViewBag.InCart = intOrderQuantity > 0 ? "This book is already in your cart" : "This book is not yet in your cart";
 
             return View(book);
         }
