@@ -54,20 +54,39 @@ namespace Group_18_Final_Project.Controllers
             return View(roles);
         }
 
-        public ActionResult Create()
+        public ActionResult HireNewEmployee()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([Required] string name)
+        public async Task<ActionResult> HireNewEmployee(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name));
+                User user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Password = model.Password,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Address = model.Address,
+                    City = model.City,
+                    State = model.State,
+                    ZipCode = model.ZipCode,
 
+                };
+
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //TODO: Add user to desired role
+                    //This will not work until you have seeded Identity OR added the "Customer" role 
+                    //by navigating to the RoleAdmin controller and manually added the "Customer" role
+
+                    await _userManager.AddToRoleAsync(user, "Employee");
                     return RedirectToAction("Index");
                 }
                 else
@@ -77,7 +96,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             //if code gets this far, we need to show an error
-            return View(name);
+            return View(model);
         }
 
         public async Task<ActionResult> Edit(string id)
