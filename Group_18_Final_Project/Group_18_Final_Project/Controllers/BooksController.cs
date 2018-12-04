@@ -32,9 +32,15 @@ namespace Group_18_Final_Project.Controllers
             {
                 return NotFound();
             }
-
-            var book = await _context.Books.Include(b => b.Genre).Include(bo => bo.BookOrders)
+            
+            Book book  = await _context.Books.Include(b => b.Genre)
+                .Include(bo => bo.BookOrders)
+                .ThenInclude(o => o.Order)
+                .ThenInclude(u => u.User)
                 .FirstOrDefaultAsync(m => m.BookID == id);
+            List<BookOrder> bookOrders = book.BookOrders.Where(b => b.Order.IsPending == true).ToList();
+            bookOrders = bookOrders.Where(b => b.Order.User.UserName == User.Identity.Name).ToList();
+            
             if (book == null)
             {
                 return NotFound();
@@ -53,7 +59,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             //Display whether book is already in customer's cart or not
-            int intOrderQuantity = book.BookOrders.Count();
+            int intOrderQuantity = bookOrders.Sum(o => o.OrderQuantity);
             ViewBag.InCart = intOrderQuantity > 0 ? "This book is already in your cart" : "This book is not yet in your cart";
 
             return View(book);

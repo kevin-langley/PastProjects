@@ -59,5 +59,15 @@ namespace Group_18_Final_Project.Models
         public Coupon Coupon { get; set; }
         public List<BookOrder> BookOrders { get; set; }
 
+
+        public Order()
+        {
+            if (BookOrders == null)
+
+            {
+                BookOrders = new List<BookOrder>();
+            }
+
+        }
     }
 }
