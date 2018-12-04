@@ -123,6 +123,14 @@ namespace Group_18_Final_Project.Controllers
                     //await _userManager.AddToRoleAsync(user, "Manager");
                     //await _userManager.AddToRoleAsync(user, "Employee");
 
+                    // send confirmation email 
+                    String emailSubject = "Thank you " + user.FirstName + " for registering with Bevo's Bookstore!";
+                    String emailBody = "Welcome to the Bevo's Bookstore family! " +
+                        "Don't hesitate to reach out to us with any issues.";
+                    Utilities.EmailMessaging.SendEmail(user.Email, emailSubject, emailBody);
+
+
+
                     Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
                     return RedirectToAction("Index", "Home");
                 }
