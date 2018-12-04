@@ -516,13 +516,5 @@ namespace Group_18_Final_Project.Controllers
             return NotFound();
         }
 
-        //TODO: Finish this
-        //POST
-        public decimal GetCurrentShipping(decimal decFirstShipping, decimal decNextShipping)
-        {
-            decimal ShippingValue = decFirstShipping;
-
-            return decFirstShipping;
-        }
     }
 }

@@ -16,13 +16,24 @@ namespace Group_18_Final_Project.Models
 
         public bool IsPending { get; set; }
 
+
+        private Decimal _decShippingFirstPrice;
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public Decimal ShippingFirstPrice
+        {
+            get { return _decShippingFirstPrice; }
+            set { _decShippingFirstPrice = value; }
+        }
+
+        private Decimal _decShippingAdditionalPrice;
+        public Decimal ShippingAdditionalPrice
+        {
+            get { return _decShippingAdditionalPrice; }
+            set { _decShippingAdditionalPrice = value; }
+        }
+
+        [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Shipping Price")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
-        public Decimal ShippingFirstPrice { get; set; }
-
-        public Decimal ShippingAdditionalPrice { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:C}")]
         public Decimal TotalShippingPrice
         {
             get { return ShippingFirstPrice + (ShippingAdditionalPrice * (BookOrders.Sum(bo => bo.OrderQuantity) - 1)); }
