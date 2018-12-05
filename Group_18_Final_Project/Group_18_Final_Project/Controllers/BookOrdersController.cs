@@ -75,8 +75,10 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var bookOrder = await _context.BookOrders.FindAsync(id);
+            BookOrder bookOrder = await _context.BookOrders.Include(bo => bo.Book).FirstOrDefaultAsync(b => b.BookOrderID == id);
+
             ViewBag.BookTitle = bookOrder.Book.Title;
+
             if (bookOrder == null)
             {
                 return NotFound();

@@ -165,7 +165,7 @@ namespace Group_18_Final_Project.Controllers
             }
 
             //Storing filtered repos to repo list and including language navigational data
-            SelectedBooks = query.Include(r => r.Genre).ToList();
+            SelectedBooks = query.Include(r => r.Genre).Include(b => b.BookOrders).ToList();
 
             //ViewBag for Displaying x of y text
             ViewBag.SelectedBooks = SelectedBooks.Count();

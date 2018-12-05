@@ -434,12 +434,21 @@ namespace Group_18_Final_Project.Controllers
 
             if (ModelState.IsValid)
             {
+                Int32 intTotalBookNum = 0;
+
                 try
                 {
                     order = _context.Orders.Find(id);
 
                     if (SelectedPaymentMethod == CheckOutChoice.CurrentCard)
                     {
+                        //TODO: Finish this
+                        //In case user selects incongruent values -> like current card but puts in new card value
+                        if (intSelectedCard == 0)
+                        {
+                            ViewBag.InvalidPayment = "Please choose either a current card or a new card";
+                            return RedirectToAction("CheckOut", new { id = order.OrderID });
+                        }
                         //Assigns selected credit card to order credit card
                         order.CreditCard.CreditCardID = intSelectedCard;
 
@@ -470,8 +479,13 @@ namespace Group_18_Final_Project.Controllers
 
                         }
                     }
+                    
+                    foreach (BookOrder bo in order.BookOrders)
+                    {
+                        intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
+                    }
 
-                    order = _context.Orders.Find(id);
+                    order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
 
                     _context.Update(order);
                     await _context.SaveChangesAsync();
@@ -510,17 +524,12 @@ namespace Group_18_Final_Project.Controllers
             return View(order);
         }
 
-        //GET
-        public ActionResult SetCurrentShipping()
+        //TODO: Finish this!
+        public IActionResult CompleteCheckOut()
         {
 
-            if(User.IsInRole("Manager"))
-            {
-                return View();
-            }
-
-            return NotFound();
         }
+
 
     }
 }
