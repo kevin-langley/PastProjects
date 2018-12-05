@@ -41,7 +41,7 @@
     </div>
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Remove from @Model.Role.Name</div>
+        <div class="panel-heading">@ViewBag.Disable</div>
         <table class="table table-striped">
             @if (Model.Members.Count() == 0)
             {
@@ -54,7 +54,7 @@
                 <tr>
                     <th>First Name</th>
                     <th>Email</th>
-                    <th>Remove From Role</th>
+                    <th>@ViewBag.Disable</th>
                 </tr>
                 foreach (User user in Model.Members)
                 {
