@@ -109,6 +109,16 @@ namespace Group_18_Final_Project.Controllers
                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
                 list.Add(user);
             }
+
+            if (role.Name == "Employee")
+            {
+                ViewBag.Disable = "Fire Employee";
+            }
+            else if (role.Name == "Customer")
+            {
+                ViewBag.Disable = "Disable Customer Account";
+            }
+
             return View(new RoleEditModel { Role = role, Members = members, NonMembers = nonMembers });
         }
 
@@ -154,6 +164,8 @@ namespace Group_18_Final_Project.Controllers
                     //        return View("Error", result.Errors);
                     //    }
                     //}
+                            
+
                     if (!result.Succeeded)
                     {
                         return View("Error", result.Errors);
@@ -164,10 +176,6 @@ namespace Group_18_Final_Project.Controllers
                 {
                     User user = await _userManager.FindByIdAsync(userId);
                     result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
-                    if (!result.Succeeded)
-                    {
-                        return View("Error", result.Errors);
-                    }
                 }
                 return RedirectToAction("Index");
             }

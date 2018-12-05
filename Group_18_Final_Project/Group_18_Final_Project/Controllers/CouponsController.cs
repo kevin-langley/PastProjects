@@ -54,7 +54,7 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CouponID,CouponName")] Coupon coupon)
+        public async Task<IActionResult> Create([Bind("CouponID,CouponCode")] Coupon coupon)
         {
             if (ModelState.IsValid)
             {
