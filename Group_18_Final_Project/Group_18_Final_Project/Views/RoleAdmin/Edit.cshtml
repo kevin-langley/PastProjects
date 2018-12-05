@@ -9,39 +9,8 @@
 
 @using (Html.BeginForm())
 {
-    <input type="hidden" name="roleName" value="@Model.Role.Name" />
     <div class="panel panel-primary">
-        <div class="panel-heading">Add To @Model.Role.Name</div>
-        <table class="table table-striped">
-            @if (Model.NonMembers.Count() == 0)
-            {
-                <tr>
-                    <td colspan="3">All Users Are Members</td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <th>First Name</th>
-                    <th>Email</th>
-                    <th>Add to Role</th>
-                </tr>
-                foreach (User user in Model.NonMembers)
-                {
-                    <tr>
-                        <td>@user.FirstName</td>
-                        <td>@user.Email</td>
-                        <td>
-                            <input type="checkbox" name="IdsToAdd" value="@user.Id" />
-                        </td>
-                    </tr>
-                }
-            }
-        </table>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">@ViewBag.Disable</div>
+        <div class="panel-heading">Current @Model.Role.Name s</div>
         <table class="table table-striped">
             @if (Model.Members.Count() == 0)
             {
@@ -63,6 +32,37 @@
                         <td>@user.Email</td>
                         <td>
                             <input type="checkbox" name="IdsToDelete" value="@user.Id" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <input type="hidden" name="roleName" value="Promote to Manager" />
+    <div class="panel panel-primary">
+        <div class="panel-heading">Promote to Manager</div>
+        <table class="table table-striped">
+            @if (Model.NonMembers.Count() == 0)
+            {
+                <tr>
+                    <td colspan="3">All Users Are Members</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Promote to Manager</th>
+                </tr>
+                foreach (User user in Model.NonMembers)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.Email</td>
+                        <td>
+                            <input type="checkbox" name="IdsToAdd" value="@user.Id" />
                         </td>
                     </tr>
                 }
