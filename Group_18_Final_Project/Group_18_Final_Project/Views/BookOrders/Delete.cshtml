@@ -1,4 +1,5 @@
 ﻿@model Group_18_Final_Project.Models.BookOrder
+@using Group_18_Final_Project.Models
 
 @{
     ViewData["Title"] = "Delete";
@@ -28,6 +29,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="BookOrderID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="CartDetails" asp-controller="Orders">Back to Cart</a>
     </form>
 </div>

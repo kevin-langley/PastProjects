@@ -30,13 +30,13 @@ namespace Group_18_Final_Project.Controllers
         }
 
         //GET: Orders/Details
-        //For the navbar
+        //For the navbar and anytime you can't route an id
         public IActionResult CartDetails()
         {
             string id = User.Identity.Name;
             User user = _context.Users.Include(us => us.Orders).FirstOrDefault(u => u.UserName == id);
 
-            if (user.Orders == null)
+            if (user.Orders == null || user.Orders.Exists(o => o.IsPending == false))
             {
                 ViewBag.EmptyMessage = "Looks like your cart is empty! Search for books to add.";
                 return View("EmptyCart");
@@ -65,6 +65,9 @@ namespace Group_18_Final_Project.Controllers
             {
                 try
                 {
+                    //For shipping
+                    int intTotalBookNum = 0;
+
                     //queries db to find user's order
                     //includes relational data for book order
                     var order = await _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book)
@@ -109,6 +112,13 @@ namespace Group_18_Final_Project.Controllers
                         _context.BookOrders.Remove(bo);
                         _context.SaveChanges();
                     }
+
+                    foreach (BookOrder bo in order.BookOrders)
+                    {
+                        intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
+                    }
+                    order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
+
                     return View(order);
 
                 }
@@ -435,10 +445,14 @@ namespace Group_18_Final_Project.Controllers
             if (ModelState.IsValid)
             {
                 Int32 intTotalBookNum = 0;
+                string ccNumber = "";
 
                 try
                 {
-                    order = _context.Orders.Find(id);
+                    order = _context.Orders
+                                .Include(or => or.BookOrders)
+                                .Include(u => u.User).ThenInclude(c => c.CreditCards)
+                                .FirstOrDefault(o => o.OrderID == id);
 
                     if (SelectedPaymentMethod == CheckOutChoice.CurrentCard)
                     {
@@ -449,14 +463,18 @@ namespace Group_18_Final_Project.Controllers
                             ViewBag.InvalidPayment = "Please choose either a current card or a new card";
                             return RedirectToAction("CheckOut", new { id = order.OrderID });
                         }
-                        //Assigns selected credit card to order credit card
-                        order.CreditCard.CreditCardID = intSelectedCard;
+                        //Finds credit card with specified creditcard id
+                        CreditCard creditCard = _context.CreditCards.Include(u => u.User).FirstOrDefault(c => c.CreditCardID == intSelectedCard);
+
+                        order.CreditCard = creditCard;
+
+                        ccNumber = order.CreditCard.CreditCardNumber;
 
                     }
                     if (SelectedPaymentMethod == CheckOutChoice.NewCard)
                     {
                         string userid = User.Identity.Name;
-                        User user = _context.Users.Find(userid);
+                        User user = _context.Users.Include(c => c.CreditCards).ToList().FirstOrDefault(u => u.UserName == userid);
 
                         if (user.CreditCards.Count() == 3)
                         {
@@ -471,6 +489,9 @@ namespace Group_18_Final_Project.Controllers
                         creditCard.CreditCardNumber = strCardNumber;
 
                         creditCard.User = user;
+
+                        //for ViewBag
+                        ccNumber = strCardNumber;
 
                         if (ModelState.IsValid)
                         {
@@ -487,8 +508,16 @@ namespace Group_18_Final_Project.Controllers
 
                     order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
 
+                    //To pass credit card view to confirm check out
+                    string hidden = "************" + ccNumber.Substring(ccNumber.Length - 4);
+
+                    ViewBag.ccType = order.CreditCard.CreditType;
+                    ViewBag.ccHidden = hidden;
+
                     _context.Update(order);
                     await _context.SaveChangesAsync();
+
+                    return View("ConfirmCheckOut", order);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -519,11 +548,62 @@ namespace Group_18_Final_Project.Controllers
                 //    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
                 //    return RedirectToAction("CheckOut", new { id = order.OrderID });
                 //}
-                return RedirectToAction(nameof(Index));
             }
             return View(order);
         }
 
+        //This is the method for placing an order
+        //If correctly functioning, this order should update all book stocks by removing quantity
+        //This method should also update the shopping cart
+        //TODO: Make sure this works correctly
+        public async Task<IActionResult> PlaceOrder(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                //Finding order matching order passed in and storing it in order object
+                Order order = _context.Orders
+                                    .Include(or => or.BookOrders).ThenInclude(or => or.Book)
+                                    .Include(u => u.User).ThenInclude(c => c.CreditCards)
+                                    .FirstOrDefault(o => o.OrderID == id);
+                                    
+
+                Book bookUpdate = new Book();
+
+                //Iterates thr
+                foreach (BookOrder bo in order.BookOrders)
+                {
+                    //Matching book object with book for that specific book order detail
+                    bookUpdate = _context.Books.Find(bo.Book.BookID);
+
+                    //Subtracts book order quantity from current copies on hand value for this book 
+                    bookUpdate.CopiesOnHand = bookUpdate.CopiesOnHand - bo.OrderQuantity;
+
+                    bookUpdate.TimesPurchased = bookUpdate.TimesPurchased + 1; //TODO: Check to see if times purchased means # of copies purchased or purchase instances
+
+                    //Update changes in database
+                    _context.Update(bookUpdate);
+                    await _context.SaveChangesAsync();
+                }
+
+                //Closes order so cannot show up in shopping cart anymore
+                order.IsPending = false;
+
+                _context.Update(order);
+                await _context.SaveChangesAsync();
+
+                return View("CompletedOrder");
+
+            }
+            //Sad path :(
+            return RedirectToAction("CartDetails");
+
+
+        }
 
 
     }

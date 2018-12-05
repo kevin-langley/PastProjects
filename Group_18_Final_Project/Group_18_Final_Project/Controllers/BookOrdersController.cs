@@ -158,10 +158,23 @@ namespace Group_18_Final_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var bookOrder = await _context.BookOrders.FindAsync(id);
+            BookOrder bookOrder = _context.BookOrders.Include(o => o.Order).FirstOrDefault(bo => bo.BookOrderID == id);
             _context.BookOrders.Remove(bookOrder);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+
+            //Logic to delete order if this is only book order detail in book order
+            string userid = User.Identity.Name;
+            User user = _context.Users.Include(us => us.Orders).FirstOrDefault(u => u.UserName == userid);
+
+            Order order = _context.Orders.Include(or => or.BookOrders).FirstOrDefault(or => or.User == user);
+
+            if (order.BookOrders.Count == 0)
+            {
+                _context.Remove(order);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("CartDetails", "Orders");
         }
 
         private bool BookOrderExists(int id)
