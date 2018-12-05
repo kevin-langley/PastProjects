@@ -524,11 +524,6 @@ namespace Group_18_Final_Project.Controllers
             return View(order);
         }
 
-        //TODO: Finish this!
-        public IActionResult CompleteCheckOut()
-        {
-
-        }
 
 
     }
