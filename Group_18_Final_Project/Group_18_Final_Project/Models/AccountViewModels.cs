@@ -92,6 +92,30 @@ namespace Group_18_Final_Project.Models
         public string ConfirmPassword { get; set; }
     }   
 
+    public class EditInfoViewModel
+    {
+        [Display(Name = "Current Username:")]
+        public String UserName { get; set; }
+        [Display(Name = "Email:    ")]
+        public String Email { get; set; }
+        [Display(Name = "First Name:    ")]
+        public String FirstName { get; set; }
+        [Display(Name = "Last Name:    ")]
+        public String LastName { get; set; }
+        [Display(Name = "Address:    ")]
+        public String Address { get; set; }
+        [Display(Name ="City:    ")]
+        public String City { get; set; }
+        [Display(Name = "State:    ")]
+        public String State { get; set; }
+        [Display(Name = "Zip Code:    ")]
+        public Int32 ZipCode { get; set; }
+        [Display(Name = "Phone Number:    ")]
+        public String PhoneNumber { get; set; }
+        
+
+    }
+
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }
@@ -104,6 +128,16 @@ namespace Group_18_Final_Project.Models
         public String City { get; set; }
         public String State { get; set; }
         public Int32 ZipCode { get; set; }
+        public String PhoneNumber { get; set; }
+        public List<CreditCard> creditCards { get; set; }
 
+    }
+
+    public class AddCreditCard
+    {
+        public CreditCard creditCard
+        {
+            get;set;
+        }
     }
 }

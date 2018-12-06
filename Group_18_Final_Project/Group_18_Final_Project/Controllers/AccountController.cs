@@ -4,10 +4,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Group_18_Final_Project.DAL;
+using Group_18_Final_Project.Models;
 
 //TODO: Change this using statement to match your project
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 
@@ -104,6 +107,7 @@ namespace Group_18_Final_Project.Controllers
                     State = model.State,
                     ZipCode = model.ZipCode,
                     
+                    
 
                     //: You will need to add all of the properties for your User model here
                     //Make sure that you have included ALL of the properties and that they match
@@ -152,7 +156,7 @@ namespace Group_18_Final_Project.Controllers
 
             //get user info
             String id = User.Identity.Name;
-            User user = _db.Users.FirstOrDefault(u => u.UserName == id);
+            User user = _db.Users.Include(m => m.CreditCards).FirstOrDefault(u => u.UserName == id);
 
             //populate the view model
             ivm.Email = user.Email;
@@ -165,6 +169,8 @@ namespace Group_18_Final_Project.Controllers
             ivm.City = user.City;
             ivm.State = user.State;
             ivm.ZipCode = user.ZipCode;
+            ivm.PhoneNumber = user.PhoneNumber;
+            ivm.creditCards = user.CreditCards;
             //TODO: activeuser?
 
 
@@ -194,12 +200,101 @@ namespace Group_18_Final_Project.Controllers
             var result = await _userManager.ChangePasswordAsync(userLoggedIn, model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(userLoggedIn, isPersistent: false); 
+                await _signInManager.SignInAsync(userLoggedIn, isPersistent: false);
+
+                // send confirmation email 
+                String emailSubject = "Attention " + userLoggedIn.FirstName + "! Your password has been changed.";
+                String emailBody = "If this was not you, you may have a serious security concern on your hands. " +
+                    "Please reach out to our cusotomer service and let us help you maintain control of your account.";
+                Utilities.EmailMessaging.SendEmail(userLoggedIn.Email, emailSubject, emailBody);
+
                 return RedirectToAction("Index", "Home");
             }
             AddErrors(result);
             return View(model);
         }
+
+
+        //Logic for Editing account info
+        // GET: /Account/EditInfo
+        public ActionResult EditInfo()
+        {
+            string username = User.Identity.Name;
+
+            // Fetch the userprofile
+            User user = _db.Users.FirstOrDefault(u => u.UserName.Equals(username));
+
+            // Construct the viewmodel
+            EditInfoViewModel model = new EditInfoViewModel();
+            model.FirstName = user.FirstName;
+            model.LastName = user.LastName;
+            model.Email = user.Email;
+            model.PhoneNumber = user.PhoneNumber;
+            model.Address = user.Address;
+            model.City = user.City;
+            model.State = user.State;
+            model.ZipCode = user.ZipCode;
+
+            return View(model);
+        }
+
+        //
+        // POST: /Account/EditInfo
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditInfo(EditInfoViewModel userprofile)
+        {
+            if (ModelState.IsValid)
+            {
+                string username = User.Identity.Name;
+                // Get the userprofile
+                User user = _db.Users.FirstOrDefault(u => u.UserName.Equals(username));
+
+                // Update fields
+                user.FirstName = userprofile.FirstName;
+                user.LastName = userprofile.LastName;
+                user.Email = userprofile.Email;
+                user.PhoneNumber = userprofile.PhoneNumber;
+                user.Address = userprofile.Address;
+                user.City = userprofile.City;
+                user.State = userprofile.State;
+                user.ZipCode = userprofile.ZipCode;
+
+                //save changes
+                _db.SaveChanges();
+
+                return RedirectToAction("Index", "Home"); // or whatever
+            }
+
+            return View(userprofile);
+        }
+
+
+        //Logic for adding credit card info
+        // GET: /Account/AddCard
+        public ActionResult AddCard()
+        {
+            string username = User.Identity.Name;
+            User user = _db.Users.Include(m => m.CreditCards).FirstOrDefault(u => u.UserName.Equals(username));
+            if(user.CreditCards.Count() > 3)
+            {
+                return RedirectToAction("Index","Account");
+            }
+
+
+            return RedirectToAction("Create","CreditCards");
+        }
+
+        //Logic for editing credit card info
+        // GET: /Account/EditCards
+        public ActionResult EditCards()
+        {
+            string username = User.Identity.Name;
+            User user = _db.Users.Include(m => m.CreditCards).FirstOrDefault(u => u.UserName.Equals(username));
+            return RedirectToAction("Index", "CreditCards");
+        }
+
+
 
         //GET:/Account/AccessDenied
         public ActionResult AccessDenied(String ReturnURL)

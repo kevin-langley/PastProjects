@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+@model EditInfoViewModel;
+
+@using (Html.BeginForm("EditInfo", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+
+    @Html.LabelFor(model => model.FirstName)
+    <br />
+    @Html.EditorFor(model => model.FirstName)
+    <br />
+    @Html.LabelFor(model => model.LastName)
+    <br />
+    @Html.EditorFor(model => model.LastName)
+    <br />
+    @Html.LabelFor(model => model.Email)
+    <br />
+    @Html.EditorFor(model => model.Email)
+    <br />
+    @Html.LabelFor(model => model.PhoneNumber)
+    <br />
+    @Html.EditorFor(model => model.PhoneNumber)
+    <br />
+    @Html.LabelFor(model => model.Address)
+    <br />
+    @Html.EditorFor(model => model.Address)
+    <br />
+    @Html.LabelFor(model => model.City)
+    <br />
+    @Html.EditorFor(model => model.City)
+    <br />
+    @Html.LabelFor(model => model.State)
+    <br />
+    @Html.EditorFor(model => model.State)
+    <br />
+    @Html.LabelFor(model => model.ZipCode)
+    <br />
+    @Html.EditorFor(model => model.ZipCode)
+    <br />
+
+    <input type="submit" value="Save" />
+}

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
+    [Authorize]
     public class CreditCardsController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,11 +22,12 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: CreditCards
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.CreditCards.ToListAsync());
+            List<CreditCard> CreditCards = new List<CreditCard>();
+            CreditCards = _context.CreditCards.Where(o => o.User.UserName == User.Identity.Name).Include(o => o.User).ToList();
+            return View(CreditCards);
         }
-
         // GET: CreditCards/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -33,8 +36,19 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var creditCard = await _context.CreditCards
+            var creditCard = await _context.CreditCards.Include(m => m.User)
                 .FirstOrDefaultAsync(m => m.CreditCardID == id);
+
+            //make sure a customer isn't trying to look at someone else's order
+            //AppUser userLoggedIn = await _userManager.FindByNameAsync(User.Identity.Name);
+            String idi = User.Identity.Name;
+            User userLoggedIn = _context.Users.FirstOrDefault(u => u.UserName == idi);
+            if (creditCard.User.UserName != userLoggedIn.UserName)
+            {
+                return View("Error", new string[] { "You are not authorized to view this credit card!" });
+            }
+
+
             if (creditCard == null)
             {
                 return NotFound();
@@ -56,13 +70,20 @@ namespace Group_18_Final_Project.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CreditCardID,CreditType,CreditCardNumber")] CreditCard creditCard)
         {
+            //get user info
+            //AppUser userLoggedIn = await _userManager.FindByNameAsync(User.Identity.Name);
+            String id = User.Identity.Name;
+            User user = _context.Users.Include(m => m.CreditCards).FirstOrDefault(u => u.UserName == id);
+            creditCard.User = user;
+
             if (ModelState.IsValid)
             {
                 _context.Add(creditCard);
+                user.CreditCards.Add(creditCard);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Account");
             }
-            return View(creditCard);
+            return RedirectToAction("Index","Account");
         }
 
         // GET: CreditCards/Edit/5
@@ -74,6 +95,15 @@ namespace Group_18_Final_Project.Controllers
             }
 
             var creditCard = await _context.CreditCards.FindAsync(id);
+
+            String idi = User.Identity.Name;
+            User userLoggedIn = _context.Users.FirstOrDefault(u => u.UserName == idi);
+            if (creditCard.User.UserName != userLoggedIn.UserName)
+            {
+                return View("Error", new string[] { "You are not authorized to edit this credit card!" });
+            }
+
+
             if (creditCard == null)
             {
                 return NotFound();

@@ -13,14 +13,18 @@ namespace Group_18_Final_Project.Models
     {
         //CreditCard properties
         public Int32 CreditCardID { get; set; }
+        [Required(ErrorMessage = "Credit Card type is required.")]
+        [Display(Name = "Credit Card Type")]
         public CreditCardType CreditType { get; set; }
 
         [Required(ErrorMessage = "Card Number is required.")]
         [StringLength(16)]
+        [Display(Name = "Credit Card Number:")]
         public String CreditCardNumber { get; set; }
 
         //Navigation properties
         public User User { get; set; }
         public List<Order> Orders { get; set; }
     }
+
 }
