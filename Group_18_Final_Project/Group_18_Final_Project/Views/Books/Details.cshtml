@@ -32,14 +32,21 @@
         <dt>
             @Html.DisplayNameFor(model => model.AverageRating)
         </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AverageRating)
-        </dd>
-
+        @if (@Model.Reviews.Count() == 0 || (@Model.Reviews.All(u => u.IsPending == false && u.Approval == false)) || @Model.Reviews == null)
+        {
+            <dd>This book has not yet been reviewed!</dd>
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.AverageRating)
+            </dd>
+        }
+        <dd class="text-danger">@ViewBag.NoOrder</dd>
         <dd>
             @*Links for reviews/rating and an option to review the book*@
-            <a asp-action="Index" asp-controller = "Reviews" asp-route-id="@Model.BookID">Reviews</a> |
-            <a asp-action="Create" asp-controller = "Reviews" asp-route-id="@Model.BookID">Review This Book</a>
+            <a asp-action="Index" asp-controller="Reviews" asp-route-id="@Model.BookID">Reviews</a> |
+            <a asp-action="Create" asp-controller="Reviews" asp-route-id="@Model.BookID">Write a Review</a>
         </dd>
 
         <dt>

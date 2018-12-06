@@ -25,8 +25,26 @@ namespace Group_18_Final_Project.Controllers
         public async Task<IActionResult> Index()
         {
 
-            return View(await _context.Orders.ToListAsync());
-            
+            //get user info
+            List<Order> UserOrders = new List<Order>();
+            String id = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+            if (User.IsInRole("Customer"))
+            {
+                UserOrders = await _context.Orders
+                                            .Include(or => or.BookOrders)
+                                            .Where(o => o.User.UserName == User.Identity.Name && o.IsPending == false).ToListAsync();
+
+            }
+
+            //TODO: Remove admin@example.com from customer role!!
+            else //user is manager and can see all orders
+            {
+                UserOrders = await _context.Orders.Include(o => o.BookOrders).Where(o => o.IsPending == false).ToListAsync();
+            }
+            return View(UserOrders);
+
         }
 
         //GET: Orders/Details
@@ -130,6 +148,41 @@ namespace Group_18_Final_Project.Controllers
             }
 
             return View("Index", "Home");
+        }
+
+        //This action displays details of completed orders
+        //Has order id as parameter
+        public IActionResult CompletedOrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            //Finding current logged in user to match user to order id
+            string userid = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(us => us.UserName == userid);
+
+            //Finds order (including relational data) of the order matched in the order id
+            Order order = _context.Orders
+                                .Include(or => or.CreditCard)
+                                .Include(or => or.BookOrders).ThenInclude(bo => bo.Book)
+                                .Where(or => or.User == user).FirstOrDefault(or => or.OrderID == id);
+
+            string ccNumber = order.CreditCard.CreditCardNumber;
+
+            //To pass credit card view to confirm check out
+            string hidden = "************" + ccNumber.Substring(ccNumber.Length - 4);
+
+            ViewBag.ccType = order.CreditCard.CreditType;
+            ViewBag.ccHidden = hidden;
+
+            //pass matched order to view
+            return View(order);
+
+
+
+
         }
 
         // GET: Orders/Create
@@ -300,6 +353,7 @@ namespace Group_18_Final_Project.Controllers
                                 bookOrderToUpdate = bookOrder;
                                 bookOrderToUpdate.Order = order;
 
+
                                 _context.Update(bookOrderToUpdate);
                                 await _context.SaveChangesAsync();
 
@@ -349,9 +403,10 @@ namespace Group_18_Final_Project.Controllers
                 //TODO: Check if we need to do this lol
                 bo.Price = bo.Book.BookPrice;
 
-                //Stores order quantity
+                //Stores order quantity and necessary order details
                 bo.OrderQuantity = intOrderQuantity;
                 bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
+                bo.Order.OrderDate = DateTime.Today;
 
                 if (ModelState.IsValid)
                 {
@@ -384,9 +439,10 @@ namespace Group_18_Final_Project.Controllers
             //Sets order quantity
             bo.OrderQuantity = intOrderQuantity;
 
-            //Stores most recently updated book price into order detail price
+            //Stores most recently updated book price into order detail price & other stuff
             bo.Price = bo.Book.BookPrice;
             bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
+            bo.Order.OrderDate = DateTime.Today;
 
             _context.Add(bo);
             await _context.SaveChangesAsync();

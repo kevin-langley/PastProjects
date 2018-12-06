@@ -1,20 +1,30 @@
 ﻿@model Group_18_Final_Project.Models.Order
-
+@using Group_18_Final_Project.Models
 @{
-    ViewData["Title"] = "ConfirmCheckOut";
+    ViewData["Title"] = "Details";
 }
+<!--The following view page is details of a completed order-->
+<div>
+    <h2>Order</h2>
+    <br />
+    <h4>Your Completed Order</h4>
+    <br />
+</div>
 
-<!--The following view page is the page for when a user confirms their payment options and wants to place an order-->
-
-<h2>Confirm Your Order</h2>
-<h3>Please take the time to review your order below before placing it</h3><br/>
+<p>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+    </dl>
+</p>
 
 <div class="row">
     <div class="column" style="padding:0 15px 0 15px;">
-        <h5>Shipping Address</h5>
-    </div>
-    <div class="column" >
-        <p></p>
+    <h5>Shipping Address</h5>
     </div>
     <div class="column" style="padding:0 15px 0 15px;">
         <p>@Html.DisplayFor(modelItem => modelItem.User.Address)</p>
@@ -24,10 +34,7 @@
 
 <div class="row">
     <div class="column" style="padding:0 15px 0 15px;">
-        <h5>Payment Method</h5>
-    </div>
-    <div class="column">
-        <p></p>
+    <h5>Payment Method</h5>
     </div>
     <div class="column" style="padding:0 15px 0 15px;">
         <p>@ViewBag.ccType</p>
@@ -78,6 +85,3 @@
         </tr>
     </table>
 </div>
-
-<a asp-action="PlaceOrder" asp-route-id ="@Model.OrderID" class="btn btn-success">Place Your Order</a>
-

@@ -49,9 +49,16 @@
                 {
                     <td>No</td>
                 }
-                <td>
-                    @Html.DisplayFor(modelItem => item.AverageRating)
-                </td>
+                @if (item.Reviews.Count() == 0 || (item.Reviews.All(u => u.IsPending == false && u.Approval == false)) || item.Reviews == null)
+                {
+                    <td>This book hasn't been reviewed yet!</td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AverageRating)
+                    </td>
+                }
                 <td>
                     <a asp-action="Details" asp-controller="Books" asp-route-id="@item.BookID">Details</a>
                 </td>

@@ -25,8 +25,11 @@ namespace Group_18_Final_Project.Models
 
         [Display(Name = "Average Rating")]
         [DisplayFormat(DataFormatString = "{0:0.00}")] //Displays average rating to 2 decimals
-        public String AverageRating { get; set; }
-        
+        public Decimal AverageRating
+        {
+            get { return (Reviews.Where(r => r.IsPending == false && r.Approval == true).Sum(r => r.Rating) / Reviews.Count()); }
+        }
+
         [Display(Name = "Copies On Hand")]
         public Int32 CopiesOnHand { get; set; }
 
@@ -51,5 +54,15 @@ namespace Group_18_Final_Project.Models
         public List<BookOrder> BookOrders { get; set; }
         public List<Review> Reviews { get; set; }
         public Genre Genre { get; set; }
+
+        public Book()
+        {
+            if (Reviews == null)
+
+            {
+                Reviews = new List<Review>();
+            }
+
+        }
     }
 }
