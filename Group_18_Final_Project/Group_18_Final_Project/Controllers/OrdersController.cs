@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
     public enum CheckOutChoice { CurrentCard, NewCard };
-
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly AppDbContext _context;
@@ -233,6 +234,11 @@ namespace Group_18_Final_Project.Controllers
             if (id != order.OrderID)
             {
                 return NotFound();
+            }
+
+            if (User.IsInRole("Manager") == false && order.User.UserName != User.Identity.Name)
+            {
+                return View("Error", new string[] { "You are not authorized to edit this order!" });
             }
 
             if (ModelState.IsValid)

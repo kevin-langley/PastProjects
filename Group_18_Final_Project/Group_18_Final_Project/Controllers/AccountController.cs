@@ -148,6 +148,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         //GET: Account/Index
+        [Authorize("Manager"]
         public ActionResult Index()
         {
             IndexViewModel ivm = new IndexViewModel();

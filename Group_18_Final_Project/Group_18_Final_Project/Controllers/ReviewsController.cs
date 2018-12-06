@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
-
     public class ReviewsController : Controller
     {
         private readonly AppDbContext _context;
@@ -38,6 +37,20 @@ namespace Group_18_Final_Project.Controllers
                                             .Where(u => u.Book.BookID == id).ToListAsync();
 
                 return View(bookreviews);
+            }
+            if((User.IsInRole("Manager") || User.IsInRole("Employee")) == true)
+            {
+                if (id == null)
+                {
+                    return View(await _context.Reviews.ToListAsync());
+                }
+                //if book id is specified
+                List<Review> bookReviews = await _context.Reviews
+                    .Include(u => u.Author)
+                    .Include(u => u.Book)
+                    .Where(u => u.Book.BookID == id).ToListAsync();
+                return View(bookReviews);
+
             }
             //View page for all approved reviews
             if (id == null)
@@ -74,6 +87,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public IActionResult Create(int? id)
         {
             string userid = User.Identity.Name;
@@ -96,6 +110,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReviewID,ReviewText,Rating")] Review review, int id)
         {
@@ -145,7 +160,10 @@ namespace Group_18_Final_Project.Controllers
             {
                 return NotFound();
             }
-
+            if ((User.IsInRole("Employee") == false || User.IsInRole("Manager") == false )&& review.Author.UserName != User.Identity.Name)
+            {
+                return View("Error", new string[] { "You are not authorized to edit this review!" });
+            }
             if (ModelState.IsValid)
             {
                 try
