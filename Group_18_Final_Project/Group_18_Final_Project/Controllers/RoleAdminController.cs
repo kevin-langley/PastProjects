@@ -168,16 +168,31 @@ namespace Group_18_Final_Project.Controllers
                     //        return View("Error", result.Errors);
                     //    }
                     //}
-                    if (user.UserType == "Manager")
+                    if (user.UserType == "Employee")
                     {
-                        result = await _userManager.AddToRoleAsync(user, model.RoleName);
-                        if (!result.Succeeded)
+                        //Promote to manager
+                        if (model.RoleName == "Manager")
                         {
-                            return View("Error", result.Errors);
+                            result = await _userManager.AddToRoleAsync(user, "Manager");
+                            _db.Update(user);
+                            _db.SaveChanges();
+
+                            if (!result.Succeeded)
+                            {
+                                return View("Error", result.Errors);
+                            }
+                        }
+
+                        //Rehire an employee
+                        if (model.RoleName == "Employee")
+                        {
+                            user.ActiveUser = true;
+                            _db.Update(user);
+                            _db.SaveChanges();
                         }
                     }
 
-                    if (user.UserType == "Employee" || user.UserType == "Customer")
+                    if (user.UserType == "Customer")
                     {
                         user.ActiveUser = true;
                         _db.Update(user);

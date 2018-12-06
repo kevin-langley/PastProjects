@@ -64,15 +64,15 @@
 
     @if (Model.Role.Name == "Manager")
     {
-        <input type="hidden" name="roleName" value="Current Employees" />
+        <input type="hidden" name="roleName" value="Manager" />
     }
     @if (Model.Role.Name == "Employee")
     {
-        <input type="hidden" name="roleName" value="Fired Employees" />
+        <input type="hidden" name="roleName" value="Employee" />
     }
     @if (Model.Role.Name == "Customer")
     {
-        <input type="hidden" name="roleName" value="Disabled Customer Accounts" />
+        <input type="hidden" name="roleName" value="Customer" />
     }
     <div class="panel panel-primary">
 
