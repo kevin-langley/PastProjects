@@ -176,7 +176,10 @@ namespace Group_18_Final_Project.Controllers
                 foreach (string userId in model.IdsToDelete ?? new string[] { })
                 {
                     User user = await _userManager.FindByIdAsync(userId);
-                    result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+                    user.ActiveUser = false;
+                    _db.Update(user);
+                    _db.SaveChanges();
+                    //result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
                 }
                 return RedirectToAction("Index");
             }
