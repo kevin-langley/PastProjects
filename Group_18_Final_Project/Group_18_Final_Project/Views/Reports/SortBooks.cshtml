@@ -1,0 +1,22 @@
+﻿@using Group_18_Final_Project.Controllers
+
+<br />
+<h2>Books Report</h2>
+<form asp-action="BooksReport" asp-controller="Reports" method="post">
+    @*Sort Report Results*@
+    <div class="form-group">
+        <label>Sort by:</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.NewestFirst, true)Most Recent</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.ProfitDescending)Profit Margin: High to Low</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.ProfitAscending)Profit Margin: Low to High</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.PriceDescending)Price: High to Low</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.PriceAscending)Price: Low to High</label>
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.TimesPurchased)Times Purchased</label>
+    </div>
+
+    <!--Submit form data to be processed by method-->
+    <button type="submit" class="btn btn-danger">View Report</button>
+    <!--Spacing-->
+    <br />
+    <br />
+</form>
