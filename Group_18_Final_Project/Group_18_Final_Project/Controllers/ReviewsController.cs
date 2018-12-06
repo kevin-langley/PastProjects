@@ -25,14 +25,20 @@ namespace Group_18_Final_Project.Controllers
         //Create new list to find only approved reviews
         public async Task<IActionResult> Index(int? id)
         {
-            //TODO: Add this in once admin is removed from customer
-            //if (User.IsInRole("Customer"))
-            //{
-            //    if (id == null)
-            //    {
-            //        return NotFound();
-            //    }
-            //}
+            if (User.IsInRole("Customer"))
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                //if book id is specified
+                List<Review> bookreviews = await _context.Reviews
+                                            .Include(u => u.Author)
+                                            .Include(u => u.Book)
+                                            .Where(u => u.Book.BookID == id).ToListAsync();
+
+                return View(bookreviews);
+            }
             //View page for all approved reviews
             if (id == null)
             {
@@ -83,9 +89,7 @@ namespace Group_18_Final_Project.Controllers
                 return View();
             }
 
-
-            ViewBag.NoOrder = "Sorry! You can't review a book you have not purchased.";
-            return RedirectToAction("Details", new { id = id });
+            return RedirectToAction("Details", "Books", new { id });
         }
 
         // POST: Reviews/Create
@@ -199,8 +203,7 @@ namespace Group_18_Final_Project.Controllers
             return _context.Reviews.Any(e => e.ReviewID == id);
         }
 
-        [Authorize(Roles = "Manager")]
-        [Authorize(Roles = "Employee")]
+        [Authorize(Roles = "Manager, Employee")]
         public IActionResult ApproveReviews()
         {
             List<Review> reviewsToApprove = _context.Reviews
@@ -231,7 +234,7 @@ namespace Group_18_Final_Project.Controllers
 
                     _context.Reviews.Update(review);
                     await _context.SaveChangesAsync();
-                    return View("Index");
+                    return RedirectToAction("Index");
 
                 }
 
@@ -241,7 +244,7 @@ namespace Group_18_Final_Project.Controllers
 
                 _context.Reviews.Update(review);
                 await _context.SaveChangesAsync();
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
             return View("Index");

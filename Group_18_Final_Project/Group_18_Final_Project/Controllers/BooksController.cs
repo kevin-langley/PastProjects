@@ -64,6 +64,8 @@ namespace Group_18_Final_Project.Controllers
             int intOrderQuantity = bookOrders.Sum(o => o.OrderQuantity);
             ViewBag.InCart = intOrderQuantity > 0 ? "This book is already in your cart" : "This book is not yet in your cart";
 
+            ViewBag.NoOrder = "Sorry! You can't review a book you have not purchased.";
+
             return View(book);
         }
 

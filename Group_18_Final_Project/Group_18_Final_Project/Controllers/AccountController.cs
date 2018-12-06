@@ -6,10 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
-
-//TODO: Change this using statement to match your project
-using Group_18_Final_Project.DAL;
-using Group_18_Final_Project.Models;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -64,6 +60,7 @@ namespace Group_18_Final_Project.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+
             if (result.Succeeded)
             {
                 return Redirect(returnUrl ?? "/");
