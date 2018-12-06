@@ -215,25 +215,45 @@ namespace Group_18_Final_Project.Controllers
 
         //Logic for Editing account info
         // GET: /Account/EditInfo
-        public ActionResult EditInfo()
+        public ActionResult EditInfo(int? id)
         {
-            string username = User.Identity.Name;
+            if (id == null)
+            {
+                string username = User.Identity.Name;
 
-            // Fetch the userprofile
-            User user = _db.Users.FirstOrDefault(u => u.UserName.Equals(username));
+                // Fetch the userprofile
+                User user = _db.Users.FirstOrDefault(u => u.UserName.Equals(username));
 
-            // Construct the viewmodel
-            EditInfoViewModel model = new EditInfoViewModel();
-            model.FirstName = user.FirstName;
-            model.LastName = user.LastName;
-            model.Email = user.Email;
-            model.PhoneNumber = user.PhoneNumber;
-            model.Address = user.Address;
-            model.City = user.City;
-            model.State = user.State;
-            model.ZipCode = user.ZipCode;
+                // Construct the viewmodel
+                EditInfoViewModel model = new EditInfoViewModel();
+                model.FirstName = user.FirstName;
+                model.LastName = user.LastName;
+                model.Email = user.Email;
+                model.PhoneNumber = user.PhoneNumber;
+                model.Address = user.Address;
+                model.City = user.City;
+                model.State = user.State;
+                model.ZipCode = user.ZipCode;
 
-            return View(model);
+                return View(model);
+            }
+            else
+            {
+                // Fetch the userprofile
+                User user = _db.Users.FirstOrDefault(u => u.Id.Equals(id));
+
+                // Construct the viewmodel
+                EditInfoViewModel model = new EditInfoViewModel();
+                model.FirstName = user.FirstName;
+                model.LastName = user.LastName;
+                model.PhoneNumber = user.PhoneNumber;
+                model.Address = user.Address;
+                model.City = user.City;
+                model.State = user.State;
+                model.ZipCode = user.ZipCode;
+
+                return View(model);
+            }
         }
 
         //
