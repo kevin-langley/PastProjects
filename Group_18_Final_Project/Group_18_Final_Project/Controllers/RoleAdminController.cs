@@ -128,6 +128,7 @@ namespace Group_18_Final_Project.Controllers
             IdentityResult result;
             if (ModelState.IsValid)
             {
+
                 foreach (string userId in model.IdsToAdd ?? new string[] { })
                 {
                     User user = await _userManager.FindByIdAsync(userId);
