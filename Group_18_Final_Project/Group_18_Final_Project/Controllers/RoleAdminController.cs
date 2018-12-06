@@ -16,7 +16,7 @@ using System;
 namespace Group_18_Final_Project.Controllers
 {
     //: Uncomment this line once you have roles working correctly
-    [Authorize(Roles = "Manager")]
+    [Authorize(Roles = "Manager, Employee")]
     public class RoleAdminController : Controller
     {
         private AppDbContext _db;
@@ -35,30 +35,59 @@ namespace Group_18_Final_Project.Controllers
         public async Task<ActionResult> Index()
         {
             List<RoleEditModel> roles = new List<RoleEditModel>();
-            
-            foreach (IdentityRole role in _roleManager.Roles)
+
+            //Show everyone for manager
+            if (User.IsInRole("Manager"))
             {
-                List<User> members = new List<User>();
-                List<User> nonMembers = new List<User>();
-                foreach (User user in _userManager.Users)
+                foreach (IdentityRole role in _roleManager.Roles)
                 {
-                    var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
-                    list.Add(user);
+                    List<User> members = new List<User>();
+                    List<User> nonMembers = new List<User>();
+                    foreach (User user in _userManager.Users)
+                    {
+                        var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
+                        list.Add(user);
+                    }
+                    RoleEditModel re = new RoleEditModel();
+                    re.Role = role;
+                    re.Members = members;
+                    re.NonMembers = nonMembers;
+                    roles.Add(re);
                 }
-                RoleEditModel re = new RoleEditModel();
-                re.Role = role;
-                re.Members = members;
-                re.NonMembers = nonMembers;
-                roles.Add(re);
+            }
+
+            //Only show customers for employee
+            if (User.IsInRole("Employee"))
+            {
+                foreach (IdentityRole role in _roleManager.Roles)
+                {
+                    if (role.Name == "Customer")
+                    {
+                        List<User> members = new List<User>();
+                        List<User> nonMembers = new List<User>();
+                        foreach (User user in _userManager.Users)
+                        {
+                            var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
+                            list.Add(user);
+                        }
+                        RoleEditModel re = new RoleEditModel();
+                        re.Role = role;
+                        re.Members = members;
+                        re.NonMembers = nonMembers;
+                        roles.Add(re);
+                    }
+                }
             }
             return View(roles);
         }
 
+        [Authorize(Roles = "Manager")]
         public ActionResult HireNewEmployee()
         {
             return View();
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         public async Task<ActionResult> HireNewEmployee(RegisterViewModel model)
         {

@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity;
 @model IEnumerable<RoleEditModel>
 
 @{
@@ -17,7 +17,7 @@
             <th></th>
         </tr>
         @if (Model.Count() == 0)
-        { 
+        {
             <tr>
                 <td colspan="4" class="text-center">No roles</td>
             </tr>
@@ -25,17 +25,17 @@
         else
         {
             foreach (RoleEditModel role in Model)
-            {  
+            {
                 <tr>
                     <td>@role.Role.Id</td>
                     <td>@role.Role.Name</td>
                     <td>
                         @if (role.Members == null || role.Members.Count() == 0)
-                        { 
+                        {
                             @: No Users in role
                         }
                         else
-                        { 
+                        {
                             <p>@string.Join(", ", role.Members.Select(x => x.Email))</p>
                         }
                     </td>
@@ -47,4 +47,11 @@
         }
     </table>
 </div>
-@Html.ActionLink("Hire New Employee", "HireNewEmployee", null, new { @class = "btn btn-primary" })
+@if (User.IsInRole("Manager"))
+{
+    @Html.ActionLink("Hire New Employee", "HireNewEmployee", null, new { @class = "btn btn-primary" })
+}
+@if (User.IsInRole("Employee"))
+{
+    @Html.ActionLink("Create New Customer", "Register", "Account", null, new { @class = "btn btn-primary" })
+}
