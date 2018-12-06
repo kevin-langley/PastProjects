@@ -11,10 +11,6 @@
     <h4>Book</h4>
     <hr />
     <dl class="dl-horizontal">
-        @if (User.IsInRole("Manager") && Model.ActiveBook == true)
-        {
-        <a asp-action="Disable" asp-controller="Books" asp-route-id="@Model.BookID">Discontinue this book</a>
-        }
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -46,16 +42,13 @@
                 @Html.DisplayFor(model => model.AverageRating)
             </dd>
         }
-
-        @if (User.IsInRole("Customer") == true)
-        {
         <dd class="text-danger">@ViewBag.NoOrder</dd>
         <dd>
             @*Links for reviews/rating and an option to review the book*@
             <a asp-action="Index" asp-controller="Reviews" asp-route-id="@Model.BookID">Reviews</a> |
             <a asp-action="Create" asp-controller="Reviews" asp-route-id="@Model.BookID">Write a Review</a>
         </dd>
-        }
+
         <dt>
             @Html.DisplayNameFor(model => model.BookPrice)
         </dt>
@@ -74,32 +67,22 @@
         <dd>
             @Html.DisplayFor(model => model.Genre.GenreName)
         </dd>
-
     </dl>
 </div>
-
 <div>
-    @if (Model.ActiveBook == true && User.IsInRole("Customer") == true) {
-        <form asp-action="AddToOrder" asp-controller="Orders">
-            <div class="form-group">
-                <h5>Quantity:</h5>
-                <div>
-                    @ViewBag.InCart
-                </div>
-                <input name="intOrderQuantity" class="form-control" />
-            </div>
+    <form asp-action="AddToOrder" asp-controller="Orders">
+        <div class="form-group">
+            <h5>Quantity:</h5>
             <div>
-                <input type="hidden" asp-for="@Model.BookID" />
-                <button type="submit" class="btn btn-danger">Add To Cart</button>
+                @ViewBag.InCart
             </div>
-        </form>
-    }
-    @if (Model.ActiveBook == false)
-    {
-        <div>
-            <dd class="text-danger">This book has been discontinued!</dd>
+            <input name="intOrderQuantity" class="form-control" />
         </div>
-    }
+        <div>
+            <input type="hidden" asp-for="@Model.BookID" />
+            <button type="submit" class="btn btn-danger">Add To Cart</button>
+        </div>
+    </form>
 
     <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
     <a asp-action="Index">Back to List</a>

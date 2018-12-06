@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
@@ -65,13 +64,28 @@ namespace Group_18_Final_Project.Controllers
             int intOrderQuantity = bookOrders.Sum(o => o.OrderQuantity);
             ViewBag.InCart = intOrderQuantity > 0 ? "This book is already in your cart" : "This book is not yet in your cart";
 
-            ViewBag.NoOrder = "Sorry! You can't review a book you have not purchased.";
+
+            string userid = User.Identity.Name;
+            User user = await _context.Users
+                                        .Include(u => u.Orders)
+                                        .FirstOrDefaultAsync(u => u.UserName == userid);
+
+            List<Order> orders = _context.Orders.Include(bo => bo.BookOrders).Include(bo => bo.User).Where(u => u.User == user).ToList();
+
+            foreach (Order order in orders)
+            {
+                if (!order.BookOrders.All(bo => bo.Book == book))
+                {
+                    ViewBag.NoOrder = "Sorry! You can't review a book you have not purchased.";
+
+                }
+            }
+
 
             return View(book);
         }
 
         // GET: Books/Create
-        [Authorize(Roles ="Manager")]
         public IActionResult Create()
         {
             return View();
@@ -81,7 +95,6 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles ="Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookID,Title,Author,UniqueID,TimesPurchased,AverageRating,CopiesOnHand,BookPrice,WholesalePrice,ActiveBook,PublicationDate,Description")] Book book)
         {
@@ -95,7 +108,6 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Books/Edit/5
-        [Authorize(Roles ="Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -115,7 +127,6 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize(Roles ="Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BookID,Title,Author,UniqueID,TimesPurchased,AverageRating,CopiesOnHand,BookPrice,WholesalePrice,ActiveBook,PublicationDate,Description")] Book book)
         {
@@ -147,8 +158,8 @@ namespace Group_18_Final_Project.Controllers
             return View(book);
         }
 
-        // GET: Books/Disable/5
-        public async Task<IActionResult> Disable(int? id)
+        // GET: Books/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -165,17 +176,15 @@ namespace Group_18_Final_Project.Controllers
             return View(book);
         }
 
-        // POST: Books/Disable/5
-        [HttpPost, ActionName("Disable")]
-        [Authorize(Roles ="Manager")]
+        // POST: Books/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DisableConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var book = await _context.Books.FindAsync(id);
-            book.ActiveBook = false;
+            _context.Books.Remove(book);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details","Books",new { id = book.BookID });
-            //return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)

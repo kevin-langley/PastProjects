@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (BookReorder bookOrder in Model.BookReorders)
+            @foreach (BookReorder bookReorder in Model.BookReorders)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => bookReorder.Book.Title)</td>
@@ -50,5 +50,5 @@
     </table>
 </div>
 
-<a asp-action="PlaceOrder" asp-route-id ="@Model.OrderID" class="btn btn-success">Place Your Order</a>
+<a asp-action="PlaceOrder" asp-route-id ="@Model.ReorderID" class="btn btn-success">Place Your Order</a>
 
