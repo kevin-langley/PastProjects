@@ -38,14 +38,18 @@
                             @Html.ActionLink("Shopping Cart", "CartDetails", "Orders", null, new { @class = "nav-link" })
                         </li>
 
-                        if (User.IsInRole("Manager"))
+                        if (User.IsInRole("Manager") || User.IsInRole("Employee"))
                         {
-                            <li class="nav-item">
-                                @Html.ActionLink("Suppliers", "Index", "Suppliers", null, new { @class = "nav-link" })
-                            </li>
                             <li class="nav-item">
                                 @Html.ActionLink("Manage Users", "Index", "RoleAdmin", null, new { @class = "nav-link" })
                             </li>
+
+                            if (User.IsInRole("Manager"))
+                            {
+                                <li class="nav-item">
+                                    @Html.ActionLink("Suppliers", "Index", "Suppliers", null, new { @class = "nav-link" })
+                                </li>
+                            }
                         }
 
                     }

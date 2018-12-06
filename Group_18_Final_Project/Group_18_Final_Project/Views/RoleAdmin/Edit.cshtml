@@ -45,17 +45,23 @@
                     {
                         @if (user.ActiveUser == true)
                          {
-                            <tr>
-                                <td>@user.FirstName</td>
-                                <td>@user.Email</td>
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.Email</td>
 
-                                @if (Model.Role.Name != "Manager")
-                                {
-                                    <td>
-                                        <input type="checkbox" name="IdsToDelete" value="@user.Id" />
-                                    </td>
-                                }
-                            </tr>
+                        @if (Model.Role.Name != "Manager")
+                        {
+                            <td>
+                                <input type="checkbox" name="IdsToDelete" value="@user.Id" />
+                            </td>
+
+
+                            <td>
+                                <a asp-action="EditInfo" asp-controller="Account" asp-route-id="@user.Id">Edit Account Info</a>
+                            </td>
+                        }
+
+                    </tr>
                          }
                         }
                     }
