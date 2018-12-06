@@ -11,6 +11,10 @@
     <h4>Book</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (User.IsInRole("Manager") && Model.ActiveBook == true)
+        {
+        <a asp-action="Disable" asp-controller="Books" asp-route-id="@Model.BookID">Discontinue this book</a>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -67,22 +71,32 @@
         <dd>
             @Html.DisplayFor(model => model.Genre.GenreName)
         </dd>
+
     </dl>
 </div>
+
 <div>
-    <form asp-action="AddToOrder" asp-controller="Orders">
-        <div class="form-group">
-            <h5>Quantity:</h5>
-            <div>
-                @ViewBag.InCart
+    @if (Model.ActiveBook == true) {
+        <form asp-action="AddToOrder" asp-controller="Orders">
+            <div class="form-group">
+                <h5>Quantity:</h5>
+                <div>
+                    @ViewBag.InCart
+                </div>
+                <input name="intOrderQuantity" class="form-control" />
             </div>
-            <input name="intOrderQuantity" class="form-control" />
-        </div>
+            <div>
+                <input type="hidden" asp-for="@Model.BookID" />
+                <button type="submit" class="btn btn-danger">Add To Cart</button>
+            </div>
+        </form>
+    }
+    @if (Model.ActiveBook == false)
+    {
         <div>
-            <input type="hidden" asp-for="@Model.BookID" />
-            <button type="submit" class="btn btn-danger">Add To Cart</button>
+            <dd class="text-danger">This book has been discontinued!</dd>
         </div>
-    </form>
+    }
 
     <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
     <a asp-action="Index">Back to List</a>

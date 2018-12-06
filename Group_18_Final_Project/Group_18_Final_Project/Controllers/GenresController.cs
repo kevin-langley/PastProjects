@@ -118,34 +118,6 @@ namespace Group_18_Final_Project.Controllers
             return View(genre);
         }
 
-        // GET: Genres/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var genre = await _context.Genres
-                .FirstOrDefaultAsync(m => m.GenreID == id);
-            if (genre == null)
-            {
-                return NotFound();
-            }
-
-            return View(genre);
-        }
-
-        // POST: Genres/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var genre = await _context.Genres.FindAsync(id);
-            _context.Genres.Remove(genre);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool GenreExists(int id)
         {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
@@ -70,6 +71,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Books/Create
+        [Authorize(Roles ="Manager")]
         public IActionResult Create()
         {
             return View();
@@ -79,6 +81,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles ="Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookID,Title,Author,UniqueID,TimesPurchased,AverageRating,CopiesOnHand,BookPrice,WholesalePrice,ActiveBook,PublicationDate,Description")] Book book)
         {
@@ -92,6 +95,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Books/Edit/5
+        [Authorize(Roles ="Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -111,6 +115,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles ="Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BookID,Title,Author,UniqueID,TimesPurchased,AverageRating,CopiesOnHand,BookPrice,WholesalePrice,ActiveBook,PublicationDate,Description")] Book book)
         {
@@ -142,8 +147,8 @@ namespace Group_18_Final_Project.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Books/Disable/5
+        public async Task<IActionResult> Disable(int? id)
         {
             if (id == null)
             {
@@ -160,15 +165,17 @@ namespace Group_18_Final_Project.Controllers
             return View(book);
         }
 
-        // POST: Books/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Books/Disable/5
+        [HttpPost, ActionName("Disable")]
+        [Authorize(Roles ="Manager")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DisableConfirmed(int id)
         {
             var book = await _context.Books.FindAsync(id);
-            _context.Books.Remove(book);
+            book.ActiveBook = false;
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details","Books",new { id = book.BookID });
+            //return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)

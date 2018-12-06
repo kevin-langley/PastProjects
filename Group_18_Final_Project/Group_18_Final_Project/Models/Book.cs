@@ -25,9 +25,19 @@ namespace Group_18_Final_Project.Models
 
         [Display(Name = "Average Rating")]
         [DisplayFormat(DataFormatString = "{0:0.00}")] //Displays average rating to 2 decimals
-        public Decimal AverageRating
+        public String AverageRating
         {
-            get { return (Reviews.Where(r => r.IsPending == false && r.Approval == true).Sum(r => r.Rating) / Reviews.Count()); }
+            get
+            {
+                if (Reviews.Count() != 0)
+                {
+                    return (Reviews.Where(r => r.IsPending == false && r.Approval == true).Sum(r => r.Rating) / Reviews.Count()).ToString();
+                }
+                else
+                {
+                    return ("There are no reviews for this book yet!");
+                }
+            }
         }
 
         [Display(Name = "Copies On Hand")]

@@ -1,12 +1,12 @@
 ﻿@model Group_18_Final_Project.Models.Book
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Disable";
 }
 
-<h2>Delete</h2>
+<h2>Discontune</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to discontinue this book?</h3>
 <div>
     <h4>Book</h4>
     <hr />
@@ -79,9 +79,9 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Disable">
         <input type="hidden" asp-for="BookID" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <input type="submit" value="Disable" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

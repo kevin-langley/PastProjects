@@ -308,7 +308,7 @@ namespace Group_18_Final_Project.Controllers
             {
                 return NotFound();
             }
-
+            
             if (intOrderQuantity < 1)
             {
                 return RedirectToAction("Details", "Books", new { id = bookId });
@@ -316,7 +316,6 @@ namespace Group_18_Final_Project.Controllers
 
             //Finding book matching book id passed from book details page
             Book book = _context.Books.Find(bookId);
-
             //Stores book in book order detail
             bo.Book = book;
             bo.OrderQuantity = intOrderQuantity;
