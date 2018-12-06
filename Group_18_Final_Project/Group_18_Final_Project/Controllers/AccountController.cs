@@ -106,8 +106,9 @@ namespace Group_18_Final_Project.Controllers
                     City = model.City,
                     State = model.State,
                     ZipCode = model.ZipCode,
-                    
-                    
+                    ActiveUser = true,
+                    UserType = "Customer"
+
 
                     //: You will need to add all of the properties for your User model here
                     //Make sure that you have included ALL of the properties and that they match
