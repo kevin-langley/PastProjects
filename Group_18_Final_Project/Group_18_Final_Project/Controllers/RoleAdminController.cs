@@ -76,6 +76,7 @@ namespace Group_18_Final_Project.Controllers
                     City = model.City,
                     State = model.State,
                     ZipCode = model.ZipCode,
+                    ActiveUser = true
 
                 };
 
