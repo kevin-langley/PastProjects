@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
@@ -20,6 +21,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Coupons
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Coupons.ToListAsync());
@@ -44,6 +46,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Coupons/Create
+        [Authorize(Roles="Manager")]
         public IActionResult Create()
         {
             return View();
@@ -53,6 +56,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CouponID,CouponCode")] Coupon coupon)
         {
@@ -66,6 +70,7 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Coupons/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,6 +90,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CouponID,CouponName")] Coupon coupon)
         {
@@ -116,34 +122,8 @@ namespace Group_18_Final_Project.Controllers
             return View(coupon);
         }
 
-        // GET: Coupons/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var coupon = await _context.Coupons
-                .FirstOrDefaultAsync(m => m.CouponID == id);
-            if (coupon == null)
-            {
-                return NotFound();
-            }
 
-            return View(coupon);
-        }
-
-        // POST: Coupons/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var coupon = await _context.Coupons.FindAsync(id);
-            _context.Coupons.Remove(coupon);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool CouponExists(int id)
         {

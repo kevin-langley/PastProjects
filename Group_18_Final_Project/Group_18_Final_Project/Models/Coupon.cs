@@ -17,7 +17,9 @@ namespace Group_18_Final_Project.Models
         [Required(ErrorMessage = "Coupon code is required.")]
         [StringLength(20, ErrorMessage = "Coupon code must be 1-20 characters long.")]
         [Display(Name = "Coupon Code")]
+
         public String CouponCode { get; set; }
+        public Boolean CouponActive { get; set; }
 
         public CouponType CouponName { get; set; }
 
