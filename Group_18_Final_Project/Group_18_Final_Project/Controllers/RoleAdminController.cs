@@ -76,7 +76,8 @@ namespace Group_18_Final_Project.Controllers
                     City = model.City,
                     State = model.State,
                     ZipCode = model.ZipCode,
-                    ActiveUser = true
+                    ActiveUser = true,
+                    UserType = "Employee"
 
                 };
 
@@ -153,7 +154,8 @@ namespace Group_18_Final_Project.Controllers
                         user.UserName = user.Email;
                     }
                     //user.UserName = user.Email;
-                    result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    
+
                     //if(!result.Succeeded && user.UserName == null)
                     //{
                     //    try
@@ -166,11 +168,20 @@ namespace Group_18_Final_Project.Controllers
                     //        return View("Error", result.Errors);
                     //    }
                     //}
-                            
-
-                    if (!result.Succeeded)
+                    if (user.UserType == "Manager")
                     {
-                        return View("Error", result.Errors);
+                        result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                        {
+                            return View("Error", result.Errors);
+                        }
+                    }
+
+                    if (user.UserType == "Employee" || user.UserType == "Customer")
+                    {
+                        user.ActiveUser = true;
+                        _db.Update(user);
+                        _db.SaveChanges();
                     }
                 }
 
