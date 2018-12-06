@@ -46,13 +46,16 @@
                 @Html.DisplayFor(model => model.AverageRating)
             </dd>
         }
+
+        @if (User.IsInRole("Customer") == true)
+        {
         <dd class="text-danger">@ViewBag.NoOrder</dd>
         <dd>
             @*Links for reviews/rating and an option to review the book*@
             <a asp-action="Index" asp-controller="Reviews" asp-route-id="@Model.BookID">Reviews</a> |
             <a asp-action="Create" asp-controller="Reviews" asp-route-id="@Model.BookID">Write a Review</a>
         </dd>
-
+        }
         <dt>
             @Html.DisplayNameFor(model => model.BookPrice)
         </dt>
@@ -76,7 +79,7 @@
 </div>
 
 <div>
-    @if (Model.ActiveBook == true) {
+    @if (Model.ActiveBook == true && User.IsInRole("Customer") == true) {
         <form asp-action="AddToOrder" asp-controller="Orders">
             <div class="form-group">
                 <h5>Quantity:</h5>

@@ -15,4 +15,16 @@
     <Compile Remove="Migrations\20181124040608_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20181124040608_InitialCreate.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Reorders\CompletedOrderDetails.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Reorders\SendOrder.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Reorders\ConfirmSendOrder.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -9,6 +9,8 @@ using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
 using Microsoft.AspNetCore.Authorization;
 
+
+//Controller concerns books in the cart
 namespace Group_18_Final_Project.Controllers
 {
     [Authorize(Roles = "Manager")]
@@ -21,13 +23,13 @@ namespace Group_18_Final_Project.Controllers
             _context = context;
         }
 
-        // GET: BookReorders
+        // GET: BookReOrders
         public async Task<IActionResult> Index()
         {
             return View(await _context.BookReorders.ToListAsync());
         }
 
-        // GET: BookReorders/Details/5
+        // GET: BookReOrders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,121 +37,38 @@ namespace Group_18_Final_Project.Controllers
                 return NotFound();
             }
 
-            var bookReorder = await _context.BookReorders
+            var bookOrder = await _context.BookReorders
                 .FirstOrDefaultAsync(m => m.BookReorderID == id);
-            if (bookReorder == null)
+            if (bookOrder == null)
             {
                 return NotFound();
             }
 
-            return View(bookReorder);
+            return View(bookOrder);
         }
 
-        // GET: BookReorders/Create
-        public IActionResult Create()
+        // GET: BookOrders/ManualReorder
+        public IActionResult ManualReorder()
         {
             return View();
         }
 
-        // POST: BookReorders/Create
+        // POST: BookreOrders/ManualReorder
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookReorderID,ReorderQuantity")] BookReorder bookReorder)
+        public async Task<IActionResult> ManualReorder([Bind("BookReorderID,Price,ReorderQuantity")] BookReorder bookOrder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(bookReorder);
+                _context.Add(bookOrder);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(bookReorder);
-        }
+            return View(bookOrder);
+        }        
 
-        // GET: BookReorders/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bookReorder = await _context.BookReorders.FindAsync(id);
-            if (bookReorder == null)
-            {
-                return NotFound();
-            }
-            return View(bookReorder);
-        }
-
-        // POST: BookReorders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookReorderID,ReorderQuantity")] BookReorder bookReorder)
-        {
-            if (id != bookReorder.BookReorderID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(bookReorder);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BookReorderExists(bookReorder.BookReorderID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(bookReorder);
-        }
-
-        // GET: BookReorders/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bookReorder = await _context.BookReorders
-                .FirstOrDefaultAsync(m => m.BookReorderID == id);
-            if (bookReorder == null)
-            {
-                return NotFound();
-            }
-
-            return View(bookReorder);
-        }
-
-        // POST: BookReorders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var bookReorder = await _context.BookReorders.FindAsync(id);
-            _context.BookReorders.Remove(bookReorder);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool BookReorderExists(int id)
-        {
-            return _context.BookReorders.Any(e => e.BookReorderID == id);
-        }
+        
     }
 }
