@@ -833,6 +833,14 @@ namespace Group_18_Final_Project.Controllers
                 ViewBag.RecommendedBook2 = RecommendedBook2;
                 ViewBag.RecommendedBook3 = RecommendedBook3;
 
+                //Send confirmation email
+                String emailSubject = "Thank You" + user.FirstName + " for your recent purchase!";
+                String emailBody = "You purchased" + order.BookOrders.Count() + "books from us." +
+                                   "Your total cost was " + order.OrderTotal + ". Enjoy reading your new books!" +
+                                   "We would also like to recommend to you the following books: " +
+                                   RecommendedBook1 + ", " + RecommendedBook2 + ", " + RecommendedBook3;
+                Utilities.EmailMessaging.SendEmail(user.Email, emailSubject, emailBody);
+
                 return View("OrderConfirmed", order);
 
             }
