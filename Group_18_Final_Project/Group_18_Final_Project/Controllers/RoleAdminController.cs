@@ -81,6 +81,32 @@ namespace Group_18_Final_Project.Controllers
             return View(roles);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create([Required] string name)
+        {
+            if (ModelState.IsValid)
+            {
+                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name));
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    AddErrorsFromResult(result);
+                }
+            }
+
+            //if code gets this far, we need to show an error
+            return View(name);
+        }
+
         [Authorize(Roles = "Manager")]
         public ActionResult HireNewEmployee()
         {
