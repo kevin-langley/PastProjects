@@ -1,4 +1,5 @@
 ﻿@model RoleEditModel
+
 @{
     ViewBag.Title = "Edit Role";
 }
@@ -9,39 +10,19 @@
 
 @using (Html.BeginForm())
 {
-    <input type="hidden" name="roleName" value="@Model.Role.Name" />
     <div class="panel panel-primary">
-        <div class="panel-heading">Add To @Model.Role.Name</div>
-        <table class="table table-striped">
-            @if (Model.NonMembers.Count() == 0)
-            {
-                <tr>
-                    <td colspan="3">All Users Are Members</td>
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    <th>First Name</th>
-                    <th>Email</th>
-                    <th>Add to Role</th>
-                </tr>
-                foreach (User user in Model.NonMembers)
-                {
-                    <tr>
-                        <td>@user.FirstName</td>
-                        <td>@user.UserName</td>
-                        <td>
-                            <input type="checkbox" name="IdsToAdd" value="@user.Id" />
-                        </td>
-                    </tr>
-                }
-            }
-        </table>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">Remove from @Model.Role.Name</div>
+        @if (Model.Role.Name == "Manager")
+        {
+            <div class="panel-heading">Current Managers</div>
+        }
+        @if (Model.Role.Name == "Employee")
+        {
+            <div class="panel-heading">Current Employees</div>
+        }
+        @if (Model.Role.Name == "Customer")
+        {
+            <div class="panel-heading">Active Customer Accounts</div>
+        }
         <table class="table table-striped">
             @if (Model.Members.Count() == 0)
             {
@@ -54,17 +35,123 @@
                 <tr>
                     <th>First Name</th>
                     <th>Email</th>
-                    <th>Remove From Role</th>
+                    @if (Model.Role.Name != "Manager")
+                    {
+                        <th>@ViewBag.Disable</th>
+                    }
                 </tr>
+
                 foreach (User user in Model.Members)
                 {
-                    <tr>
-                        <td>@user.FirstName</td>
-                        <td>@user.UserName</td>
-                        <td>
-                            <input type="checkbox" name="IdsToDelete" value="@user.Id" />
-                        </td>
-                    </tr>
+                    @if (user.ActiveUser == true)
+                    {
+                        <tr>
+                            <td>@user.FirstName</td>
+                            <td>@user.Email</td>
+
+                            @if (Model.Role.Name != "Manager")
+                            {
+                                <td>
+                                    <input type="checkbox" name="IdsToDelete" value="@user.Id" />
+                                </td>
+
+
+                                <td>
+                                    <a asp-action="Edit" asp-controller="Users" asp-route-id="@user.Id">Edit Account Info</a>
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+
+    @if (Model.Role.Name == "Manager")
+    {
+        <input type="hidden" name="roleName" value="Manager" />
+    }
+    @if (Model.Role.Name == "Employee")
+    {
+        <input type="hidden" name="roleName" value="Employee" />
+    }
+    @if (Model.Role.Name == "Customer")
+    {
+        <input type="hidden" name="roleName" value="Customer" />
+    }
+    <div class="panel panel-primary">
+
+        @if (Model.Role.Name == "Manager")
+        {
+            <div class="panel-heading">Current Employees</div>
+        }
+        @if (Model.Role.Name == "Employee")
+        {
+            <div class="panel-heading">Fired Employees</div>
+        }
+        @if (Model.Role.Name == "Customer")
+        {
+            <div class="panel-heading">Disabled Customer Accounts</div>
+        }
+        <table class="table table-striped">
+            @if (Model.NonMembers.Count() == 0)
+            {
+                <tr>
+                    <td colspan="3">All Users Are Members</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    @if (Model.Role.Name == "Manager")
+                    {
+                        <th>Promote to Manager</th>
+                    }
+                    @if (Model.Role.Name == "Employee")
+                    {
+                        <th>Rehire Employee</th>
+                    }
+                    @if (Model.Role.Name == "Customer")
+                    {
+                        <th>Enable Customer Account</th>
+                    }
+                </tr>
+
+                @if (Model.Role.Name == "Manager")
+                {
+                    foreach (User user in Model.NonMembers)
+                    {
+                        @if (user.UserType == "Employee" && user.ActiveUser == true)
+                        {
+                            <tr>
+                                <td>@user.FirstName</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <input type="checkbox" name="IdsToAdd" value="@user.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+
+                @if (Model.Role.Name == "Employee" || Model.Role.Name == "Customer")
+                {
+                    foreach (User user in Model.Members)
+                    {
+                        @if (user.ActiveUser == false)
+                        {
+                            <tr>
+                                <td>@user.FirstName</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <input type="checkbox" name="IdsToAdd" value="@user.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
                 }
             }
         </table>
