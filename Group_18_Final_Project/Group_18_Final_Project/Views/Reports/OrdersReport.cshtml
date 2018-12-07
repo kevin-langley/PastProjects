@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Group_18_Final_Project.Models.Book>
+﻿@model IEnumerable<Group_18_Final_Project.Models.Order>
 
     @{
         ViewData["Title"] = "View";
@@ -7,7 +7,7 @@
     <h2>Book Report</h2>
 
     <!--Display repository count-->
-    <p>Displaying @ViewBag.SelectedBooks of @ViewBag.TotalBooks</p>
+    <p>Displaying @ViewBag.SelectedOrders of @ViewBag.TotalOrders</p>
 
 
     <!--Repo list table-->
@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    @Html.DisplayNameFor(model => model.OrderID)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Author)
+                    @Html.DisplayNameFor(model => model.OrderDate)
                 </th>
             </tr>
         </thead>
@@ -27,10 +27,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Title)
+                        @Html.DisplayFor(modelItem => item.OrderID)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Author)
+                        @Html.DisplayFor(modelItem => item.OrderDate)
                     </td>
                 </tr>
             }

@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Reports";
 }
+<h2>Reports</h2>
 <br />
 <div>
     @ViewBag.EmptyMessage
 </div>
 
 <a asp-action="SortBooks" asp-controller="Reports" class="btn btn-success">Books</a>
+<a asp-action="SortOrders" asp-controller="Reports" class="btn btn-success">Orders</a>

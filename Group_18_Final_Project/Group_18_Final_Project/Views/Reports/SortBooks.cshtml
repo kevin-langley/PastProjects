@@ -6,12 +6,18 @@
     @*Sort Report Results*@
     <div class="form-group">
         <label>Sort by:</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.NewestFirst, true)Most Recent</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.ProfitDescending)Profit Margin: High to Low</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.ProfitAscending)Profit Margin: Low to High</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.PriceDescending)Price: High to Low</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.PriceAscending)Price: Low to High</label>
-        <label class="radio">@Html.RadioButton("SelectedBooks", reportBookOrder.TimesPurchased)Times Purchased</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.NewestFirst, true)Most Recent</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.ProfitDescending)Profit Margin: High to Low</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.ProfitAscending)Profit Margin: Low to High</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.PriceDescending)Book Price: High to Low</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.PriceAscending)Book Price: Low to High</label>
+        <br />
+        <label class="radio">@Html.RadioButton("SelectedBooks", reportBooksSold.TimesPurchased)Times Purchased</label>
     </div>
 
     <!--Submit form data to be processed by method-->

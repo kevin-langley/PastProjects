@@ -13,7 +13,7 @@ using Group_18_Final_Project.Models;
 
 namespace Group_18_Final_Project.Controllers
 {
-    public enum reportBookOrder
+    public enum reportBooksSold
     {
         NewestFirst = 1,
         ProfitAscending = 2,
@@ -23,6 +23,14 @@ namespace Group_18_Final_Project.Controllers
         TimesPurchased = 6
     };
 
+    public enum reportOrdersPlaced
+    {
+        NewestFirst = 1,
+        ProfitAscending = 2,
+        ProfitDescending = 3,
+        PriceAscending = 4,
+        PriceDescending = 5
+    }
 
     public class ReportsController : Controller
     {
@@ -46,66 +54,97 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        //// POST: All Books Sold
-        //public IActionResult BooksReport(reportBookOrder SelectedSort)
-        //{
-                   
-        //   //Creating new list object of the repo list
-        //    List<Book> SelectedBooks = new List<Book>();
-
- 
-        //    //Selecting all repo items into a query to processed
-        //    var query = from r in _db.BookOrders
-        //                .Include(o => o.Book)       // need to include data from 
-        //                .Include(o => o.Order)
-        //                select r;
-
-        //    //The following lines of code process the sort by
-        //    switch (SelectedSort)
-        //    {
-        //        case reportBookOrder.NewestFirst:
-        //            query = query.OrderByDescending(m => m.OrderDate);
-
-        //            break;
-
-        //        case reportBookOrder.ProfitAscending:
-        //            query = query.OrderBy(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
-
-        //            break;
-
-        //        case reportBookOrder.ProfitDescending:
-        //            query = query.OrderByDescending(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
-
-        //            break;
-
-        //        case reportBookOrder.PriceAscending:
-        //            query = query.OrderBy(m => m.ExtendedPrice);
-
-        //            break;
+        // POST: All Books Sold
+        public IActionResult BooksReport(reportBooksSold SelectedSort)
+        {
+            //Creating new list object of the repo list
+            List<Book> SelectedBooks = new List<Book>();
 
 
-        //        case reportBookOrder.PriceDescending:
-        //            query = query.OrderByDescending(m => m.ExtendedPrice);
+            List<BookOrder> orderDetail = _db.BookOrders.Include(b => b.Book).Include(b => b.Order).Where(o => o.Order.IsPending == false).ToList();
 
-        //            break;
+            //create a list of all the books from BookOrder
+            foreach (BookOrder bo in orderDetail)
+            {
+                SelectedBooks.Add(bo.Book);
+            }
 
-        //        case reportBookOrder.TimesPurchased:
-        //            query = query.OrderByDescending(m => m.TimesPurchased);
+            ////The following lines of code process the sort by
+            //switch (SelectedSort)
+            //{
+            //    case reportBookOrder.NewestFirst:
+            //        //SelectedBooks = _db.Books.Include(m => m.BookOrders).ToList();
 
-        //            break;
-        //    }
+            //        ViewBag.SelectedBooks = SelectedBooks.Count();
+            //        ViewBag.TotalBooks = _db.Books.Count();
+
+            //        return View(SelectedBooks.OrderBy(d => OrderDate));
+
+            //    case reportBookOrder.ProfitAscending:
+            //        SelectedBooks = SelectedBooks.OrderBy(m => m.PublicationDate).ToList(); //wrong => how to order by profit margin??????**************
+
+            //        break;
+
+            //    case reportBookOrder.ProfitDescending:
+            //        SelectedBooks = SelectedBooks.OrderByDescending(m => m.PublicationDate).ToList(); //wrong => how to order by profit margin??????**************
+
+            //        break;
+
+            //    case reportBookOrder.PriceAscending:
+            //        SelectedBooks = SelectedBooks.OrderBy(m => m.ExtendedPrice);
+
+            //        break;
 
 
-        //    //Storing filtered repos to repo list and including language navigational data
-        //    SelectedBooks = query.Include(c => c.Order).ToList();  
+            //    case reportBookOrder.PriceDescending:
+            //        SelectedBooks = SelectedBooks.OrderByDescending(m => m.ExtendedPrice);
 
-        //    //ViewBag for Displaying x of y text
-        //    ViewBag.SelectedBooks = SelectedBooks.Count();
-        //    ViewBag.TotalBooks = _db.Books.Count();
+            //        break;
 
-        //    //Redirect to Index View with Selected Repo list to display
-        //    return View(SelectedBooks);
-        //}
+            //    case reportBookOrder.TimesPurchased:
+            //        SelectedBooks = SelectedBooks.OrderByDescending(m => m.TimesPurchased).ToList();
 
+            //        break;
+            //}
+
+            //ViewBag for Displaying x of y text
+            ViewBag.SelectedBooks = SelectedBooks.Count();
+            ViewBag.TotalBooks = _db.Books.Count();
+
+            //Redirect to Index View with Selected Repo list to display
+            return View(SelectedBooks);
+        }
+
+        //---------------------------ORDERS REPORT--------------------------------
+
+        // GET: All books sold grouped by orders
+        public IActionResult SortOrders()
+        {
+            return View();
+        }
+
+        // POST: All books sold grouped by order
+        public IActionResult OrdersReport(reportOrdersPlaced SelectedSort)
+        {
+            //Creating new list object of the repo list
+            List<Order> SelectedOrders = new List<Order>();
+
+
+            List<BookOrder> orderDetail = _db.BookOrders.Include(b => b.Book).Include(b => b.Order).Where(o => o.Order.IsPending == false).ToList();
+
+            //create a list of all the books from BookOrder
+            foreach (BookOrder r in orderDetail)
+            {
+                SelectedOrders.Add(r.Order);
+            }
+
+            //ViewBag for Displaying x of y text
+            ViewBag.SelectedOrders = SelectedOrders.Count();
+            ViewBag.TotalOrders = _db.Orders.Count();
+
+            //Redirect to Index View with Selected Repo list to display
+            return View(SelectedOrders);
+
+        }
     }
 }
