@@ -26,20 +26,27 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Author)
                 </th>
-            }
-            <th>
-                @Html.DisplayNameFor(model => model.ReviewText)
-            </th>
-            @if(User.IsInRole("Employee")||User.IsInRole("Manager"))
-            {
-            <th>
-                @Html.DisplayNameFor(model => model.Approval)
-            </th>
-
+                <th>
+                    @Html.DisplayNameFor(model => model.Book.Title)
+                </th>
             }
             <th>
                 @Html.DisplayNameFor(model => model.Rating)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewText)
+            </th>
+            @if(User.IsInRole("Manager"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Approval)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Approver)
+                </th>
+
+
+            }
             <th></th>
         </tr>
     </thead>
@@ -49,30 +56,32 @@
             @if (User.IsInRole("Manager"))
             {
             <th>
-            @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.Author.FirstName + item.Author.LastName)
             </th>
             }
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewText)
             </td>
             @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
             {
-        <td>
-            @Html.DisplayFor(modelItem => item.Approval)
-        </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approval)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approver)
+                </td>
             }
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
             @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
-    {
-        <td>
+            {
+            <td>
             <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
             <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
             <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
-        </td>
-
-}
+            </td>
+            }
         </tr>
 }
     </tbody>

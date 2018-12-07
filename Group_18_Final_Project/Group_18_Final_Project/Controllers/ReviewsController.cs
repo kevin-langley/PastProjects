@@ -45,7 +45,7 @@ namespace Group_18_Final_Project.Controllers
                                             .Include(u => u.Book)
                                             .Where(u => u.Book.BookID == id && u.Approval == true).ToListAsync();
 
-                ViewBag.BookReviews = "Check out what other users are saying about this book."
+                ViewBag.BookReviews = "Check out what other users are saying about this book.";
                 return View(bookreviews);
             }
             if(User.IsInRole("Employee"))
@@ -301,7 +301,7 @@ namespace Group_18_Final_Project.Controllers
             return View(reviewsToApprove);
         }
 
-        public async Task<IActionResult> CheckedReviews(Boolean checkedBox)
+        public async Task<IActionResult> CheckedReviews(Review review)
         {
             List<Review> checkedReviews = _context.Reviews
                                                         .Include(u => u.Author)
@@ -311,25 +311,29 @@ namespace Group_18_Final_Project.Controllers
             string id = User.Identity.Name;
             User approver = await _context.Users.FirstOrDefaultAsync(u => u.UserName == id);
 
-            foreach (Review review in checkedReviews)
+            //if review is approved
+            foreach (int reviewID in review.ReviewsToApprove ?? new int[] { })
             {
-                if (checkedBox == true)
-                {
-                    review.IsPending = false;
-                    review.Approval = true;
-                    review.Approver = approver;
+                Review reviewsApproved = await _context.Reviews.FindAsync(reviewID);
+                reviewsApproved.IsPending = false;
+                reviewsApproved.Approval = true;
+                reviewsApproved.Approver = approver;
 
-                    _context.Reviews.Update(review);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                _context.Reviews.Update(reviewsApproved);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
 
-                }
+            //if review is rejected
+            foreach (int reviewID in review.ReviewsToReject ?? new int[] { })
+            {
+                Review reviewsRejected = await _context.Reviews.FindAsync(reviewID);
 
                 //if review is rejected
-                review.IsPending = false;
-                review.Approver = approver;
+                reviewsRejected.IsPending = false;
+                reviewsRejected.Approver = approver;
 
-                _context.Reviews.Update(review);
+                _context.Reviews.Update(reviewsRejected);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
