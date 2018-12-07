@@ -42,6 +42,8 @@ namespace Group_18_Final_Project.Controllers
 
     public enum reportReviews
     {
+        EmpIDAscending = 1,
+        NumApproved
 
     }
     public class ReportsController : Controller
@@ -251,57 +253,57 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        // POST: All Books Sold
-        public IActionResult ReviewsReport(reportBooksSold SelectedSort)
-        {
+        //// POST: All Books Sold
+        //public IActionResult ReviewsReport(reportBooksSold SelectedSort)
+        //{
 
-            List<BookOrder> orderDetail = _db.BookOrders.Include(b => b.Book).Include(b => b.Order).ThenInclude(u => u.User).Where(o => o.Order.IsPending == false).ToList();
+        //    List<Review> orderDetail = _db.Reviews.Include(b => b.Book).Include(b => b.Author).Include(u => u.Approver).Where(o => o.IsPending == false).ToList();
 
-            //The following lines of code process the sort by
-            switch (SelectedSort)
-            {
-                case reportBooksSold.NewestFirst:
-                    //SelectedBooks = _db.Books.Include(m => m.BookOrders).ToList();
+        //    //The following lines of code process the sort by
+        //    switch (SelectedSort)
+        //    {
+        //        case reportBooksSold.NewestFirst:
+        //            //SelectedBooks = _db.Books.Include(m => m.BookOrders).ToList();
 
-                    ViewBag.SelectedBooks = orderDetail.Count();
-                    ViewBag.TotalBooks = _db.BookOrders.Count();
+        //            ViewBag.SelectedBooks = orderDetail.Count();
+        //            ViewBag.TotalBooks = _db.BookOrders.Count();
 
-                    return View(orderDetail.OrderBy(d => d.Order.OrderDate));
+        //            return View(orderDetail.OrderBy(d => d.Order.OrderDate));
 
-                case reportBooksSold.ProfitAscending:
-                    orderDetail = orderDetail.OrderBy(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
+        //        case reportBooksSold.ProfitAscending:
+        //            orderDetail = orderDetail.OrderBy(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
 
-                    break;
+        //            break;
 
-                case reportBooksSold.ProfitDescending:
-                    orderDetail = orderDetail.OrderByDescending(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
+        //        case reportBooksSold.ProfitDescending:
+        //            orderDetail = orderDetail.OrderByDescending(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
 
-                    break;
+        //            break;
 
-                case reportBooksSold.PriceAscending:
-                    orderDetail = orderDetail.OrderBy(m => m.Price).ToList();
+        //        case reportBooksSold.PriceAscending:
+        //            orderDetail = orderDetail.OrderBy(m => m.Price).ToList();
 
-                    break;
+        //            break;
 
 
-                case reportBooksSold.PriceDescending:
-                    orderDetail = orderDetail.OrderByDescending(m => m.Price).ToList();
+        //        case reportBooksSold.PriceDescending:
+        //            orderDetail = orderDetail.OrderByDescending(m => m.Price).ToList();
 
-                    break;
+        //            break;
 
-                case reportBooksSold.TimesPurchased:
-                    orderDetail = orderDetail.OrderByDescending(m => m.Book.TimesPurchased).ToList();
+        //        case reportBooksSold.TimesPurchased:
+        //            orderDetail = orderDetail.OrderByDescending(m => m.Book.TimesPurchased).ToList();
 
-                    break;
-            }
+        //            break;
+        //    }
 
-            //ViewBag for Displaying x of y text
-            ViewBag.SelectedBooks = orderDetail.Count();
-            ViewBag.TotalBooks = _db.BookOrders.Count();
+        //    //ViewBag for Displaying x of y text
+        //    ViewBag.SelectedBooks = orderDetail.Count();
+        //    ViewBag.TotalBooks = _db.BookOrders.Count();
 
-            //Redirect to Index View with Selected Repo list to display
-            return View(orderDetail);
-        }
+        //    //Redirect to Index View with Selected Repo list to display
+        //    return View(orderDetail);
+        //}
 
 
 
