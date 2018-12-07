@@ -668,7 +668,7 @@ namespace Group_18_Final_Project.Controllers
                 //RECOMMENDATIONS
                 //Create a variable for a purchased book and create purchased book list
                 Order CurrentOrder = _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book).FirstOrDefault(u => u.OrderID.Equals(id));
-                List<BookOrder> PurchasedBookOrderList = _context.BookOrders.Include(o => o.Book).Where(o => o.Order.OrderID == CurrentOrder.OrderID).ToList();
+                List<BookOrder> PurchasedBookOrderList = _context.BookOrders.Include(o => o.Book).ThenInclude(o => o.Genre).Where(o => o.Order.OrderID == CurrentOrder.OrderID).ToList();
 
                 //Get a purchased book
                 foreach (BookOrder bo in PurchasedBookOrderList)
@@ -682,8 +682,8 @@ namespace Group_18_Final_Project.Controllers
                 //Selecting all book items into a query to processed
                 var query = from r in _context.Books
                             select r;
-
-                BookList = query.ToList();
+                
+                BookList = query.OrderByDescending(r => r.AverageRating).ToList();
 
                 //Find the recommended books
                 string RecommendedBook1 = "book1";
@@ -692,18 +692,40 @@ namespace Group_18_Final_Project.Controllers
 
                 foreach (Book book in BookList)
                 {
+                    //First book recommendation
                     if (book.TimesPurchased == 0 && book.BookID != PurchasedBook.BookID) //Need to make for specific user
                     {
                         if (book.Author == PurchasedBook.Author && book.Genre == PurchasedBook.Genre)
                         {
-                            RecommendedBook1 = book.Title;
+                            //Sort by rating
+                            query = query.Where(r => r.Author == PurchasedBook.Author);
+                            query = query.Where(r => r.Genre == PurchasedBook.Genre);
+
+                            Decimal maxRating;
+                            maxRating = query.Max(r => r.AverageRating);
+
+                            query = query.Where(r => r.AverageRating == maxRating);
+
+                            List<Book> TopBookList = new List<Book>();
+                            TopBookList = query.ToList();
+
+                            //Get a purchased book
+                            foreach (Book b in TopBookList)
+                            {
+                                RecommendedBook1 = book.Title;
+                            }                           
                         }
                         //else if (book.Genre == PurchasedBook.Genre)
                         //{
-
+                        //    RecommendedBook2 = book.Title;
+                        //    if (RecommendedBook3 == "book3")
+                        //    {
+                        //        RecommendedBook3 = book.Title;
+                        //    }
                         //}
                         //else
                         //{
+                        //    RecommendedBook3 = book.Title;
                         //}
                     }
                 }
