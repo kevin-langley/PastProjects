@@ -18,7 +18,8 @@
                     <th>Book Title</th>
                     <th>Rating</th>
                     <th>Review Text</th>
-                    <th>Approve?</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +31,11 @@
                         <td>@Html.DisplayFor(modelItem => review.Rating)</td>
                         <td>@Html.DisplayFor(modelItem => review.ReviewText)</td>
                         <td>
-                            <input type="checkbox" name="checkedBox"><br>
+                            <input type="radio" name="Approval" id="@review.ReviewID" value="ReviewsToApprove">
                         </td>
-
+                        <td>
+                            <input type="radio" name="Approval" id="@review.ReviewID" value="ReviewsToReject">
+                        </td>
                     </tr>
                 }
             </tbody>

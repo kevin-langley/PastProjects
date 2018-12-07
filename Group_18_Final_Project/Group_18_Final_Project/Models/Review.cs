@@ -24,6 +24,10 @@ namespace Group_18_Final_Project.Models
 
         public Boolean IsPending { get; set; }
 
+        //For approval and rejection
+        public string[] ReviewsToApprove { get; set; }
+        public string[] ReviewsToReject { get; set; }
+
         //Navigation properties
         //Author
         public User Author { get; set; }
