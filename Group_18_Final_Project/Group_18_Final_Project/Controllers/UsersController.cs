@@ -89,34 +89,36 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UserID,Email,Password,FirstName,LastName,Address,City,State,ZipCode,PhoneNumber,ActiveUser,UserType")] User user)
+        public IActionResult Edit(EditInfoViewModel userprofile)
         {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                if (userprofile.UserName == null)
                 {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
+                    userprofile.UserName = userprofile.Email;
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                string username = userprofile.UserName;
+                // Get the userprofile
+                User user = _context.Users.FirstOrDefault(u => u.UserName.Equals(username));
+
+                // Update fields
+                user.FirstName = userprofile.FirstName;
+                user.LastName = userprofile.LastName;
+                user.Email = userprofile.Email;
+                user.PhoneNumber = userprofile.PhoneNumber;
+                user.Address = userprofile.Address;
+                user.City = userprofile.City;
+                user.State = userprofile.State;
+                user.ZipCode = userprofile.ZipCode;
+
+                //save changes
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "RoleAdmin"); // or whatever
             }
-            return View(user);
+
+            return View(userprofile);
         }
 
         // GET: Users/Delete/5
