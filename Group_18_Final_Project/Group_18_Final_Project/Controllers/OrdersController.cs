@@ -586,7 +586,7 @@ namespace Group_18_Final_Project.Controllers
                         if (coupon.CouponType == CouponType.FreeShippingForX && order.OrderSubtotal > coupon.CouponValue)
                         {
                             totalDiscount = order.TotalShippingPrice;
-                            ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+                            ViewBag.Discount = "You saved $" + totalDiscount + " on your order!";
                             order.TotalShippingPrice = 0;
                         }
 
@@ -598,7 +598,7 @@ namespace Group_18_Final_Project.Controllers
                                 totalDiscount = totalDiscount + border.ExtendedPrice * coupon.CouponValue;
                             }
 
-                            ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+                            ViewBag.Discount = "You saved $" + totalDiscount + " on your order!";
 
                         }
                     }
