@@ -571,7 +571,10 @@ namespace Group_18_Final_Project.Controllers
                         intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
                     }
 
+                    //Coupon coupon = _context.Coupons.FirstOrDefaultAsync(c => c.CouponName == strCouponCode);
+
                     order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
+
 
                     //To pass credit card view to confirm check out
                     string hidden = "************" + ccNumber.Substring(ccNumber.Length - 4);
@@ -596,23 +599,23 @@ namespace Group_18_Final_Project.Controllers
                     }
                 }
 
-                ////TODO: Figure out how the heck coupons work
-                //List<Coupon> coupons = new List<Coupon>();
+                //TODO: Figure out how the heck coupons work
+                List<Coupon> coupons = new List<Coupon>();
 
-                //try
-                //{
-                //    Coupon checkcoupon = _context.Coupons.FirstOrDefault(c => c.CouponCode == strCouponCode);
+                try
+                {
+                    Coupon checkcoupon = _context.Coupons.FirstOrDefault(c => c.CouponCode == strCouponCode);
 
-                //    if (ModelState.IsValid)
-                //    {
+                    if (ModelState.IsValid)
+                    {
 
-                //    }
-                //}
-                //catch
-                //{
-                //    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
-                //    return RedirectToAction("CheckOut", new { id = order.OrderID });
-                //}
+                    }
+                }
+                catch
+                {
+                    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
+                    return RedirectToAction("CheckOut", new { id = order.OrderID });
+                }
             }
             return View(order);
         }
@@ -676,24 +679,48 @@ namespace Group_18_Final_Project.Controllers
                     PurchasedBook = bo.Book;
                 }
 
+                string userid = User.Identity.Name;
+                User user = _context.Users.Include(bo => bo.Orders).ThenInclude(o => o.BookOrders).FirstOrDefault(u => u.UserName == userid);
+
+                List<Order> userorder = _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book).Where(o => o.User == user).ToList();
+
+                
+
                 //Creating new list object of all books in the database
                 List<Book> BookList = new List<Book>();
+
+                foreach(Book book in BookList)
+                {
+                    foreach(Order checkorder in userorder)
+                    {
+                        if(checkorder.BookOrders.Any(b => b.Book.BookID == book.BookID))
+                        {
+                            BookList.Remove(book);
+                        }
+                    }
+                }
 
                 //Selecting all book items into a query to processed
                 var query = from r in _context.Books
                             select r;
-                
+
                 BookList = query.OrderByDescending(r => r.AverageRating).ToList();
 
                 //Find the recommended books
                 string RecommendedBook1 = "book1";
                 string RecommendedBook2 = "book2";
                 string RecommendedBook3 = "book3";
+                string AuthorBook1 = "author1";
+                string AuthorBook2 = "author2";
+                string AuthorBook3 = "author3";
+
+                
+
 
                 foreach (Book book in BookList)
                 {
                     //First book recommendation
-                    if (book.TimesPurchased == 0 && book.BookID != PurchasedBook.BookID) //Need to make for specific user
+                    if (book.BookID != PurchasedBook.BookID) //Need to make for specific user
                     {
                         if (book.Author == PurchasedBook.Author && book.Genre == PurchasedBook.Genre)
                         {
@@ -712,21 +739,84 @@ namespace Group_18_Final_Project.Controllers
                             //Get a purchased book
                             foreach (Book b in TopBookList)
                             {
-                                RecommendedBook1 = book.Title;
-                            }                           
+                                RecommendedBook1 = b.Title;
+                                AuthorBook1 = b.Author;
+                            }
                         }
-                        //else if (book.Genre == PurchasedBook.Genre)
-                        //{
-                        //    RecommendedBook2 = book.Title;
-                        //    if (RecommendedBook3 == "book3")
-                        //    {
-                        //        RecommendedBook3 = book.Title;
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    RecommendedBook3 = book.Title;
-                        //}
+                        else if (book.Genre == PurchasedBook.Genre)
+                        {
+                            //Sort by rating
+                            query = query.Where(r => r.Genre == PurchasedBook.Genre);
+
+                            Decimal maxRating;
+                            maxRating = query.Max(r => r.AverageRating);
+
+                            query = query.Where(r => r.AverageRating == maxRating);
+
+                            List<Book> TopBookList = new List<Book>();
+                            TopBookList = query.ToList();
+
+                            //Get a purchased book
+                            foreach (Book b in TopBookList)
+                            {
+                                if (RecommendedBook1 == "book1")
+                                {
+                                    RecommendedBook1 = b.Title;
+                                    AuthorBook1 = b.Author;
+                                }
+                                else if (RecommendedBook2 == "book2" && b.Author != AuthorBook1)
+                                {
+                                    RecommendedBook2 = b.Title;
+                                    AuthorBook2 = b.Author;
+                                }
+                                else if (RecommendedBook3 == "book3" && b.Author != AuthorBook1 && b.Author != AuthorBook2)
+                                {
+                                    RecommendedBook3 = b.Title;
+                                    AuthorBook3 = b.Author;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //If there are not enough books in same genre
+                if (RecommendedBook1 == "book1" || RecommendedBook2 == "book2" || RecommendedBook3 == "book3")
+                {
+                    foreach (Book book in BookList)
+                    {
+
+                        if (book.BookID != PurchasedBook.BookID) //Need to make for specific user
+                        {
+                            //Sort by rating
+                            Decimal maxRating;
+                            maxRating = query.Max(r => r.AverageRating);
+
+                            query = query.Where(r => r.AverageRating == maxRating);
+
+                            List<Book> TopBookList = new List<Book>();
+                            TopBookList = query.ToList();
+
+                            //Get a purchased book
+                            foreach (Book b in TopBookList)
+                            {
+                                if (RecommendedBook1 == "book1")
+                                {
+                                    RecommendedBook1 = b.Title;
+                                    AuthorBook1 = b.Author;
+                                }
+                                else if (RecommendedBook2 == "book2" && b.Author != AuthorBook1)
+                                {
+                                    RecommendedBook2 = b.Title;
+                                    AuthorBook2 = b.Author;
+                                }
+                                else if (RecommendedBook3 == "book3" && b.Author != AuthorBook1 && b.Author != AuthorBook2)
+                                {
+                                    RecommendedBook3 = b.Title;
+                                    AuthorBook3 = b.Author;
+                                }
+
+                            }
+                        }
                     }
                 }
 
