@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Group_18_Final_Project.Seeding
 {
-	public static class SeedBooks
+	public static class SeedBooksReal
 	{
 		public static void SeedAllBooks(AppDbContext db)
 		{
