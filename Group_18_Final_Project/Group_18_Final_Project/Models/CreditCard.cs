@@ -18,7 +18,7 @@ namespace Group_18_Final_Project.Models
         public CreditCardType CreditType { get; set; }
 
         [Required(ErrorMessage = "Card Number is required.")]
-        [StringLength(16)]
+        [StringLength(16, MinimumLength = 16, ErrorMessage = "Card Number must be 16 digits long.")]
         [Display(Name = "Credit Card Number:")]
         public String CreditCardNumber { get; set; }
 

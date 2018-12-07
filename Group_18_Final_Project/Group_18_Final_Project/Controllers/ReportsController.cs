@@ -46,66 +46,66 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        // POST: All Books Sold
-        public IActionResult BooksReport(reportBookOrder SelectedSort)
-        {
+        //// POST: All Books Sold
+        //public IActionResult BooksReport(reportBookOrder SelectedSort)
+        //{
                    
-           //Creating new list object of the repo list
-            List<Book> SelectedBooks = new List<Book>();
+        //   //Creating new list object of the repo list
+        //    List<Book> SelectedBooks = new List<Book>();
 
  
-            //Selecting all repo items into a query to processed
-            var query = from r in _db.BookOrders
-                        .Include(o => o.Book)       // need to include data from 
-                        .Include(o => o.Order)
-                        select r;
+        //    //Selecting all repo items into a query to processed
+        //    var query = from r in _db.BookOrders
+        //                .Include(o => o.Book)       // need to include data from 
+        //                .Include(o => o.Order)
+        //                select r;
 
-            //The following lines of code process the sort by
-            switch (SelectedSort)
-            {
-                case reportBookOrder.NewestFirst:
-                    query = query.OrderByDescending(m => m.OrderDate);
+        //    //The following lines of code process the sort by
+        //    switch (SelectedSort)
+        //    {
+        //        case reportBookOrder.NewestFirst:
+        //            query = query.OrderByDescending(m => m.OrderDate);
 
-                    break;
+        //            break;
 
-                case reportBookOrder.ProfitAscending:
-                    query = query.OrderBy(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
+        //        case reportBookOrder.ProfitAscending:
+        //            query = query.OrderBy(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
 
-                    break;
+        //            break;
 
-                case reportBookOrder.ProfitDescending:
-                    query = query.OrderByDescending(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
+        //        case reportBookOrder.ProfitDescending:
+        //            query = query.OrderByDescending(m => m.PublicationDate); //wrong => how to order by profit margin??????**************
 
-                    break;
+        //            break;
 
-                case reportBookOrder.PriceAscending:
-                    query = query.OrderBy(m => m.ExtendedPrice);
+        //        case reportBookOrder.PriceAscending:
+        //            query = query.OrderBy(m => m.ExtendedPrice);
 
-                    break;
-
-
-                case reportBookOrder.PriceDescending:
-                    query = query.OrderByDescending(m => m.ExtendedPrice);
-
-                    break;
-
-                case reportBookOrder.TimesPurchased:
-                    query = query.OrderByDescending(m => m.TimesPurchased);
-
-                    break;
-            }
+        //            break;
 
 
-            //Storing filtered repos to repo list and including language navigational data
-            SelectedBooks = query.Include(c => c.Order).ToList();  
+        //        case reportBookOrder.PriceDescending:
+        //            query = query.OrderByDescending(m => m.ExtendedPrice);
 
-            //ViewBag for Displaying x of y text
-            ViewBag.SelectedBooks = SelectedBooks.Count();
-            ViewBag.TotalBooks = _db.Books.Count();
+        //            break;
 
-            //Redirect to Index View with Selected Repo list to display
-            return View(SelectedBooks);
-        }
+        //        case reportBookOrder.TimesPurchased:
+        //            query = query.OrderByDescending(m => m.TimesPurchased);
+
+        //            break;
+        //    }
+
+
+        //    //Storing filtered repos to repo list and including language navigational data
+        //    SelectedBooks = query.Include(c => c.Order).ToList();  
+
+        //    //ViewBag for Displaying x of y text
+        //    ViewBag.SelectedBooks = SelectedBooks.Count();
+        //    ViewBag.TotalBooks = _db.Books.Count();
+
+        //    //Redirect to Index View with Selected Repo list to display
+        //    return View(SelectedBooks);
+        //}
 
     }
 }
