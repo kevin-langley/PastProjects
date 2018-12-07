@@ -24,7 +24,7 @@
             @if(User.IsInRole("Manager"))
             {
                 <th>
-                    @Html.DisplayNameFor(model => model.Author)
+                    User
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Book.Title)
@@ -42,10 +42,8 @@
                     @Html.DisplayNameFor(model => model.Approval)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Approver)
+                    Approver
                 </th>
-
-
             }
             <th></th>
         </tr>
@@ -55,9 +53,12 @@
         <tr>
             @if (User.IsInRole("Manager"))
             {
-            <th>
-                @Html.DisplayFor(modelItem => item.Author.FirstName + item.Author.LastName)
-            </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
             }
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
@@ -71,7 +72,7 @@
                     @Html.DisplayFor(modelItem => item.Approval)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Approver)
+                    @Html.DisplayFor(modelItem => item.Approver.UserName)
                 </td>
             }
             @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
