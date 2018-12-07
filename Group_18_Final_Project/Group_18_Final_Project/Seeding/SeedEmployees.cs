@@ -115,7 +115,7 @@ namespace Group_18_Final_Project.Seeding
 				e7.UserType = "Employee";
 				e7.City = "Austin";
 				e7.State = "TX";
-				e7.ZipCode = 78747;
+				e7.ZipCode = 78747.ToString();
 				e7.PhoneNumber = "4764966462";
 				e7.Email = "l.jones@bevosbooks.com";
                 e7.UserName = e7.Email;

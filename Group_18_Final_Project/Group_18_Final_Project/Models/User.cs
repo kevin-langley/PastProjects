@@ -31,7 +31,7 @@ namespace Group_18_Final_Project.Models
         public String State { get; set; }
 
         [StringLength(5, ErrorMessage ="Zip max is 5 characters.")]
-        public Int32 ZipCode { get; set; }
+        public String ZipCode { get; set; }
 
         public Boolean ActiveUser { get; set; }
         public String UserType { get; set; }

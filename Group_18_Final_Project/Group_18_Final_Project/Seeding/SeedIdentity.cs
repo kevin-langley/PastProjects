@@ -53,7 +53,7 @@ namespace Group_18_Final_Project.Seeding
                 manager.Address = "123 Example Rd";
                 manager.City = "Example";
                 manager.State = "EX";
-                manager.ZipCode = 99999;
+                manager.ZipCode = "99999";
 
                 //: Add any other fields for your app user class here
                 //manager.LastName = "Example";
