@@ -59,6 +59,7 @@
             </tr>
         </thead>
         <tbody>
+            @*
             @foreach (BookOrder bookOrder in Model.BookOrders)
             {
                 <tr>
@@ -66,7 +67,7 @@
                     <td>@Html.DisplayFor(modelItem => bookOrder.Price)</td>
                     <td>@Html.DisplayFor(modelItem => bookOrder.OrderQuantity)</td>
                 </tr>
-            }
+            } *@
         </tbody>
     </table>
 </div>
@@ -88,4 +89,10 @@
             <td>@Html.DisplayFor(bo => bo.OrderTotal)</td>
         </tr>
     </table>
+</div>
+<div>
+    <h5>We Also Recommend:</h5>
+    <p>@ViewBag.RecommendedBook1</p>
+    <p>@ViewBag.RecommendedBook2</p>
+    <p>@ViewBag.RecommendedBook3</p>
 </div>

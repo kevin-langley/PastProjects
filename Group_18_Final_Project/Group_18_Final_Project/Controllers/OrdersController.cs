@@ -308,7 +308,7 @@ namespace Group_18_Final_Project.Controllers
             {
                 return NotFound();
             }
-            
+
             if (intOrderQuantity < 1)
             {
                 return RedirectToAction("Details", "Books", new { id = bookId });
@@ -335,7 +335,7 @@ namespace Group_18_Final_Project.Controllers
 
                     //Finds current pending order for this user and stores it in order
                     Order order = _context.Orders.Include(us => us.User).Include(o => o.BookOrders).ThenInclude(o => o.Book).FirstOrDefault(u => u.User.UserName == user.UserName && u.IsPending == true);
-                    
+
 
                     BookOrder bookOrderToUpdate = new BookOrder();
 
@@ -413,19 +413,15 @@ namespace Group_18_Final_Project.Controllers
                 bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
                 bo.Order.OrderDate = DateTime.Today;
 
-                if (ModelState.IsValid)
-                {
-                    _context.Add(neworder);
-                    _context.BookOrders.Add(bo);
-                    await _context.SaveChangesAsync();
+                _context.Add(neworder);
+                _context.BookOrders.Add(bo);
+                await _context.SaveChangesAsync();
 
-                    ViewBag.AddedOrder = "Your order has been added!";
-                    ViewBag.CartMessage = "View your cart below";
+                ViewBag.AddedOrder = "Your order has been added!";
+                ViewBag.CartMessage = "View your cart below";
 
-                    return RedirectToAction("Details", new { id = bo.Order.OrderID });
-                }
+                return RedirectToAction("Details", new { id = bo.Order.OrderID });
 
-                return RedirectToAction("Details", "Books", new { id = bookId });
             }
 
 
@@ -561,7 +557,7 @@ namespace Group_18_Final_Project.Controllers
 
                         }
                     }
-                    
+
                     foreach (BookOrder bo in order.BookOrders)
                     {
                         intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
@@ -617,7 +613,7 @@ namespace Group_18_Final_Project.Controllers
         //If correctly functioning, this order should update all book stocks by removing quantity
         //This method should also update the shopping cart
         //TODO: Make sure this works correctly
-        public async Task<IActionResult> PlaceOrder(int? id)
+        public async Task<IActionResult> PlaceOrder(int? id, Book PurchasedBook)
         {
             if (id == null)
             {
@@ -631,7 +627,7 @@ namespace Group_18_Final_Project.Controllers
                                     .Include(or => or.BookOrders).ThenInclude(or => or.Book)
                                     .Include(u => u.User).ThenInclude(c => c.CreditCards)
                                     .FirstOrDefault(o => o.OrderID == id);
-                                    
+
 
                 Book bookUpdate = new Book();
 
@@ -660,6 +656,54 @@ namespace Group_18_Final_Project.Controllers
                 ViewBag.ThankYouMessage = "Thanks for placing an order with us!";
                 ViewBag.Appreciation = "We appreciate your support.";
                 ViewBag.ShippingMessage = "Your order has been shipped. View your order details.";
+
+                //RECOMMENDATIONS
+                //Create a variable for a purchased book and create purchased book list
+                Order CurrentOrder = _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book).FirstOrDefault(u => u.OrderID.Equals(id));
+                List<BookOrder> PurchasedBookOrderList = _context.BookOrders.Include(o => o.Book).Where(o => o.Order.OrderID == CurrentOrder.OrderID).ToList();
+
+                //Get a purchased book
+                foreach (BookOrder bo in PurchasedBookOrderList)
+                {
+                    PurchasedBook = bo.Book;
+                }
+
+                //Creating new list object of all books in the database
+                List<Book> BookList = new List<Book>();
+
+                //Selecting all book items into a query to processed
+                var query = from r in _context.Books
+                            select r;
+
+                BookList = query.ToList();
+
+                //Find the recommended books
+                string RecommendedBook1 = "book1";
+                string RecommendedBook2 = "book2";
+                string RecommendedBook3 = "book3";
+
+                foreach (Book book in BookList)
+                {
+                    if (book.TimesPurchased == 0 && book.BookID != PurchasedBook.BookID) //Need to make for specific user
+                    {
+                        if (book.Author == PurchasedBook.Author && book.Genre == PurchasedBook.Genre)
+                        {
+                            RecommendedBook1 = book.Title;
+                        }
+                        //else if (book.Genre == PurchasedBook.Genre)
+                        //{
+
+                        //}
+                        //else
+                        //{
+                        //}
+                    }
+                }
+
+                ViewBag.RecommendedBook1 = RecommendedBook1;
+                ViewBag.RecommendedBook2 = RecommendedBook2;
+                ViewBag.RecommendedBook3 = RecommendedBook3;
+
                 return View("OrderConfirmed", order);
 
             }
@@ -668,7 +712,5 @@ namespace Group_18_Final_Project.Controllers
 
 
         }
-
-
     }
 }
