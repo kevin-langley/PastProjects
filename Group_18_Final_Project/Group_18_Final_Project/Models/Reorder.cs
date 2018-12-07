@@ -16,7 +16,7 @@ namespace Group_18_Final_Project.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public Decimal ReorderTotal
         {
-            get { return BookReorders.Sum(bo => bo.Price); }
+            get { return BookReorders.Sum(bo => bo.Book.WholesalePrice*bo.ReorderQuantity); }
         }
 
         //Navigation property

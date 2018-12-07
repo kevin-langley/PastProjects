@@ -22,28 +22,172 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Reorders
+
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reorders.ToListAsync());
+
+            //get user info
+            List<Reorder> UserOrders = new List<Reorder>();
+            String id = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(u => u.UserName == id); 
+
+
+            //TODO: Remove admin@example.com from customer role!!
+                UserOrders = await _context.Reorders.Include(o => o.BookReorders).Where(o => o.IsPending == false).ToListAsync();
+            
+            return View(UserOrders);
+
+        }
+        //GET: Orders/Details
+        //For the navbar and anytime you can't route an id
+        public IActionResult CartDetails()
+        {
+            string id = User.Identity.Name;
+            User user = _context.Users.Include(us => us.Reorders).FirstOrDefault(u => u.UserName == id);
+
+            if (user.Reorders == null || user.Reorders.Exists(o => o.IsPending == false))
+            {
+                ViewBag.EmptyMessage = "Looks like your order is empty! Search for books to add.";
+                return View("EmptyCart");
+            }
+            else
+            {
+                if (user.Reorders.Exists(o => o.IsPending == true))
+                {
+                    //Finds order in db matching user
+                    Reorder order = _context.Reorders.Include(us => us.User).Include(o => o.BookReorders).ThenInclude(o => o.Book).FirstOrDefault(u => u.User.UserName == user.UserName && u.IsPending == true);
+
+                    return RedirectToAction("Details", new { id = order.ReorderID });
+                }
+
+            }
+            ViewBag.EmptyMessage = "Looks like your order is empty! Search for books to add.";
+            return View("EmptyCart");
+
         }
 
-        // GET: Reorders/Details/5
+        // GET: Orders/Details/5
+        //This is the shopping cart
         public async Task<IActionResult> Details(int? id)
+        {
+            if (ModelState.IsValid) //Happy path!
+            {
+                try
+                {
+                    //For shipping
+                    int intTotalBookNum = 0;
+
+                    //queries db to find user's order
+                    //includes relational data for book order
+                    var order = await _context.Reorders.Include(bo => bo.BookReorders).ThenInclude(bo => bo.Book)
+                        .FirstOrDefaultAsync(m => m.ReorderID == id);
+
+                    List<BookReorder> BooksToRemove = new List<BookReorder>();
+
+                    //NOTE: Thinking that the code to remove items
+                    //from the cart according to stock/active books should go here
+                    //Subject to change
+                    foreach (BookReorder bookOrder in order.BookReorders)
+                    {
+                        //NOTE: need to check if this logic makes sense
+                        //If a book is both out of stock and inactive
+                        //would removing it and then requesting to remove it again
+                        //make an error? Adding extra code so the remove action
+                        //doesn't happen twice
+
+                        //Bool var check to remove order detail
+                        bool boolRemoveBook = false;
+
+                        if (bookOrder.Book.ActiveBook == false)
+                        {
+                            ViewBag.DiscontinuedBook = "Sorry! " + bookOrder.Book.Title + " has been discontinued and we cannot order it.";
+                            boolRemoveBook = true;
+                        }
+
+                        if (boolRemoveBook == true)
+                        {
+                            BooksToRemove.Add(bookOrder);
+                        }
+                    }
+
+                    //Remove books found in list above
+                    foreach (BookReorder bo in BooksToRemove)
+                    {
+                        _context.BookReorders.Remove(bo);
+                        _context.SaveChanges();
+                    }
+
+                    foreach (BookReorder bo in order.BookReorders)
+                    {
+                        intTotalBookNum = intTotalBookNum + bo.ReorderQuantity;
+                    }
+
+                    return View(order);
+
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+                }
+                //Sad Path :( model state is not valid
+            }
+
+            return View("Index", "Home");
+        }
+
+        //This action displays details of completed orders
+        //Has order id as parameter
+        public async Task<IActionResult> CompletedReorderDetails(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var reorder = await _context.Reorders
-                .FirstOrDefaultAsync(m => m.ReorderID == id);
-            if (reorder == null)
-            {
-                return NotFound();
-            }
+            //Finding current logged in user to match user to order id
+            string userid = User.Identity.Name;
+            User user = _context.Users.FirstOrDefault(us => us.UserName == userid);
 
-            return View(reorder);
+            //Finds order (including relational data) of the order matched in the order id
+            Reorder order = _context.Reorders
+                                .Include(or => or.BookReorders).ThenInclude(bo => bo.Book)
+                                .Where(or => or.User == user).FirstOrDefault(or => or.ReorderID == id);
+
+
+            if (ModelState.IsValid)
+            {
+
+
+                Book bookUpdate = new Book();
+
+                //Iterates thr
+                foreach (BookReorder bo in order.BookReorders)
+                {
+                    //Matching book object with book for that specific book order detail
+                    bookUpdate = _context.Books.Find(bo.Book.BookID);
+
+                    //Subtracts book order quantity from current copies on hand value for this book 
+                    bookUpdate.CopiesOnHand = bookUpdate.CopiesOnHand + bo.ReorderQuantity;
+
+                    //Update changes in database
+                    _context.Update(bookUpdate);
+                    await _context.SaveChangesAsync();
+                }
+
+                //Closes order so cannot show up in shopping cart anymore
+                order.IsPending = false;
+
+                _context.Update(order);
+                await _context.SaveChangesAsync();
+
+
+
+                //pass matched order to view
+                return View(order);
+            }
+            else { return RedirectToAction("Details", new { id = id }); }
         }
+
 
         // GET: Reorders/ManualReorder
         public IActionResult ManualReorder()
@@ -67,8 +211,28 @@ namespace Group_18_Final_Project.Controllers
             return View(reorder);
         }
 
-        //TODO: Create Reorders/AutoReorder
+        // GET: Reorders/AutoReorder
+        public async Task<IActionResult> AutoReorderAsync()
+        {
+            List<Book> books = await _context.Books.Where(o => o.CopiesOnHand < o.ReorderPoint).ToListAsync();
+            return View(books);
+        }
 
+        // POST: Reorders/AutoReorder
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AutoReorder([Bind("ReorderID")] Reorder reorder)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(reorder);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(reorder);
+        }
 
 
 
@@ -245,132 +409,15 @@ namespace Group_18_Final_Project.Controllers
 
         }
 
-        //GET: Check out method
-        public async Task<IActionResult> SendOrder(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var order = await _context.Reorders.Include(or => or.User).ThenInclude(or => or.CreditCards).FirstOrDefaultAsync(m => m.ReorderID == id);
-
-            if (order == null)
-            {
-                return NotFound();
-            }
-            return View(order);
-        }
-
-        //POST: Check out method processed
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SendOrder(int id, Reorder order)
-        {
-            if (id != order.ReorderID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                Int32 intTotalBookNum = 0;
-
-                try
-                {
-                    order = _context.Reorders
-                                .Include(or => or.BookReorders)
-                                .Include(u => u.User).FirstOrDefault(o => o.ReorderID == id);
-
-                    
-                    
-                    
-
-                    foreach (BookReorder bo in order.BookReorders)
-                    {
-                        intTotalBookNum = intTotalBookNum + bo.ReorderQuantity;
-                    }
-
-
-                    
-
-                    _context.Update(order);
-                    await _context.SaveChangesAsync();
-
-                    return View("ConfirmSendOrder", order);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ReorderExists(order.ReorderID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-
-                
-            }
-            return View(order);
-        }
+        
 
         private bool ReorderExists(int id)
         {
             return _context.Reorders.Any(e => e.ReorderID == id);
         }
 
-        //This is the method for placing an order
-        //If correctly functioning, this order should update all book stocks by removing quantity
-        //This method should also update the shopping cart
-        //TODO: Make sure this works correctly
-        public async Task<IActionResult> PlaceOrder(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                //Finding order matching order passed in and storing it in order object
-                Reorder order = _context.Reorders
-                                    .Include(or => or.BookReorders).ThenInclude(or => or.Book)
-                                    .Include(u => u.User)
-                                    .FirstOrDefault(o => o.ReorderID == id);
-
-
-                Book bookUpdate = new Book();
-
-                //Iterates thr
-                foreach (BookReorder bo in order.BookReorders)
-                {
-                    //Matching book object with book for that specific book order detail
-                    bookUpdate = _context.Books.Find(bo.Book.BookID);
-
-                    //Subtracts book order quantity from current copies on hand value for this book 
-                    bookUpdate.CopiesOnHand = bookUpdate.CopiesOnHand + bo.ReorderQuantity;
-
-                    //Update changes in database
-                    _context.Update(bookUpdate);
-                    await _context.SaveChangesAsync();
-                }
-
-                //Closes order so cannot show up in shopping cart anymore
-                order.IsPending = false;
-
-                _context.Update(order);
-                await _context.SaveChangesAsync();
-
-                return View("CompletedOrder");
-
-            }
-            //Sad path :(
-            return RedirectToAction("CartDetails");
-
-
-        }
+        
 
     }
 }
