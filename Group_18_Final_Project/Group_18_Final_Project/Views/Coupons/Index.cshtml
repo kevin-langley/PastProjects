@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Coupons</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New Coupon</a>
 </p>
 <table class="table">
     <thead>
@@ -15,7 +15,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.CouponCode)
             </th>
-            <th></th>
+            <th>
+                Active?
+            </th>
+            <th>
+                Coupon Type
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -25,9 +30,19 @@
                 @Html.DisplayFor(modelItem => item.CouponCode)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CouponID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CouponID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CouponID">Delete</a>
+                @Html.DisplayFor(modelItem => item.CouponActive)
+            </td>
+            @if(item.CouponType == CouponType.FreeShippingForX)
+            {
+                <td>Free Shipping Promotion</td>
+            }
+            @if(item.CouponType == CouponType.XOffOrder)
+            {
+                <td>Order Discount Promotion</td>
+            }
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CouponID">Edit Status</a> |
+                <a asp-action="Details" asp-route-id="@item.CouponID">Details</a>
             </td>
         </tr>
 }

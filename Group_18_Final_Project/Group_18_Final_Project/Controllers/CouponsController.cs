@@ -58,15 +58,36 @@ namespace Group_18_Final_Project.Controllers
         [HttpPost]
         [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CouponID,CouponCode")] Coupon coupon)
+        public async Task<IActionResult> Create([Bind("CouponID,CouponCode")] Coupon coupon, String ShippingCouponValue, String DiscountCouponValue, CouponType SelectedType)
         {
-            if (ModelState.IsValid)
+            decimal decShipVal;
+            decimal decDisVal;
+
+            try
             {
-                _context.Add(coupon);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                Decimal.TryParse(ShippingCouponValue, out decShipVal);
+                Decimal.TryParse(DiscountCouponValue, out decDisVal);
             }
-            return View(coupon);
+            catch
+            {
+                ViewBag.InvalidValue = "Error. Coupon Value is invalid";
+                return View(coupon);
+            }
+
+            if (SelectedType == CouponType.FreeShippingForX)
+            {
+                coupon.CouponValue = decShipVal;
+            }
+            else
+            {
+                coupon.CouponValue = decDisVal;
+            }
+
+            coupon.CouponActive = true;
+            _context.Add(coupon);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
         }
 
         // GET: Coupons/Edit/5
@@ -92,34 +113,47 @@ namespace Group_18_Final_Project.Controllers
         [HttpPost]
         [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CouponID,CouponName")] Coupon coupon)
+        public async Task<IActionResult> Edit(int id, Coupon coupon, Boolean AlreadyActive, Boolean AlreadyInactive)
         {
             if (id != coupon.CouponID)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            coupon = _context.Coupons.Find(id);
+
+            try
             {
-                try
+                if (coupon.CouponActive == true)
                 {
-                    _context.Update(coupon);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CouponExists(coupon.CouponID))
+                    if (AlreadyActive != true)
                     {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
+                        coupon.CouponActive = false;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                if (coupon.CouponActive == false)
+                {
+                    if (AlreadyInactive == true)
+                    {
+                        coupon.CouponActive = true;
+                    }
+                }
+
+                _context.Update(coupon);
+                await _context.SaveChangesAsync();
             }
-            return View(coupon);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CouponExists(coupon.CouponID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
 

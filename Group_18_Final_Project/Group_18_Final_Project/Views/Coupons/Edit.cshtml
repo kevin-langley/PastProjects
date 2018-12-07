@@ -8,15 +8,44 @@
 
 <h4>Coupon</h4>
 <hr />
+
+<div>
+    <h4>Coupon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CouponCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CouponCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CouponValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CouponValue)
+        </dd>
+    </dl>
+</div>
+<h2>Edit Coupon Status</h2>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="CouponID" />
             <div class="form-group">
-                <label asp-for="CouponName" class="control-label"></label>
-                <select asp-for="CouponName" class="form-control"></select>
-                <span asp-validation-for="CouponName" class="text-danger"></span>
+                <label class="control-label">Enable Coupon?</label>
+                @if(Model.CouponActive == true)
+                {
+                    <input type="checkbox" class="checkbox" name="AlreadyActive" value="true" checked ="checked"/>
+                    <input type="hidden" class="checkbox" name="AlreadyActive" value="false" />
+                }
+                @if(Model.CouponActive == false)
+                {
+                    <input type="checkbox" class="checkbox" name="AlreadyInActive" value="true"/>
+                    <input type="hidden" class="checkbox" name="AlreadyActive" value="false" />
+                }
+
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -29,6 +58,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

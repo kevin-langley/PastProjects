@@ -10,13 +10,36 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Index" asp-controller="Coupons" method="get">
+
+        <form asp-action="Create" asp-controller="Coupons">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="text-danger">@ViewBag.ErrorVal</div>
+
             <div class="form-group">
-                <label asp-for="CouponCode" class="control-label"></label>
+                <label asp-for="CouponCode" class="control-label">Coupon Code</label>
                 <input asp-for="CouponCode" class="form-control" />
                 <span asp-validation-for="CouponCode" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <h4>Please choose the coupon type and enter necessary information:</h4><br/>
+                <label>Free Shipping Promotion</label>
+                <label class="radio">@Html.RadioButton("SelectedType", CouponType.FreeShippingForX, true)</label>
+                <div class="form-group">
+                    <label class="control-label">Please enter order total for shipping coupon:</label>
+                    <input name="ShippingCouponValue" class="form-control" />
+                </div>
+                <br/>
+                <br/>
+                <label>Order Discount Promotion</label>
+                <label class="radio">@Html.RadioButton("SelectedType", CouponType.XOffOrder)</label>
+                <div class="form-group">
+                    <label class="control-label">Please enter order discount:</label>
+                    <input name="DiscountCouponValue" class="form-control" />
+                </div><br/>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
