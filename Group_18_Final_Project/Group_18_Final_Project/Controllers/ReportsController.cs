@@ -39,6 +39,11 @@ namespace Group_18_Final_Project.Controllers
         RevenueAscending = 3,
         RevenueDescending = 4
     }
+
+    public enum reportReviews
+    {
+
+    }
     public class ReportsController : Controller
     {
         private AppDbContext _db;
@@ -238,6 +243,64 @@ namespace Group_18_Final_Project.Controllers
             ViewBag.totalRevenue = totalRevenue;
 
             return View();
+        }
+
+        // GET: All Books sold
+        public IActionResult SortReviews()
+        {
+            return View();
+        }
+
+        // POST: All Books Sold
+        public IActionResult ReviewsReport(reportBooksSold SelectedSort)
+        {
+
+            List<BookOrder> orderDetail = _db.BookOrders.Include(b => b.Book).Include(b => b.Order).ThenInclude(u => u.User).Where(o => o.Order.IsPending == false).ToList();
+
+            //The following lines of code process the sort by
+            switch (SelectedSort)
+            {
+                case reportBooksSold.NewestFirst:
+                    //SelectedBooks = _db.Books.Include(m => m.BookOrders).ToList();
+
+                    ViewBag.SelectedBooks = orderDetail.Count();
+                    ViewBag.TotalBooks = _db.BookOrders.Count();
+
+                    return View(orderDetail.OrderBy(d => d.Order.OrderDate));
+
+                case reportBooksSold.ProfitAscending:
+                    orderDetail = orderDetail.OrderBy(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
+
+                    break;
+
+                case reportBooksSold.ProfitDescending:
+                    orderDetail = orderDetail.OrderByDescending(m => m.Profit).ToList(); //wrong => how to order by profit margin??????**************
+
+                    break;
+
+                case reportBooksSold.PriceAscending:
+                    orderDetail = orderDetail.OrderBy(m => m.Price).ToList();
+
+                    break;
+
+
+                case reportBooksSold.PriceDescending:
+                    orderDetail = orderDetail.OrderByDescending(m => m.Price).ToList();
+
+                    break;
+
+                case reportBooksSold.TimesPurchased:
+                    orderDetail = orderDetail.OrderByDescending(m => m.Book.TimesPurchased).ToList();
+
+                    break;
+            }
+
+            //ViewBag for Displaying x of y text
+            ViewBag.SelectedBooks = orderDetail.Count();
+            ViewBag.TotalBooks = _db.BookOrders.Count();
+
+            //Redirect to Index View with Selected Repo list to display
+            return View(orderDetail);
         }
 
 
