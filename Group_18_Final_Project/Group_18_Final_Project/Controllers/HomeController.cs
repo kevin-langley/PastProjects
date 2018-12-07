@@ -31,18 +31,19 @@ namespace Group_18_Final_Project.Controllers
 
     public class HomeController : Controller
     {
-        // Home page index
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         private AppDbContext _db;
-
         public HomeController(AppDbContext context)
         {
             _db = context;
         }
+
+        // Home page index
+        public IActionResult Index()
+        {
+            List<Coupon> coupons = _db.Coupons.Where(c => c.CouponActive == true).ToList();
+            return View(coupons);
+        }
+
 
         public IActionResult Details(int? id)
         {

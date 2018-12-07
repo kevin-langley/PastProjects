@@ -513,7 +513,7 @@ namespace Group_18_Final_Project.Controllers
                 try
                 {
                     order = _context.Orders
-                                .Include(or => or.BookOrders)
+                                .Include(or => or.BookOrders).ThenInclude(or => or.Book)
                                 .Include(u => u.User).ThenInclude(c => c.CreditCards)
                                 .FirstOrDefault(o => o.OrderID == id);
 
@@ -564,16 +564,43 @@ namespace Group_18_Final_Project.Controllers
                         }
                     }
 
+                    decimal newSubtotal = 0m;
+                    decimal totalDiscount = 0m;
+
                     foreach (BookOrder bo in order.BookOrders)
                     {
                         bo.Price = bo.Book.BookPrice;
                         bo.BookCost = bo.Book.WholesalePrice;
                         intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
+                        bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
+
                     }
 
-                    //Coupon coupon = _context.Coupons.FirstOrDefaultAsync(c => c.CouponName == strCouponCode);
-
                     order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
+
+                    //Finding coupon matching user's coupon code input
+                    Coupon coupon = await _context.Coupons.FirstOrDefaultAsync(c => c.CouponCode == strCouponCode);
+
+                    if (coupon.CouponType == CouponType.FreeShippingForX && order.OrderSubtotal > coupon.CouponValue)
+                    {
+                        totalDiscount = order.TotalShippingPrice;
+                        ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+                        order.TotalShippingPrice = 0;
+                    }
+
+                    if (coupon.CouponType == CouponType.XOffOrder)
+                    {
+                        foreach (BookOrder border in order.BookOrders)
+                        {
+                            border.ExtendedPrice = border.ExtendedPrice * (1 - coupon.CouponValue);
+                            totalDiscount = totalDiscount + border.ExtendedPrice * coupon.CouponValue;
+                        }
+
+                        ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+
+                    }
+
+
 
 
                     //To pass credit card view to confirm check out
@@ -597,24 +624,6 @@ namespace Group_18_Final_Project.Controllers
                     {
                         throw;
                     }
-                }
-
-                //TODO: Figure out how the heck coupons work
-                List<Coupon> coupons = new List<Coupon>();
-
-                try
-                {
-                    Coupon checkcoupon = _context.Coupons.FirstOrDefault(c => c.CouponCode == strCouponCode);
-
-                    if (ModelState.IsValid)
-                    {
-
-                    }
-                }
-                catch
-                {
-                    ViewBag.CouponMessage = "This coupon code is invalid! No discount was applied.";
-                    return RedirectToAction("CheckOut", new { id = order.OrderID });
                 }
             }
             return View(order);
