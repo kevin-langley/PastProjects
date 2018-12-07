@@ -68,12 +68,13 @@ namespace Group_18_Final_Project.Controllers
             {
                 if (id == null)
                 {
-                    return View(await _context.Reviews.ToListAsync());
+                    return View(await _context.Reviews.Include(r => r.Book).Include(r => r.Author).Include(r => r.Approver).ToListAsync());
                 }
 
                 //if book id is specified
                 List<Review> bookReviews = await _context.Reviews
                     .Include(u => u.Author)
+                    .Include(u => u.Approver)
                     .Include(u => u.Book)
                     .Where(u => u.Book.BookID == id).ToListAsync();
 

@@ -23,22 +23,19 @@ namespace Group_18_Final_Project.Models
         [Display(Name = "Number of Times Purchased")]
         public Int32 TimesPurchased { get; set; }
 
-        [Display(Name = "Reorder Point")]
-        public Int32 ReorderPoint { get; set; }
-
         [Display(Name = "Average Rating")]
-        [DisplayFormat(DataFormatString = "{0:0.00}")] //Displays average rating to 2 decimals
-        public String AverageRating
+        [DisplayFormat(DataFormatString = "{0:0.0}")] //Displays average rating to 2 decimals
+        public Decimal AverageRating
         {
             get
             {
                 if (Reviews.Count() != 0)
                 {
-                    return (Reviews.Where(r => r.IsPending == false && r.Approval == true).Sum(r => r.Rating) / Reviews.Count()).ToString();
+                    return (Reviews.Where(r => r.IsPending == false && r.Approval == true).Sum(r => r.Rating) / Reviews.Count());
                 }
                 else
                 {
-                    return ("There are no reviews for this book yet!");
+                    return 0;
                 }
             }
         }

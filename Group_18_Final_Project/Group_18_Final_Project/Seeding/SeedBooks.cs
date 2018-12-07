@@ -29,6 +29,7 @@ namespace Group_18_Final_Project.Seeding
 				r1.BookPrice = 23.95m;
 				r1.WholesalePrice = 10.3m;
 				r1.CopiesOnHand = 2;
+				r1.ReorderPoint = 1;
 				r1.PublicationDate = new DateTime(2008, 5, 24);
 				r1.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r1);
@@ -41,6 +42,7 @@ namespace Group_18_Final_Project.Seeding
 				r2.BookPrice = 25.99m;
 				r2.WholesalePrice = 13.25m;
 				r2.CopiesOnHand = 8;
+				r2.ReorderPoint = 7;
 				r2.PublicationDate = new DateTime(2008, 5, 24);
 				r2.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r2);
@@ -53,6 +55,7 @@ namespace Group_18_Final_Project.Seeding
 				r3.BookPrice = 25.95m;
 				r3.WholesalePrice = 9.08m;
 				r3.CopiesOnHand = 10;
+				r3.ReorderPoint = 7;
 				r3.PublicationDate = new DateTime(2008, 7, 5);
 				r3.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r3);
@@ -65,6 +68,7 @@ namespace Group_18_Final_Project.Seeding
 				r4.BookPrice = 25m;
 				r4.WholesalePrice = 11.25m;
 				r4.CopiesOnHand = 5;
+				r4.ReorderPoint = 2;
 				r4.PublicationDate = new DateTime(2008, 7, 19);
 				r4.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r4);
@@ -77,6 +81,7 @@ namespace Group_18_Final_Project.Seeding
 				r5.BookPrice = 25.95m;
 				r5.WholesalePrice = 16.09m;
 				r5.CopiesOnHand = 5;
+				r5.ReorderPoint = 3;
 				r5.PublicationDate = new DateTime(2008, 8, 9);
 				r5.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r5);
@@ -89,6 +94,7 @@ namespace Group_18_Final_Project.Seeding
 				r6.BookPrice = 25.95m;
 				r6.WholesalePrice = 24.65m;
 				r6.CopiesOnHand = 11;
+				r6.ReorderPoint = 6;
 				r6.PublicationDate = new DateTime(2008, 8, 9);
 				r6.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r6);
@@ -101,6 +107,7 @@ namespace Group_18_Final_Project.Seeding
 				r7.BookPrice = 24.95m;
 				r7.WholesalePrice = 13.72m;
 				r7.CopiesOnHand = 2;
+				r7.ReorderPoint = 2;
 				r7.PublicationDate = new DateTime(2008, 8, 9);
 				r7.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r7);
@@ -113,6 +120,7 @@ namespace Group_18_Final_Project.Seeding
 				r8.BookPrice = 27.95m;
 				r8.WholesalePrice = 21.8m;
 				r8.CopiesOnHand = 9;
+				r8.ReorderPoint = 5;
 				r8.PublicationDate = new DateTime(2008, 8, 23);
 				r8.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r8);
@@ -125,6 +133,7 @@ namespace Group_18_Final_Project.Seeding
 				r9.BookPrice = 25.95m;
 				r9.WholesalePrice = 5.45m;
 				r9.CopiesOnHand = 8;
+				r9.ReorderPoint = 8;
 				r9.PublicationDate = new DateTime(2008, 8, 30);
 				r9.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r9);
@@ -137,6 +146,7 @@ namespace Group_18_Final_Project.Seeding
 				r10.BookPrice = 27m;
 				r10.WholesalePrice = 6.75m;
 				r10.CopiesOnHand = 6;
+				r10.ReorderPoint = 6;
 				r10.PublicationDate = new DateTime(2008, 8, 30);
 				r10.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r10);
@@ -149,6 +159,7 @@ namespace Group_18_Final_Project.Seeding
 				r11.BookPrice = 25.95m;
 				r11.WholesalePrice = 23.61m;
 				r11.CopiesOnHand = 8;
+				r11.ReorderPoint = 3;
 				r11.PublicationDate = new DateTime(2008, 9, 20);
 				r11.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r11);
@@ -161,6 +172,7 @@ namespace Group_18_Final_Project.Seeding
 				r12.BookPrice = 25.95m;
 				r12.WholesalePrice = 17.65m;
 				r12.CopiesOnHand = 2;
+				r12.ReorderPoint = 1;
 				r12.PublicationDate = new DateTime(2008, 9, 27);
 				r12.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r12);
@@ -173,6 +185,7 @@ namespace Group_18_Final_Project.Seeding
 				r13.BookPrice = 27.95m;
 				r13.WholesalePrice = 6.99m;
 				r13.CopiesOnHand = 11;
+				r13.ReorderPoint = 6;
 				r13.PublicationDate = new DateTime(2008, 9, 27);
 				r13.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r13);
@@ -185,6 +198,7 @@ namespace Group_18_Final_Project.Seeding
 				r14.BookPrice = 16.95m;
 				r14.WholesalePrice = 4.75m;
 				r14.CopiesOnHand = 6;
+				r14.ReorderPoint = 4;
 				r14.PublicationDate = new DateTime(2008, 10, 4);
 				r14.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r14);
@@ -197,6 +211,7 @@ namespace Group_18_Final_Project.Seeding
 				r15.BookPrice = 27.95m;
 				r15.WholesalePrice = 14.25m;
 				r15.CopiesOnHand = 6;
+				r15.ReorderPoint = 5;
 				r15.PublicationDate = new DateTime(2008, 10, 11);
 				r15.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r15);
@@ -209,6 +224,7 @@ namespace Group_18_Final_Project.Seeding
 				r16.BookPrice = 27m;
 				r16.WholesalePrice = 14.85m;
 				r16.CopiesOnHand = 7;
+				r16.ReorderPoint = 2;
 				r16.PublicationDate = new DateTime(2008, 10, 25);
 				r16.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r16);
@@ -221,6 +237,7 @@ namespace Group_18_Final_Project.Seeding
 				r17.BookPrice = 26.95m;
 				r17.WholesalePrice = 20.75m;
 				r17.CopiesOnHand = 10;
+				r17.ReorderPoint = 8;
 				r17.PublicationDate = new DateTime(2008, 10, 25);
 				r17.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r17);
@@ -233,6 +250,7 @@ namespace Group_18_Final_Project.Seeding
 				r18.BookPrice = 27.95m;
 				r18.WholesalePrice = 15.09m;
 				r18.CopiesOnHand = 4;
+				r18.ReorderPoint = 2;
 				r18.PublicationDate = new DateTime(2008, 10, 25);
 				r18.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r18);
@@ -245,6 +263,7 @@ namespace Group_18_Final_Project.Seeding
 				r19.BookPrice = 27m;
 				r19.WholesalePrice = 10.53m;
 				r19.CopiesOnHand = 6;
+				r19.ReorderPoint = 1;
 				r19.PublicationDate = new DateTime(2008, 11, 1);
 				r19.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r19);
@@ -257,6 +276,7 @@ namespace Group_18_Final_Project.Seeding
 				r20.BookPrice = 26.95m;
 				r20.WholesalePrice = 21.29m;
 				r20.CopiesOnHand = 8;
+				r20.ReorderPoint = 3;
 				r20.PublicationDate = new DateTime(2008, 11, 8);
 				r20.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r20);
@@ -269,6 +289,7 @@ namespace Group_18_Final_Project.Seeding
 				r21.BookPrice = 27.95m;
 				r21.WholesalePrice = 13.14m;
 				r21.CopiesOnHand = 9;
+				r21.ReorderPoint = 4;
 				r21.PublicationDate = new DateTime(2008, 12, 6);
 				r21.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r21);
@@ -281,6 +302,7 @@ namespace Group_18_Final_Project.Seeding
 				r22.BookPrice = 26.95m;
 				r22.WholesalePrice = 11.86m;
 				r22.CopiesOnHand = 11;
+				r22.ReorderPoint = 7;
 				r22.PublicationDate = new DateTime(2009, 1, 31);
 				r22.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r22);
@@ -293,6 +315,7 @@ namespace Group_18_Final_Project.Seeding
 				r23.BookPrice = 25.99m;
 				r23.WholesalePrice = 22.09m;
 				r23.CopiesOnHand = 5;
+				r23.ReorderPoint = 1;
 				r23.PublicationDate = new DateTime(2009, 4, 11);
 				r23.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r23);
@@ -305,6 +328,7 @@ namespace Group_18_Final_Project.Seeding
 				r24.BookPrice = 25.95m;
 				r24.WholesalePrice = 9.34m;
 				r24.CopiesOnHand = 6;
+				r24.ReorderPoint = 3;
 				r24.PublicationDate = new DateTime(2009, 4, 11);
 				r24.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r24);
@@ -317,6 +341,7 @@ namespace Group_18_Final_Project.Seeding
 				r25.BookPrice = 25.95m;
 				r25.WholesalePrice = 3.11m;
 				r25.CopiesOnHand = 8;
+				r25.ReorderPoint = 3;
 				r25.PublicationDate = new DateTime(2009, 4, 11);
 				r25.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r25);
@@ -329,6 +354,7 @@ namespace Group_18_Final_Project.Seeding
 				r26.BookPrice = 24.95m;
 				r26.WholesalePrice = 7.24m;
 				r26.CopiesOnHand = 7;
+				r26.ReorderPoint = 2;
 				r26.PublicationDate = new DateTime(2009, 5, 2);
 				r26.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r26);
@@ -341,6 +367,7 @@ namespace Group_18_Final_Project.Seeding
 				r27.BookPrice = 25.95m;
 				r27.WholesalePrice = 24.65m;
 				r27.CopiesOnHand = 10;
+				r27.ReorderPoint = 5;
 				r27.PublicationDate = new DateTime(2009, 5, 9);
 				r27.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r27);
@@ -353,6 +380,7 @@ namespace Group_18_Final_Project.Seeding
 				r28.BookPrice = 18.95m;
 				r28.WholesalePrice = 3.6m;
 				r28.CopiesOnHand = 1;
+				r28.ReorderPoint = 1;
 				r28.PublicationDate = new DateTime(2009, 5, 9);
 				r28.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r28);
@@ -365,6 +393,7 @@ namespace Group_18_Final_Project.Seeding
 				r29.BookPrice = 24.95m;
 				r29.WholesalePrice = 15.72m;
 				r29.CopiesOnHand = 5;
+				r29.ReorderPoint = 2;
 				r29.PublicationDate = new DateTime(2009, 5, 16);
 				r29.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r29);
@@ -377,6 +406,7 @@ namespace Group_18_Final_Project.Seeding
 				r30.BookPrice = 24.95m;
 				r30.WholesalePrice = 21.46m;
 				r30.CopiesOnHand = 4;
+				r30.ReorderPoint = 4;
 				r30.PublicationDate = new DateTime(2009, 5, 30);
 				r30.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r30);
@@ -389,6 +419,7 @@ namespace Group_18_Final_Project.Seeding
 				r31.BookPrice = 25m;
 				r31.WholesalePrice = 2.5m;
 				r31.CopiesOnHand = 4;
+				r31.ReorderPoint = 4;
 				r31.PublicationDate = new DateTime(2009, 5, 30);
 				r31.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r31);
@@ -401,6 +432,7 @@ namespace Group_18_Final_Project.Seeding
 				r32.BookPrice = 26.95m;
 				r32.WholesalePrice = 2.7m;
 				r32.CopiesOnHand = 9;
+				r32.ReorderPoint = 8;
 				r32.PublicationDate = new DateTime(2009, 6, 6);
 				r32.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r32);
@@ -413,6 +445,7 @@ namespace Group_18_Final_Project.Seeding
 				r33.BookPrice = 26.95m;
 				r33.WholesalePrice = 7.82m;
 				r33.CopiesOnHand = 13;
+				r33.ReorderPoint = 8;
 				r33.PublicationDate = new DateTime(2009, 6, 13);
 				r33.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r33);
@@ -425,6 +458,7 @@ namespace Group_18_Final_Project.Seeding
 				r34.BookPrice = 27.95m;
 				r34.WholesalePrice = 3.63m;
 				r34.CopiesOnHand = 7;
+				r34.ReorderPoint = 4;
 				r34.PublicationDate = new DateTime(2009, 6, 27);
 				r34.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r34);
@@ -437,6 +471,7 @@ namespace Group_18_Final_Project.Seeding
 				r35.BookPrice = 25.99m;
 				r35.WholesalePrice = 13.25m;
 				r35.CopiesOnHand = 13;
+				r35.ReorderPoint = 8;
 				r35.PublicationDate = new DateTime(2009, 7, 4);
 				r35.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r35);
@@ -449,6 +484,7 @@ namespace Group_18_Final_Project.Seeding
 				r36.BookPrice = 24.99m;
 				r36.WholesalePrice = 16.99m;
 				r36.CopiesOnHand = 7;
+				r36.ReorderPoint = 2;
 				r36.PublicationDate = new DateTime(2009, 7, 11);
 				r36.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r36);
@@ -461,6 +497,7 @@ namespace Group_18_Final_Project.Seeding
 				r37.BookPrice = 25.99m;
 				r37.WholesalePrice = 21.05m;
 				r37.CopiesOnHand = 6;
+				r37.ReorderPoint = 2;
 				r37.PublicationDate = new DateTime(2009, 7, 18);
 				r37.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r37);
@@ -473,6 +510,7 @@ namespace Group_18_Final_Project.Seeding
 				r38.BookPrice = 26m;
 				r38.WholesalePrice = 7.28m;
 				r38.CopiesOnHand = 4;
+				r38.ReorderPoint = 2;
 				r38.PublicationDate = new DateTime(2009, 7, 18);
 				r38.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r38);
@@ -485,6 +523,7 @@ namespace Group_18_Final_Project.Seeding
 				r39.BookPrice = 26.99m;
 				r39.WholesalePrice = 18.62m;
 				r39.CopiesOnHand = 6;
+				r39.ReorderPoint = 2;
 				r39.PublicationDate = new DateTime(2009, 7, 18);
 				r39.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r39);
@@ -497,6 +536,7 @@ namespace Group_18_Final_Project.Seeding
 				r40.BookPrice = 26m;
 				r40.WholesalePrice = 21.06m;
 				r40.CopiesOnHand = 10;
+				r40.ReorderPoint = 6;
 				r40.PublicationDate = new DateTime(2009, 8, 22);
 				r40.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r40);
@@ -509,6 +549,7 @@ namespace Group_18_Final_Project.Seeding
 				r41.BookPrice = 26.95m;
 				r41.WholesalePrice = 14.55m;
 				r41.CopiesOnHand = 3;
+				r41.ReorderPoint = 3;
 				r41.PublicationDate = new DateTime(2009, 8, 29);
 				r41.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r41);
@@ -521,6 +562,7 @@ namespace Group_18_Final_Project.Seeding
 				r42.BookPrice = 25m;
 				r42.WholesalePrice = 2.75m;
 				r42.CopiesOnHand = 13;
+				r42.ReorderPoint = 9;
 				r42.PublicationDate = new DateTime(2009, 9, 12);
 				r42.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r42);
@@ -533,6 +575,7 @@ namespace Group_18_Final_Project.Seeding
 				r43.BookPrice = 26.95m;
 				r43.WholesalePrice = 7.01m;
 				r43.CopiesOnHand = 9;
+				r43.ReorderPoint = 8;
 				r43.PublicationDate = new DateTime(2009, 10, 10);
 				r43.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r43);
@@ -545,6 +588,7 @@ namespace Group_18_Final_Project.Seeding
 				r44.BookPrice = 25.99m;
 				r44.WholesalePrice = 3.12m;
 				r44.CopiesOnHand = 14;
+				r44.ReorderPoint = 9;
 				r44.PublicationDate = new DateTime(2009, 10, 10);
 				r44.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r44);
@@ -557,6 +601,7 @@ namespace Group_18_Final_Project.Seeding
 				r45.BookPrice = 27.99m;
 				r45.WholesalePrice = 5.04m;
 				r45.CopiesOnHand = 4;
+				r45.ReorderPoint = 4;
 				r45.PublicationDate = new DateTime(2009, 10, 17);
 				r45.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r45);
@@ -569,6 +614,7 @@ namespace Group_18_Final_Project.Seeding
 				r46.BookPrice = 28m;
 				r46.WholesalePrice = 20.72m;
 				r46.CopiesOnHand = 3;
+				r46.ReorderPoint = 1;
 				r46.PublicationDate = new DateTime(2009, 11, 7);
 				r46.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r46);
@@ -581,6 +627,7 @@ namespace Group_18_Final_Project.Seeding
 				r47.BookPrice = 24m;
 				r47.WholesalePrice = 14.88m;
 				r47.CopiesOnHand = 12;
+				r47.ReorderPoint = 10;
 				r47.PublicationDate = new DateTime(2009, 11, 7);
 				r47.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r47);
@@ -593,6 +640,7 @@ namespace Group_18_Final_Project.Seeding
 				r48.BookPrice = 15m;
 				r48.WholesalePrice = 13.95m;
 				r48.CopiesOnHand = 3;
+				r48.ReorderPoint = 3;
 				r48.PublicationDate = new DateTime(2009, 11, 14);
 				r48.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Humor");
 				Books.Add(r48);
@@ -605,6 +653,7 @@ namespace Group_18_Final_Project.Seeding
 				r49.BookPrice = 25.95m;
 				r49.WholesalePrice = 13.23m;
 				r49.CopiesOnHand = 4;
+				r49.ReorderPoint = 1;
 				r49.PublicationDate = new DateTime(2009, 11, 28);
 				r49.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r49);
@@ -617,6 +666,7 @@ namespace Group_18_Final_Project.Seeding
 				r50.BookPrice = 27.99m;
 				r50.WholesalePrice = 25.75m;
 				r50.CopiesOnHand = 1;
+				r50.ReorderPoint = 1;
 				r50.PublicationDate = new DateTime(2010, 1, 2);
 				r50.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r50);
@@ -629,6 +679,7 @@ namespace Group_18_Final_Project.Seeding
 				r51.BookPrice = 26.95m;
 				r51.WholesalePrice = 9.7m;
 				r51.CopiesOnHand = 9;
+				r51.ReorderPoint = 4;
 				r51.PublicationDate = new DateTime(2010, 1, 2);
 				r51.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r51);
@@ -641,6 +692,7 @@ namespace Group_18_Final_Project.Seeding
 				r52.BookPrice = 24.99m;
 				r52.WholesalePrice = 20.99m;
 				r52.CopiesOnHand = 12;
+				r52.ReorderPoint = 8;
 				r52.PublicationDate = new DateTime(2010, 1, 16);
 				r52.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r52);
@@ -653,6 +705,7 @@ namespace Group_18_Final_Project.Seeding
 				r53.BookPrice = 26m;
 				r53.WholesalePrice = 5.2m;
 				r53.CopiesOnHand = 7;
+				r53.ReorderPoint = 7;
 				r53.PublicationDate = new DateTime(2010, 1, 30);
 				r53.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r53);
@@ -665,6 +718,7 @@ namespace Group_18_Final_Project.Seeding
 				r54.BookPrice = 25.95m;
 				r54.WholesalePrice = 3.11m;
 				r54.CopiesOnHand = 5;
+				r54.ReorderPoint = 5;
 				r54.PublicationDate = new DateTime(2010, 2, 13);
 				r54.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r54);
@@ -677,6 +731,7 @@ namespace Group_18_Final_Project.Seeding
 				r55.BookPrice = 26.99m;
 				r55.WholesalePrice = 17.54m;
 				r55.CopiesOnHand = 1;
+				r55.ReorderPoint = 1;
 				r55.PublicationDate = new DateTime(2010, 2, 13);
 				r55.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r55);
@@ -689,6 +744,7 @@ namespace Group_18_Final_Project.Seeding
 				r56.BookPrice = 25.95m;
 				r56.WholesalePrice = 5.45m;
 				r56.CopiesOnHand = 5;
+				r56.ReorderPoint = 1;
 				r56.PublicationDate = new DateTime(2010, 3, 13);
 				r56.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r56);
@@ -701,6 +757,7 @@ namespace Group_18_Final_Project.Seeding
 				r57.BookPrice = 26.99m;
 				r57.WholesalePrice = 21.86m;
 				r57.CopiesOnHand = 10;
+				r57.ReorderPoint = 6;
 				r57.PublicationDate = new DateTime(2010, 3, 20);
 				r57.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r57);
@@ -713,6 +770,7 @@ namespace Group_18_Final_Project.Seeding
 				r58.BookPrice = 25m;
 				r58.WholesalePrice = 11.25m;
 				r58.CopiesOnHand = 6;
+				r58.ReorderPoint = 3;
 				r58.PublicationDate = new DateTime(2010, 3, 20);
 				r58.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r58);
@@ -725,6 +783,7 @@ namespace Group_18_Final_Project.Seeding
 				r59.BookPrice = 25m;
 				r59.WholesalePrice = 4.25m;
 				r59.CopiesOnHand = 6;
+				r59.ReorderPoint = 3;
 				r59.PublicationDate = new DateTime(2010, 4, 3);
 				r59.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r59);
@@ -737,6 +796,7 @@ namespace Group_18_Final_Project.Seeding
 				r60.BookPrice = 25m;
 				r60.WholesalePrice = 18m;
 				r60.CopiesOnHand = 11;
+				r60.ReorderPoint = 8;
 				r60.PublicationDate = new DateTime(2010, 4, 17);
 				r60.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r60);
@@ -749,6 +809,7 @@ namespace Group_18_Final_Project.Seeding
 				r61.BookPrice = 22m;
 				r61.WholesalePrice = 9.46m;
 				r61.CopiesOnHand = 11;
+				r61.ReorderPoint = 8;
 				r61.PublicationDate = new DateTime(2010, 5, 1);
 				r61.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r61);
@@ -761,6 +822,7 @@ namespace Group_18_Final_Project.Seeding
 				r62.BookPrice = 27.95m;
 				r62.WholesalePrice = 22.64m;
 				r62.CopiesOnHand = 7;
+				r62.ReorderPoint = 7;
 				r62.PublicationDate = new DateTime(2010, 5, 15);
 				r62.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r62);
@@ -773,6 +835,7 @@ namespace Group_18_Final_Project.Seeding
 				r63.BookPrice = 26.99m;
 				r63.WholesalePrice = 6.21m;
 				r63.CopiesOnHand = 7;
+				r63.ReorderPoint = 3;
 				r63.PublicationDate = new DateTime(2010, 5, 15);
 				r63.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r63);
@@ -785,6 +848,7 @@ namespace Group_18_Final_Project.Seeding
 				r64.BookPrice = 25m;
 				r64.WholesalePrice = 18.25m;
 				r64.CopiesOnHand = 9;
+				r64.ReorderPoint = 9;
 				r64.PublicationDate = new DateTime(2010, 6, 19);
 				r64.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r64);
@@ -797,6 +861,7 @@ namespace Group_18_Final_Project.Seeding
 				r65.BookPrice = 27m;
 				r65.WholesalePrice = 6.75m;
 				r65.CopiesOnHand = 3;
+				r65.ReorderPoint = 1;
 				r65.PublicationDate = new DateTime(2010, 6, 26);
 				r65.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r65);
@@ -809,6 +874,7 @@ namespace Group_18_Final_Project.Seeding
 				r66.BookPrice = 27.99m;
 				r66.WholesalePrice = 12.32m;
 				r66.CopiesOnHand = 2;
+				r66.ReorderPoint = 1;
 				r66.PublicationDate = new DateTime(2010, 6, 26);
 				r66.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r66);
@@ -821,6 +887,7 @@ namespace Group_18_Final_Project.Seeding
 				r67.BookPrice = 26m;
 				r67.WholesalePrice = 9.62m;
 				r67.CopiesOnHand = 15;
+				r67.ReorderPoint = 10;
 				r67.PublicationDate = new DateTime(2010, 7, 3);
 				r67.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r67);
@@ -833,6 +900,7 @@ namespace Group_18_Final_Project.Seeding
 				r68.BookPrice = 26.95m;
 				r68.WholesalePrice = 8.62m;
 				r68.CopiesOnHand = 9;
+				r68.ReorderPoint = 4;
 				r68.PublicationDate = new DateTime(2010, 7, 10);
 				r68.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r68);
@@ -845,6 +913,7 @@ namespace Group_18_Final_Project.Seeding
 				r69.BookPrice = 25.99m;
 				r69.WholesalePrice = 5.98m;
 				r69.CopiesOnHand = 6;
+				r69.ReorderPoint = 1;
 				r69.PublicationDate = new DateTime(2010, 8, 14);
 				r69.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r69);
@@ -857,6 +926,7 @@ namespace Group_18_Final_Project.Seeding
 				r70.BookPrice = 24.99m;
 				r70.WholesalePrice = 5.25m;
 				r70.CopiesOnHand = 12;
+				r70.ReorderPoint = 10;
 				r70.PublicationDate = new DateTime(2010, 9, 11);
 				r70.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r70);
@@ -869,6 +939,7 @@ namespace Group_18_Final_Project.Seeding
 				r71.BookPrice = 26.99m;
 				r71.WholesalePrice = 13.23m;
 				r71.CopiesOnHand = 7;
+				r71.ReorderPoint = 7;
 				r71.PublicationDate = new DateTime(2010, 9, 25);
 				r71.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r71);
@@ -881,6 +952,7 @@ namespace Group_18_Final_Project.Seeding
 				r72.BookPrice = 28m;
 				r72.WholesalePrice = 6.44m;
 				r72.CopiesOnHand = 3;
+				r72.ReorderPoint = 1;
 				r72.PublicationDate = new DateTime(2010, 10, 2);
 				r72.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r72);
@@ -893,6 +965,7 @@ namespace Group_18_Final_Project.Seeding
 				r73.BookPrice = 16.95m;
 				r73.WholesalePrice = 8.31m;
 				r73.CopiesOnHand = 6;
+				r73.ReorderPoint = 4;
 				r73.PublicationDate = new DateTime(2010, 10, 2);
 				r73.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r73);
@@ -905,6 +978,7 @@ namespace Group_18_Final_Project.Seeding
 				r74.BookPrice = 19.99m;
 				r74.WholesalePrice = 10.79m;
 				r74.CopiesOnHand = 2;
+				r74.ReorderPoint = 1;
 				r74.PublicationDate = new DateTime(2010, 10, 9);
 				r74.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r74);
@@ -917,6 +991,7 @@ namespace Group_18_Final_Project.Seeding
 				r75.BookPrice = 27.95m;
 				r75.WholesalePrice = 20.12m;
 				r75.CopiesOnHand = 5;
+				r75.ReorderPoint = 4;
 				r75.PublicationDate = new DateTime(2010, 11, 20);
 				r75.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Adventure");
 				Books.Add(r75);
@@ -929,6 +1004,7 @@ namespace Group_18_Final_Project.Seeding
 				r76.BookPrice = 26.99m;
 				r76.WholesalePrice = 8.91m;
 				r76.CopiesOnHand = 6;
+				r76.ReorderPoint = 6;
 				r76.PublicationDate = new DateTime(2010, 11, 27);
 				r76.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r76);
@@ -941,6 +1017,7 @@ namespace Group_18_Final_Project.Seeding
 				r77.BookPrice = 28.95m;
 				r77.WholesalePrice = 24.03m;
 				r77.CopiesOnHand = 8;
+				r77.ReorderPoint = 8;
 				r77.PublicationDate = new DateTime(2010, 12, 11);
 				r77.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r77);
@@ -953,6 +1030,7 @@ namespace Group_18_Final_Project.Seeding
 				r78.BookPrice = 26.95m;
 				r78.WholesalePrice = 24.26m;
 				r78.CopiesOnHand = 8;
+				r78.ReorderPoint = 7;
 				r78.PublicationDate = new DateTime(2011, 1, 8);
 				r78.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r78);
@@ -965,6 +1043,7 @@ namespace Group_18_Final_Project.Seeding
 				r79.BookPrice = 26.99m;
 				r79.WholesalePrice = 11.61m;
 				r79.CopiesOnHand = 11;
+				r79.ReorderPoint = 8;
 				r79.PublicationDate = new DateTime(2011, 1, 15);
 				r79.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r79);
@@ -977,6 +1056,7 @@ namespace Group_18_Final_Project.Seeding
 				r80.BookPrice = 26m;
 				r80.WholesalePrice = 13.78m;
 				r80.CopiesOnHand = 13;
+				r80.ReorderPoint = 9;
 				r80.PublicationDate = new DateTime(2011, 1, 22);
 				r80.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r80);
@@ -989,6 +1069,7 @@ namespace Group_18_Final_Project.Seeding
 				r81.BookPrice = 25.99m;
 				r81.WholesalePrice = 11.44m;
 				r81.CopiesOnHand = 4;
+				r81.ReorderPoint = 3;
 				r81.PublicationDate = new DateTime(2011, 1, 22);
 				r81.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r81);
@@ -1001,6 +1082,7 @@ namespace Group_18_Final_Project.Seeding
 				r82.BookPrice = 28.95m;
 				r82.WholesalePrice = 3.76m;
 				r82.CopiesOnHand = 8;
+				r82.ReorderPoint = 7;
 				r82.PublicationDate = new DateTime(2011, 2, 12);
 				r82.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r82);
@@ -1013,6 +1095,7 @@ namespace Group_18_Final_Project.Seeding
 				r83.BookPrice = 26.99m;
 				r83.WholesalePrice = 19.7m;
 				r83.CopiesOnHand = 11;
+				r83.ReorderPoint = 9;
 				r83.PublicationDate = new DateTime(2011, 2, 26);
 				r83.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r83);
@@ -1025,6 +1108,7 @@ namespace Group_18_Final_Project.Seeding
 				r84.BookPrice = 26.95m;
 				r84.WholesalePrice = 5.93m;
 				r84.CopiesOnHand = 8;
+				r84.ReorderPoint = 5;
 				r84.PublicationDate = new DateTime(2011, 2, 26);
 				r84.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r84);
@@ -1037,6 +1121,7 @@ namespace Group_18_Final_Project.Seeding
 				r85.BookPrice = 27.95m;
 				r85.WholesalePrice = 13.98m;
 				r85.CopiesOnHand = 9;
+				r85.ReorderPoint = 6;
 				r85.PublicationDate = new DateTime(2011, 3, 26);
 				r85.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r85);
@@ -1049,6 +1134,7 @@ namespace Group_18_Final_Project.Seeding
 				r86.BookPrice = 25.99m;
 				r86.WholesalePrice = 12.22m;
 				r86.CopiesOnHand = 7;
+				r86.ReorderPoint = 7;
 				r86.PublicationDate = new DateTime(2011, 3, 26);
 				r86.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r86);
@@ -1061,6 +1147,7 @@ namespace Group_18_Final_Project.Seeding
 				r87.BookPrice = 26.99m;
 				r87.WholesalePrice = 3.78m;
 				r87.CopiesOnHand = 4;
+				r87.ReorderPoint = 2;
 				r87.PublicationDate = new DateTime(2011, 4, 9);
 				r87.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r87);
@@ -1073,6 +1160,7 @@ namespace Group_18_Final_Project.Seeding
 				r88.BookPrice = 25.99m;
 				r88.WholesalePrice = 3.9m;
 				r88.CopiesOnHand = 14;
+				r88.ReorderPoint = 9;
 				r88.PublicationDate = new DateTime(2011, 4, 9);
 				r88.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r88);
@@ -1085,6 +1173,7 @@ namespace Group_18_Final_Project.Seeding
 				r89.BookPrice = 27.99m;
 				r89.WholesalePrice = 6.16m;
 				r89.CopiesOnHand = 4;
+				r89.ReorderPoint = 4;
 				r89.PublicationDate = new DateTime(2011, 4, 9);
 				r89.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r89);
@@ -1097,6 +1186,7 @@ namespace Group_18_Final_Project.Seeding
 				r90.BookPrice = 27.99m;
 				r90.WholesalePrice = 11.2m;
 				r90.CopiesOnHand = 10;
+				r90.ReorderPoint = 6;
 				r90.PublicationDate = new DateTime(2011, 4, 16);
 				r90.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r90);
@@ -1109,6 +1199,7 @@ namespace Group_18_Final_Project.Seeding
 				r91.BookPrice = 25.95m;
 				r91.WholesalePrice = 23.1m;
 				r91.CopiesOnHand = 9;
+				r91.ReorderPoint = 6;
 				r91.PublicationDate = new DateTime(2011, 4, 23);
 				r91.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r91);
@@ -1121,6 +1212,7 @@ namespace Group_18_Final_Project.Seeding
 				r92.BookPrice = 27.99m;
 				r92.WholesalePrice = 20.15m;
 				r92.CopiesOnHand = 5;
+				r92.ReorderPoint = 4;
 				r92.PublicationDate = new DateTime(2011, 4, 23);
 				r92.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r92);
@@ -1133,6 +1225,7 @@ namespace Group_18_Final_Project.Seeding
 				r93.BookPrice = 27.99m;
 				r93.WholesalePrice = 16.23m;
 				r93.CopiesOnHand = 10;
+				r93.ReorderPoint = 8;
 				r93.PublicationDate = new DateTime(2011, 5, 14);
 				r93.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r93);
@@ -1145,6 +1238,7 @@ namespace Group_18_Final_Project.Seeding
 				r94.BookPrice = 26m;
 				r94.WholesalePrice = 18.2m;
 				r94.CopiesOnHand = 11;
+				r94.ReorderPoint = 8;
 				r94.PublicationDate = new DateTime(2011, 5, 21);
 				r94.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r94);
@@ -1157,6 +1251,7 @@ namespace Group_18_Final_Project.Seeding
 				r95.BookPrice = 25.99m;
 				r95.WholesalePrice = 9.62m;
 				r95.CopiesOnHand = 11;
+				r95.ReorderPoint = 9;
 				r95.PublicationDate = new DateTime(2011, 6, 11);
 				r95.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r95);
@@ -1169,6 +1264,7 @@ namespace Group_18_Final_Project.Seeding
 				r96.BookPrice = 25.99m;
 				r96.WholesalePrice = 20.01m;
 				r96.CopiesOnHand = 4;
+				r96.ReorderPoint = 2;
 				r96.PublicationDate = new DateTime(2011, 6, 18);
 				r96.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r96);
@@ -1181,6 +1277,7 @@ namespace Group_18_Final_Project.Seeding
 				r97.BookPrice = 14.99m;
 				r97.WholesalePrice = 6m;
 				r97.CopiesOnHand = 5;
+				r97.ReorderPoint = 1;
 				r97.PublicationDate = new DateTime(2011, 6, 18);
 				r97.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r97);
@@ -1193,6 +1290,7 @@ namespace Group_18_Final_Project.Seeding
 				r98.BookPrice = 27.99m;
 				r98.WholesalePrice = 8.4m;
 				r98.CopiesOnHand = 2;
+				r98.ReorderPoint = 1;
 				r98.PublicationDate = new DateTime(2011, 7, 2);
 				r98.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r98);
@@ -1205,6 +1303,7 @@ namespace Group_18_Final_Project.Seeding
 				r99.BookPrice = 26.99m;
 				r99.WholesalePrice = 5.67m;
 				r99.CopiesOnHand = 8;
+				r99.ReorderPoint = 4;
 				r99.PublicationDate = new DateTime(2011, 7, 30);
 				r99.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r99);
@@ -1217,6 +1316,7 @@ namespace Group_18_Final_Project.Seeding
 				r100.BookPrice = 27.95m;
 				r100.WholesalePrice = 12.02m;
 				r100.CopiesOnHand = 13;
+				r100.ReorderPoint = 9;
 				r100.PublicationDate = new DateTime(2011, 7, 30);
 				r100.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r100);
@@ -1229,6 +1329,7 @@ namespace Group_18_Final_Project.Seeding
 				r101.BookPrice = 25.99m;
 				r101.WholesalePrice = 24.69m;
 				r101.CopiesOnHand = 9;
+				r101.ReorderPoint = 4;
 				r101.PublicationDate = new DateTime(2011, 8, 6);
 				r101.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r101);
@@ -1241,6 +1342,7 @@ namespace Group_18_Final_Project.Seeding
 				r102.BookPrice = 29.99m;
 				r102.WholesalePrice = 17.69m;
 				r102.CopiesOnHand = 12;
+				r102.ReorderPoint = 7;
 				r102.PublicationDate = new DateTime(2011, 8, 20);
 				r102.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r102);
@@ -1253,6 +1355,7 @@ namespace Group_18_Final_Project.Seeding
 				r103.BookPrice = 27m;
 				r103.WholesalePrice = 15.39m;
 				r103.CopiesOnHand = 7;
+				r103.ReorderPoint = 4;
 				r103.PublicationDate = new DateTime(2011, 8, 27);
 				r103.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r103);
@@ -1265,6 +1368,7 @@ namespace Group_18_Final_Project.Seeding
 				r104.BookPrice = 27.99m;
 				r104.WholesalePrice = 23.79m;
 				r104.CopiesOnHand = 12;
+				r104.ReorderPoint = 7;
 				r104.PublicationDate = new DateTime(2011, 9, 17);
 				r104.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r104);
@@ -1277,6 +1381,7 @@ namespace Group_18_Final_Project.Seeding
 				r105.BookPrice = 35m;
 				r105.WholesalePrice = 14.7m;
 				r105.CopiesOnHand = 12;
+				r105.ReorderPoint = 10;
 				r105.PublicationDate = new DateTime(2011, 9, 24);
 				r105.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r105);
@@ -1289,6 +1394,7 @@ namespace Group_18_Final_Project.Seeding
 				r106.BookPrice = 26m;
 				r106.WholesalePrice = 10.92m;
 				r106.CopiesOnHand = 11;
+				r106.ReorderPoint = 6;
 				r106.PublicationDate = new DateTime(2011, 10, 1);
 				r106.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r106);
@@ -1301,6 +1407,7 @@ namespace Group_18_Final_Project.Seeding
 				r107.BookPrice = 28m;
 				r107.WholesalePrice = 8.68m;
 				r107.CopiesOnHand = 11;
+				r107.ReorderPoint = 6;
 				r107.PublicationDate = new DateTime(2011, 10, 1);
 				r107.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r107);
@@ -1313,6 +1420,7 @@ namespace Group_18_Final_Project.Seeding
 				r108.BookPrice = 28m;
 				r108.WholesalePrice = 15.96m;
 				r108.CopiesOnHand = 10;
+				r108.ReorderPoint = 5;
 				r108.PublicationDate = new DateTime(2011, 10, 1);
 				r108.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r108);
@@ -1325,6 +1433,7 @@ namespace Group_18_Final_Project.Seeding
 				r109.BookPrice = 27.99m;
 				r109.WholesalePrice = 24.07m;
 				r109.CopiesOnHand = 13;
+				r109.ReorderPoint = 9;
 				r109.PublicationDate = new DateTime(2011, 10, 22);
 				r109.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r109);
@@ -1337,6 +1446,7 @@ namespace Group_18_Final_Project.Seeding
 				r110.BookPrice = 25.99m;
 				r110.WholesalePrice = 23.65m;
 				r110.CopiesOnHand = 3;
+				r110.ReorderPoint = 2;
 				r110.PublicationDate = new DateTime(2011, 10, 22);
 				r110.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r110);
@@ -1349,6 +1459,7 @@ namespace Group_18_Final_Project.Seeding
 				r111.BookPrice = 27.99m;
 				r111.WholesalePrice = 18.47m;
 				r111.CopiesOnHand = 12;
+				r111.ReorderPoint = 9;
 				r111.PublicationDate = new DateTime(2011, 11, 5);
 				r111.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r111);
@@ -1361,6 +1472,7 @@ namespace Group_18_Final_Project.Seeding
 				r112.BookPrice = 28m;
 				r112.WholesalePrice = 24.92m;
 				r112.CopiesOnHand = 6;
+				r112.ReorderPoint = 2;
 				r112.PublicationDate = new DateTime(2011, 12, 3);
 				r112.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r112);
@@ -1373,6 +1485,7 @@ namespace Group_18_Final_Project.Seeding
 				r113.BookPrice = 28m;
 				r113.WholesalePrice = 14.56m;
 				r113.CopiesOnHand = 6;
+				r113.ReorderPoint = 5;
 				r113.PublicationDate = new DateTime(2011, 12, 31);
 				r113.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Horror");
 				Books.Add(r113);
@@ -1385,6 +1498,7 @@ namespace Group_18_Final_Project.Seeding
 				r114.BookPrice = 27.99m;
 				r114.WholesalePrice = 22.95m;
 				r114.CopiesOnHand = 3;
+				r114.ReorderPoint = 3;
 				r114.PublicationDate = new DateTime(2012, 1, 7);
 				r114.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r114);
@@ -1397,6 +1511,7 @@ namespace Group_18_Final_Project.Seeding
 				r115.BookPrice = 26.95m;
 				r115.WholesalePrice = 5.66m;
 				r115.CopiesOnHand = 7;
+				r115.ReorderPoint = 6;
 				r115.PublicationDate = new DateTime(2012, 1, 7);
 				r115.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r115);
@@ -1409,6 +1524,7 @@ namespace Group_18_Final_Project.Seeding
 				r116.BookPrice = 25.95m;
 				r116.WholesalePrice = 16.09m;
 				r116.CopiesOnHand = 5;
+				r116.ReorderPoint = 5;
 				r116.PublicationDate = new DateTime(2012, 1, 14);
 				r116.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r116);
@@ -1421,6 +1537,7 @@ namespace Group_18_Final_Project.Seeding
 				r117.BookPrice = 25.99m;
 				r117.WholesalePrice = 20.01m;
 				r117.CopiesOnHand = 13;
+				r117.ReorderPoint = 10;
 				r117.PublicationDate = new DateTime(2012, 2, 11);
 				r117.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r117);
@@ -1433,6 +1550,7 @@ namespace Group_18_Final_Project.Seeding
 				r118.BookPrice = 27.99m;
 				r118.WholesalePrice = 7.28m;
 				r118.CopiesOnHand = 13;
+				r118.ReorderPoint = 9;
 				r118.PublicationDate = new DateTime(2012, 2, 18);
 				r118.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r118);
@@ -1445,6 +1563,7 @@ namespace Group_18_Final_Project.Seeding
 				r119.BookPrice = 28m;
 				r119.WholesalePrice = 16.52m;
 				r119.CopiesOnHand = 5;
+				r119.ReorderPoint = 1;
 				r119.PublicationDate = new DateTime(2012, 3, 3);
 				r119.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r119);
@@ -1457,6 +1576,7 @@ namespace Group_18_Final_Project.Seeding
 				r120.BookPrice = 25.99m;
 				r120.WholesalePrice = 20.27m;
 				r120.CopiesOnHand = 8;
+				r120.ReorderPoint = 4;
 				r120.PublicationDate = new DateTime(2012, 3, 17);
 				r120.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r120);
@@ -1469,6 +1589,7 @@ namespace Group_18_Final_Project.Seeding
 				r121.BookPrice = 26.95m;
 				r121.WholesalePrice = 16.71m;
 				r121.CopiesOnHand = 8;
+				r121.ReorderPoint = 6;
 				r121.PublicationDate = new DateTime(2012, 4, 21);
 				r121.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r121);
@@ -1481,6 +1602,7 @@ namespace Group_18_Final_Project.Seeding
 				r122.BookPrice = 27m;
 				r122.WholesalePrice = 19.17m;
 				r122.CopiesOnHand = 11;
+				r122.ReorderPoint = 8;
 				r122.PublicationDate = new DateTime(2012, 6, 16);
 				r122.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r122);
@@ -1493,6 +1615,7 @@ namespace Group_18_Final_Project.Seeding
 				r123.BookPrice = 28.95m;
 				r123.WholesalePrice = 21.13m;
 				r123.CopiesOnHand = 15;
+				r123.ReorderPoint = 10;
 				r123.PublicationDate = new DateTime(2012, 7, 14);
 				r123.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r123);
@@ -1505,6 +1628,7 @@ namespace Group_18_Final_Project.Seeding
 				r124.BookPrice = 27.99m;
 				r124.WholesalePrice = 8.12m;
 				r124.CopiesOnHand = 7;
+				r124.ReorderPoint = 3;
 				r124.PublicationDate = new DateTime(2012, 7, 28);
 				r124.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r124);
@@ -1517,6 +1641,7 @@ namespace Group_18_Final_Project.Seeding
 				r125.BookPrice = 25.99m;
 				r125.WholesalePrice = 8.84m;
 				r125.CopiesOnHand = 11;
+				r125.ReorderPoint = 10;
 				r125.PublicationDate = new DateTime(2012, 7, 28);
 				r125.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r125);
@@ -1529,6 +1654,7 @@ namespace Group_18_Final_Project.Seeding
 				r126.BookPrice = 27.95m;
 				r126.WholesalePrice = 24.04m;
 				r126.CopiesOnHand = 4;
+				r126.ReorderPoint = 4;
 				r126.PublicationDate = new DateTime(2012, 7, 28);
 				r126.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r126);
@@ -1541,6 +1667,7 @@ namespace Group_18_Final_Project.Seeding
 				r127.BookPrice = 28m;
 				r127.WholesalePrice = 14.28m;
 				r127.CopiesOnHand = 1;
+				r127.ReorderPoint = 1;
 				r127.PublicationDate = new DateTime(2012, 8, 4);
 				r127.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Horror");
 				Books.Add(r127);
@@ -1553,6 +1680,7 @@ namespace Group_18_Final_Project.Seeding
 				r128.BookPrice = 26.95m;
 				r128.WholesalePrice = 14.82m;
 				r128.CopiesOnHand = 3;
+				r128.ReorderPoint = 1;
 				r128.PublicationDate = new DateTime(2012, 8, 4);
 				r128.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r128);
@@ -1565,6 +1693,7 @@ namespace Group_18_Final_Project.Seeding
 				r129.BookPrice = 26m;
 				r129.WholesalePrice = 24.18m;
 				r129.CopiesOnHand = 8;
+				r129.ReorderPoint = 5;
 				r129.PublicationDate = new DateTime(2012, 8, 18);
 				r129.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r129);
@@ -1577,6 +1706,7 @@ namespace Group_18_Final_Project.Seeding
 				r130.BookPrice = 28m;
 				r130.WholesalePrice = 4.2m;
 				r130.CopiesOnHand = 5;
+				r130.ReorderPoint = 1;
 				r130.PublicationDate = new DateTime(2012, 8, 25);
 				r130.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r130);
@@ -1589,6 +1719,7 @@ namespace Group_18_Final_Project.Seeding
 				r131.BookPrice = 26m;
 				r131.WholesalePrice = 22.62m;
 				r131.CopiesOnHand = 2;
+				r131.ReorderPoint = 2;
 				r131.PublicationDate = new DateTime(2012, 9, 1);
 				r131.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r131);
@@ -1601,6 +1732,7 @@ namespace Group_18_Final_Project.Seeding
 				r132.BookPrice = 27m;
 				r132.WholesalePrice = 9.99m;
 				r132.CopiesOnHand = 6;
+				r132.ReorderPoint = 5;
 				r132.PublicationDate = new DateTime(2012, 9, 1);
 				r132.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r132);
@@ -1613,6 +1745,7 @@ namespace Group_18_Final_Project.Seeding
 				r133.BookPrice = 27.99m;
 				r133.WholesalePrice = 11.2m;
 				r133.CopiesOnHand = 13;
+				r133.ReorderPoint = 10;
 				r133.PublicationDate = new DateTime(2012, 9, 15);
 				r133.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r133);
@@ -1625,6 +1758,7 @@ namespace Group_18_Final_Project.Seeding
 				r134.BookPrice = 27.99m;
 				r134.WholesalePrice = 10.08m;
 				r134.CopiesOnHand = 8;
+				r134.ReorderPoint = 8;
 				r134.PublicationDate = new DateTime(2012, 9, 22);
 				r134.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r134);
@@ -1637,6 +1771,7 @@ namespace Group_18_Final_Project.Seeding
 				r135.BookPrice = 27.99m;
 				r135.WholesalePrice = 4.48m;
 				r135.CopiesOnHand = 4;
+				r135.ReorderPoint = 3;
 				r135.PublicationDate = new DateTime(2012, 10, 20);
 				r135.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r135);
@@ -1649,6 +1784,7 @@ namespace Group_18_Final_Project.Seeding
 				r136.BookPrice = 26.95m;
 				r136.WholesalePrice = 16.17m;
 				r136.CopiesOnHand = 8;
+				r136.ReorderPoint = 4;
 				r136.PublicationDate = new DateTime(2012, 11, 17);
 				r136.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r136);
@@ -1661,6 +1797,7 @@ namespace Group_18_Final_Project.Seeding
 				r137.BookPrice = 28.99m;
 				r137.WholesalePrice = 8.99m;
 				r137.CopiesOnHand = 10;
+				r137.ReorderPoint = 7;
 				r137.PublicationDate = new DateTime(2012, 11, 17);
 				r137.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r137);
@@ -1673,6 +1810,7 @@ namespace Group_18_Final_Project.Seeding
 				r138.BookPrice = 28.95m;
 				r138.WholesalePrice = 10.71m;
 				r138.CopiesOnHand = 12;
+				r138.ReorderPoint = 9;
 				r138.PublicationDate = new DateTime(2012, 12, 8);
 				r138.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r138);
@@ -1685,6 +1823,7 @@ namespace Group_18_Final_Project.Seeding
 				r139.BookPrice = 26.99m;
 				r139.WholesalePrice = 13.23m;
 				r139.CopiesOnHand = 9;
+				r139.ReorderPoint = 4;
 				r139.PublicationDate = new DateTime(2012, 12, 15);
 				r139.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r139);
@@ -1697,6 +1836,7 @@ namespace Group_18_Final_Project.Seeding
 				r140.BookPrice = 27.99m;
 				r140.WholesalePrice = 23.51m;
 				r140.CopiesOnHand = 11;
+				r140.ReorderPoint = 9;
 				r140.PublicationDate = new DateTime(2013, 1, 12);
 				r140.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r140);
@@ -1709,6 +1849,7 @@ namespace Group_18_Final_Project.Seeding
 				r141.BookPrice = 26.95m;
 				r141.WholesalePrice = 19.4m;
 				r141.CopiesOnHand = 15;
+				r141.ReorderPoint = 10;
 				r141.PublicationDate = new DateTime(2013, 1, 12);
 				r141.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r141);
@@ -1721,6 +1862,7 @@ namespace Group_18_Final_Project.Seeding
 				r142.BookPrice = 27.95m;
 				r142.WholesalePrice = 25.43m;
 				r142.CopiesOnHand = 10;
+				r142.ReorderPoint = 7;
 				r142.PublicationDate = new DateTime(2013, 1, 12);
 				r142.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r142);
@@ -1733,6 +1875,7 @@ namespace Group_18_Final_Project.Seeding
 				r143.BookPrice = 26.99m;
 				r143.WholesalePrice = 15.11m;
 				r143.CopiesOnHand = 6;
+				r143.ReorderPoint = 3;
 				r143.PublicationDate = new DateTime(2013, 1, 19);
 				r143.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r143);
@@ -1745,6 +1888,7 @@ namespace Group_18_Final_Project.Seeding
 				r144.BookPrice = 27.95m;
 				r144.WholesalePrice = 6.71m;
 				r144.CopiesOnHand = 4;
+				r144.ReorderPoint = 3;
 				r144.PublicationDate = new DateTime(2013, 2, 16);
 				r144.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r144);
@@ -1757,6 +1901,7 @@ namespace Group_18_Final_Project.Seeding
 				r145.BookPrice = 29m;
 				r145.WholesalePrice = 13.92m;
 				r145.CopiesOnHand = 10;
+				r145.ReorderPoint = 8;
 				r145.PublicationDate = new DateTime(2013, 3, 9);
 				r145.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r145);
@@ -1769,6 +1914,7 @@ namespace Group_18_Final_Project.Seeding
 				r146.BookPrice = 27.95m;
 				r146.WholesalePrice = 2.8m;
 				r146.CopiesOnHand = 15;
+				r146.ReorderPoint = 10;
 				r146.PublicationDate = new DateTime(2013, 3, 9);
 				r146.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r146);
@@ -1781,6 +1927,7 @@ namespace Group_18_Final_Project.Seeding
 				r147.BookPrice = 24.95m;
 				r147.WholesalePrice = 7.49m;
 				r147.CopiesOnHand = 11;
+				r147.ReorderPoint = 10;
 				r147.PublicationDate = new DateTime(2013, 3, 16);
 				r147.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Humor");
 				Books.Add(r147);
@@ -1793,6 +1940,7 @@ namespace Group_18_Final_Project.Seeding
 				r148.BookPrice = 27.95m;
 				r148.WholesalePrice = 12.86m;
 				r148.CopiesOnHand = 12;
+				r148.ReorderPoint = 7;
 				r148.PublicationDate = new DateTime(2013, 3, 30);
 				r148.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r148);
@@ -1805,6 +1953,7 @@ namespace Group_18_Final_Project.Seeding
 				r149.BookPrice = 26.99m;
 				r149.WholesalePrice = 2.97m;
 				r149.CopiesOnHand = 14;
+				r149.ReorderPoint = 10;
 				r149.PublicationDate = new DateTime(2013, 3, 30);
 				r149.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r149);
@@ -1817,6 +1966,7 @@ namespace Group_18_Final_Project.Seeding
 				r150.BookPrice = 26.95m;
 				r150.WholesalePrice = 14.01m;
 				r150.CopiesOnHand = 10;
+				r150.ReorderPoint = 6;
 				r150.PublicationDate = new DateTime(2013, 4, 6);
 				r150.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r150);
@@ -1829,6 +1979,7 @@ namespace Group_18_Final_Project.Seeding
 				r151.BookPrice = 26.95m;
 				r151.WholesalePrice = 11.32m;
 				r151.CopiesOnHand = 10;
+				r151.ReorderPoint = 8;
 				r151.PublicationDate = new DateTime(2013, 4, 13);
 				r151.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r151);
@@ -1841,6 +1992,7 @@ namespace Group_18_Final_Project.Seeding
 				r152.BookPrice = 34m;
 				r152.WholesalePrice = 28.56m;
 				r152.CopiesOnHand = 14;
+				r152.ReorderPoint = 9;
 				r152.PublicationDate = new DateTime(2013, 5, 4);
 				r152.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r152);
@@ -1853,6 +2005,7 @@ namespace Group_18_Final_Project.Seeding
 				r153.BookPrice = 28.95m;
 				r153.WholesalePrice = 25.19m;
 				r153.CopiesOnHand = 9;
+				r153.ReorderPoint = 4;
 				r153.PublicationDate = new DateTime(2013, 6, 1);
 				r153.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r153);
@@ -1865,6 +2018,7 @@ namespace Group_18_Final_Project.Seeding
 				r154.BookPrice = 22m;
 				r154.WholesalePrice = 19.58m;
 				r154.CopiesOnHand = 3;
+				r154.ReorderPoint = 1;
 				r154.PublicationDate = new DateTime(2013, 6, 1);
 				r154.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r154);
@@ -1877,6 +2031,7 @@ namespace Group_18_Final_Project.Seeding
 				r155.BookPrice = 26.95m;
 				r155.WholesalePrice = 11.59m;
 				r155.CopiesOnHand = 9;
+				r155.ReorderPoint = 4;
 				r155.PublicationDate = new DateTime(2013, 6, 8);
 				r155.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r155);
@@ -1889,6 +2044,7 @@ namespace Group_18_Final_Project.Seeding
 				r156.BookPrice = 23.95m;
 				r156.WholesalePrice = 8.38m;
 				r156.CopiesOnHand = 12;
+				r156.ReorderPoint = 8;
 				r156.PublicationDate = new DateTime(2013, 6, 15);
 				r156.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r156);
@@ -1901,6 +2057,7 @@ namespace Group_18_Final_Project.Seeding
 				r157.BookPrice = 27.99m;
 				r157.WholesalePrice = 20.71m;
 				r157.CopiesOnHand = 10;
+				r157.ReorderPoint = 10;
 				r157.PublicationDate = new DateTime(2013, 6, 29);
 				r157.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r157);
@@ -1913,6 +2070,7 @@ namespace Group_18_Final_Project.Seeding
 				r158.BookPrice = 17.95m;
 				r158.WholesalePrice = 2.33m;
 				r158.CopiesOnHand = 1;
+				r158.ReorderPoint = 1;
 				r158.PublicationDate = new DateTime(2013, 7, 20);
 				r158.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r158);
@@ -1925,6 +2083,7 @@ namespace Group_18_Final_Project.Seeding
 				r159.BookPrice = 35.99m;
 				r159.WholesalePrice = 28.07m;
 				r159.CopiesOnHand = 5;
+				r159.ReorderPoint = 3;
 				r159.PublicationDate = new DateTime(2013, 7, 20);
 				r159.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r159);
@@ -1937,6 +2096,7 @@ namespace Group_18_Final_Project.Seeding
 				r160.BookPrice = 32m;
 				r160.WholesalePrice = 10.88m;
 				r160.CopiesOnHand = 7;
+				r160.ReorderPoint = 5;
 				r160.PublicationDate = new DateTime(2013, 7, 27);
 				r160.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r160);
@@ -1949,6 +2109,7 @@ namespace Group_18_Final_Project.Seeding
 				r161.BookPrice = 23.95m;
 				r161.WholesalePrice = 10.78m;
 				r161.CopiesOnHand = 7;
+				r161.ReorderPoint = 2;
 				r161.PublicationDate = new DateTime(2013, 8, 24);
 				r161.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r161);
@@ -1961,6 +2122,7 @@ namespace Group_18_Final_Project.Seeding
 				r162.BookPrice = 18m;
 				r162.WholesalePrice = 6.3m;
 				r162.CopiesOnHand = 10;
+				r162.ReorderPoint = 9;
 				r162.PublicationDate = new DateTime(2013, 9, 14);
 				r162.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r162);
@@ -1973,6 +2135,7 @@ namespace Group_18_Final_Project.Seeding
 				r163.BookPrice = 16m;
 				r163.WholesalePrice = 7.04m;
 				r163.CopiesOnHand = 8;
+				r163.ReorderPoint = 3;
 				r163.PublicationDate = new DateTime(2013, 9, 14);
 				r163.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r163);
@@ -1985,6 +2148,7 @@ namespace Group_18_Final_Project.Seeding
 				r164.BookPrice = 16m;
 				r164.WholesalePrice = 3.36m;
 				r164.CopiesOnHand = 2;
+				r164.ReorderPoint = 1;
 				r164.PublicationDate = new DateTime(2013, 9, 21);
 				r164.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r164);
@@ -1997,6 +2161,7 @@ namespace Group_18_Final_Project.Seeding
 				r165.BookPrice = 16m;
 				r165.WholesalePrice = 4.48m;
 				r165.CopiesOnHand = 7;
+				r165.ReorderPoint = 6;
 				r165.PublicationDate = new DateTime(2013, 9, 28);
 				r165.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r165);
@@ -2009,6 +2174,7 @@ namespace Group_18_Final_Project.Seeding
 				r166.BookPrice = 19m;
 				r166.WholesalePrice = 7.03m;
 				r166.CopiesOnHand = 11;
+				r166.ReorderPoint = 6;
 				r166.PublicationDate = new DateTime(2013, 10, 5);
 				r166.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r166);
@@ -2021,6 +2187,7 @@ namespace Group_18_Final_Project.Seeding
 				r167.BookPrice = 24.95m;
 				r167.WholesalePrice = 17.96m;
 				r167.CopiesOnHand = 15;
+				r167.ReorderPoint = 10;
 				r167.PublicationDate = new DateTime(2013, 10, 12);
 				r167.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r167);
@@ -2033,6 +2200,7 @@ namespace Group_18_Final_Project.Seeding
 				r168.BookPrice = 29.95m;
 				r168.WholesalePrice = 18.57m;
 				r168.CopiesOnHand = 6;
+				r168.ReorderPoint = 1;
 				r168.PublicationDate = new DateTime(2013, 10, 19);
 				r168.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r168);
@@ -2045,6 +2213,7 @@ namespace Group_18_Final_Project.Seeding
 				r169.BookPrice = 16m;
 				r169.WholesalePrice = 10.88m;
 				r169.CopiesOnHand = 7;
+				r169.ReorderPoint = 3;
 				r169.PublicationDate = new DateTime(2013, 10, 19);
 				r169.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r169);
@@ -2057,6 +2226,7 @@ namespace Group_18_Final_Project.Seeding
 				r170.BookPrice = 30.99m;
 				r170.WholesalePrice = 25.41m;
 				r170.CopiesOnHand = 11;
+				r170.ReorderPoint = 7;
 				r170.PublicationDate = new DateTime(2013, 10, 26);
 				r170.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Poetry");
 				Books.Add(r170);
@@ -2069,6 +2239,7 @@ namespace Group_18_Final_Project.Seeding
 				r171.BookPrice = 20.99m;
 				r171.WholesalePrice = 18.68m;
 				r171.CopiesOnHand = 2;
+				r171.ReorderPoint = 2;
 				r171.PublicationDate = new DateTime(2013, 11, 16);
 				r171.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r171);
@@ -2081,6 +2252,7 @@ namespace Group_18_Final_Project.Seeding
 				r172.BookPrice = 23.99m;
 				r172.WholesalePrice = 18.23m;
 				r172.CopiesOnHand = 4;
+				r172.ReorderPoint = 4;
 				r172.PublicationDate = new DateTime(2013, 11, 16);
 				r172.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r172);
@@ -2093,6 +2265,7 @@ namespace Group_18_Final_Project.Seeding
 				r173.BookPrice = 34.99m;
 				r173.WholesalePrice = 7m;
 				r173.CopiesOnHand = 6;
+				r173.ReorderPoint = 4;
 				r173.PublicationDate = new DateTime(2013, 11, 30);
 				r173.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r173);
@@ -2105,6 +2278,7 @@ namespace Group_18_Final_Project.Seeding
 				r174.BookPrice = 21m;
 				r174.WholesalePrice = 13.44m;
 				r174.CopiesOnHand = 7;
+				r174.ReorderPoint = 3;
 				r174.PublicationDate = new DateTime(2013, 12, 14);
 				r174.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Horror");
 				Books.Add(r174);
@@ -2117,6 +2291,7 @@ namespace Group_18_Final_Project.Seeding
 				r175.BookPrice = 32.99m;
 				r175.WholesalePrice = 18.47m;
 				r175.CopiesOnHand = 7;
+				r175.ReorderPoint = 4;
 				r175.PublicationDate = new DateTime(2014, 1, 25);
 				r175.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r175);
@@ -2129,6 +2304,7 @@ namespace Group_18_Final_Project.Seeding
 				r176.BookPrice = 30.95m;
 				r176.WholesalePrice = 17.95m;
 				r176.CopiesOnHand = 10;
+				r176.ReorderPoint = 10;
 				r176.PublicationDate = new DateTime(2014, 2, 8);
 				r176.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r176);
@@ -2141,6 +2317,7 @@ namespace Group_18_Final_Project.Seeding
 				r177.BookPrice = 16.99m;
 				r177.WholesalePrice = 9.68m;
 				r177.CopiesOnHand = 8;
+				r177.ReorderPoint = 8;
 				r177.PublicationDate = new DateTime(2014, 2, 15);
 				r177.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r177);
@@ -2153,6 +2330,7 @@ namespace Group_18_Final_Project.Seeding
 				r178.BookPrice = 22m;
 				r178.WholesalePrice = 17.6m;
 				r178.CopiesOnHand = 7;
+				r178.ReorderPoint = 3;
 				r178.PublicationDate = new DateTime(2014, 2, 22);
 				r178.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r178);
@@ -2165,6 +2343,7 @@ namespace Group_18_Final_Project.Seeding
 				r179.BookPrice = 26m;
 				r179.WholesalePrice = 8.06m;
 				r179.CopiesOnHand = 5;
+				r179.ReorderPoint = 4;
 				r179.PublicationDate = new DateTime(2014, 4, 5);
 				r179.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r179);
@@ -2177,6 +2356,7 @@ namespace Group_18_Final_Project.Seeding
 				r180.BookPrice = 16.95m;
 				r180.WholesalePrice = 4.92m;
 				r180.CopiesOnHand = 10;
+				r180.ReorderPoint = 5;
 				r180.PublicationDate = new DateTime(2014, 4, 5);
 				r180.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r180);
@@ -2189,6 +2369,7 @@ namespace Group_18_Final_Project.Seeding
 				r181.BookPrice = 32m;
 				r181.WholesalePrice = 3.52m;
 				r181.CopiesOnHand = 5;
+				r181.ReorderPoint = 3;
 				r181.PublicationDate = new DateTime(2014, 4, 5);
 				r181.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r181);
@@ -2201,6 +2382,7 @@ namespace Group_18_Final_Project.Seeding
 				r182.BookPrice = 33.99m;
 				r182.WholesalePrice = 5.44m;
 				r182.CopiesOnHand = 12;
+				r182.ReorderPoint = 8;
 				r182.PublicationDate = new DateTime(2014, 4, 5);
 				r182.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r182);
@@ -2213,6 +2395,7 @@ namespace Group_18_Final_Project.Seeding
 				r183.BookPrice = 34m;
 				r183.WholesalePrice = 6.46m;
 				r183.CopiesOnHand = 9;
+				r183.ReorderPoint = 5;
 				r183.PublicationDate = new DateTime(2014, 5, 3);
 				r183.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r183);
@@ -2225,6 +2408,7 @@ namespace Group_18_Final_Project.Seeding
 				r184.BookPrice = 23.95m;
 				r184.WholesalePrice = 10.3m;
 				r184.CopiesOnHand = 8;
+				r184.ReorderPoint = 6;
 				r184.PublicationDate = new DateTime(2014, 5, 10);
 				r184.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r184);
@@ -2237,6 +2421,7 @@ namespace Group_18_Final_Project.Seeding
 				r185.BookPrice = 35m;
 				r185.WholesalePrice = 28m;
 				r185.CopiesOnHand = 14;
+				r185.ReorderPoint = 10;
 				r185.PublicationDate = new DateTime(2014, 5, 17);
 				r185.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r185);
@@ -2249,6 +2434,7 @@ namespace Group_18_Final_Project.Seeding
 				r186.BookPrice = 33m;
 				r186.WholesalePrice = 5.94m;
 				r186.CopiesOnHand = 14;
+				r186.ReorderPoint = 10;
 				r186.PublicationDate = new DateTime(2014, 5, 31);
 				r186.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r186);
@@ -2261,6 +2447,7 @@ namespace Group_18_Final_Project.Seeding
 				r187.BookPrice = 16m;
 				r187.WholesalePrice = 9.6m;
 				r187.CopiesOnHand = 5;
+				r187.ReorderPoint = 4;
 				r187.PublicationDate = new DateTime(2014, 6, 7);
 				r187.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r187);
@@ -2273,6 +2460,7 @@ namespace Group_18_Final_Project.Seeding
 				r188.BookPrice = 25m;
 				r188.WholesalePrice = 11m;
 				r188.CopiesOnHand = 4;
+				r188.ReorderPoint = 4;
 				r188.PublicationDate = new DateTime(2014, 6, 14);
 				r188.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r188);
@@ -2285,6 +2473,7 @@ namespace Group_18_Final_Project.Seeding
 				r189.BookPrice = 32.95m;
 				r189.WholesalePrice = 16.48m;
 				r189.CopiesOnHand = 12;
+				r189.ReorderPoint = 8;
 				r189.PublicationDate = new DateTime(2014, 6, 21);
 				r189.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r189);
@@ -2297,6 +2486,7 @@ namespace Group_18_Final_Project.Seeding
 				r190.BookPrice = 29m;
 				r190.WholesalePrice = 5.8m;
 				r190.CopiesOnHand = 13;
+				r190.ReorderPoint = 8;
 				r190.PublicationDate = new DateTime(2014, 7, 12);
 				r190.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r190);
@@ -2309,6 +2499,7 @@ namespace Group_18_Final_Project.Seeding
 				r191.BookPrice = 27.95m;
 				r191.WholesalePrice = 8.66m;
 				r191.CopiesOnHand = 9;
+				r191.ReorderPoint = 9;
 				r191.PublicationDate = new DateTime(2014, 7, 19);
 				r191.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r191);
@@ -2321,6 +2512,7 @@ namespace Group_18_Final_Project.Seeding
 				r192.BookPrice = 32m;
 				r192.WholesalePrice = 16.96m;
 				r192.CopiesOnHand = 4;
+				r192.ReorderPoint = 2;
 				r192.PublicationDate = new DateTime(2014, 8, 2);
 				r192.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r192);
@@ -2333,6 +2525,7 @@ namespace Group_18_Final_Project.Seeding
 				r193.BookPrice = 17m;
 				r193.WholesalePrice = 5.1m;
 				r193.CopiesOnHand = 11;
+				r193.ReorderPoint = 7;
 				r193.PublicationDate = new DateTime(2014, 8, 2);
 				r193.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r193);
@@ -2345,6 +2538,7 @@ namespace Group_18_Final_Project.Seeding
 				r194.BookPrice = 20m;
 				r194.WholesalePrice = 4m;
 				r194.CopiesOnHand = 4;
+				r194.ReorderPoint = 4;
 				r194.PublicationDate = new DateTime(2014, 8, 9);
 				r194.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r194);
@@ -2357,6 +2551,7 @@ namespace Group_18_Final_Project.Seeding
 				r195.BookPrice = 28.95m;
 				r195.WholesalePrice = 5.5m;
 				r195.CopiesOnHand = 9;
+				r195.ReorderPoint = 6;
 				r195.PublicationDate = new DateTime(2014, 8, 9);
 				r195.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r195);
@@ -2369,6 +2564,7 @@ namespace Group_18_Final_Project.Seeding
 				r196.BookPrice = 29.95m;
 				r196.WholesalePrice = 26.66m;
 				r196.CopiesOnHand = 11;
+				r196.ReorderPoint = 8;
 				r196.PublicationDate = new DateTime(2014, 8, 23);
 				r196.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r196);
@@ -2381,6 +2577,7 @@ namespace Group_18_Final_Project.Seeding
 				r197.BookPrice = 18.99m;
 				r197.WholesalePrice = 3.99m;
 				r197.CopiesOnHand = 14;
+				r197.ReorderPoint = 10;
 				r197.PublicationDate = new DateTime(2014, 9, 13);
 				r197.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r197);
@@ -2393,6 +2590,7 @@ namespace Group_18_Final_Project.Seeding
 				r198.BookPrice = 14.95m;
 				r198.WholesalePrice = 9.42m;
 				r198.CopiesOnHand = 12;
+				r198.ReorderPoint = 10;
 				r198.PublicationDate = new DateTime(2014, 9, 27);
 				r198.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r198);
@@ -2405,6 +2603,7 @@ namespace Group_18_Final_Project.Seeding
 				r199.BookPrice = 30.99m;
 				r199.WholesalePrice = 4.65m;
 				r199.CopiesOnHand = 3;
+				r199.ReorderPoint = 2;
 				r199.PublicationDate = new DateTime(2014, 10, 11);
 				r199.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r199);
@@ -2417,6 +2616,7 @@ namespace Group_18_Final_Project.Seeding
 				r200.BookPrice = 20.95m;
 				r200.WholesalePrice = 2.3m;
 				r200.CopiesOnHand = 9;
+				r200.ReorderPoint = 6;
 				r200.PublicationDate = new DateTime(2014, 10, 18);
 				r200.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r200);
@@ -2429,6 +2629,7 @@ namespace Group_18_Final_Project.Seeding
 				r201.BookPrice = 34m;
 				r201.WholesalePrice = 20.74m;
 				r201.CopiesOnHand = 9;
+				r201.ReorderPoint = 6;
 				r201.PublicationDate = new DateTime(2014, 10, 18);
 				r201.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r201);
@@ -2441,6 +2642,7 @@ namespace Group_18_Final_Project.Seeding
 				r202.BookPrice = 25.95m;
 				r202.WholesalePrice = 17.91m;
 				r202.CopiesOnHand = 6;
+				r202.ReorderPoint = 3;
 				r202.PublicationDate = new DateTime(2014, 11, 1);
 				r202.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r202);
@@ -2453,6 +2655,7 @@ namespace Group_18_Final_Project.Seeding
 				r203.BookPrice = 36.99m;
 				r203.WholesalePrice = 17.39m;
 				r203.CopiesOnHand = 9;
+				r203.ReorderPoint = 7;
 				r203.PublicationDate = new DateTime(2014, 11, 8);
 				r203.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r203);
@@ -2465,6 +2668,7 @@ namespace Group_18_Final_Project.Seeding
 				r204.BookPrice = 28.95m;
 				r204.WholesalePrice = 20.27m;
 				r204.CopiesOnHand = 14;
+				r204.ReorderPoint = 10;
 				r204.PublicationDate = new DateTime(2014, 11, 22);
 				r204.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r204);
@@ -2477,6 +2681,7 @@ namespace Group_18_Final_Project.Seeding
 				r205.BookPrice = 25.95m;
 				r205.WholesalePrice = 5.97m;
 				r205.CopiesOnHand = 4;
+				r205.ReorderPoint = 1;
 				r205.PublicationDate = new DateTime(2014, 11, 22);
 				r205.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r205);
@@ -2489,6 +2694,7 @@ namespace Group_18_Final_Project.Seeding
 				r206.BookPrice = 23.99m;
 				r206.WholesalePrice = 12.23m;
 				r206.CopiesOnHand = 11;
+				r206.ReorderPoint = 10;
 				r206.PublicationDate = new DateTime(2014, 11, 22);
 				r206.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r206);
@@ -2501,6 +2707,7 @@ namespace Group_18_Final_Project.Seeding
 				r207.BookPrice = 31.95m;
 				r207.WholesalePrice = 3.51m;
 				r207.CopiesOnHand = 12;
+				r207.ReorderPoint = 7;
 				r207.PublicationDate = new DateTime(2014, 11, 29);
 				r207.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r207);
@@ -2513,6 +2720,7 @@ namespace Group_18_Final_Project.Seeding
 				r208.BookPrice = 17.95m;
 				r208.WholesalePrice = 12.39m;
 				r208.CopiesOnHand = 10;
+				r208.ReorderPoint = 9;
 				r208.PublicationDate = new DateTime(2015, 1, 10);
 				r208.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r208);
@@ -2525,6 +2733,7 @@ namespace Group_18_Final_Project.Seeding
 				r209.BookPrice = 32m;
 				r209.WholesalePrice = 25.92m;
 				r209.CopiesOnHand = 11;
+				r209.ReorderPoint = 8;
 				r209.PublicationDate = new DateTime(2015, 1, 31);
 				r209.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r209);
@@ -2537,6 +2746,7 @@ namespace Group_18_Final_Project.Seeding
 				r210.BookPrice = 17.95m;
 				r210.WholesalePrice = 10.41m;
 				r210.CopiesOnHand = 5;
+				r210.ReorderPoint = 4;
 				r210.PublicationDate = new DateTime(2015, 2, 7);
 				r210.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Poetry");
 				Books.Add(r210);
@@ -2549,6 +2759,7 @@ namespace Group_18_Final_Project.Seeding
 				r211.BookPrice = 25m;
 				r211.WholesalePrice = 18.5m;
 				r211.CopiesOnHand = 9;
+				r211.ReorderPoint = 8;
 				r211.PublicationDate = new DateTime(2015, 2, 14);
 				r211.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r211);
@@ -2561,6 +2772,7 @@ namespace Group_18_Final_Project.Seeding
 				r212.BookPrice = 15.95m;
 				r212.WholesalePrice = 1.75m;
 				r212.CopiesOnHand = 10;
+				r212.ReorderPoint = 10;
 				r212.PublicationDate = new DateTime(2015, 2, 14);
 				r212.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r212);
@@ -2573,6 +2785,7 @@ namespace Group_18_Final_Project.Seeding
 				r213.BookPrice = 19.99m;
 				r213.WholesalePrice = 11.79m;
 				r213.CopiesOnHand = 6;
+				r213.ReorderPoint = 5;
 				r213.PublicationDate = new DateTime(2015, 2, 14);
 				r213.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Humor");
 				Books.Add(r213);
@@ -2585,6 +2798,7 @@ namespace Group_18_Final_Project.Seeding
 				r214.BookPrice = 18.95m;
 				r214.WholesalePrice = 9.1m;
 				r214.CopiesOnHand = 3;
+				r214.ReorderPoint = 2;
 				r214.PublicationDate = new DateTime(2015, 2, 28);
 				r214.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r214);
@@ -2597,6 +2811,7 @@ namespace Group_18_Final_Project.Seeding
 				r215.BookPrice = 20m;
 				r215.WholesalePrice = 15.6m;
 				r215.CopiesOnHand = 5;
+				r215.ReorderPoint = 5;
 				r215.PublicationDate = new DateTime(2015, 3, 14);
 				r215.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r215);
@@ -2609,6 +2824,7 @@ namespace Group_18_Final_Project.Seeding
 				r216.BookPrice = 20.95m;
 				r216.WholesalePrice = 19.27m;
 				r216.CopiesOnHand = 9;
+				r216.ReorderPoint = 6;
 				r216.PublicationDate = new DateTime(2015, 4, 11);
 				r216.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r216);
@@ -2621,6 +2837,7 @@ namespace Group_18_Final_Project.Seeding
 				r217.BookPrice = 24.99m;
 				r217.WholesalePrice = 6.25m;
 				r217.CopiesOnHand = 9;
+				r217.ReorderPoint = 4;
 				r217.PublicationDate = new DateTime(2015, 5, 9);
 				r217.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r217);
@@ -2633,6 +2850,7 @@ namespace Group_18_Final_Project.Seeding
 				r218.BookPrice = 28.95m;
 				r218.WholesalePrice = 5.5m;
 				r218.CopiesOnHand = 13;
+				r218.ReorderPoint = 8;
 				r218.PublicationDate = new DateTime(2015, 6, 6);
 				r218.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r218);
@@ -2645,6 +2863,7 @@ namespace Group_18_Final_Project.Seeding
 				r219.BookPrice = 18.95m;
 				r219.WholesalePrice = 16.87m;
 				r219.CopiesOnHand = 12;
+				r219.ReorderPoint = 9;
 				r219.PublicationDate = new DateTime(2015, 6, 6);
 				r219.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r219);
@@ -2657,6 +2876,7 @@ namespace Group_18_Final_Project.Seeding
 				r220.BookPrice = 34m;
 				r220.WholesalePrice = 5.78m;
 				r220.CopiesOnHand = 11;
+				r220.ReorderPoint = 6;
 				r220.PublicationDate = new DateTime(2015, 7, 4);
 				r220.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r220);
@@ -2669,6 +2889,7 @@ namespace Group_18_Final_Project.Seeding
 				r221.BookPrice = 18.99m;
 				r221.WholesalePrice = 2.85m;
 				r221.CopiesOnHand = 8;
+				r221.ReorderPoint = 7;
 				r221.PublicationDate = new DateTime(2015, 8, 22);
 				r221.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r221);
@@ -2681,6 +2902,7 @@ namespace Group_18_Final_Project.Seeding
 				r222.BookPrice = 26.95m;
 				r222.WholesalePrice = 18.06m;
 				r222.CopiesOnHand = 11;
+				r222.ReorderPoint = 9;
 				r222.PublicationDate = new DateTime(2015, 9, 5);
 				r222.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r222);
@@ -2693,6 +2915,7 @@ namespace Group_18_Final_Project.Seeding
 				r223.BookPrice = 23.95m;
 				r223.WholesalePrice = 3.59m;
 				r223.CopiesOnHand = 10;
+				r223.ReorderPoint = 6;
 				r223.PublicationDate = new DateTime(2015, 9, 19);
 				r223.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r223);
@@ -2705,6 +2928,7 @@ namespace Group_18_Final_Project.Seeding
 				r224.BookPrice = 23.95m;
 				r224.WholesalePrice = 17.72m;
 				r224.CopiesOnHand = 6;
+				r224.ReorderPoint = 6;
 				r224.PublicationDate = new DateTime(2015, 10, 3);
 				r224.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r224);
@@ -2717,6 +2941,7 @@ namespace Group_18_Final_Project.Seeding
 				r225.BookPrice = 26.95m;
 				r225.WholesalePrice = 19.94m;
 				r225.CopiesOnHand = 4;
+				r225.ReorderPoint = 2;
 				r225.PublicationDate = new DateTime(2015, 10, 17);
 				r225.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r225);
@@ -2729,6 +2954,7 @@ namespace Group_18_Final_Project.Seeding
 				r226.BookPrice = 16.95m;
 				r226.WholesalePrice = 10.17m;
 				r226.CopiesOnHand = 12;
+				r226.ReorderPoint = 8;
 				r226.PublicationDate = new DateTime(2015, 10, 24);
 				r226.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r226);
@@ -2741,6 +2967,7 @@ namespace Group_18_Final_Project.Seeding
 				r227.BookPrice = 33.99m;
 				r227.WholesalePrice = 8.16m;
 				r227.CopiesOnHand = 7;
+				r227.ReorderPoint = 3;
 				r227.PublicationDate = new DateTime(2015, 11, 7);
 				r227.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r227);
@@ -2753,6 +2980,7 @@ namespace Group_18_Final_Project.Seeding
 				r228.BookPrice = 27.95m;
 				r228.WholesalePrice = 18.73m;
 				r228.CopiesOnHand = 9;
+				r228.ReorderPoint = 8;
 				r228.PublicationDate = new DateTime(2015, 11, 14);
 				r228.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r228);
@@ -2765,6 +2993,7 @@ namespace Group_18_Final_Project.Seeding
 				r229.BookPrice = 31.95m;
 				r229.WholesalePrice = 12.46m;
 				r229.CopiesOnHand = 3;
+				r229.ReorderPoint = 2;
 				r229.PublicationDate = new DateTime(2015, 11, 21);
 				r229.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r229);
@@ -2777,6 +3006,7 @@ namespace Group_18_Final_Project.Seeding
 				r230.BookPrice = 19.95m;
 				r230.WholesalePrice = 17.16m;
 				r230.CopiesOnHand = 3;
+				r230.ReorderPoint = 3;
 				r230.PublicationDate = new DateTime(2015, 11, 21);
 				r230.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r230);
@@ -2789,6 +3019,7 @@ namespace Group_18_Final_Project.Seeding
 				r231.BookPrice = 36.95m;
 				r231.WholesalePrice = 11.09m;
 				r231.CopiesOnHand = 10;
+				r231.ReorderPoint = 10;
 				r231.PublicationDate = new DateTime(2015, 11, 21);
 				r231.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r231);
@@ -2801,6 +3032,7 @@ namespace Group_18_Final_Project.Seeding
 				r232.BookPrice = 28.95m;
 				r232.WholesalePrice = 10.71m;
 				r232.CopiesOnHand = 4;
+				r232.ReorderPoint = 4;
 				r232.PublicationDate = new DateTime(2016, 2, 13);
 				r232.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r232);
@@ -2813,6 +3045,7 @@ namespace Group_18_Final_Project.Seeding
 				r233.BookPrice = 23.95m;
 				r233.WholesalePrice = 17.72m;
 				r233.CopiesOnHand = 14;
+				r233.ReorderPoint = 10;
 				r233.PublicationDate = new DateTime(2016, 2, 27);
 				r233.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r233);
@@ -2825,6 +3058,7 @@ namespace Group_18_Final_Project.Seeding
 				r234.BookPrice = 30.95m;
 				r234.WholesalePrice = 7.12m;
 				r234.CopiesOnHand = 13;
+				r234.ReorderPoint = 8;
 				r234.PublicationDate = new DateTime(2016, 3, 5);
 				r234.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r234);
@@ -2837,6 +3071,7 @@ namespace Group_18_Final_Project.Seeding
 				r235.BookPrice = 24.95m;
 				r235.WholesalePrice = 12.72m;
 				r235.CopiesOnHand = 11;
+				r235.ReorderPoint = 10;
 				r235.PublicationDate = new DateTime(2016, 3, 26);
 				r235.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r235);
@@ -2849,6 +3084,7 @@ namespace Group_18_Final_Project.Seeding
 				r236.BookPrice = 22.99m;
 				r236.WholesalePrice = 10.58m;
 				r236.CopiesOnHand = 2;
+				r236.ReorderPoint = 1;
 				r236.PublicationDate = new DateTime(2016, 5, 7);
 				r236.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r236);
@@ -2861,6 +3097,7 @@ namespace Group_18_Final_Project.Seeding
 				r237.BookPrice = 20m;
 				r237.WholesalePrice = 15.2m;
 				r237.CopiesOnHand = 6;
+				r237.ReorderPoint = 4;
 				r237.PublicationDate = new DateTime(2016, 5, 7);
 				r237.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r237);
@@ -2873,6 +3110,7 @@ namespace Group_18_Final_Project.Seeding
 				r238.BookPrice = 19.99m;
 				r238.WholesalePrice = 3.2m;
 				r238.CopiesOnHand = 5;
+				r238.ReorderPoint = 2;
 				r238.PublicationDate = new DateTime(2016, 5, 21);
 				r238.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r238);
@@ -2885,6 +3123,7 @@ namespace Group_18_Final_Project.Seeding
 				r239.BookPrice = 20.95m;
 				r239.WholesalePrice = 12.78m;
 				r239.CopiesOnHand = 13;
+				r239.ReorderPoint = 9;
 				r239.PublicationDate = new DateTime(2016, 5, 21);
 				r239.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r239);
@@ -2897,6 +3136,7 @@ namespace Group_18_Final_Project.Seeding
 				r240.BookPrice = 27.99m;
 				r240.WholesalePrice = 20.43m;
 				r240.CopiesOnHand = 3;
+				r240.ReorderPoint = 1;
 				r240.PublicationDate = new DateTime(2016, 6, 4);
 				r240.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r240);
@@ -2909,6 +3149,7 @@ namespace Group_18_Final_Project.Seeding
 				r241.BookPrice = 26.95m;
 				r241.WholesalePrice = 2.7m;
 				r241.CopiesOnHand = 8;
+				r241.ReorderPoint = 4;
 				r241.PublicationDate = new DateTime(2016, 6, 11);
 				r241.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r241);
@@ -2921,6 +3162,7 @@ namespace Group_18_Final_Project.Seeding
 				r242.BookPrice = 26.95m;
 				r242.WholesalePrice = 8.62m;
 				r242.CopiesOnHand = 13;
+				r242.ReorderPoint = 9;
 				r242.PublicationDate = new DateTime(2016, 6, 18);
 				r242.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r242);
@@ -2933,6 +3175,7 @@ namespace Group_18_Final_Project.Seeding
 				r243.BookPrice = 25.99m;
 				r243.WholesalePrice = 18.45m;
 				r243.CopiesOnHand = 8;
+				r243.ReorderPoint = 5;
 				r243.PublicationDate = new DateTime(2016, 6, 25);
 				r243.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r243);
@@ -2945,6 +3188,7 @@ namespace Group_18_Final_Project.Seeding
 				r244.BookPrice = 24m;
 				r244.WholesalePrice = 6.72m;
 				r244.CopiesOnHand = 10;
+				r244.ReorderPoint = 9;
 				r244.PublicationDate = new DateTime(2016, 7, 16);
 				r244.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r244);
@@ -2957,6 +3201,7 @@ namespace Group_18_Final_Project.Seeding
 				r245.BookPrice = 32m;
 				r245.WholesalePrice = 3.52m;
 				r245.CopiesOnHand = 9;
+				r245.ReorderPoint = 7;
 				r245.PublicationDate = new DateTime(2016, 7, 23);
 				r245.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r245);
@@ -2969,6 +3214,7 @@ namespace Group_18_Final_Project.Seeding
 				r246.BookPrice = 14.99m;
 				r246.WholesalePrice = 10.04m;
 				r246.CopiesOnHand = 10;
+				r246.ReorderPoint = 6;
 				r246.PublicationDate = new DateTime(2016, 7, 30);
 				r246.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r246);
@@ -2981,6 +3227,7 @@ namespace Group_18_Final_Project.Seeding
 				r247.BookPrice = 32m;
 				r247.WholesalePrice = 3.2m;
 				r247.CopiesOnHand = 12;
+				r247.ReorderPoint = 10;
 				r247.PublicationDate = new DateTime(2016, 8, 6);
 				r247.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r247);
@@ -2993,6 +3240,7 @@ namespace Group_18_Final_Project.Seeding
 				r248.BookPrice = 29.95m;
 				r248.WholesalePrice = 3.29m;
 				r248.CopiesOnHand = 10;
+				r248.ReorderPoint = 7;
 				r248.PublicationDate = new DateTime(2016, 8, 6);
 				r248.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r248);
@@ -3005,6 +3253,7 @@ namespace Group_18_Final_Project.Seeding
 				r249.BookPrice = 36m;
 				r249.WholesalePrice = 9.72m;
 				r249.CopiesOnHand = 12;
+				r249.ReorderPoint = 10;
 				r249.PublicationDate = new DateTime(2016, 8, 13);
 				r249.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r249);
@@ -3017,6 +3266,7 @@ namespace Group_18_Final_Project.Seeding
 				r250.BookPrice = 27m;
 				r250.WholesalePrice = 8.91m;
 				r250.CopiesOnHand = 9;
+				r250.ReorderPoint = 4;
 				r250.PublicationDate = new DateTime(2016, 8, 20);
 				r250.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r250);
@@ -3029,6 +3279,7 @@ namespace Group_18_Final_Project.Seeding
 				r251.BookPrice = 16.95m;
 				r251.WholesalePrice = 15.26m;
 				r251.CopiesOnHand = 2;
+				r251.ReorderPoint = 2;
 				r251.PublicationDate = new DateTime(2016, 9, 24);
 				r251.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r251);
@@ -3041,6 +3292,7 @@ namespace Group_18_Final_Project.Seeding
 				r252.BookPrice = 25.99m;
 				r252.WholesalePrice = 23.13m;
 				r252.CopiesOnHand = 11;
+				r252.ReorderPoint = 10;
 				r252.PublicationDate = new DateTime(2016, 10, 8);
 				r252.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r252);
@@ -3053,6 +3305,7 @@ namespace Group_18_Final_Project.Seeding
 				r253.BookPrice = 29m;
 				r253.WholesalePrice = 24.94m;
 				r253.CopiesOnHand = 7;
+				r253.ReorderPoint = 4;
 				r253.PublicationDate = new DateTime(2016, 10, 8);
 				r253.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r253);
@@ -3065,6 +3318,7 @@ namespace Group_18_Final_Project.Seeding
 				r254.BookPrice = 16.95m;
 				r254.WholesalePrice = 13.73m;
 				r254.CopiesOnHand = 9;
+				r254.ReorderPoint = 8;
 				r254.PublicationDate = new DateTime(2016, 10, 15);
 				r254.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r254);
@@ -3077,6 +3331,7 @@ namespace Group_18_Final_Project.Seeding
 				r255.BookPrice = 16.99m;
 				r255.WholesalePrice = 7.65m;
 				r255.CopiesOnHand = 14;
+				r255.ReorderPoint = 10;
 				r255.PublicationDate = new DateTime(2016, 10, 15);
 				r255.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r255);
@@ -3089,6 +3344,7 @@ namespace Group_18_Final_Project.Seeding
 				r256.BookPrice = 17m;
 				r256.WholesalePrice = 3.57m;
 				r256.CopiesOnHand = 13;
+				r256.ReorderPoint = 10;
 				r256.PublicationDate = new DateTime(2016, 10, 22);
 				r256.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r256);
@@ -3101,6 +3357,7 @@ namespace Group_18_Final_Project.Seeding
 				r257.BookPrice = 35.95m;
 				r257.WholesalePrice = 7.19m;
 				r257.CopiesOnHand = 5;
+				r257.ReorderPoint = 4;
 				r257.PublicationDate = new DateTime(2016, 10, 22);
 				r257.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r257);
@@ -3113,6 +3370,7 @@ namespace Group_18_Final_Project.Seeding
 				r258.BookPrice = 26.95m;
 				r258.WholesalePrice = 13.48m;
 				r258.CopiesOnHand = 13;
+				r258.ReorderPoint = 8;
 				r258.PublicationDate = new DateTime(2016, 10, 29);
 				r258.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r258);
@@ -3125,6 +3383,7 @@ namespace Group_18_Final_Project.Seeding
 				r259.BookPrice = 31.99m;
 				r259.WholesalePrice = 21.11m;
 				r259.CopiesOnHand = 2;
+				r259.ReorderPoint = 1;
 				r259.PublicationDate = new DateTime(2016, 12, 3);
 				r259.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r259);
@@ -3137,6 +3396,7 @@ namespace Group_18_Final_Project.Seeding
 				r260.BookPrice = 33.95m;
 				r260.WholesalePrice = 23.77m;
 				r260.CopiesOnHand = 7;
+				r260.ReorderPoint = 6;
 				r260.PublicationDate = new DateTime(2016, 12, 24);
 				r260.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r260);
@@ -3149,6 +3409,7 @@ namespace Group_18_Final_Project.Seeding
 				r261.BookPrice = 36.95m;
 				r261.WholesalePrice = 15.52m;
 				r261.CopiesOnHand = 8;
+				r261.ReorderPoint = 4;
 				r261.PublicationDate = new DateTime(2017, 1, 7);
 				r261.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r261);
@@ -3161,6 +3422,7 @@ namespace Group_18_Final_Project.Seeding
 				r262.BookPrice = 22m;
 				r262.WholesalePrice = 19.58m;
 				r262.CopiesOnHand = 6;
+				r262.ReorderPoint = 4;
 				r262.PublicationDate = new DateTime(2017, 1, 14);
 				r262.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r262);
@@ -3173,6 +3435,7 @@ namespace Group_18_Final_Project.Seeding
 				r263.BookPrice = 20m;
 				r263.WholesalePrice = 12m;
 				r263.CopiesOnHand = 8;
+				r263.ReorderPoint = 7;
 				r263.PublicationDate = new DateTime(2017, 1, 28);
 				r263.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r263);
@@ -3185,6 +3448,7 @@ namespace Group_18_Final_Project.Seeding
 				r264.BookPrice = 20.95m;
 				r264.WholesalePrice = 5.87m;
 				r264.CopiesOnHand = 9;
+				r264.ReorderPoint = 8;
 				r264.PublicationDate = new DateTime(2017, 2, 4);
 				r264.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r264);
@@ -3197,6 +3461,7 @@ namespace Group_18_Final_Project.Seeding
 				r265.BookPrice = 21.95m;
 				r265.WholesalePrice = 16.24m;
 				r265.CopiesOnHand = 13;
+				r265.ReorderPoint = 8;
 				r265.PublicationDate = new DateTime(2017, 2, 18);
 				r265.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r265);
@@ -3209,6 +3474,7 @@ namespace Group_18_Final_Project.Seeding
 				r266.BookPrice = 36.95m;
 				r266.WholesalePrice = 14.41m;
 				r266.CopiesOnHand = 7;
+				r266.ReorderPoint = 5;
 				r266.PublicationDate = new DateTime(2017, 3, 4);
 				r266.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r266);
@@ -3221,6 +3487,7 @@ namespace Group_18_Final_Project.Seeding
 				r267.BookPrice = 36m;
 				r267.WholesalePrice = 10.08m;
 				r267.CopiesOnHand = 7;
+				r267.ReorderPoint = 7;
 				r267.PublicationDate = new DateTime(2017, 3, 11);
 				r267.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r267);
@@ -3233,6 +3500,7 @@ namespace Group_18_Final_Project.Seeding
 				r268.BookPrice = 27.95m;
 				r268.WholesalePrice = 12.02m;
 				r268.CopiesOnHand = 11;
+				r268.ReorderPoint = 7;
 				r268.PublicationDate = new DateTime(2017, 3, 18);
 				r268.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r268);
@@ -3245,6 +3513,7 @@ namespace Group_18_Final_Project.Seeding
 				r269.BookPrice = 31.99m;
 				r269.WholesalePrice = 24.63m;
 				r269.CopiesOnHand = 8;
+				r269.ReorderPoint = 6;
 				r269.PublicationDate = new DateTime(2017, 4, 15);
 				r269.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r269);
@@ -3257,6 +3526,7 @@ namespace Group_18_Final_Project.Seeding
 				r270.BookPrice = 16m;
 				r270.WholesalePrice = 1.6m;
 				r270.CopiesOnHand = 5;
+				r270.ReorderPoint = 5;
 				r270.PublicationDate = new DateTime(2017, 4, 15);
 				r270.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r270);
@@ -3269,6 +3539,7 @@ namespace Group_18_Final_Project.Seeding
 				r271.BookPrice = 30m;
 				r271.WholesalePrice = 21.6m;
 				r271.CopiesOnHand = 6;
+				r271.ReorderPoint = 1;
 				r271.PublicationDate = new DateTime(2017, 6, 3);
 				r271.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r271);
@@ -3281,6 +3552,7 @@ namespace Group_18_Final_Project.Seeding
 				r272.BookPrice = 33.95m;
 				r272.WholesalePrice = 4.41m;
 				r272.CopiesOnHand = 14;
+				r272.ReorderPoint = 10;
 				r272.PublicationDate = new DateTime(2017, 6, 17);
 				r272.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r272);
@@ -3293,6 +3565,7 @@ namespace Group_18_Final_Project.Seeding
 				r273.BookPrice = 33.95m;
 				r273.WholesalePrice = 17.31m;
 				r273.CopiesOnHand = 6;
+				r273.ReorderPoint = 5;
 				r273.PublicationDate = new DateTime(2017, 7, 15);
 				r273.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r273);
@@ -3305,6 +3578,7 @@ namespace Group_18_Final_Project.Seeding
 				r274.BookPrice = 17.95m;
 				r274.WholesalePrice = 15.98m;
 				r274.CopiesOnHand = 10;
+				r274.ReorderPoint = 9;
 				r274.PublicationDate = new DateTime(2017, 7, 15);
 				r274.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r274);
@@ -3317,6 +3591,7 @@ namespace Group_18_Final_Project.Seeding
 				r275.BookPrice = 30.95m;
 				r275.WholesalePrice = 3.71m;
 				r275.CopiesOnHand = 4;
+				r275.ReorderPoint = 3;
 				r275.PublicationDate = new DateTime(2017, 7, 22);
 				r275.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r275);
@@ -3329,6 +3604,7 @@ namespace Group_18_Final_Project.Seeding
 				r276.BookPrice = 32.95m;
 				r276.WholesalePrice = 30.64m;
 				r276.CopiesOnHand = 4;
+				r276.ReorderPoint = 4;
 				r276.PublicationDate = new DateTime(2017, 7, 22);
 				r276.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r276);
@@ -3341,6 +3617,7 @@ namespace Group_18_Final_Project.Seeding
 				r277.BookPrice = 31m;
 				r277.WholesalePrice = 15.19m;
 				r277.CopiesOnHand = 2;
+				r277.ReorderPoint = 2;
 				r277.PublicationDate = new DateTime(2017, 8, 19);
 				r277.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r277);
@@ -3353,6 +3630,7 @@ namespace Group_18_Final_Project.Seeding
 				r278.BookPrice = 32.95m;
 				r278.WholesalePrice = 26.36m;
 				r278.CopiesOnHand = 8;
+				r278.ReorderPoint = 3;
 				r278.PublicationDate = new DateTime(2017, 8, 19);
 				r278.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r278);
@@ -3365,6 +3643,7 @@ namespace Group_18_Final_Project.Seeding
 				r279.BookPrice = 32.95m;
 				r279.WholesalePrice = 17.79m;
 				r279.CopiesOnHand = 15;
+				r279.ReorderPoint = 10;
 				r279.PublicationDate = new DateTime(2017, 8, 26);
 				r279.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r279);
@@ -3377,6 +3656,7 @@ namespace Group_18_Final_Project.Seeding
 				r280.BookPrice = 20.95m;
 				r280.WholesalePrice = 4.19m;
 				r280.CopiesOnHand = 13;
+				r280.ReorderPoint = 8;
 				r280.PublicationDate = new DateTime(2017, 9, 9);
 				r280.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r280);
@@ -3389,6 +3669,7 @@ namespace Group_18_Final_Project.Seeding
 				r281.BookPrice = 16m;
 				r281.WholesalePrice = 12m;
 				r281.CopiesOnHand = 10;
+				r281.ReorderPoint = 8;
 				r281.PublicationDate = new DateTime(2017, 9, 16);
 				r281.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r281);
@@ -3401,6 +3682,7 @@ namespace Group_18_Final_Project.Seeding
 				r282.BookPrice = 27.95m;
 				r282.WholesalePrice = 8.66m;
 				r282.CopiesOnHand = 2;
+				r282.ReorderPoint = 1;
 				r282.PublicationDate = new DateTime(2017, 11, 4);
 				r282.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r282);
@@ -3413,6 +3695,7 @@ namespace Group_18_Final_Project.Seeding
 				r283.BookPrice = 29.95m;
 				r283.WholesalePrice = 16.47m;
 				r283.CopiesOnHand = 1;
+				r283.ReorderPoint = 1;
 				r283.PublicationDate = new DateTime(2017, 11, 11);
 				r283.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r283);
@@ -3425,6 +3708,7 @@ namespace Group_18_Final_Project.Seeding
 				r284.BookPrice = 31m;
 				r284.WholesalePrice = 18.91m;
 				r284.CopiesOnHand = 8;
+				r284.ReorderPoint = 6;
 				r284.PublicationDate = new DateTime(2017, 11, 18);
 				r284.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r284);
@@ -3437,6 +3721,7 @@ namespace Group_18_Final_Project.Seeding
 				r285.BookPrice = 17.95m;
 				r285.WholesalePrice = 15.98m;
 				r285.CopiesOnHand = 6;
+				r285.ReorderPoint = 5;
 				r285.PublicationDate = new DateTime(2018, 1, 6);
 				r285.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Thriller");
 				Books.Add(r285);
@@ -3449,6 +3734,7 @@ namespace Group_18_Final_Project.Seeding
 				r286.BookPrice = 16m;
 				r286.WholesalePrice = 11.36m;
 				r286.CopiesOnHand = 8;
+				r286.ReorderPoint = 3;
 				r286.PublicationDate = new DateTime(2018, 1, 6);
 				r286.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r286);
@@ -3461,6 +3747,7 @@ namespace Group_18_Final_Project.Seeding
 				r287.BookPrice = 31m;
 				r287.WholesalePrice = 22.32m;
 				r287.CopiesOnHand = 9;
+				r287.ReorderPoint = 6;
 				r287.PublicationDate = new DateTime(2018, 1, 13);
 				r287.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r287);
@@ -3473,6 +3760,7 @@ namespace Group_18_Final_Project.Seeding
 				r288.BookPrice = 30.95m;
 				r288.WholesalePrice = 21.05m;
 				r288.CopiesOnHand = 13;
+				r288.ReorderPoint = 10;
 				r288.PublicationDate = new DateTime(2018, 1, 13);
 				r288.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Fantasy");
 				Books.Add(r288);
@@ -3485,6 +3773,7 @@ namespace Group_18_Final_Project.Seeding
 				r289.BookPrice = 26.95m;
 				r289.WholesalePrice = 21.83m;
 				r289.CopiesOnHand = 7;
+				r289.ReorderPoint = 5;
 				r289.PublicationDate = new DateTime(2018, 2, 3);
 				r289.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r289);
@@ -3497,6 +3786,7 @@ namespace Group_18_Final_Project.Seeding
 				r290.BookPrice = 22.95m;
 				r290.WholesalePrice = 12.16m;
 				r290.CopiesOnHand = 11;
+				r290.ReorderPoint = 9;
 				r290.PublicationDate = new DateTime(2018, 2, 10);
 				r290.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r290);
@@ -3509,6 +3799,7 @@ namespace Group_18_Final_Project.Seeding
 				r291.BookPrice = 35.99m;
 				r291.WholesalePrice = 28.07m;
 				r291.CopiesOnHand = 12;
+				r291.ReorderPoint = 7;
 				r291.PublicationDate = new DateTime(2018, 2, 24);
 				r291.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r291);
@@ -3521,6 +3812,7 @@ namespace Group_18_Final_Project.Seeding
 				r292.BookPrice = 28.99m;
 				r292.WholesalePrice = 24.64m;
 				r292.CopiesOnHand = 4;
+				r292.ReorderPoint = 2;
 				r292.PublicationDate = new DateTime(2018, 3, 10);
 				r292.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Science Fiction");
 				Books.Add(r292);
@@ -3533,6 +3825,7 @@ namespace Group_18_Final_Project.Seeding
 				r293.BookPrice = 15m;
 				r293.WholesalePrice = 9.45m;
 				r293.CopiesOnHand = 10;
+				r293.ReorderPoint = 8;
 				r293.PublicationDate = new DateTime(2018, 3, 17);
 				r293.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r293);
@@ -3545,6 +3838,7 @@ namespace Group_18_Final_Project.Seeding
 				r294.BookPrice = 24.95m;
 				r294.WholesalePrice = 19.21m;
 				r294.CopiesOnHand = 5;
+				r294.ReorderPoint = 1;
 				r294.PublicationDate = new DateTime(2018, 3, 31);
 				r294.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Suspense");
 				Books.Add(r294);
@@ -3557,6 +3851,7 @@ namespace Group_18_Final_Project.Seeding
 				r295.BookPrice = 28.95m;
 				r295.WholesalePrice = 7.53m;
 				r295.CopiesOnHand = 12;
+				r295.ReorderPoint = 7;
 				r295.PublicationDate = new DateTime(2018, 4, 14);
 				r295.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Shakespeare");
 				Books.Add(r295);
@@ -3569,6 +3864,7 @@ namespace Group_18_Final_Project.Seeding
 				r296.BookPrice = 23.95m;
 				r296.WholesalePrice = 14.13m;
 				r296.CopiesOnHand = 14;
+				r296.ReorderPoint = 10;
 				r296.PublicationDate = new DateTime(2018, 5, 12);
 				r296.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r296);
@@ -3581,6 +3877,7 @@ namespace Group_18_Final_Project.Seeding
 				r297.BookPrice = 26m;
 				r297.WholesalePrice = 20.28m;
 				r297.CopiesOnHand = 10;
+				r297.ReorderPoint = 6;
 				r297.PublicationDate = new DateTime(2018, 5, 12);
 				r297.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Historical Fiction");
 				Books.Add(r297);
@@ -3593,6 +3890,7 @@ namespace Group_18_Final_Project.Seeding
 				r298.BookPrice = 21.95m;
 				r298.WholesalePrice = 12.95m;
 				r298.CopiesOnHand = 15;
+				r298.ReorderPoint = 10;
 				r298.PublicationDate = new DateTime(2018, 5, 19);
 				r298.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Romance");
 				Books.Add(r298);
@@ -3605,6 +3903,7 @@ namespace Group_18_Final_Project.Seeding
 				r299.BookPrice = 32.95m;
 				r299.WholesalePrice = 6.59m;
 				r299.CopiesOnHand = 6;
+				r299.ReorderPoint = 3;
 				r299.PublicationDate = new DateTime(2018, 5, 26);
 				r299.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Contemporary Fiction");
 				Books.Add(r299);
@@ -3617,6 +3916,7 @@ namespace Group_18_Final_Project.Seeding
 				r300.BookPrice = 15.95m;
 				r300.WholesalePrice = 6.06m;
 				r300.CopiesOnHand = 13;
+				r300.ReorderPoint = 10;
 				r300.PublicationDate = new DateTime(2018, 6, 9);
 				r300.Genre = db.Genres.FirstOrDefault(x => x.GenreName == "Mystery");
 				Books.Add(r300);

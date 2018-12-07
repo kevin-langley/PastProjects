@@ -32,10 +32,10 @@
                         <td>@Html.DisplayFor(modelItem => review.Rating)</td>
                         <td>@Html.DisplayFor(modelItem => review.ReviewText)</td>
                         <td>
-                            <input type="radio" name="ReviewsToApprove" id="@review.ReviewID">
+                            <input type="radio" name="ReviewsToApprove" value="@review.ReviewID">
                         </td>
                         <td>
-                            <input type="radio" name="ReviewsToReject" id="@review.ReviewID">
+                            <input type="radio" name="ReviewsToReject" value="@review.ReviewID">
                         </td>
                     </tr>
                 }

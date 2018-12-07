@@ -2,10 +2,7 @@
 @using  Group_18_Final_Project.Controllers;
 @model IEnumerable<Group_18_Final_Project.Models.Book>
 
-@foreach (var item in Model)
-{
-    <span>@item.Name</span>
-}
+
 
 
 @{
@@ -35,9 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ActiveBook)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReorderPoint)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -63,9 +58,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ActiveBook)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReorderPoint)
-                </td>
+
 
                 <td>
                     <a asp-action="Edit" asp-controller="Books" asp-route-id="@item.BookID">Edit</a> |
