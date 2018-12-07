@@ -45,7 +45,7 @@ namespace Group_18_Final_Project.Controllers
                                             .Include(u => u.Book)
                                             .Where(u => u.Book.BookID == id && u.Approval == true).ToListAsync();
 
-                ViewBag.BookReviews = "Check out what other users are saying about this book."
+                ViewBag.BookReviews = "Check out what other users are saying about this book.";
                 return View(bookreviews);
             }
             if(User.IsInRole("Employee"))

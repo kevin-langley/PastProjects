@@ -89,28 +89,26 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EditInfoViewModel userprofile)
+        public IActionResult Edit(EditInfoViewModel userprofile, string id)
         {
             if (ModelState.IsValid)
             {
-                if (userprofile.UserName == null)
-                {
-                    userprofile.UserName = userprofile.Email;
-                }
-
-                string username = userprofile.UserName;
                 // Get the userprofile
-                User user = _context.Users.FirstOrDefault(u => u.UserName.Equals(username));
+                User user = _context.Users.FirstOrDefault(u => u.Id.Equals(id));
 
                 // Update fields
                 user.FirstName = userprofile.FirstName;
                 user.LastName = userprofile.LastName;
-                user.Email = userprofile.Email;
+                if (user.UserType == "Customer")
+                {
+                    user.Email = userprofile.Email;
+                }
                 user.PhoneNumber = userprofile.PhoneNumber;
                 user.Address = userprofile.Address;
                 user.City = userprofile.City;
                 user.State = userprofile.State;
                 user.ZipCode = userprofile.ZipCode;
+                user.UserName = user.Email;
 
                 //save changes
                 _context.SaveChanges();
