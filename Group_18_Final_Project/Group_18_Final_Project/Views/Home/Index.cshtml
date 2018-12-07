@@ -7,3 +7,7 @@
 </div>
 
 <a asp-action="DetailedSearch" asp-controller="Home" class="btn btn-success">Search for Books</a>
+@if(User.IsInRole("Manager")==true)
+{
+    <a asp-action="Index" asp-controller="Reorders" class="btn btn-success">Order Books From Suppliers</a>
+}

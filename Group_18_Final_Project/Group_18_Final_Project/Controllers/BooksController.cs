@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Group_18_Final_Project.Controllers
 {
@@ -139,6 +140,7 @@ namespace Group_18_Final_Project.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles="Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BookID,Title,Author,UniqueID,TimesPurchased,AverageRating,CopiesOnHand,BookPrice,WholesalePrice,ActiveBook,PublicationDate,Description")] Book book)
         {

@@ -56,6 +56,15 @@
         <dd>
             @Html.DisplayFor(model => model.BookPrice)
         </dd>
+        @if (User.IsInRole("Manager") == true)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.WholesalePrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.WholesalePrice)
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.PublicationDate)
         </dt>
@@ -68,23 +77,45 @@
         <dd>
             @Html.DisplayFor(model => model.Genre.GenreName)
         </dd>
+        @if(Model.CopiesOnHand == 0)
+        {
+        <dd class="text-danger">We're out of stock right now! Check back agian soon!</dd>
+        }
     </dl>
 </div>
 <div>
-    <form asp-action="AddToOrder" asp-controller="Orders">
-        <div class="form-group">
-            <h5>Quantity:</h5>
-            <div>
-                @ViewBag.InCart
+    @if (User.IsInRole("Employee") == false && User.IsInRole("Manager") == false)
+    {
+        <form asp-action="AddToOrder" asp-controller="Orders">
+            <div class="form-group">
+                <h5>Quantity:</h5>
+                <div>
+                    @ViewBag.InCart
+                </div>
+                <input name="intOrderQuantity" class="form-control" />
             </div>
-            <input name="intOrderQuantity" class="form-control" />
-        </div>
-        <div>
-            <input type="hidden" asp-for="@Model.BookID" />
-            <button type="submit" class="btn btn-danger">Add To Cart</button>
-        </div>
-    </form>
+            <div>
+                <input type="hidden" asp-for="@Model.BookID" />
+                <button type="submit" class="btn btn-danger">Add To Cart</button>
+            </div>
+        </form>}
+        @if (User.IsInRole("Employee") == true || User.IsInRole("Manager") == true)
+        {
+            <form asp-action="AddToReorder" asp-controller="Reorders">
+                <div class="form=group">
+                    <h5>Quantity:</h5>
+                    <div>
+                        @ViewBag.InCart
+                    </div>
+                    <input name="intReorderQuantity" class="form-control" />
+                </div>
+                <div>
+                    <input type="hidden" asp-for="@Model.BookID" />
+                    <button type="submit" class="btn btn-danger">Add to order</button>
+                </div>
+            </form>
+        }
 
-    <a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        @if (User.IsInRole("Manager") == true) {<a asp-action="Edit" asp-route-id="@Model.BookID">Edit</a>} |
+<a asp-action="Index">Back to List</a>
 </div>
