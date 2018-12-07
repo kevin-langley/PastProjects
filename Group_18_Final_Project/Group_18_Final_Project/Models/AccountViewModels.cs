@@ -26,40 +26,12 @@ namespace Group_18_Final_Project.Models
     {
 
         //TODO:  Add any fields that you need for creating a new user
-
-        [Required(ErrorMessage = "First name is required.")]
-        [Display(Name = "First Name")]
-        public String FirstName { get; set; }
-
-        //Additional fields go here
-        [Required(ErrorMessage = "Last name is required.")]
-        [Display(Name = "Last Name")]
-        public String LastName { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public String Address { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public String City { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public String State { get; set; }
-
-        [Required(ErrorMessage = "This field is required.")]
-        public String ZipCode { get; set; }
-
-
+        
         //NOTE: Here is the property for email
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        //NOTE: Here is the property for phone number
-        [Required(ErrorMessage = "Phone number is required")]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
 
         //NOTE: Here is the logic for putting in a password
         [Required]
@@ -72,6 +44,35 @@ namespace Group_18_Final_Project.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
+        public String FirstName { get; set; }
+
+        //Additional fields go here
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public String LastName { get; set; }
+
+        [Required(ErrorMessage = "Address is required.")]
+        public String Address { get; set; }
+
+        [Required(ErrorMessage = "City is required.")]
+        public String City { get; set; }
+
+        [Required(ErrorMessage = "State is required.")]
+        public String State { get; set; }
+
+        [Required(ErrorMessage = "Zip code is required.")]
+        public String ZipCode { get; set; }
+
+        //NOTE: Here is the property for phone number
+        [Required(ErrorMessage = "Phone number is required")]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+ 
     }
     public class ChangePasswordViewModel
     {
