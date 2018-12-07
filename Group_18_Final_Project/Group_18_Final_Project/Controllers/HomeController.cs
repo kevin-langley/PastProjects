@@ -124,6 +124,15 @@ namespace Group_18_Final_Project.Controllers
                 query = query.Where(r => r.Genre.GenreID == SelectedGenre);
             }
 
+
+            if (SelectedStock == true)
+            {
+                query = query.Where(o => o.CopiesOnHand > 0);
+            }
+
+            //Storing filtered repos to repo list and including language navigational data
+            SelectedBooks = query.Include(r => r.Genre).Include(b => b.BookOrders).Include(r => r.Reviews).ToList();
+
             //The following lines of code process the sort by
             switch (SelectedSort)
             {
@@ -158,14 +167,6 @@ namespace Group_18_Final_Project.Controllers
                     break;
 
             }
-
-            if (SelectedStock == true)
-            {
-                query = query.Where(o => o.CopiesOnHand > 0);
-            }
-
-            //Storing filtered repos to repo list and including language navigational data
-            SelectedBooks = query.Include(r => r.Genre).Include(b => b.BookOrders).Include(r => r.Reviews).ToList();
 
             //ViewBag for Displaying x of y text
             ViewBag.SelectedBooks = SelectedBooks.Count();

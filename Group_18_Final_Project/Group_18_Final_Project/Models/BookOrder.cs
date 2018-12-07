@@ -15,6 +15,9 @@ namespace Group_18_Final_Project.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public Decimal Price { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:C)")]
+        public Decimal BookCost { get; set; }
+
         [Required(ErrorMessage = "You must specify a quantity of books")]
         [Display(Name = "Quantity of books")]
         [Range(1, Int32.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
