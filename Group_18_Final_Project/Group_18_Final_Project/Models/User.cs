@@ -30,7 +30,7 @@ namespace Group_18_Final_Project.Models
         [Required(ErrorMessage = "State is required.")]
         public String State { get; set; }
 
-        [StringLength(5, ErrorMessage ="Zip max is 5 characters.")]
+        [Required(ErrorMessage = "Zip Code is required.")]
         public String ZipCode { get; set; }
 
         public Boolean ActiveUser { get; set; }
