@@ -46,7 +46,7 @@ namespace Group_18_Final_Project.Models
         public String State { get; set; }
 
         [Required(ErrorMessage = "This field is required.")]
-        public Int32 ZipCode { get; set; }
+        public String ZipCode { get; set; }
 
 
         //NOTE: Here is the property for email
@@ -109,7 +109,7 @@ namespace Group_18_Final_Project.Models
         [Display(Name = "State:    ")]
         public String State { get; set; }
         [Display(Name = "Zip Code:    ")]
-        public Int32 ZipCode { get; set; }
+        public String ZipCode { get; set; }
         [Display(Name = "Phone Number:    ")]
         public String PhoneNumber { get; set; }
         
@@ -127,7 +127,7 @@ namespace Group_18_Final_Project.Models
         public String Address { get; set; }
         public String City { get; set; }
         public String State { get; set; }
-        public Int32 ZipCode { get; set; }
+        public String ZipCode { get; set; }
         public String PhoneNumber { get; set; }
         public List<CreditCard> creditCards { get; set; }
 

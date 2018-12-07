@@ -31,7 +31,7 @@ namespace Group_18_Final_Project.Seeding
 				e1.UserType = "Manager";
 				e1.City = "Cedar Park";
 				e1.State = "TX";
-				e1.ZipCode = 78613;
+				e1.ZipCode = 78613.ToString();
 				e1.PhoneNumber = "3395325649";
 				e1.Email = "c.baker@bevosbooks.com";
                 e1.UserName = e1.Email;
@@ -45,7 +45,7 @@ namespace Group_18_Final_Project.Seeding
 				e2.UserType = "Employee";
 				e2.City = "Kyle";
 				e2.State = "TX";
-				e2.ZipCode = 78640;
+				e2.ZipCode = 78640.ToString();
 				e2.PhoneNumber = "9636389416";
 				e2.Email = "s.barnes@bevosbooks.com";
                 e2.UserName = e2.Email;
@@ -59,7 +59,7 @@ namespace Group_18_Final_Project.Seeding
 				e3.UserType = "Employee";
 				e3.City = "Austin";
 				e3.State = "TX";
-				e3.ZipCode = 78712;
+				e3.ZipCode = 78712.ToString();
 				e3.PhoneNumber = "4547135738";
 				e3.Email = "h.garcia@bevosbooks.com";
                 e3.UserName = e3.Email;
@@ -73,7 +73,7 @@ namespace Group_18_Final_Project.Seeding
 				e4.UserType = "Employee";
 				e4.City = "Austin";
 				e4.State = "TX";
-				e4.ZipCode = 78705;
+				e4.ZipCode = 78705.ToString();
 				e4.PhoneNumber = "5817343315";
 				e4.Email = "b.ingram@bevosbooks.com";
                 e4.UserName = e4.Email;
@@ -87,7 +87,7 @@ namespace Group_18_Final_Project.Seeding
 				e5.UserType = "Employee";
 				e5.City = "Austin";
 				e5.State = "TX";
-				e5.ZipCode = 78760;
+				e5.ZipCode = 78760.ToString();
 				e5.PhoneNumber = "8241915317";
 				e5.Email = "j.jackson@bevosbooks.com";
                 e5.UserName = e5.Email;
@@ -101,7 +101,7 @@ namespace Group_18_Final_Project.Seeding
 				e6.UserType = "Employee";
 				e6.City = "Georgetown";
 				e6.State = "TX";
-				e6.ZipCode = 78628;
+				e6.ZipCode = 78628.ToString();
 				e6.PhoneNumber = "2477822475";
 				e6.Email = "t.jacobs@bevosbooks.com";
                 e6.UserName = e6.Email;
@@ -129,7 +129,7 @@ namespace Group_18_Final_Project.Seeding
 				e8.UserType = "Employee";
 				e8.City = "Round Rock";
 				e8.State = "TX";
-				e8.ZipCode = 78665;
+				e8.ZipCode = 78665.ToString();
 				e8.PhoneNumber = "3355258855";
 				e8.Email = "b.larson@bevosbooks.com";
                 e8.UserName = e8.Email;
@@ -143,7 +143,7 @@ namespace Group_18_Final_Project.Seeding
 				e9.UserType = "Employee";
 				e9.City = "Austin";
 				e9.State = "TX";
-				e9.ZipCode = 78712;
+				e9.ZipCode = 78712.ToString();
 				e9.PhoneNumber = "7511273054";
 				e9.Email = "v.lawrence@bevosbooks.com";
                 e9.UserName = e9.Email;
@@ -157,7 +157,7 @@ namespace Group_18_Final_Project.Seeding
 				e10.UserType = "Employee";
 				e10.City = "Austin";
 				e10.State = "TX";
-				e10.ZipCode = 78729;
+				e10.ZipCode = 78729.ToString();
 				e10.PhoneNumber = "7477907070";
 				e10.Email = "m.lopez@bevosbooks.com";
                 e10.UserName = e10.Email;
@@ -171,7 +171,7 @@ namespace Group_18_Final_Project.Seeding
 				e11.UserType = "Employee";
 				e11.City = "Austin";
 				e11.State = "TX";
-				e11.ZipCode = 78705;
+				e11.ZipCode = 78705.ToString();
 				e11.PhoneNumber = "2621216845";
 				e11.Email = "j.macleod@bevosbooks.com";
                 e11.UserName = e11.Email;
@@ -185,7 +185,7 @@ namespace Group_18_Final_Project.Seeding
 				e12.UserType = "Employee";
 				e12.City = "Austin";
 				e12.State = "TX";
-				e12.ZipCode = 78785;
+				e12.ZipCode = 78785.ToString();
 				e12.PhoneNumber = "5028075807";
 				e12.Email = "e.markham@bevosbooks.com";
                 e12.UserName = e12.Email;
@@ -199,7 +199,7 @@ namespace Group_18_Final_Project.Seeding
 				e13.UserType = "Employee";
 				e13.City = "Austin";
 				e13.State = "TX";
-				e13.ZipCode = 78712;
+				e13.ZipCode = 78712.ToString();
 				e13.PhoneNumber = "1994708542";
 				e13.Email = "g.martinez@bevosbooks.com";
                 e13.UserName = e13.Email;
@@ -213,7 +213,7 @@ namespace Group_18_Final_Project.Seeding
 				e14.UserType = "Employee";
 				e14.City = "Austin";
 				e14.State = "TX";
-				e14.ZipCode = 78701;
+				e14.ZipCode = 78701.ToString();
 				e14.PhoneNumber = "1748136441";
 				e14.Email = "j.mason@bevosbooks.com";
                 e14.UserName = e14.Email;
@@ -227,7 +227,7 @@ namespace Group_18_Final_Project.Seeding
 				e15.UserType = "Employee";
 				e15.City = "Austin";
 				e15.State = "TX";
-				e15.ZipCode = 78709;
+				e15.ZipCode = 78709.ToString();
 				e15.PhoneNumber = "8999319585";
 				e15.Email = "c.miller@bevosbooks.com";
                 e15.UserName = e15.Email;
@@ -241,7 +241,7 @@ namespace Group_18_Final_Project.Seeding
 				e16.UserType = "Employee";
 				e16.City = "Austin";
 				e16.State = "TX";
-				e16.ZipCode = 78734;
+				e16.ZipCode = 78734.ToString();
 				e16.PhoneNumber = "8716746381";
 				e16.Email = "m.nguyen@bevosbooks.com";
                 e16.UserName = e16.Email;
@@ -255,7 +255,7 @@ namespace Group_18_Final_Project.Seeding
 				e17.UserType = "Employee";
 				e17.City = "Austin";
 				e17.State = "TX";
-				e17.ZipCode = 78712;
+				e17.ZipCode = 78712.ToString();
 				e17.PhoneNumber = "5239029525";
 				e17.Email = "s.rankin@bevosbooks.com";
                 e17.UserName = e17.Email;
@@ -269,7 +269,7 @@ namespace Group_18_Final_Project.Seeding
 				e18.UserType = "Employee";
 				e18.City = "Austin";
 				e18.State = "TX";
-				e18.ZipCode = 78729;
+				e18.ZipCode = 78729.ToString();
 				e18.PhoneNumber = "1232139514";
 				e18.Email = "m.rhodes@bevosbooks.com";
                 e18.UserName = e18.Email;
@@ -283,7 +283,7 @@ namespace Group_18_Final_Project.Seeding
 				e19.UserType = "Manager";
 				e19.City = "Austin";
 				e19.State = "TX";
-				e19.ZipCode = 78746;
+				e19.ZipCode = 78746.ToString();
 				e19.PhoneNumber = "2706602803";
 				e19.Email = "e.rice@bevosbooks.com";
                 e19.UserName = e19.Email;
@@ -297,7 +297,7 @@ namespace Group_18_Final_Project.Seeding
 				e20.UserType = "Manager";
 				e20.City = "Austin";
 				e20.State = "TX";
-				e20.ZipCode = 78705;
+				e20.ZipCode = 78705.ToString();
 				e20.PhoneNumber = "4139645586";
 				e20.Email = "a.rogers@bevosbooks.com";
                 e20.UserName = e20.Email;
@@ -311,7 +311,7 @@ namespace Group_18_Final_Project.Seeding
 				e21.UserType = "Employee";
 				e21.City = "Austin";
 				e21.State = "TX";
-				e21.ZipCode = 78733;
+				e21.ZipCode = 78733.ToString();
 				e21.PhoneNumber = "9036349587";
 				e21.Email = "s.saunders@bevosbooks.com";
                 e21.UserName = e21.Email;
@@ -325,7 +325,7 @@ namespace Group_18_Final_Project.Seeding
 				e22.UserType = "Manager";
 				e22.City = "Austin";
 				e22.State = "TX";
-				e22.ZipCode = 78755;
+				e22.ZipCode = 78755.ToString();
 				e22.PhoneNumber = "7224308314";
 				e22.Email = "w.sewell@bevosbooks.com";
                 e22.UserName = e22.Email;
@@ -339,7 +339,7 @@ namespace Group_18_Final_Project.Seeding
 				e23.UserType = "Employee";
 				e23.City = "San Marcos";
 				e23.State = "TX";
-				e23.ZipCode = 78666;
+				e23.ZipCode = 78666.ToString();
 				e23.PhoneNumber = "9349192978";
 				e23.Email = "m.sheffield@bevosbooks.com";
                 e23.UserName = e23.Email;
@@ -353,7 +353,7 @@ namespace Group_18_Final_Project.Seeding
 				e24.UserType = "Employee";
 				e24.City = "Austin";
 				e24.State = "TX";
-				e24.ZipCode = 78758;
+				e24.ZipCode = 78758.ToString();
 				e24.PhoneNumber = "4874328170";
 				e24.Email = "c.silva@bevosbooks.com";
                 e24.UserName = e24.Email;
@@ -367,7 +367,7 @@ namespace Group_18_Final_Project.Seeding
 				e25.UserType = "Employee";
 				e25.City = "Austin";
 				e25.State = "TX";
-				e25.ZipCode = 78758;
+				e25.ZipCode = 78758.ToString();
 				e25.PhoneNumber = "1967846827";
 				e25.Email = "e.stuart@bevosbooks.com";
                 e25.UserName = e25.Email;
@@ -381,7 +381,7 @@ namespace Group_18_Final_Project.Seeding
 				e26.UserType = "Employee";
 				e26.City = "Austin";
 				e26.State = "TX";
-				e26.ZipCode = 78712;
+				e26.ZipCode = 78712.ToString();
 				e26.PhoneNumber = "5923026779";
 				e26.Email = "j.tanner@bevosbooks.com";
                 e26.UserName = e26.Email;
@@ -395,7 +395,7 @@ namespace Group_18_Final_Project.Seeding
 				e27.UserType = "Employee";
 				e27.City = "Austin";
 				e27.State = "TX";
-				e27.ZipCode = 78727;
+				e27.ZipCode = 78727.ToString();
 				e27.PhoneNumber = "7246195827";
 				e27.Email = "a.taylor@bevosbooks.com";
                 e27.UserName = e27.Email;
@@ -409,7 +409,7 @@ namespace Group_18_Final_Project.Seeding
 				e28.UserType = "Manager";
 				e28.City = "Austin";
 				e28.State = "TX";
-				e28.ZipCode = 78746;
+				e28.ZipCode = 78746.ToString();
 				e28.PhoneNumber = "9071236087";
 				e28.Email = "r.taylor@bevosbooks.com";
                 e28.UserName = e28.Email;
