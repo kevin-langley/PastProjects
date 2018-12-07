@@ -215,10 +215,8 @@ namespace Group_18_Final_Project.Controllers
 
         //Logic for Editing account info
         // GET: /Account/EditInfo
-        public ActionResult EditInfo(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult EditInfo()
+        { 
                 string username = User.Identity.Name;
 
                 // Fetch the userprofile
@@ -236,24 +234,7 @@ namespace Group_18_Final_Project.Controllers
                 model.ZipCode = user.ZipCode;
 
                 return View(model);
-            }
-            else
-            {
-                // Fetch the userprofile
-                User user = _db.Users.FirstOrDefault(u => u.Id.Equals(id));
-
-                // Construct the viewmodel
-                EditInfoViewModel model = new EditInfoViewModel();
-                model.FirstName = user.FirstName;
-                model.LastName = user.LastName;
-                model.PhoneNumber = user.PhoneNumber;
-                model.Address = user.Address;
-                model.City = user.City;
-                model.State = user.State;
-                model.ZipCode = user.ZipCode;
-
-                return View(model);
-            }
+            
         }
 
         //
