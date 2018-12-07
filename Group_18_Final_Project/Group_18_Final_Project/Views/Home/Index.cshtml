@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Group_18_Final_Project.Models.Coupon>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 <br />
@@ -6,8 +8,54 @@
     @ViewBag.EmptyMessage
 </div>
 
+@if (User.IsInRole("Customer"))
+{
+    <h2>Welcome to Bevo's Bookstore!</h2>
+    <br />
+    <h5>Check out our current coupons and discounts below and start your book search</h5>
+}
+
 <a asp-action="DetailedSearch" asp-controller="Home" class="btn btn-success">Search for Books</a>
-@if(User.IsInRole("Manager")==true)
+
+@if (User.IsInRole("Manager") == true)
 {
     <a asp-action="Index" asp-controller="Reorders" class="btn btn-success">Order Books From Suppliers</a>
+    <a asp-action="Index" asp-controller="Reports" class="btn-success">View Reports</a>
+}
+
+@if (User.IsInRole("Customer"))
+{
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th colspan="3" style="text-align:center">Current Coupons</th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CouponCode)
+                </th>
+                <th>
+                    Coupon Type
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CouponCode)
+                    </td>
+                    @if (item.CouponType == CouponType.FreeShippingForX)
+                    {
+                        <td>Free shipping for orders above $ @Html.DisplayFor(modelItem => item.CouponValue)</td>
+                    }
+                    @if (item.CouponType == CouponType.XOffOrder)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.CouponValue) % off your total order</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 }

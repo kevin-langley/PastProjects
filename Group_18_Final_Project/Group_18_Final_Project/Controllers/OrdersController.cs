@@ -577,29 +577,31 @@ namespace Group_18_Final_Project.Controllers
 
                     order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
 
-                    //Finding coupon matching user's coupon code input
-                    Coupon coupon = await _context.Coupons.FirstOrDefaultAsync(c => c.CouponCode == strCouponCode);
 
-                    if (coupon.CouponType == CouponType.FreeShippingForX && order.OrderSubtotal > coupon.CouponValue)
+                    if (strCouponCode != null && strCouponCode != "")
                     {
-                        totalDiscount = order.TotalShippingPrice;
-                        ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
-                        order.TotalShippingPrice = 0;
-                    }
+                        //Finding coupon matching user's coupon code input
+                        Coupon coupon = await _context.Coupons.FirstOrDefaultAsync(c => c.CouponCode == strCouponCode);
 
-                    if (coupon.CouponType == CouponType.XOffOrder)
-                    {
-                        foreach (BookOrder border in order.BookOrders)
+                        if (coupon.CouponType == CouponType.FreeShippingForX && order.OrderSubtotal > coupon.CouponValue)
                         {
-                            border.ExtendedPrice = border.ExtendedPrice * (1 - coupon.CouponValue);
-                            totalDiscount = totalDiscount + border.ExtendedPrice * coupon.CouponValue;
+                            totalDiscount = order.TotalShippingPrice;
+                            ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+                            order.TotalShippingPrice = 0;
                         }
 
-                        ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+                        if (coupon.CouponType == CouponType.XOffOrder)
+                        {
+                            foreach (BookOrder border in order.BookOrders)
+                            {
+                                border.ExtendedPrice = border.ExtendedPrice * (1 - coupon.CouponValue);
+                                totalDiscount = totalDiscount + border.ExtendedPrice * coupon.CouponValue;
+                            }
 
+                            ViewBag.Discount = "You saved " + totalDiscount + " on your order!";
+
+                        }
                     }
-
-
 
 
                     //To pass credit card view to confirm check out
