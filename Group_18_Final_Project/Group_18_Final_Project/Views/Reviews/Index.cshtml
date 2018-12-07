@@ -8,7 +8,7 @@
 
 @if(User.IsInRole("Customer"))
 {
-    <p>@ViewBag.CustomerReviews</p>
+    <p>@ViewBag.CustomersReviews</p>
     <p>@ViewBag.BookReviews</p>
 }
 
@@ -36,11 +36,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReviewText)
             </th>
-            @if(User.IsInRole("Manager"))
+            @if(User.IsInRole("Manager") || User.IsInRole("Employee"))
             {
                 <th>
                     @Html.DisplayNameFor(model => model.Approval)
                 </th>
+            }
+            @if(User.IsInRole("Manager"))
+            {
                 <th>
                     Approver
                 </th>
@@ -66,11 +69,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewText)
             </td>
-            @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
+            @if(User.IsInRole("Employee") || User.IsInRole("Manager"))
             {
-                <td>
-                    @Html.DisplayFor(modelItem => item.Approval)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Approval)
+            </td>
+            }
+            @if (User.IsInRole("Manager"))
+            {
                 <td>
                     @Html.DisplayFor(modelItem => item.Approver.UserName)
                 </td>
@@ -79,8 +85,7 @@
             {
             <td>
             <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
+            <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a>
             </td>
             }
         </tr>

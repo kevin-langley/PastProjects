@@ -224,7 +224,7 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReviewID,ReviewText,Approval,Rating")] Review review)
+        public async Task<IActionResult> Edit(int id, [Bind("ReviewID,ReviewText")] Review review)
         {
             if (id != review.ReviewID)
             {

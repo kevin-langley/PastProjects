@@ -72,7 +72,7 @@ namespace Group_18_Final_Project.Controllers
             return View();
         }
 
-        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, Int32 intSearchUniqueID, int SelectedGenre, SortOrder SelectedSort, Boolean SelectedStock )
+        public ActionResult DisplaySearchResults(String strSearchName, String strSearchAuthor, String strSearchTitleAuthor, Int32 intSearchUniqueID, int SelectedGenre, SortOrder SelectedSort, Boolean SelectedStock )
         {
             //Creating new list object of the repo list
             List<Book> SelectedBooks = new List<Book>();
@@ -86,13 +86,20 @@ namespace Group_18_Final_Project.Controllers
             //The following lines of code process the searched book name
             if (strSearchName != null && strSearchName != "")
             {
-                query = query.Where(r => r.Title.Contains(strSearchName) || r.Author.Contains(strSearchName));
+                query = query.Where(r => r.Title.Contains(strSearchName));
             }
 
             //The following lines of code process the searched author
             if (strSearchAuthor != null && strSearchAuthor != "")
             {
                 query = query.Where(r => r.Author.Contains(strSearchAuthor));
+            }
+
+
+            //The following lines of code process the searched title or author
+            if (strSearchTitleAuthor != null && strSearchTitleAuthor != "")
+            {
+                query = query.Where(r => r.Title.Contains(strSearchTitleAuthor) || r.Author.Contains(strSearchTitleAuthor));
             }
 
             String strUniqueID;
