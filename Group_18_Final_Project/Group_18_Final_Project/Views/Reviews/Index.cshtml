@@ -8,7 +8,8 @@
 
 @if(User.IsInRole("Customer"))
 {
-    <p>Thanks for submitting reviews! View all of the approved reviews you've made.</p>
+    <p>@ViewBag.CustomerReviews</p>
+    <p>@ViewBag.BookReviews</p>
 }
 
 @if(User.IsInRole("Employee") || User.IsInRole("Manager"))
@@ -20,6 +21,12 @@
 <table class="table">
     <thead>
         <tr>
+            @if(User.IsInRole("Manager"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.Author)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.ReviewText)
             </th>
@@ -39,27 +46,33 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            @if (User.IsInRole("Manager"))
+            {
+            <th>
+            @Html.DisplayFor(modelItem => item.Author)
+            </th>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewText)
             </td>
             @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
             {
-            <td>
-                @Html.DisplayFor(modelItem => item.Approval)
-            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Approval)
+        </td>
             }
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
-            @if(User.IsInRole("Employee") || User.IsInRole("Manager"))
-            {
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
-            </td>
+            @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
+    {
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
+        </td>
 
-            }
+}
         </tr>
 }
     </tbody>

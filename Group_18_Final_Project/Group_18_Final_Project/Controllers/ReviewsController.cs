@@ -27,21 +27,25 @@ namespace Group_18_Final_Project.Controllers
             //View for customers to see list of their reviews and a specific book's reviews
             if (User.IsInRole("Customer"))
             {
+                //If looking at their review page
                 if (id == null)
                 {
                     string userid = User.Identity.Name;
                     User user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userid);
 
                     List<Review> userReviews = await _context.Reviews.Include(r => r.Book).Where(u => u.Author == user && u.Approval == true).ToListAsync();
-                    
+
+                    ViewBag.CustomersReviews = "Thanks for submitting reviews! View all of the approved reviews you've made.";
                     return View(userReviews);
                 }
-                //if book id is specified
+
+                //if looking at reviews for a book
                 List<Review> bookreviews = await _context.Reviews
                                             .Include(u => u.Author)
                                             .Include(u => u.Book)
-                                            .Where(u => u.Book.BookID == id).ToListAsync();
+                                            .Where(u => u.Book.BookID == id && u.Approval == true).ToListAsync();
 
+                ViewBag.BookReviews = "Check out what other users are saying about this book."
                 return View(bookreviews);
             }
             if(User.IsInRole("Employee"))
@@ -50,11 +54,12 @@ namespace Group_18_Final_Project.Controllers
                 {
                     return View(await _context.Reviews.Where(r => r.Approval == true).ToListAsync());
                 }
-                //if book id is specified
+
+                //if book id is specified to look at reviews for a book
                 List<Review> bookReviews = await _context.Reviews
                     .Include(u => u.Author)
                     .Include(u => u.Book)
-                    .Where(u => u.Book.BookID == id).ToListAsync();
+                    .Where(u => u.Book.BookID == id && u.Approval == true).ToListAsync();
                 return View(bookReviews);
 
             }
