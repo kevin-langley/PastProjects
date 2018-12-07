@@ -36,16 +36,16 @@ namespace Group_18_Final_Project.Models
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Address is required.")]
         public String Address { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "City is required.")]
         public String City { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "State is required.")]
         public String State { get; set; }
 
-        [Required(ErrorMessage = "This field is required.")]
+        [Required(ErrorMessage = "Zip code is required.")]
         public String ZipCode { get; set; }
 
 
