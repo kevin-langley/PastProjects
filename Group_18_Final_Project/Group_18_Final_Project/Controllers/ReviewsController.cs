@@ -128,11 +128,7 @@ namespace Group_18_Final_Project.Controllers
             List<BookOrder> bookOrders = _context.BookOrders
                                                     .Include(bo => bo.Book)
                                                     .Where(bo => bo.Order.User == user).ToList();
-
-            if (bookOrders.Any(bo => bo.Book.BookID == id))
-            {
-                return View();
-            }
+            
 
             //List of reviews that this user has made
             List<Review> userReviews = _context.Reviews.Include(u => u.Book).Where(u => u.Author == user).ToList();
@@ -148,6 +144,11 @@ namespace Group_18_Final_Project.Controllers
             if(hasAlreadyReviewed == true) //if the user already reviewed this book once
             {
                 return RedirectToAction("Details", "Books", new { id });
+            }
+
+            if (bookOrders.Any(bo => bo.Book.BookID == id) && hasAlreadyReviewed == false)
+            {
+                return View();
             }
 
             return RedirectToAction("Details", "Books", new { id });
