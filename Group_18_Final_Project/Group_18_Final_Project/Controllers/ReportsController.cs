@@ -32,6 +32,13 @@ namespace Group_18_Final_Project.Controllers
         PriceDescending = 5
     }
 
+    public enum reportCustomers
+    {
+        ProfitAscending = 1,
+        ProfitDescending = 2,
+        RevenueAscending = 3,
+        RevenueDescending = 4
+    }
     public class ReportsController : Controller
     {
         private AppDbContext _db;
@@ -144,7 +151,69 @@ namespace Group_18_Final_Project.Controllers
 
             //Redirect to Index View with Selected Repo list to display
             return View(SelectedOrders);
-
         }
+
+
+        //---------------------------CUSTOMERS REPORT--------------------------------
+
+        // GET: All books sold grouped by orders
+        public IActionResult SortCustomers()
+        {
+            return View();
+        }
+
+        //// POST: All books sold grouped by order
+        //public IActionResult CustomersReport(reportCustomers SelectedSort)
+        //{
+        //    //Creating new list object of the repo list
+        //    List<User> SelectedCustomers = new List<User>();
+
+
+        //    List<BookOrder> orderDetail = _db.BookOrders.Include(b => b.Book).Include(b => b.Order).Where(o => o.Order.IsPending == false).ToList();
+
+        //    //create a list of all the books from BookOrder
+        //    foreach (BookOrder r in orderDetail)
+        //    {
+        //        SelectedCustomers.Add(r.Users);
+        //    }
+
+        //    //ViewBag for Displaying x of y text
+        //    ViewBag.SelectedOrders = SelectedCustomers.Count();
+        //    ViewBag.TotalOrders = _db.Users.Count();
+
+        //    //Redirect to Index View with Selected Repo list to display
+        //    return View(SelectedCustomers);
+        //}
+
+
+        //------------------------TOTALS REPORT----------------------
+        // POST: Totals Report
+        public IActionResult TotalsReport()
+        {
+            Decimal totalProfit = 0;
+            Decimal totalCost = 0;
+            Decimal totalRevenue = 0;
+
+            List<BookOrder> orderDetail = _db.BookOrders.Where(o => o.Order.IsPending == false).ToList();
+
+            //create a list of all the books from BookOrder
+            foreach (BookOrder bo in orderDetail)
+            {
+                totalProfit = totalProfit + bo.Profit;
+                totalCost = totalCost + (bo.OrderQuantity * bo.BookCost);
+                totalRevenue = totalRevenue + bo.ExtendedPrice;
+            }
+
+            //three viewbags -> para totals!!
+            ViewBag.totalProfit = totalProfit;
+            ViewBag.totalCost = totalCost;
+            ViewBag.totalRevenue = totalRevenue;
+
+            return View();
+        }
+
+
+
     }
+
 }
