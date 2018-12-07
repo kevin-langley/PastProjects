@@ -1,5 +1,6 @@
-﻿@model IEnumerable<Group_18_Final_Project.Models.Review>
+﻿@model ReviewApproveModel
 @using Group_18_Final_Project.Models
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -23,18 +24,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Review review in Model)
+                @foreach (Review review in Model.ToApprove)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => review.Author.UserName)</td>
-                        <td>@Html.DisplayFor(modelItem => review.Book)</td>
+                        <td>@Html.DisplayFor(modelItem => review.Book.Title)</td>
                         <td>@Html.DisplayFor(modelItem => review.Rating)</td>
                         <td>@Html.DisplayFor(modelItem => review.ReviewText)</td>
                         <td>
-                            <input type="radio" name="Approval" id="@review.ReviewID" value="ReviewsToApprove">
+                            <input type="radio" name="ReviewsToApprove" id="@review.ReviewID">
                         </td>
                         <td>
-                            <input type="radio" name="Approval" id="@review.ReviewID" value="ReviewsToReject">
+                            <input type="radio" name="ReviewsToReject" id="@review.ReviewID">
                         </td>
                     </tr>
                 }

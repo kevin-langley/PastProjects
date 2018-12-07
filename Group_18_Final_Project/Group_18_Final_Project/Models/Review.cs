@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,15 +25,25 @@ namespace Group_18_Final_Project.Models
 
         public Boolean IsPending { get; set; }
 
-        //For approval and rejection
-        public string[] ReviewsToApprove { get; set; }
-        public string[] ReviewsToReject { get; set; }
-
         //Navigation properties
         //Author
         public User Author { get; set; }
         //Approver
         public User Approver { get; set; }
         public Book Book { get; set; }
+
+
+    }
+
+    public class ReviewApproveModel
+    {
+        public IEnumerable<Review> ToApprove { get; set; }
+    }
+
+    public class ReviewModificationModel
+    {
+        //For approval and rejection
+        public int[] ReviewsToApprove { get; set; }
+        public int[] ReviewsToReject { get; set; }
     }
 }

@@ -298,10 +298,13 @@ namespace Group_18_Final_Project.Controllers
                                                         .Include(r => r.Book)
                                                         .Where(r => r.IsPending == true).ToList();
 
-            return View(reviewsToApprove);
+            return View( new ReviewApproveModel { ToApprove = reviewsToApprove});
         }
 
-        public async Task<IActionResult> CheckedReviews(Review review)
+
+        //Processes the checked reviews
+        [HttpPost]
+        public async Task<IActionResult> CheckedReviews(ReviewModificationModel review)
         {
             List<Review> checkedReviews = _context.Reviews
                                                         .Include(u => u.Author)

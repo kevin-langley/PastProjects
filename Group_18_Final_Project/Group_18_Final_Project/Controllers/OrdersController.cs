@@ -660,7 +660,7 @@ namespace Group_18_Final_Project.Controllers
                 ViewBag.ThankYouMessage = "Thanks for placing an order with us!";
                 ViewBag.Appreciation = "We appreciate your support.";
                 ViewBag.ShippingMessage = "Your order has been shipped. View your order details.";
-                return View("CompletedOrderDetails");
+                return View("OrderConfirmed", order);
 
             }
             //Sad path :(
