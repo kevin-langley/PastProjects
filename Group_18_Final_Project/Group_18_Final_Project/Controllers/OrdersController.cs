@@ -694,27 +694,26 @@ namespace Group_18_Final_Project.Controllers
 
                 List<Order> userorder = _context.Orders.Include(bo => bo.BookOrders).ThenInclude(bo => bo.Book).Where(o => o.User == user).ToList();
 
-                
 
                 //Creating new list object of all books in the database
                 List<Book> BookList = new List<Book>();
-
-                foreach(Book book in BookList)
-                {
-                    foreach(Order checkorder in userorder)
-                    {
-                        if(checkorder.BookOrders.Any(b => b.Book.BookID == book.BookID))
-                        {
-                            BookList.Remove(book);
-                        }
-                    }
-                }
 
                 //Selecting all book items into a query to processed
                 var query = from r in _context.Books
                             select r;
 
                 BookList = query.OrderByDescending(r => r.AverageRating).ToList();
+
+                foreach (Book book in query.OrderByDescending(r => r.AverageRating).ToList())
+                {
+                    foreach (Order checkorder in userorder)
+                    {
+                        if (checkorder.BookOrders.Any(b => b.Book.BookID == book.BookID))
+                        {
+                            BookList.Remove(book);
+                        }
+                    }
+                }
 
                 //Find the recommended books
                 string RecommendedBook1 = "book1";
@@ -734,9 +733,10 @@ namespace Group_18_Final_Project.Controllers
                     {
                         if (book.Author == PurchasedBook.Author && book.Genre == PurchasedBook.Genre)
                         {
-                            //Sort by rating
+                            //Sort 
                             query = query.Where(r => r.Author == PurchasedBook.Author);
                             query = query.Where(r => r.Genre == PurchasedBook.Genre);
+                            query = query.Where(r => r.BookID != PurchasedBook.BookID);
 
                             Decimal maxRating;
                             maxRating = query.Max(r => r.AverageRating);
@@ -753,10 +753,11 @@ namespace Group_18_Final_Project.Controllers
                                 AuthorBook1 = b.Author;
                             }
                         }
-                        else if (book.Genre == PurchasedBook.Genre)
+                        else if (book.Genre == PurchasedBook.Genre && book.Author != PurchasedBook.Author)
                         {
                             //Sort by rating
                             query = query.Where(r => r.Genre == PurchasedBook.Genre);
+                            query = query.Where(r => r.BookID != PurchasedBook.BookID);
 
                             Decimal maxRating;
                             maxRating = query.Max(r => r.AverageRating);
@@ -795,7 +796,7 @@ namespace Group_18_Final_Project.Controllers
                     foreach (Book book in BookList)
                     {
 
-                        if (book.BookID != PurchasedBook.BookID) //Need to make for specific user
+                        if (book.BookID != PurchasedBook.BookID  && book.Author != PurchasedBook.Author) //Need to make for specific user
                         {
                             //Sort by rating
                             Decimal maxRating;
