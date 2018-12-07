@@ -178,7 +178,15 @@ namespace Group_18_Final_Project.Controllers
             ViewBag.ccType = order.CreditCard.CreditType;
             ViewBag.ccHidden = hidden;
 
+
+            // send confirmation email 
+            String emailSubject = "Thank you " + user.FirstName + " for your recent purchase!";
+            String emailBody = "You purchased " + order.BookOrders.Count() + "books from us.  " +
+                "Your total cost was "+order.OrderTotal + "Enjoy reading your new books!";
+            Utilities.EmailMessaging.SendEmail(user.Email, emailSubject, emailBody);
+
             //pass matched order to view
+
             return View(order);
 
 
