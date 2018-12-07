@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Group_18_Final_Project.DAL;
 using Group_18_Final_Project.Models;
@@ -212,10 +211,14 @@ namespace Group_18_Final_Project.Controllers
         }
 
         // GET: Reorders/AutoReorder
-        public async Task<IActionResult> AutoReorderAsync()
+        public IActionResult AutoReorder()
         {
-            List<Book> books = await _context.Books.Where(o => o.CopiesOnHand < o.ReorderPoint).ToListAsync();
-            return View(books);
+            List<Book> reordersToApprove = _context.Books
+                                                        .Include(u => u.BookOrders)
+
+                                                        .Where(r => r.ReorderPoint >= r.CopiesOnHand).ToList();
+
+            return View(new ReorderUpdateModel { ToUpdate = reordersToApprove });
         }
 
         // POST: Reorders/AutoReorder
@@ -223,15 +226,29 @@ namespace Group_18_Final_Project.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AutoReorder([Bind("ReorderID")] Reorder reorder)
+        public async Task<IActionResult> AutoReorder(ReorderUpdateModel model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reorder);
+                List<Book> books = await _context.Books.Where(o => o.CopiesOnHand <= o.ReorderPoint).ToListAsync();
+
+                BookReorder neworder = new BookReorder();
+
+                //var books = from e in _context.Books
+                //            from p in _context.Books
+                //            where e.ReorderPoint >= p.CopiesOnHand
+                //            select p;
+
+                foreach(Book x in books)
+                {
+                    await AddToReorder(neworder, x.BookID, 5);
+                }
+                
+
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            return View(reorder);
+            return View(model);
         }
 
 
@@ -391,6 +408,40 @@ namespace Group_18_Final_Project.Controllers
             return RedirectToAction("Details", new { id = bo.Reorder.ReorderID });
 
         }
+
+        //AutoReorderCreate
+        public async Task<IActionResult> AutoReorderCreate(BookReorder bo, int? bookId, int intReorderQuantity)
+        {
+            Reorder neworder = new Reorder();
+
+
+            //Stores newly created order into order detail
+            bo.Reorder = neworder;
+
+            bo.Reorder.IsPending = true;
+
+            //Stores most recently updated book price into order detail price
+            //TODO: Check if we need to do this lol
+            bo.Price = bo.Book.BookPrice;
+
+            //Stores order quantity and necessary order details
+            bo.ReorderQuantity = intReorderQuantity;
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(neworder);
+                _context.BookReorders.Add(bo);
+                await _context.SaveChangesAsync();
+
+                ViewBag.AddedOrder = "Your order has been added!";
+                ViewBag.CartMessage = "View your cart below";
+
+                return RedirectToAction("Details", new { id = bo.Reorder.ReorderID });
+            }
+
+            return RedirectToAction("Details", "Books", new { id = bookId });
+        }
+
 
         //GET method to get order id for order
         public IActionResult RemoveFromReorder(int? id)

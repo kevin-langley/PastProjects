@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model IEnumerable<Group_18_Final_Project.Models.Coupon>
 
 @{
@@ -20,6 +21,18 @@ else
 }
 <a asp-action="DetailedSearch" asp-controller="Home" class="btn btn-success">Search for Books</a>
 @if (User.IsInRole("Manager") == true)
+=======
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<div>
+    @ViewBag.EmptyMessage
+</div>
+
+<a asp-action="DetailedSearch" asp-controller="Home" class="btn btn-success">Search for Books</a>
+@if(User.IsInRole("Manager")==true)
+>>>>>>> 4a238ad15ab193bd2ed0ef5c21c8e02f631700de
 {
     <a asp-action="Index" asp-controller="Reorders" class="btn btn-success">Order Books From Suppliers</a>
 }

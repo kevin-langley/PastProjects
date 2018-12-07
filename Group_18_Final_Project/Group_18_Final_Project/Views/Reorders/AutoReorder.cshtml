@@ -1,9 +1,5 @@
-﻿@using  Group_18_Final_Project.Models;
-@using  Group_18_Final_Project.Controllers;
-@model IEnumerable<Group_18_Final_Project.Models.Book>
-
-
-
+﻿@model ReorderUpdateModel
+@using Group_18_Final_Project.Models
 
 @{
     ViewData["Title"] = "AutoReorder";
@@ -11,62 +7,70 @@
 
 <h2>AutoReorder</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UniqueID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CopiesOnHand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WholesalePrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActiveBook)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<form asp-action="AutoReorder">
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UniqueID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CopiesOnHand)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WholesalePrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ActiveBook)
-                </td>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Unique ID
+                </th>
+                <th>
+                    Copies on Hand
+                </th>
+                <th>
+                    Wholesale Price
+                </th>
+                <th>
+                    Is this book active?
+                </th>
 
-
-                <td>
-                    <a asp-action="Edit" asp-controller="Books" asp-route-id="@item.BookID">Edit</a> |
-                    <a asp-action="Details" asp-controller="Books" asp-route-id="@item.BookID">Details</a> |
-                    <a asp-action="Delete" asp-controller="Books" asp-route-id="@item.BookID">Disable</a>
-                </td>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Book book in Model.ToUpdate)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.UniqueID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.CopiesOnHand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.WholesalePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => book.ActiveBook)
+                    </td>
+                    <td>
+                        <input type="hidden" name="ReordersToUpdate" value="@book.BookID">
+                    </td>
 
+
+                    <td>
+                        <a asp-action="Edit" asp-controller="Books" asp-route-id="@book.BookID">Edit</a> |
+                        <a asp-action="Details" asp-controller="Books" asp-route-id="@book.BookID">Details</a> |
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <div class="form-group">
+            <input method="post" type="submit" value="save" class="btn btn-default" />
+        </div>
+
+    </table>
+</form>

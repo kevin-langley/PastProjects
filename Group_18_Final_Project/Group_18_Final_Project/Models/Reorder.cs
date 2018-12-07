@@ -33,4 +33,15 @@ namespace Group_18_Final_Project.Models
 
         }
     }
+    public class ReorderUpdateModel
+    {
+        public IEnumerable<Book> ToUpdate { get; set; }
+    }
+
+    public class ReorderModificationModel
+    {
+        //For approval and rejection
+        public int[] ReordersToUpdate { get; set; }
+        public int[] BooksToUpdate { get; set; }
+    }
 }
