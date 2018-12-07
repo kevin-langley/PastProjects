@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Group_18_Final_Project.Models.Book>
+﻿@model IEnumerable<Group_18_Final_Project.Models.BookOrder>
 
     @{
         ViewData["Title"] = "View";
@@ -15,24 +15,48 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    @Html.DisplayNameFor(model => model.Book.Title)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Author)
+                    @Html.DisplayNameFor(model => model.OrderQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order.OrderID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Order.User.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Profit)
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Author)
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profit)
+                </td>
+            </tr>
             }
         </tbody>
     </table>

@@ -15,24 +15,46 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.OrderID)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OrderDate)
+                    Quantity
+                </th>
+                <th>
+                    Order Number
+                </th>
+                <th>
+                    User
+                </th>
+                <th>
+                    Total Selling Price
+                </th>
+                <th>
+                    Total Profit
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderDate)
-                    </td>
-                </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookOrders.Sum(bo => bo.Profit))
+                </td>
+            </tr>
             }
         </tbody>
     </table>
