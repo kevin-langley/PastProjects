@@ -20,13 +20,6 @@
                 <span asp-validation-for="ReviewText" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Approval" /> @Html.DisplayNameFor(model => model.Approval)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
                 <label asp-for="Rating" class="control-label"></label>
                 <input asp-for="Rating" class="form-control" />
                 <span asp-validation-for="Rating" class="text-danger"></span>

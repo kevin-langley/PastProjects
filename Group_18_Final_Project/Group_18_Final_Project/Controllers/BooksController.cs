@@ -72,12 +72,24 @@ namespace Group_18_Final_Project.Controllers
 
             List<Order> orders = _context.Orders.Include(bo => bo.BookOrders).Include(bo => bo.User).Where(u => u.User == user).ToList();
 
+
             foreach (Order order in orders)
             {
                 if (!order.BookOrders.All(bo => bo.Book == book))
                 {
                     ViewBag.NoOrder = "Sorry! You can't review a book you have not purchased.";
 
+                }
+            }
+
+            //List of reviews that this user has made
+            List<Review> userReviews = _context.Reviews.Include(u => u.Book).Where(u => u.Author == user).ToList();
+
+            foreach (Review review in userReviews)
+            {
+                if (review.Book.BookID == id)
+                {
+                    ViewBag.AlreadyReviewed = "Sorry! You've already written a review for this book.";
                 }
             }
 

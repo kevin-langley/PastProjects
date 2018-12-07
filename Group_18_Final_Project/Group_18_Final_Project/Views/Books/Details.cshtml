@@ -43,6 +43,7 @@
             </dd>
         }
         <dd class="text-danger">@ViewBag.NoOrder</dd>
+        <dd class="text-danger">@ViewBag.AlreadyReviewed</dd>
         <dd>
             @*Links for reviews/rating and an option to review the book*@
             <a asp-action="Index" asp-controller="Reviews" asp-route-id="@Model.BookID">Reviews</a> |

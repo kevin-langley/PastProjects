@@ -24,11 +24,17 @@ namespace Group_18_Final_Project.Controllers
         //Create new list to find only approved reviews
         public async Task<IActionResult> Index(int? id)
         {
+            //View for customers to see list of their reviews and a specific book's reviews
             if (User.IsInRole("Customer"))
             {
                 if (id == null)
                 {
-                    return NotFound();
+                    string userid = User.Identity.Name;
+                    User user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userid);
+
+                    List<Review> userReviews = await _context.Reviews.Include(r => r.Book).Where(u => u.Author == user && u.Approval == true).ToListAsync();
+                    
+                    return View(userReviews);
                 }
                 //if book id is specified
                 List<Review> bookreviews = await _context.Reviews
@@ -38,11 +44,11 @@ namespace Group_18_Final_Project.Controllers
 
                 return View(bookreviews);
             }
-            if((User.IsInRole("Manager") || User.IsInRole("Employee")) == true)
+            if(User.IsInRole("Employee"))
             {
                 if (id == null)
                 {
-                    return View(await _context.Reviews.ToListAsync());
+                    return View(await _context.Reviews.Where(r => r.Approval == true).ToListAsync());
                 }
                 //if book id is specified
                 List<Review> bookReviews = await _context.Reviews
@@ -51,6 +57,23 @@ namespace Group_18_Final_Project.Controllers
                     .Where(u => u.Book.BookID == id).ToListAsync();
                 return View(bookReviews);
 
+            }
+
+            if(User.IsInRole("Manager"))
+            {
+                if (id == null)
+                {
+                    return View(await _context.Reviews.ToListAsync());
+                }
+
+                //if book id is specified
+                List<Review> bookReviews = await _context.Reviews
+                    .Include(u => u.Author)
+                    .Include(u => u.Book)
+                    .Where(u => u.Book.BookID == id).ToListAsync();
+
+
+                return View(bookReviews);
             }
             //View page for all approved reviews
             if (id == null)
@@ -90,6 +113,8 @@ namespace Group_18_Final_Project.Controllers
         [Authorize]
         public IActionResult Create(int? id)
         {
+            bool hasAlreadyReviewed = false;
+
             string userid = User.Identity.Name;
             User user = _context.Users
                                 .Include(u => u.Orders).ThenInclude(u => u.BookOrders).FirstOrDefault(u => u.UserName == userid);
@@ -103,6 +128,22 @@ namespace Group_18_Final_Project.Controllers
                 return View();
             }
 
+            //List of reviews that this user has made
+            List<Review> userReviews = _context.Reviews.Include(u => u.Book).Where(u => u.Author == user).ToList();
+
+            foreach (Review review in userReviews)
+            {
+                if (review.Book.BookID == id)
+                {
+                    hasAlreadyReviewed = true;
+                }
+            }
+
+            if(hasAlreadyReviewed == true) //if the user already reviewed this book once
+            {
+                return RedirectToAction("Details", "Books", new { id });
+            }
+
             return RedirectToAction("Details", "Books", new { id });
         }
 
@@ -112,10 +153,11 @@ namespace Group_18_Final_Project.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReviewID,ReviewText,Rating")] Review review, int id)
+        public async Task<IActionResult> Create([Bind("ReviewID,Rating")] Review review, int id, string ReviewText, string Rating)
         {
             if (ModelState.IsValid)
             {
+
                 string userid = User.Identity.Name;
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == userid);
 
@@ -125,10 +167,32 @@ namespace Group_18_Final_Project.Controllers
                 review.IsPending = true;
                 review.Approval = false;
                 review.Author = user;
+                review.ReviewText = ReviewText;
+
+                try
+                {
+                    int intSelectedRating = 0;
+
+                    if (Rating == null && Rating == "")
+                    {
+                        return RedirectToAction("Details", "Books", new { id });
+                    }
+                    else
+                    {
+                        Int32.TryParse(Rating, out intSelectedRating);
+                    }
+
+                    //If all of that worked out
+                    review.Rating = intSelectedRating;
+                }
+                catch
+                {
+                    return RedirectToAction("Details", "Books", new { id });
+                }
 
                 _context.Add(review);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             return View(review);
         }
@@ -248,7 +312,7 @@ namespace Group_18_Final_Project.Controllers
                 {
                     review.IsPending = false;
                     review.Approval = true;
-                    review.Author = approver;
+                    review.Approver = approver;
 
                     _context.Reviews.Update(review);
                     await _context.SaveChangesAsync();
@@ -258,7 +322,7 @@ namespace Group_18_Final_Project.Controllers
 
                 //if review is rejected
                 review.IsPending = false;
-                review.Author = approver;
+                review.Approver = approver;
 
                 _context.Reviews.Update(review);
                 await _context.SaveChangesAsync();
@@ -268,5 +332,6 @@ namespace Group_18_Final_Project.Controllers
             return View("Index");
 
         }
+
     }
 }

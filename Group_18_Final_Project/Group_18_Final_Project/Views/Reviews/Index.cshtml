@@ -6,18 +6,30 @@
 
 <h2>Reviews</h2>
 
-<p>
-    <a asp-action="ApproveReviews" asp-controller="Reviews" class="btn btn-success">Pending Reviews</a>
-</p>
+@if(User.IsInRole("Customer"))
+{
+    <p>Thanks for submitting reviews! View all of the approved reviews you've made.</p>
+}
+
+@if(User.IsInRole("Employee") || User.IsInRole("Manager"))
+{
+    <p>
+        <a asp-action="ApproveReviews" asp-controller="Reviews" class="btn btn-success">Pending Reviews</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ReviewText)
             </th>
+            @if(User.IsInRole("Employee")||User.IsInRole("Manager"))
+            {
             <th>
                 @Html.DisplayNameFor(model => model.Approval)
             </th>
+
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Rating)
             </th>
@@ -30,17 +42,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ReviewText)
             </td>
+            @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
+            {
             <td>
                 @Html.DisplayFor(modelItem => item.Approval)
             </td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
+            @if(User.IsInRole("Employee") || User.IsInRole("Manager"))
+            {
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a>
             </td>
+
+            }
         </tr>
 }
     </tbody>
