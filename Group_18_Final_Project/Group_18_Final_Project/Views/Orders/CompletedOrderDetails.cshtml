@@ -1,13 +1,21 @@
 ﻿@model Group_18_Final_Project.Models.Order
 @using Group_18_Final_Project.Models
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "CompletedOrder";
 }
 <!--The following view page is details of a completed order-->
 <div>
     <h2>Order</h2>
     <br />
     <h4>Your Completed Order</h4>
+    <h4>
+        @ViewBag.ThankYouMessage
+        @ViewBag.Appreciation
+    </h4><br/>
+    <br/>
+    <h4>
+        @ViewBag.ShippingMessage
+    </h4>
     <br />
 </div>
 

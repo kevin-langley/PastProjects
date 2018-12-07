@@ -657,7 +657,10 @@ namespace Group_18_Final_Project.Controllers
                 _context.Update(order);
                 await _context.SaveChangesAsync();
 
-                return View("CompletedOrder");
+                ViewBag.ThankYouMessage = "Thanks for placing an order with us!";
+                ViewBag.Appreciation = "We appreciate your support.";
+                ViewBag.ShippingMessage = "Your order has been shipped. View your order details.";
+                return View("CompletedOrderDetails");
 
             }
             //Sad path :(
