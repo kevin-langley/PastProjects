@@ -18,6 +18,13 @@ namespace Group_18_Final_Project.Models
         [DisplayFormat(DataFormatString = "{0:C)")]
         public Decimal BookCost { get; set; }
 
+        [Display(Name = "Profit")]
+        [DisplayFormat(DataFormatString = "{0:C}")] //Displays average rating to 2 decimals
+        public Decimal Profit
+        {
+            get { return ExtendedPrice - (BookCost * OrderQuantity); }
+        }
+
         [Required(ErrorMessage = "You must specify a quantity of books")]
         [Display(Name = "Quantity of books")]
         [Range(1, Int32.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]

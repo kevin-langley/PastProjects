@@ -134,8 +134,11 @@ namespace Group_18_Final_Project.Controllers
 
                     foreach (BookOrder bo in order.BookOrders)
                     {
+                        bo.Price = bo.Book.BookPrice;
+                        bo.BookCost = bo.Book.WholesalePrice;
                         intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
                     }
+                    
                     order.TotalShippingPrice = 3.50m + (1.50m * (intTotalBookNum - 1));
 
                     return View(order);
@@ -352,6 +355,7 @@ namespace Group_18_Final_Project.Controllers
 
                                 bookOrder.OrderQuantity = bookOrder.OrderQuantity + bo.OrderQuantity;
                                 bookOrder.Price = bookOrder.Book.BookPrice;
+                                bookOrder.BookCost = bookOrder.Book.WholesalePrice;
                                 bookOrder.ExtendedPrice = bookOrder.Price * bookOrder.OrderQuantity;
 
 
@@ -380,6 +384,7 @@ namespace Group_18_Final_Project.Controllers
                     //Stores matched order in order detail order property
                     bo.Order = order;
                     bo.Price = bo.Book.BookPrice;
+                    bo.BookCost = bo.Book.WholesalePrice;
                     bo.OrderQuantity = intOrderQuantity;
                     bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
 
@@ -405,8 +410,8 @@ namespace Group_18_Final_Project.Controllers
                 bo.Order.IsPending = true;
 
                 //Stores most recently updated book price into order detail price
-                //TODO: Check if we need to do this lol
                 bo.Price = bo.Book.BookPrice;
+                bo.BookCost = bo.Book.WholesalePrice;
 
                 //Stores order quantity and necessary order details
                 bo.OrderQuantity = intOrderQuantity;
@@ -442,6 +447,7 @@ namespace Group_18_Final_Project.Controllers
 
             //Stores most recently updated book price into order detail price & other stuff
             bo.Price = bo.Book.BookPrice;
+            bo.BookCost = bo.Book.WholesalePrice;
             bo.ExtendedPrice = bo.Price * bo.OrderQuantity;
             bo.Order.OrderDate = DateTime.Today;
 
@@ -560,6 +566,8 @@ namespace Group_18_Final_Project.Controllers
 
                     foreach (BookOrder bo in order.BookOrders)
                     {
+                        bo.Price = bo.Book.BookPrice;
+                        bo.BookCost = bo.Book.WholesalePrice;
                         intTotalBookNum = intTotalBookNum + bo.OrderQuantity;
                     }
 
