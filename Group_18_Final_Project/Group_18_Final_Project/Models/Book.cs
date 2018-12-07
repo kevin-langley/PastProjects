@@ -23,6 +23,9 @@ namespace Group_18_Final_Project.Models
         [Display(Name = "Number of Times Purchased")]
         public Int32 TimesPurchased { get; set; }
 
+        [Display(Name = "Reorder Point")]
+        public Int32 ReorderPoint { get; set; }
+
         [Display(Name = "Average Rating")]
         [DisplayFormat(DataFormatString = "{0:0.0}")] //Displays average rating to 2 decimals
         public Decimal AverageRating
